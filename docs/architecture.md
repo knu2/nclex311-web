@@ -83,6 +83,23 @@ graph TD
 
 ---
 
+## 2.6. Testing & CI/CD Alignment
+
+This project adopts a test-first, automation-friendly setup to ensure quality and speed:
+
+- Testing Frameworks
+  - Frontend: Jest + React Testing Library (unit/component)
+  - Backend: Jest + Supertest (API routes)
+  - E2E: Playwright (cross-browser flows)
+- CI/CD Baseline
+  - Deployments: Vercel (preview on PRs, staging on main)
+  - GitHub Actions: run lint, unit/API tests, and basic E2E smoke on PRs and main
+- Environment Strategy
+  - Use .env.local for local development; provide .env.example committed to the repo
+  - Never commit secrets; configure production/staging env vars via Vercel
+
+---
+
 ## 3. Tech Stack
 
 ### 3.1. Technology Stack Table

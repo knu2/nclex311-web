@@ -128,19 +128,51 @@ The testing strategy will focus on a combination of unit tests for individual co
 
 ## Epic 1: Foundation & Freemium Experience
 
-**Goal:** This foundational epic will establish the project's technical backbone, including the Next.js application, database schema, and a basic CI/CD pipeline. It will deliver the initial, tangible user value: the ability to sign up and study the first four chapters for free. The one-time content import from the source PDF will also be completed within this epic.
+**Goal:** This foundational epic will establish the project's technical backbone, including the Next.js application, database schema, testing frameworks, and a basic CI/CD pipeline. It will deliver the initial, tangible user value: the ability to sign up and study the first four chapters for free. The one-time content import from the source PDF will also be completed within this epic.
+
+### Story 1.0: Repository Setup & Project Scaffolding
+
+*   **As a** developer,
+*   **I want** to initialize the Git repository, set up the Next.js monorepo structure, and establish baseline project documentation,
+*   **so that** I have a clean, organized foundation for all subsequent development work.
+
+**Acceptance Criteria:**
+1.  A new Git repository is initialized with proper .gitignore for Next.js projects.
+2.  Next.js application is scaffolded with TypeScript configuration.
+3.  Monorepo workspace structure is established (apps/, packages/ directories as specified in architecture).
+4.  Baseline README.md is created with project overview and initial setup instructions.
+5.  Coding standards documentation is referenced and accessible to developers.
+6.  Initial package.json workspace configuration is properly set up.
 
 ### Story 1.1: Project & Infrastructure Setup
 
 *   **As a** developer,
-*   **I want** to set up the initial Next.js monorepo, connect it to a PostgreSQL database, and configure a basic CI/CD pipeline,
-*   **so that** I have a stable and automated foundation for building and deploying the application.
+*   **I want** to set up database connectivity, configure CI/CD pipeline, install testing frameworks, and establish deployment automation,
+*   **so that** I have a stable and automated foundation for building, testing, and deploying the application.
 
 **Acceptance Criteria:**
-1.  A new Git repository is created and initialized with a Next.js project.
-2.  The project successfully connects to a PostgreSQL database.
-3.  A basic health-check page is publicly accessible via a deployed URL.
-4.  Pushing to the `main` branch automatically triggers a deployment to a staging environment.
+1.  PostgreSQL database connection is established and configured with environment variables.
+2.  Basic CI/CD pipeline is configured using Vercel deployment + GitHub Actions for testing/linting.
+3.  Testing frameworks are installed and configured (Jest + React Testing Library for unit tests, Playwright for E2E).
+4.  A basic health-check API route is implemented and accessible.
+5.  Environment variable management is set up (.env.example, .env.local template).
+6.  Pushing to the `main` branch automatically triggers deployment to staging environment.
+7.  Database schema baseline is created and migration strategy is established.
+
+### Story 1.1.5: Development Environment & Local Setup
+
+*   **As a** developer,
+*   **I want** to have comprehensive documentation and tooling for local development setup,
+*   **so that** any developer can quickly get the application running locally and start contributing effectively.
+
+**Acceptance Criteria:**
+1.  Comprehensive local setup documentation is created with step-by-step instructions.
+2.  Dependency installation process is documented and tested (npm install, database setup).
+3.  Environment variables template (.env.example) is provided with all required variables.
+4.  Local database bootstrap/seeding process is documented and scripted.
+5.  Development server startup instructions are clear and include troubleshooting section.
+6.  Code formatting and linting tools are configured and documented.
+7.  Git hooks are set up for pre-commit linting and formatting.
 
 ### Story 1.2 (Revised): One-Time Content Import for Multiple Question Formats
 
