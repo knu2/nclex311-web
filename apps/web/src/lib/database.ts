@@ -28,13 +28,14 @@ export async function testConnection(): Promise<boolean> {
       return false;
     }
     
-    // Simple test - try to access any table (even if it doesn't exist)
-    // We're just testing if the client can communicate with Supabase
-    const { error } = await supabase.from('_test_connection').select('*').limit(0);
+    // Test with actual table now that schema exists
+    // This gives us a better health check: connection + schema validation
+    const { error } = await supabase
+      .from('users')
+      .select('id')
+      .limit(1);
     
-    // If we get a "table not found" error, that means connection is working
-    // Any other error (auth, network, etc.) means connection issues
-    if (error && !error.message.includes('does not exist') && !error.message.includes('schema cache')) {
+    if (error) {
       console.error('Database connection test failed:', error);
       return false;
     }
@@ -62,13 +63,27 @@ export async function getConnectionInfo() {
       };
     }
     
+    // Get table count to verify schema is set up
+    const { data: userCount } = await supabase
+      .from('users')
+      .select('id', { count: 'exact', head: true });
+    
+    const { data: chapterCount } = await supabase
+      .from('chapters')
+      .select('id', { count: 'exact', head: true });
+    
     return {
       connected: true,
       database_name: 'supabase',
       user_name: 'authenticated',
       version: 'PostgreSQL (via Supabase)',
       current_time: new Date().toISOString(),
-      supabase_url: process.env.NEXT_PUBLIC_SUPABASE_URL
+      supabase_url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+      schema_status: {
+        tables_accessible: true,
+        users_table_count: userCount || 0,
+        chapters_table_count: chapterCount || 0
+      }
     };
   } catch (error) {
     console.error('Failed to get database info:', error);
