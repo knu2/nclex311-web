@@ -13,13 +13,16 @@
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "migrate": "node scripts/migrate.js"
+    "migrate": "node scripts/validate-migration.js",
+    "migrate:validate": "node scripts/validate-migration.js",
+    "migrate:legacy": "node scripts/migrate.js"
   },
   "dependencies": {
     "@nclex311/types": "*",
     "@supabase/supabase-js": "^2.57.4",
     "@types/pg": "^8.15.5",
     "@vercel/postgres": "^0.10.0",
+    "dotenv": "^17.2.2",
     "next": "15.5.2",
     "pg": "^8.16.3",
     "react": "19.1.0",

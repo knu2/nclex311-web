@@ -3,6 +3,9 @@
 /**
  * Supabase migration utility for NCLEX311
  * Usage: node scripts/migrate-supabase.js
+ * 
+ * Note: This creates a migration status tracker instead of running SQL
+ * For actual migrations, use Supabase Dashboard SQL Editor (recommended)
  */
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -21,12 +24,13 @@ async function runMigrations() {
   
   // Create Supabase client with service role key (needed for DDL operations)
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // This would need to be added
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   
   if (!supabaseUrl || !supabaseServiceKey) {
     console.error('❌ Missing required environment variables:');
     console.error('- NEXT_PUBLIC_SUPABASE_URL');
-    console.error('- SUPABASE_SERVICE_ROLE_KEY (needed for migrations)');
+    console.error('- SUPABASE_SERVICE_ROLE_KEY');
+    console.log('\n💡 Make sure both variables are set in .env.local');
     process.exit(1);
   }
   
@@ -39,6 +43,11 @@ async function runMigrations() {
       .filter(file => file.endsWith('.sql'))
       .sort();
     
+    if (migrationFiles.length === 0) {
+      console.log('📝 No migration files found in migrations directory');
+      return;
+    }
+    
     for (const file of migrationFiles) {
       console.log(`⚡ Running migration: ${file}`);
       
@@ -47,15 +56,25 @@ async function runMigrations() {
         'utf-8'
       );
       
-      // Note: This approach requires the service role key and direct SQL execution
-      // For production, consider using Supabase CLI or Dashboard
-      const { error } = await supabase.rpc('exec_sql', { 
-        sql: migrationContent 
-      });
+      // Split the migration into individual statements
+      // PostgreSQL can't handle multiple statements in a single RPC call
+      const statements = migrationContent
+        .split(';')
+        .map(stmt => stmt.trim())
+        .filter(stmt => stmt.length > 0 && !stmt.startsWith('--'));
       
-      if (error) {
-        console.error(`❌ Migration ${file} failed:`, error);
-        throw error;
+      for (const statement of statements) {
+        if (statement.trim()) {
+          const { error } = await supabase.rpc('exec_sql', { 
+            sql: statement + ';'
+          });
+          
+          if (error) {
+            console.error(`❌ SQL Error in ${file}:`, error);
+            console.error(`Statement: ${statement.substring(0, 100)}...`);
+            throw error;
+          }
+        }
       }
       
       console.log(`✅ Completed migration: ${file}`);
