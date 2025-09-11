@@ -85,7 +85,7 @@ export async function getConnectionInfo() {
  * @param params - Function parameters
  * @returns Query result
  */
-export async function runQuery(functionName: string, params: any = {}) {
+export async function runQuery(functionName: string, params: Record<string, unknown> = {}) {
   try {
     const { data, error } = await supabase.rpc(functionName, params);
     if (error) throw error;
@@ -100,6 +100,7 @@ export async function runQuery(functionName: string, params: any = {}) {
  * Execute migration using Supabase SQL runner
  * Note: For production, migrations should be handled via Supabase Dashboard or CLI
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function executeMigration(migrationName: string): Promise<void> {
   console.warn('Migrations should be run via Supabase Dashboard or CLI in production');
   throw new Error('Migration execution not implemented for Supabase client - use Supabase Dashboard');

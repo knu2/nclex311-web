@@ -5,8 +5,11 @@
  * Usage: node scripts/migrate.js
  */
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { sql } = require('@vercel/postgres');
 
 async function runMigrations() {
