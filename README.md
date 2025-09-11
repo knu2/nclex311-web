@@ -20,9 +20,13 @@ This is a monorepo using npm workspaces with the following structure:
 
 - **Frontend Framework:** Next.js 15.x
 - **Language:** TypeScript 5.x
+- **Database:** PostgreSQL 16.x
 - **Styling:** Tailwind CSS
+- **Testing:** Jest + React Testing Library + Playwright
 - **Monorepo:** npm Workspaces
 - **Package Manager:** npm
+- **Deployment:** Vercel
+- **CI/CD:** GitHub Actions
 
 ## Getting Started
 
@@ -30,6 +34,7 @@ This is a monorepo using npm workspaces with the following structure:
 
 - Node.js >= 18.0.0
 - npm >= 9.0.0
+- PostgreSQL 16.x (for local development)
 
 ### Installation
 
@@ -44,12 +49,25 @@ cd nclex311-bmad
 npm install
 ```
 
-3. Start the development server:
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+# Edit .env.local with your local database credentials
+```
+
+4. Set up the database:
+```bash
+# Create a PostgreSQL database named 'nclex311'
+# Then run migrations:
+npm run migrate --workspace=apps/web
+```
+
+5. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Available Commands
 
@@ -60,7 +78,19 @@ From the root directory:
 - `npm run start` - Start production server
 - `npm run type-check` - Run TypeScript type checking
 - `npm run lint` - Run ESLint
-- `npm run test` - Run tests (when implemented)
+- `npm run test` - Run unit tests
+
+### Testing Commands
+
+- `npm run test --workspace=apps/web` - Run unit tests
+- `npm run test:watch --workspace=apps/web` - Run tests in watch mode
+- `npm run test:coverage --workspace=apps/web` - Run tests with coverage
+- `npm run test:e2e --workspace=apps/web` - Run E2E tests
+- `npm run test:e2e:ui --workspace=apps/web` - Run E2E tests with UI
+
+### Database Commands
+
+- `npm run migrate --workspace=apps/web` - Run database migrations
 
 ## Development
 
