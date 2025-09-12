@@ -4,13 +4,15 @@
 
 /**
  * 🧪 Unit Tests for Database Module (Fully Mocked)
- * 
+ *
  * These tests mock ALL external dependencies (Supabase) to test our code in isolation.
  */
 
 describe('Database Connection - Unit Tests (Mocked)', () => {
-  let testConnection: any;
-  let getConnectionInfo: any;
+  let testConnection: () => Promise<boolean>;
+  let getConnectionInfo: () => Promise<
+    ReturnType<typeof import('../src/lib/database').getConnectionInfo>
+  >;
   let mockFrom: jest.Mock;
   let mockSelect: jest.Mock;
   let mockLimit: jest.Mock;
@@ -18,7 +20,7 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
   beforeEach(async () => {
     // Clear Jest cache to ensure fresh mocks
     jest.resetModules();
-    
+
     // Set up mock functions
     mockLimit = jest.fn();
     mockSelect = jest.fn(() => ({ limit: mockLimit }));
@@ -27,8 +29,8 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
     // Mock Supabase using doMock to avoid hoisting issues
     jest.doMock('@supabase/supabase-js', () => ({
       createClient: jest.fn(() => ({
-        from: mockFrom
-      }))
+        from: mockFrom,
+      })),
     }));
 
     // Import our functions after mocking
@@ -46,7 +48,7 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
       // 🎯 ARRANGE: Set up the mock to succeed
       mockLimit.mockResolvedValue({
         error: null,
-        data: []
+        data: [],
       });
 
       // 🎬 ACT: Call the function we're testing
@@ -54,7 +56,7 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
 
       // ✅ ASSERT: Check the result
       expect(result).toBe(true);
-      
+
       // 🔍 VERIFY: Check that our function called Supabase correctly
       expect(mockFrom).toHaveBeenCalledWith('users');
       expect(mockSelect).toHaveBeenCalledWith('id');
@@ -65,7 +67,7 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
       // 🎯 ARRANGE: Set up the mock to fail
       mockLimit.mockResolvedValue({
         error: { message: 'Connection failed' },
-        data: null
+        data: null,
       });
 
       // 🎬 ACT: Call the function
@@ -92,18 +94,19 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
       // 🎯 ARRANGE: Mock successful responses for connection test
       mockLimit.mockResolvedValue({
         error: null,
-        data: []
+        data: [],
       });
-      
+
       // Mock select for count queries (separate calls)
-      const mockSelectForCounts = jest.fn()
-        .mockResolvedValueOnce({ data: 5, error: null })  // Users count
+      const mockSelectForCounts = jest
+        .fn()
+        .mockResolvedValueOnce({ data: 5, error: null }) // Users count
         .mockResolvedValueOnce({ data: 3, error: null }); // Chapters count
-      
+
       // Setup different return values for different calls
       mockFrom
-        .mockReturnValueOnce({ select: mockSelect })      // For testConnection
-        .mockReturnValueOnce({ select: mockSelectForCounts }) // For users count  
+        .mockReturnValueOnce({ select: mockSelect }) // For testConnection
+        .mockReturnValueOnce({ select: mockSelectForCounts }) // For users count
         .mockReturnValueOnce({ select: mockSelectForCounts }); // For chapters count
 
       // 🎬 ACT: Call the function
@@ -118,10 +121,10 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
         schema_status: {
           tables_accessible: true,
           users_table_count: 5,
-          chapters_table_count: 3
-        }
+          chapters_table_count: 3,
+        },
       });
-      
+
       // Check that timestamp was added
       expect(result.current_time).toBeDefined();
       expect(typeof result.current_time).toBe('string');
@@ -131,7 +134,7 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
       // 🎯 ARRANGE: Mock failed connection
       mockLimit.mockResolvedValue({
         error: { message: 'Connection failed' },
-        data: null
+        data: null,
       });
 
       // 🎬 ACT: Call the function
@@ -140,7 +143,7 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
       // ✅ ASSERT: Should return error status
       expect(result).toMatchObject({
         connected: false,
-        error: 'Connection test failed'
+        error: 'Connection test failed',
       });
     });
   });

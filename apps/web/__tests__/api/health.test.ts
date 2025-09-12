@@ -11,8 +11,12 @@ jest.mock('../../src/lib/database', () => ({
   getConnectionInfo: jest.fn(),
 }));
 
-const mockTestConnection = testConnection as jest.MockedFunction<typeof testConnection>;
-const mockGetConnectionInfo = getConnectionInfo as jest.MockedFunction<typeof getConnectionInfo>;
+const mockTestConnection = testConnection as jest.MockedFunction<
+  typeof testConnection
+>;
+const mockGetConnectionInfo = getConnectionInfo as jest.MockedFunction<
+  typeof getConnectionInfo
+>;
 
 describe('/api/health', () => {
   beforeEach(() => {
@@ -25,7 +29,13 @@ describe('/api/health', () => {
       database_name: 'nclex311',
       user_name: 'test_user',
       version: 'PostgreSQL 16.0',
-      current_time: '2025-09-11T05:00:00Z'
+      current_time: '2025-09-11T05:00:00Z',
+      supabase_url: 'https://test-project.supabase.co',
+      schema_status: {
+        tables_accessible: true,
+        users_table_count: 0,
+        chapters_table_count: 0,
+      },
     };
 
     mockTestConnection.mockResolvedValue(true);

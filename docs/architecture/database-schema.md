@@ -1,6 +1,16 @@
 # Database Schema
 
-This SQL script defines the complete schema for the PostgreSQL database.
+This SQL script defines the complete schema for the PostgreSQL database (implemented via Supabase).
+
+## Migration Strategy
+
+Migrations are managed through a hybrid approach:
+- **Development:** Manual execution via Supabase Dashboard SQL Editor for safety and control
+- **Validation:** Custom npm scripts (`npm run migrate`) validate schema completeness
+- **Production:** All schema changes deployed manually through Supabase Dashboard
+- **Local Testing:** Migration scripts available for validation but not automatic execution
+
+> **Note:** Automated migrations are intentionally disabled to prevent unsafe schema changes during deployments.
 
 ```sql
 -- Create ENUM types for consistency and type safety
