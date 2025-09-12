@@ -67,8 +67,16 @@ npm run type-check
 cp .env.example .env.local
 
 # Edit .env.local with your Supabase credentials:
-# NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
-# NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+# Get these values from your Supabase project dashboard:
+# NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+# SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
+# SUPABASE_JWT_SECRET=your-jwt-secret-here
+# 
+# For Vercel deployment, also configure these Postgres variables:
+# POSTGRES_URL=postgres://postgres.your-project-ref:password@pooler.supabase.com:6543/postgres
+# POSTGRES_PRISMA_URL=postgres://postgres.your-project-ref:password@pooler.supabase.com:6543/postgres?pgbouncer=true
+# POSTGRES_URL_NON_POOLING=postgres://postgres.your-project-ref:password@pooler.supabase.com:5432/postgres
 ```
 
 **For Local PostgreSQL:**

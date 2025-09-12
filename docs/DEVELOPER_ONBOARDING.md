@@ -34,10 +34,20 @@ Choose one:
 #### For Supabase (Recommended)
 - [ ] Create new Supabase project at [supabase.com](https://supabase.com)
 - [ ] Copy `.env.example` to `.env.local`
-- [ ] Update `.env.local` with your Supabase credentials:
+- [ ] Update `.env.local` with your Supabase credentials from project dashboard:
   ```bash
+  # From Settings > API
   NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+  SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
+  
+  # From Settings > API > JWT Secret
+  SUPABASE_JWT_SECRET=your-jwt-secret-here
+  
+  # From Settings > Database > Connection Pooling
+  POSTGRES_URL=postgres://postgres.your-project-ref:password@pooler.supabase.com:6543/postgres
+  POSTGRES_PRISMA_URL=postgres://postgres.your-project-ref:password@pooler.supabase.com:6543/postgres?pgbouncer=true
+  POSTGRES_URL_NON_POOLING=postgres://postgres.your-project-ref:password@pooler.supabase.com:5432/postgres
   ```
 
 #### For Local PostgreSQL
