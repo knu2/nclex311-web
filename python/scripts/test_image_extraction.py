@@ -8,6 +8,10 @@ import os
 import sys
 from pathlib import Path
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Import the enhanced extractor
 try:
@@ -16,12 +20,13 @@ except ImportError:
     print("❌ Cannot import enhanced_image_extraction. Make sure the file is in the same directory.")
     sys.exit(1)
 
-def test_sample_pages(pdf_path: str, start_page: int = 175, end_page: int = 177):
+def test_sample_pages(pdf_path: str, start_page: int = 88, end_page: int = 90):
     """Test image extraction on sample pages (pages with known images)"""
     
     print("🧪 Testing Image Extraction on Sample Pages")
     print("=" * 50)
-    print(f"Testing pages {start_page}-{end_page} (the sample pages with Herpes Zoster images)")
+    print(f"Testing PDF pages {start_page}-{end_page} (book pages 176-177 with Herpes Zoster images)")
+    print("Note: PDF uses two-page spread layout - each PDF page contains 2 book pages side by side")
     
     # Check for API key
     api_key = os.getenv("UNSTRUCTURED_API_KEY")

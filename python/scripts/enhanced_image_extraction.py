@@ -21,6 +21,10 @@ from dataclasses import dataclass, asdict
 import logging
 from PIL import Image
 import io
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Check if required packages are installed
 def check_dependencies():
@@ -348,7 +352,7 @@ class EnhancedPDFExtractor:
             )
         
         request = operations.PartitionRequest(
-            shared.PartitionParameters(
+            partition_parameters=shared.PartitionParameters(
                 files=files,
                 split_pdf_page=True,
                 split_pdf_allow_failed=True,

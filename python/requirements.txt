@@ -1,0 +1,19 @@
+# PDF Extraction Dependencies for NCLEX 311 Image Processing
+# Use with: uv pip install -r requirements-pdf-extraction.txt
+
+# Core PDF processing
+PyMuPDF>=1.23.0
+unstructured-client>=0.25.0
+unstructured[pdf]>=0.15.0
+
+# Image processing  
+Pillow>=10.0.0
+
+# Optional: Alternative unstructured approach (local processing)
+# unstructured[local-inference]>=0.15.0
+
+# Data processing
+pandas>=2.1.0
+
+# For testing and validation
+pytest>=7.0.0
