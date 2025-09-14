@@ -10,8 +10,8 @@
 
 describe('Database Connection - Unit Tests (Mocked)', () => {
   let testConnection: () => Promise<boolean>;
-  let getConnectionInfo: () => Promise<
-    ReturnType<typeof import('../src/lib/database').getConnectionInfo>
+  let getConnectionInfo: () => ReturnType<
+    typeof import('../src/lib/database').getConnectionInfo
   >;
   let mockFrom: jest.Mock;
   let mockSelect: jest.Mock;
