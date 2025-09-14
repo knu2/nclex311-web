@@ -21,6 +21,10 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
     // Clear Jest cache to ensure fresh mocks
     jest.resetModules();
 
+    // Mock environment variables to prevent the database module from throwing
+    process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key';
+
     // Set up mock functions
     mockLimit = jest.fn();
     mockSelect = jest.fn(() => ({ limit: mockLimit }));
@@ -41,6 +45,9 @@ describe('Database Connection - Unit Tests (Mocked)', () => {
 
   afterEach(() => {
     jest.resetModules();
+    // Clean up environment variables
+    delete process.env.NEXT_PUBLIC_SUPABASE_URL;
+    delete process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   });
 
   describe('testConnection', () => {
