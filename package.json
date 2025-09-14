@@ -25,7 +25,8 @@
   },
   "overrides": {
     "glob": "^10.4.5",
-    "inflight": "npm:@isaacs/inflight@^1.0.4"
+    "inflight": "npm:@isaacs/inflight@^1.0.4",
+    "lightningcss": "^1.28.1"
   },
   "lint-staged": {
     "apps/web/**/*.{js,jsx,ts,tsx}": [
