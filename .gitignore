@@ -56,7 +56,10 @@ python/__pycache__/
 # PDF files (potentially sensitive content)
 shared/pdfs/*.pdf
 
-# Extracted content
+# Extracted content and working directories
 *.png
 *.jpg
 *.jpeg
+python/extracted_content*/
+python/extracted_images/
+python/final_output/

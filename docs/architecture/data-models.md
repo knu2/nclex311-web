@@ -88,6 +88,7 @@ export interface Concept {
 ### Relationships
 - Belongs to one **Chapter**
 - Has many **Questions**
+- Has many **Images** (optional)
 - Is associated with many **Users** through **Bookmarks**
 - Is associated with many **Users** through **CompletedConcepts**
 - Has many **Comments**
@@ -127,6 +128,7 @@ export interface Question {
 ### Relationships
 - Belongs to one **Concept**
 - Has many **Options**
+- Has many **Images** (optional)
 
 ---
 
@@ -152,6 +154,48 @@ export interface Option {
 
 ### Relationships
 - Belongs to one **Question**
+
+---
+
+## Image
+
+**Purpose:** Represents a medical image (diagram, chart, ECG, etc.) that is associated with educational content. Images are stored in Vercel Blob Storage and linked to concepts or questions for enhanced learning.
+
+**Key Attributes:**
+- `id`: `string` - Unique identifier for the image.
+- `filename`: `string` - Original filename of the image.
+- `blobUrl`: `string` - URL to the image stored in Vercel Blob Storage.
+- `alt`: `string` - Alternative text description for accessibility and content identification.
+- `width`: `number` - Image width in pixels.
+- `height`: `number` - Image height in pixels.
+- `fileSize`: `number` - File size in bytes.
+- `extractionConfidence`: `string` - Confidence level from extraction process ('high', 'medium', 'low').
+- `medicalContent`: `string` - Description of the medical content shown (e.g., "ECG showing atrial fibrillation").
+- `conceptId`: `string` (optional) - Foreign key linking to associated Concept.
+- `questionId`: `string` (optional) - Foreign key linking to associated Question.
+- `createdAt`: `DateTime` - Timestamp of when the image was imported.
+
+### TypeScript Interface
+```typescript
+export interface Image {
+  id: string;
+  filename: string;
+  blobUrl: string;
+  alt: string;
+  width: number;
+  height: number;
+  fileSize: number;
+  extractionConfidence: 'high' | 'medium' | 'low';
+  medicalContent: string;
+  conceptId?: string;
+  questionId?: string;
+  createdAt: string; // ISO 8601 date string
+}
+```
+
+### Relationships
+- May belong to one **Concept** (optional)
+- May belong to one **Question** (optional)
 
 ---
 

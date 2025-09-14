@@ -11,7 +11,7 @@
 7.  **FR7:** The system shall allow users to bookmark concepts for later review.
 8.  **FR8:** The system shall provide a basic user dashboard listing concepts marked as complete.
 9.  **FR9:** The system shall include a Content Management System (CMS) for managing concepts, questions, and rationales.
-10. **FR10:** The CMS shall include a utility to parse a PDF and automatically extract and structure content into the database.
+10. **FR10:** The CMS shall include a utility to import pre-extracted JSON content and associated medical images into the database, with images stored in Vercel Blob Storage.
 11. **FR11:** The system shall allow users to post comments on concepts.
 
 ## Non-Functional

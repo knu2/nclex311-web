@@ -46,17 +46,20 @@
 6.  Code formatting and linting tools are configured and documented.
 7.  Git hooks are set up for pre-commit linting and formatting.
 
-## Story 1.2 (Revised): One-Time Content Import for Multiple Question Formats
+## Story 1.2 (Revised): Database Import from Pre-Extracted JSON and Images
 
 *   **As a** content manager,
-*   **I want** to use a one-time script to parse the NCLEX 311 PDF and populate the database, correctly identifying different question formats,
-*   **so that** all content, including complex questions, is accurately represented in the application.
+*   **I want** to use a TypeScript import script to process pre-extracted JSON files and associated medical images into the database,
+*   **so that** all NCLEX 311 content, including complex questions and medical images, is available in the application.
 
 **Acceptance Criteria:**
-1.  A Python script is created that can read the source PDF.
-2.  The script correctly identifies and extracts all concepts and their associated questions, including the **type** of question (e.g., Multiple Choice, Select All That Apply, Fill-in-the-blank, Matrix/Grid).
-3.  The script successfully inserts all extracted content into a PostgreSQL database schema that supports these various question and answer structures.
-4.  A spot-check of at least one of each question type in the database confirms data integrity and correct type identification.
+1.  A TypeScript script (or Next.js API route) is created that can read structured JSON files containing extracted concepts, questions, and image references.
+2.  The script correctly processes and imports all question types (Multiple Choice, Select All That Apply, Fill-in-the-blank, Matrix/Grid) from the JSON format.
+3.  The script uploads image files to Vercel Blob Storage and stores the blob URLs in the database with proper metadata.
+4.  The script successfully populates the PostgreSQL database with all content from the JSON files, including proper relationships between concepts, questions, options, and images.
+5.  Image metadata (filename, dimensions, extraction confidence, medical content descriptions) is preserved and stored in the database.
+6.  A spot-check of imported data confirms that concepts, questions, options, and images are correctly linked and accessible.
+7.  The database schema is updated to support image entities and their relationships to concepts and questions.
 
 ## Story 1.3: User Authentication
 
