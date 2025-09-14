@@ -5,35 +5,35 @@
  * Usage: node scripts/migrate.js
  */
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+
 const path = require('path');
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+
 const { sql } = require('@vercel/postgres');
 
 async function runMigrations() {
   console.log('🚀 Starting database migrations...');
-  
+
   const migrationsDir = path.join(__dirname, '../migrations');
-  
+
   try {
-    const migrationFiles = fs.readdirSync(migrationsDir)
+    const migrationFiles = fs
+      .readdirSync(migrationsDir)
       .filter(file => file.endsWith('.sql'))
       .sort();
-    
+
     for (const file of migrationFiles) {
       console.log(`⚡ Running migration: ${file}`);
-      
+
       const migrationContent = fs.readFileSync(
         path.join(migrationsDir, file),
         'utf-8'
       );
-      
+
       await sql.query(migrationContent);
       console.log(`✅ Completed migration: ${file}`);
     }
-    
+
     console.log('🎉 All migrations completed successfully!');
   } catch (error) {
     console.error('❌ Migration failed:', error);

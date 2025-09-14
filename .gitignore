@@ -45,3 +45,21 @@ coverage/
 
 # Project specific
 scratchpad/
+
+# Python data processing
+python/data/
+python/.venv/
+python/__pycache__/
+*.pyc
+*.pyo
+
+# PDF files (potentially sensitive content)
+shared/pdfs/*.pdf
+
+# Extracted content and working directories
+*.png
+*.jpg
+*.jpeg
+python/extracted_content*/
+python/extracted_images/
+python/final_output/

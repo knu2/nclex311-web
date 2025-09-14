@@ -18,67 +18,248 @@ This is a monorepo using npm workspaces with the following structure:
 
 ## Tech Stack
 
-- **Frontend Framework:** Next.js 15.x
-- **Language:** TypeScript 5.x
-- **Database:** PostgreSQL 16.x
-- **Styling:** Tailwind CSS
-- **Testing:** Jest + React Testing Library + Playwright
+- **Frontend Framework:** Next.js 15.5.x with App Router
+- **Language:** TypeScript ~5.x
+- **Database:** PostgreSQL 16.x via Supabase
+- **Database Client:** Supabase JS Client v2.57.x
+- **Styling:** Tailwind CSS v4.x
+- **Testing:** Jest 30.x + React Testing Library 16.x + Playwright 1.55.x
 - **Monorepo:** npm Workspaces
 - **Package Manager:** npm
 - **Deployment:** Vercel
-- **CI/CD:** GitHub Actions
+- **CI/CD:** GitHub Actions + Vercel
 
-## Getting Started
+## Local Development Setup
 
 ### Prerequisites
 
+**Required:**
 - Node.js >= 18.0.0
 - npm >= 9.0.0
-- PostgreSQL 16.x (for local development)
+- Git
 
-### Installation
+**Database Options:**
+- **Option 1 (Recommended):** Supabase account for managed PostgreSQL
+- **Option 2:** Local PostgreSQL 16.x installation
 
-1. Clone the repository:
+### Step-by-Step Setup Instructions
+
+#### 1. Clone and Navigate
 ```bash
 git clone <repository-url>
 cd nclex311-bmad
 ```
 
-2. Install dependencies:
+#### 2. Install Dependencies
 ```bash
+# Install all workspace dependencies
 npm install
+
+# Verify installation
+npm run type-check
 ```
 
-3. Set up environment variables:
+#### 3. Environment Configuration
+
+**For Supabase (Recommended):**
 ```bash
+# Copy template
 cp .env.example .env.local
-# Edit .env.local with your local database credentials
+
+# Edit .env.local with your Supabase credentials:
+# Get these values from your Supabase project dashboard:
+# NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+# SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
+# SUPABASE_JWT_SECRET=your-jwt-secret-here
+# 
+# For Vercel deployment, also configure these Postgres variables:
+# POSTGRES_URL=postgres://postgres.your-project-ref:password@pooler.supabase.com:6543/postgres
+# POSTGRES_PRISMA_URL=postgres://postgres.your-project-ref:password@pooler.supabase.com:6543/postgres?pgbouncer=true
+# POSTGRES_URL_NON_POOLING=postgres://postgres.your-project-ref:password@pooler.supabase.com:5432/postgres
 ```
 
-4. Set up the database:
+**For Local PostgreSQL:**
 ```bash
-# Create a PostgreSQL database named 'nclex311'
-# Then run migrations:
+# Copy template
+cp .env.example .env.local
+
+# Edit .env.local with your local database:
+# DATABASE_URL=postgresql://username:password@localhost:5432/nclex311
+```
+
+#### 4. Database Setup
+
+**For Supabase:**
+- Create a new project at [supabase.com](https://supabase.com)
+- Copy your project URL and anon key to `.env.local`
+- Migrations will be managed via Supabase Dashboard
+
+**For Local PostgreSQL:**
+```bash
+# Create database
+createdb nclex311
+
+# Run migrations and validation
 npm run migrate --workspace=apps/web
 ```
 
-5. Start the development server:
+#### 5. Verify Database Connection
 ```bash
-npm run dev
+# Test database connectivity
+curl http://localhost:3000/api/health
+# Should return: {"status":"ok","timestamp":"...","database":"connected"}
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+#### 6. Start Development Server
+```bash
+# Start the development server
+npm run dev
+
+# The application will be available at:
+# http://localhost:3000
+```
+
+#### 7. Verify Setup
+- Navigate to [http://localhost:3000](http://localhost:3000)
+- Check browser console for any errors
+- Verify database connection via health endpoint
+- Run initial test suite: `npm run test`
+
+### Testing Framework Setup
+
+This project includes comprehensive testing infrastructure:
+
+#### Unit Testing (Jest + React Testing Library)
+```bash
+# Run all unit tests
+npm run test
+
+# Run tests in watch mode (recommended for development)
+npm run test:watch --workspace=apps/web
+
+# Run tests with coverage report
+npm run test:coverage --workspace=apps/web
+```
+
+#### Integration Testing (Jest + Supertest)
+```bash
+# Run API integration tests
+npm run test --workspace=apps/web
+
+# Tests are located in apps/web/__tests__/api/
+```
+
+#### End-to-End Testing (Playwright)
+```bash
+# Run E2E tests
+npm run test:e2e --workspace=apps/web
+
+# Run E2E tests with interactive UI
+npm run test:e2e:ui --workspace=apps/web
+
+# Tests are located in apps/web/e2e/
+```
+
+### Troubleshooting Common Issues
+
+#### Database Connection Issues
+
+**Problem**: `curl http://localhost:3000/api/health` returns database connection error
+
+**Solutions**:
+1. **Supabase**: Verify URL and keys in `.env.local`
+2. **Local PostgreSQL**: 
+   ```bash
+   # Check if PostgreSQL is running
+   brew services list | grep postgresql
+   
+   # Start PostgreSQL if needed
+   brew services start postgresql@16
+   
+   # Test direct connection
+   psql -d nclex311 -c "SELECT version();"
+   ```
+
+#### Node Version Issues
+
+**Problem**: Module compatibility errors or build failures
+
+**Solution**:
+```bash
+# Check Node version
+node --version
+# Should be >= 18.0.0
+
+# If using nvm:
+nvm install 20
+nvm use 20
+```
+
+#### TypeScript Errors
+
+**Problem**: Type checking failures
+
+**Solution**:
+```bash
+# Clear node_modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Run type checking
+npm run type-check
+```
+
+#### Port Already in Use
+
+**Problem**: "Port 3000 is already in use"
+
+**Solutions**:
+```bash
+# Find and kill process using port 3000
+lsof -ti:3000 | xargs kill -9
+
+# Or use a different port
+PORT=3001 npm run dev
+```
+
+#### Test Failures
+
+**Problem**: Tests failing unexpectedly
+
+**Solution**:
+```bash
+# Clear Jest cache
+npx jest --clearCache
+
+# Ensure database is properly seeded for tests
+npm run migrate --workspace=apps/web
+
+# Run tests individually to isolate issues
+npm run test -- --testNamePattern="specific test name"
+```
+
+#### Environment Variables Not Loading
+
+**Problem**: Environment variables are undefined in the application
+
+**Solutions**:
+1. Ensure `.env.local` exists (not `.env.example`)
+2. Restart development server after changing env vars
+3. Check that variables are properly prefixed:
+   - Client-side: `NEXT_PUBLIC_*`
+   - Server-side: No prefix required
 
 ## Available Commands
 
-From the root directory:
+### Root Directory Commands
 
 - `npm run dev` - Start development server
 - `npm run build` - Build the application for production
 - `npm run start` - Start production server
 - `npm run type-check` - Run TypeScript type checking
 - `npm run lint` - Run ESLint
-- `npm run test` - Run unit tests
+- `npm run test` - Run unit tests across all workspaces
 
 ### Testing Commands
 
@@ -106,11 +287,75 @@ import type { User, Environment } from "@nclex311/types";
 
 Please refer to the project documentation in the `docs/` directory for coding standards and best practices.
 
-### Project Documentation
+## Development Workflow
 
-- Architecture documentation: `docs/architecture/`
-- Product requirements: `docs/prd/`
-- Development stories: `docs/stories/`
+### New Developer Setup
+
+For comprehensive onboarding instructions, see [Developer Onboarding Guide](docs/DEVELOPER_ONBOARDING.md).
+
+### Daily Development Process
+
+1. **Start Development**
+   ```bash
+   git pull
+   npm install  # if dependencies changed
+   npm run dev
+   ```
+
+2. **Code Quality**
+   ```bash
+   # Format code
+   npm run format --workspace=apps/web
+   
+   # Fix linting issues
+   npm run lint:fix --workspace=apps/web
+   
+   # Run tests
+   npm run test
+   ```
+
+3. **Git Workflow**
+   ```bash
+   git add .
+   git commit -m "feat: your feature description"
+   # Pre-commit hooks will run automatically
+   git push
+   ```
+
+### Code Style Guidelines
+
+- **ESLint**: Enforces code quality and consistency
+- **Prettier**: Handles code formatting automatically
+- **TypeScript**: Strict type checking enabled
+- **Git Hooks**: Automatic linting and formatting on commit
+
+### Testing Standards
+
+- Write tests for all new functionality
+- Maintain high test coverage
+- Use React Testing Library for component tests
+- Use Playwright for E2E tests
+- Run tests before committing: `npm run test`
+
+### Pull Request Process
+
+1. Create feature branch from `main`
+2. Implement changes with comprehensive tests
+3. Ensure all quality checks pass:
+   - `npm run test`
+   - `npm run type-check`
+   - `npm run lint`
+   - `npm run build`
+4. Create PR with detailed description
+5. Request code review
+6. Address feedback and merge
+
+## Project Documentation
+
+- **Setup Guide**: [docs/DEVELOPER_ONBOARDING.md](docs/DEVELOPER_ONBOARDING.md)
+- **Architecture**: `docs/architecture/`
+- **Product Requirements**: `docs/prd/`
+- **Development Stories**: `docs/stories/`
 
 ## License
 

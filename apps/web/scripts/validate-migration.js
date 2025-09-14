@@ -3,55 +3,54 @@
 /**
  * Validate migration status for NCLEX311 Supabase setup
  * Usage: node scripts/validate-migration.js
- * 
+ *
  * This script checks if all expected tables from migrations exist and are accessible
  */
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { createClient } = require('@supabase/supabase-js');
 
 // Load environment variables
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+
 require('dotenv').config({ path: '.env.local' });
 
 async function validateMigrations() {
   console.log('🔍 Validating database migration status...');
-  
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  
+
   if (!supabaseUrl || !supabaseKey) {
     console.error('❌ Missing Supabase configuration in .env.local:');
     console.error('- NEXT_PUBLIC_SUPABASE_URL');
     console.error('- NEXT_PUBLIC_SUPABASE_ANON_KEY');
     process.exit(1);
   }
-  
+
   const supabase = createClient(supabaseUrl, supabaseKey);
-  
+
   // Expected tables from our 001_initial_schema.sql migration
   const expectedTables = [
     'users',
-    'chapters', 
+    'chapters',
     'concepts',
     'questions',
     'options',
     'bookmarks',
     'completed_concepts',
     'comments',
-    'payments'
+    'payments',
   ];
-  
+
   console.log('📊 Checking table accessibility...');
-  
+
   const results = {};
-  
+
   for (const table of expectedTables) {
     try {
       const { data, error, count } = await supabase
         .from(table)
         .select('*', { count: 'exact', head: true });
-      
+
       if (error) {
         results[table] = { status: 'error', error: error.message };
       } else {
@@ -61,26 +60,30 @@ async function validateMigrations() {
       results[table] = { status: 'error', error: error.message };
     }
   }
-  
+
   // Display results
   console.log('\\n📋 Migration Validation Report:');
   console.log('================================');
-  
+
   let allTablesOk = true;
-  
+
   for (const [table, result] of Object.entries(results)) {
     if (result.status === 'ok') {
-      console.log(`✅ ${table.padEnd(20)}: Accessible (${result.count} records)`);
+      console.log(
+        `✅ ${table.padEnd(20)}: Accessible (${result.count} records)`
+      );
     } else {
       console.log(`❌ ${table.padEnd(20)}: ${result.error}`);
       allTablesOk = false;
     }
   }
-  
+
   console.log('================================');
-  
+
   if (allTablesOk) {
-    console.log('🎉 All expected tables are accessible! Migration is complete.');
+    console.log(
+      '🎉 All expected tables are accessible! Migration is complete.'
+    );
     console.log('');
     console.log('📝 To add new migrations:');
     console.log('   1. Create new .sql files in migrations/ directory');

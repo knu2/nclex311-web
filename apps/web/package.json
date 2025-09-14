@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "lint": "eslint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -15,7 +18,9 @@
     "test:e2e:ui": "playwright test --ui",
     "migrate": "node scripts/validate-migration.js",
     "migrate:validate": "node scripts/validate-migration.js",
-    "migrate:legacy": "node scripts/migrate.js"
+    "migrate:legacy": "node scripts/migrate.js",
+    "seed": "node scripts/seed-dev-data.js",
+    "bootstrap": "npm run migrate && npm run seed"
   },
   "dependencies": {
     "@nclex311/types": "*",
@@ -32,6 +37,7 @@
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
+    "lightningcss": "^1.28.1",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
@@ -43,6 +49,8 @@
     "eslint-config-next": "15.5.2",
     "jest": "^30.1.3",
     "jest-environment-jsdom": "^30.1.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "supertest": "^7.1.4",
     "tailwindcss": "^4",
     "typescript": "^5"

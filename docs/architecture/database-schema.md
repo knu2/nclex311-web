@@ -1,6 +1,16 @@
 # Database Schema
 
-This SQL script defines the complete schema for the PostgreSQL database.
+This SQL script defines the complete schema for the PostgreSQL database (implemented via Supabase).
+
+## Migration Strategy
+
+Migrations are managed through a hybrid approach:
+- **Development:** Manual execution via Supabase Dashboard SQL Editor for safety and control
+- **Validation:** Custom npm scripts (`npm run migrate`) validate schema completeness
+- **Production:** All schema changes deployed manually through Supabase Dashboard
+- **Local Testing:** Migration scripts available for validation but not automatic execution
+
+> **Note:** Automated migrations are intentionally disabled to prevent unsafe schema changes during deployments.
 
 ```sql
 -- Create ENUM types for consistency and type safety
@@ -66,6 +76,29 @@ CREATE TABLE options (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX idx_options_question_id ON options(question_id);
+
+-- Table for medical images associated with concepts or questions
+CREATE TABLE images (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    filename VARCHAR(255) NOT NULL,
+    blob_url TEXT NOT NULL,
+    alt TEXT NOT NULL,
+    width INT NOT NULL,
+    height INT NOT NULL,
+    file_size BIGINT NOT NULL,
+    extraction_confidence VARCHAR(10) NOT NULL CHECK (extraction_confidence IN ('high', 'medium', 'low')),
+    medical_content TEXT NOT NULL,
+    concept_id UUID REFERENCES concepts(id) ON DELETE CASCADE,
+    question_id UUID REFERENCES questions(id) ON DELETE CASCADE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    CHECK (
+        (concept_id IS NOT NULL AND question_id IS NULL) OR
+        (concept_id IS NULL AND question_id IS NOT NULL) OR
+        (concept_id IS NULL AND question_id IS NULL)
+    )
+);
+CREATE INDEX idx_images_concept_id ON images(concept_id);
+CREATE INDEX idx_images_question_id ON images(question_id);
 
 -- Join table for user bookmarks
 CREATE TABLE bookmarks (

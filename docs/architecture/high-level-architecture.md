@@ -2,13 +2,13 @@
 
 ## Technical Summary
 
-The architecture for NCLEX311-Web is an integrated, serverless-first design centered on the **Next.js** framework. This approach unifies the frontend and backend into a single codebase, simplifying development and aligning with the rapid 4-month launch target. The application will be deployed on **Vercel**, a platform optimized for Next.js, to leverage its global edge network for performance and scalability. Backend logic, including user authentication, payment processing, and data access, will be handled via **Next.js API Routes**, which will interact with a **PostgreSQL** database. This streamlined stack ensures a cohesive development experience and provides a robust foundation to meet the functional and non-functional requirements outlined in the PRD.
+The architecture for NCLEX311-Web is an integrated, serverless-first design centered on the **Next.js** framework. This approach unifies the frontend and backend into a single codebase, simplifying development and aligning with the rapid 4-month launch target. The application is deployed on **Vercel**, leveraging its global edge network for performance and scalability. Backend logic, including user authentication, payment processing, and data access, is handled via **Next.js API Routes**, which interact with a **Supabase-managed PostgreSQL** database. Built-in health monitoring via `/api/health` endpoint ensures system observability. This streamlined stack provides a cohesive development experience and robust foundation for rapid development.
 
 ## Platform and Infrastructure Choice
 
-**Platform:** Vercel
-**Key Services:** Vercel Hosting, Vercel Postgres, Vercel Edge Functions
-**Deployment Host and Regions:** Vercel's Global Edge Network
+**Platform:** Vercel + Supabase
+**Key Services:** Vercel Hosting, Supabase PostgreSQL, Vercel Edge Functions, Supabase Realtime
+**Deployment Host and Regions:** Vercel's Global Edge Network + Supabase Global Infrastructure
 
 ## Repository Structure
 
@@ -22,6 +22,7 @@ The architecture for NCLEX311-Web is an integrated, serverless-first design cent
 graph TD
     subgraph User
         U[Web Browser]
+        M[Monitoring Tools]
     end
 
     subgraph Vercel Platform
@@ -31,12 +32,18 @@ graph TD
         subgraph "Next.js Application (Monorepo)"
             WebApp[Frontend: React/Next.js]
             APIRoutes[Backend: Next.js API Routes]
+            HealthAPI[Health Check API]
         end
     end
 
-    subgraph Backend Services
-        DB[(PostgreSQL Database)]
+    subgraph Supabase Platform
+        DB[(Supabase PostgreSQL)]
+        DBAPI[Supabase Client API]
+    end
+
+    subgraph External Services
         Maya[Maya Business API]
+        GHA[GitHub Actions CI/CD]
     end
 
     subgraph One-Time Utility
@@ -45,8 +52,11 @@ graph TD
 
     U --> CDN --> WebApp
     WebApp --> APIRoutes
-    APIRoutes --> DB
+    APIRoutes --> DBAPI --> DB
     APIRoutes --> Maya
+    APIRoutes --> HealthAPI
+    M --> HealthAPI
+    GHA --> APIRoutes
     Parser -- Initial Seeding --> DB
 ```
 

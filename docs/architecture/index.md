@@ -6,3 +6,5 @@
 - [Data Models](./data-models.md)
 - [API Specification](./api-specification.md)
 - [Database Schema](./database-schema.md)
+- [Infrastructure Components](./infrastructure-components.md)
+- [Project Structure](./project-structure.md)
