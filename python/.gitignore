@@ -51,6 +51,13 @@ data/*/
 temp/
 tmp/
 
+# Extraction results - temporary folders
+extracted_content*/
+extracted_images*/
+extracted_content_page*/
+extracted_images_page*/
+extraction_results.json
+
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb
