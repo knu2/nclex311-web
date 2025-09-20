@@ -28,13 +28,14 @@ async function validateMigrations() {
 
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  // Expected tables from our 001_initial_schema.sql migration
+  // Expected tables from our migrations
   const expectedTables = [
     'users',
     'chapters',
     'concepts',
     'questions',
     'options',
+    'images',
     'bookmarks',
     'completed_concepts',
     'comments',

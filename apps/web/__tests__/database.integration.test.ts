@@ -18,8 +18,8 @@ const describeOrSkip = hasEnvVars ? describe : describe.skip;
 describeOrSkip(
   'Database Connection - Integration Tests (Real Database)',
   () => {
-    let testConnection: any;
-    let getConnectionInfo: any;
+    let testConnection: unknown;
+    let getConnectionInfo: unknown;
 
     // Import dynamically in beforeAll to avoid top-level import issues
     beforeAll(async () => {

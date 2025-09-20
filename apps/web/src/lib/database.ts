@@ -3,7 +3,231 @@
  * Provides centralized database access using Supabase
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+
+// Database types for schema validation
+export interface Database {
+  public: {
+    Tables: {
+      chapters: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          title: string;
+          slug: string;
+          description: string | null;
+          order_index: number;
+          metadata: Record<string, unknown> | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          title: string;
+          slug: string;
+          description?: string | null;
+          order_index: number;
+          metadata?: Record<string, unknown> | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          title?: string;
+          slug?: string;
+          description?: string | null;
+          order_index?: number;
+          metadata?: Record<string, unknown> | null;
+        };
+      };
+      concepts: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          chapter_id: string;
+          title: string;
+          slug: string;
+          description: string | null;
+          order_index: number;
+          metadata: Record<string, unknown> | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          chapter_id: string;
+          title: string;
+          slug: string;
+          description?: string | null;
+          order_index: number;
+          metadata?: Record<string, unknown> | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          chapter_id?: string;
+          title?: string;
+          slug?: string;
+          description?: string | null;
+          order_index?: number;
+          metadata?: Record<string, unknown> | null;
+        };
+      };
+      questions: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          concept_id: string;
+          question_text: string;
+          question_type: string;
+          correct_answer: string | null;
+          explanation: string | null;
+          difficulty_level: string | null;
+          order_index: number;
+          metadata: Record<string, unknown> | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          concept_id: string;
+          question_text: string;
+          question_type: string;
+          correct_answer?: string | null;
+          explanation?: string | null;
+          difficulty_level?: string | null;
+          order_index: number;
+          metadata?: Record<string, unknown> | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          concept_id?: string;
+          question_text?: string;
+          question_type?: string;
+          correct_answer?: string | null;
+          explanation?: string | null;
+          difficulty_level?: string | null;
+          order_index?: number;
+          metadata?: Record<string, unknown> | null;
+        };
+      };
+      options: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          question_id: string;
+          text: string;
+          is_correct: boolean;
+          order_index: number;
+          metadata: Record<string, unknown> | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          question_id: string;
+          text: string;
+          is_correct: boolean;
+          order_index: number;
+          metadata?: Record<string, unknown> | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          question_id?: string;
+          text?: string;
+          is_correct?: boolean;
+          order_index?: number;
+          metadata?: Record<string, unknown> | null;
+        };
+      };
+      images: {
+        Row: {
+          id: string;
+          filename: string;
+          blob_url: string;
+          alt_text: string;
+          width: number;
+          height: number;
+          file_size: number;
+          extraction_confidence: string;
+          medical_content: string;
+          concept_id: string | null;
+          question_id: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          filename: string;
+          blob_url: string;
+          alt_text: string;
+          width: number;
+          height: number;
+          file_size: number;
+          extraction_confidence: string;
+          medical_content: string;
+          concept_id?: string | null;
+          question_id?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          filename?: string;
+          blob_url?: string;
+          alt_text?: string;
+          width?: number;
+          height?: number;
+          file_size?: number;
+          extraction_confidence?: string;
+          medical_content?: string;
+          concept_id?: string | null;
+          question_id?: string | null;
+          created_at?: string;
+        };
+      };
+      users: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          auth_user_id: string;
+          full_name: string | null;
+          email: string;
+          role: string;
+          metadata: Record<string, unknown> | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          auth_user_id: string;
+          full_name?: string | null;
+          email: string;
+          role?: string;
+          metadata?: Record<string, unknown> | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          auth_user_id?: string;
+          full_name?: string | null;
+          email?: string;
+          role?: string;
+          metadata?: Record<string, unknown> | null;
+        };
+      };
+    };
+  };
+}
 
 // Get Supabase configuration from environment variables
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -15,8 +239,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
-// Create Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Create typed Supabase client
+export const supabase: SupabaseClient<Database> = createClient<Database>(
+  supabaseUrl,
+  supabaseAnonKey
+);
 
 /**
  * Test database connectivity
