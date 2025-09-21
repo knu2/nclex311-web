@@ -1,0 +1,32 @@
+{
+  "book_page": 126,
+  "pdf_page": 64,
+  "content": {
+    "main_concept": "Furosemide (Lasix) - Effectiveness Assessment in Ascites",
+    "key_points": "**Furosemide (Lasix) is a diuretic.**\\n\\n- It increases urine output\\n- **Best given in the morning**\\n- **Eat bananas and citrus fruits** because they are good sources of potassium\\n- **Monitor serum potassium levels**; it can cause hypokalemia",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements made by a client with ascites indicates the effectiveness of furosemide (Lasix)?",
+        "options": [
+          "1. \"I've gained much weight in a week.\"",
+          "2. \"I can button my pants again.\"", 
+          "3. \"I still feel short of breath.\"",
+          "4. \"I am sleeping on a recliner at night.\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\n\"I can button my pants again\" is indicative of decreased abdominal girth, a favorable response in a client taking Lasix (furosemide).\\n\\nFurosemide (Lasix) promotes excretion of excess fluids, which would reduce fluid accumulation in the abdomen (ascites), allowing the client to fit into their clothing again."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from left side of PDF page 64. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

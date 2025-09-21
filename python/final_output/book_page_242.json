@@ -1,0 +1,27 @@
+{
+  "book_page": 242,
+  "pdf_page": 122,
+  "content": {
+    "main_concept": "Hip Replacement Surgery",
+    "key_points": "**Hip Replacement Surgery** - LOW IMPACT exercises are allowed after hip surgery.\\n\\n**Hip dislocation is manifested by:**\\n\\n- **Shortened extremity**\\n- **Increased discomfort**\\n- **Inability to move the joints**\\n\\n**Home care considerations:**\\n\\n- **Movement restrictions**: Avoid excessive hip adduction, flexion, and rotation 6 weeks after arthroplasty\\n- **Positioning**: Avoid sitting in a low chair\\n- **Activity limitations**: Avoid prolonged sitting (more than 30 minutes)\\n- **Exercise restrictions**: Avoid activities that increase stress on the joint such as jogging, jumping, and lifting heavy load",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following activities are appropriate for a client after hip replacement surgery? Select all that apply:",
+        "options": ["1. Walking", "2. Playing golf", "3. Dancing", "4. Jogging", "5. Jumping", "6. Lifting heavy weight"],
+        "correct_answer": "1, 2, 3",
+        "rationale": "**RATIONALE**\\n\\nA new hip is designed for low impact exercises such as walking, playing golf, and dancing. High impact exercises such as jogging may cause the prosthesis to loosen."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T08:50:17Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 122. Question type determined as multiple_choice based on the answer format showing multiple correct selections (1, 2, 3). No medical images detected.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

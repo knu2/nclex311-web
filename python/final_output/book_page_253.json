@@ -1,0 +1,33 @@
+
+{
+  "book_page": 253,
+  "pdf_page": 127,
+  "content": {
+    "main_concept": "Kleihauer-Betke Test",
+    "key_points": "- Fetal blood for Kleihauer-Betke test is obtained through the umbilical vein.\n- Rho Immune globulin is given to Rh-negative women to prevent sensitization.\n- Ultrasound is used to monitor for possible bleeding.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Kleihauer-Betke test is performed in a client to help detect which of the following conditions?",
+        "options": [
+          "1. Neural tube defect",
+          "2. Down’s syndrome",
+          "3. Rh incompatibility",
+          "4. Sickle cell anemia"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nKleihauer-Betke test involves examination of blood obtained through the umbilical cord to help detect the presence of Rh incompatibility."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T04:52:01Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept content on a single book page.",
+    "category": "Reduction of Risk Potential",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

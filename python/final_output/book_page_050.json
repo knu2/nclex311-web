@@ -1,0 +1,32 @@
+{
+  "book_page": 50,
+  "pdf_page": 26,
+  "content": {
+    "main_concept": "Isolation Precautions - Airborne Precautions",
+    "key_points": "**Airborne Precautions**\\n\\n**Requirements:**\\n- **Private room**\\n- **Frequent handwashing**\\n- **Mask (particulate mask or N95 mask for healthcare providers and surgical mask for clients)**\\n\\n**Indicated for:**\\n- Measles\\n- Tuberculosis\\n- Varicella\\n- SARS\\n\\nIf transport of the client is necessary, place a mask on the client, if possible.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A registered nurse is assisting a client with measles for a chest x-ray. When transporting the client from the room to the x-ray department, the nurse should limit the spread of infection by which of the following interventions?",
+        "options": [
+          "1. Placing a surgical mask on the client",
+          "2. Instructing all hospital personnel to wear a mask",
+          "3. Placing a particulate mask on the client", 
+          "4. There are no special preparations needed for the client."
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nA client with measles requires airborne and standard precautions. The client should wear a surgical mask to prevent the spread of infection, while the healthcare provider should wear a particulate mask."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T09:00:51Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page content from PDF page 26. Question type determined by singular form 'which of the following interventions' and single answer.",
+    "category": "Safety and Infection Control",
+    "reference": "CDC Guidelines for Isolation Precautions in Hospitals"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 147,
+  "pdf_page": 74,
+  "content": {
+    "main_concept": "Valproic Acid (Depakene) - Safe Medication Administration",
+    "key_points": "**CONCEPT: Valproic acid (Depakene) irritates the oral mucosa, so it should NOT be crushed.**\\n\\n**Drugs which should not be crushed:**\\n\\n- **Aspirin (Ecotrin)**\\n- **Bupropion (Wellbutrin)**\\n- **Chloral hydrate (Noctec)**\\n- **Esomeprazole (Nexium)**\\n- **Indomethacin (Indocin)**\\n- **Isotretinoin (Accutane)** - irritant\\n- **Methylphenidate (Ritalin)**\\n- **Morphine (MS Contin)**\\n- **Pyridostigmine (Mestinon Timespans)**\\n- **Sulfasalazine (Azulfidine)** - enteric coated\\n- **Valproic acid (Depakene)** - irritates the mouth",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following actions of the LPN (licensed practical nurse) needs to be corrected by the RN (registered nurse)?",
+        "options": [
+          "1. Administering alendronate (Fosamax) with water",
+          "2. Giving methylphenidate (Ritalin) in the morning after breakfast",
+          "3. Crushing valproic acid (Depakene) before giving it",
+          "4. Withholding bupropion (Wellbutrin) in a client with seizure episode"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nValproic acid (Depakene) should not be crushed because it irritates the oral mucosa."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:51:24Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 74, includes question about LPN actions needing correction, comprehensive list of medications that should not be crushed with rationales",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

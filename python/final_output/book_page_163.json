@@ -1,0 +1,33 @@
+{
+  "book_page": 163,
+  "pdf_page": 82,
+  "content": {
+    "main_concept": "Seasonal and Pandemic Influenza",
+    "key_points": "**Seasonal and Pandemic influenza:**\\n\\n- **Seasonal influenza** occurs annually and is caused by circulating strains of influenza viruses\\n- **Pandemic influenza** is characterized by the emergence of a novel influenza virus subtype with pandemic potential, resulting in widespread illness and potentially severe outcomes\\n- **The most important intervention** to prevent seasonal influenza infection involves yearly vaccination\\n\\n*Implement **droplet precautions** when providing care to clients with pandemic influenza.*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "A patient is diagnosed with influenza. The nurse taking care of the patient should use which of the following personal protective equipment (PPE)? Select all that apply.",
+        "options": [
+          "1. Clean gloves",
+          "2. Gowns", 
+          "3. N95 mask",
+          "4. Face shield",
+          "5. Sterile gloves"
+        ],
+        "correct_answer": "1, 2, 3, 4",
+        "rationale": "**RATIONALE**\\n\\nA client with pandemic influenza should be placed in droplet precaution. The implementation of droplet precaution requires hand washing, use of gowns, N95 mask, goggles or face shield, and clean gloves. Sterile gloves are not required."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T04:58:14Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete influenza concept with seasonal vs pandemic differences and SATA question about droplet precautions PPE requirements",
+    "category": "Physiological Adaptation",
+    "reference": "Key facts about Influenza (FLU). (2024, March 22). Centers for Disease Control and Prevention. https://www.cdc.gov/flu/about/keyfacts.htm"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 94,
+  "pdf_page": 48,
+  "content": {
+    "main_concept": "Chemotherapy - Antiemetic Administration",
+    "key_points": "**NURSING CARE OF CLIENTS UNDERGOING CHEMOTHERAPY**\n\n**C** – heck for signs of infection and bleeding\n\n**H** – old antimetabolites like 5FU, Pentostatin (Nipent) if the WBC count is less than 4,000 cells/uL or if platelet count is less than 75,000 u/L, and refer to the physician\n\n**E** – ncourage client to increase oral fluid intake when on cyclophosphamide (Cytoxan) or ifosfamide (Ifex) therapy to prevent hemorrhagic cystitis\n\n**M** – onitor CBC, WBC, platelets and uric acid levels\n\n**O** – ral hygiene with the use of soft toothbrush\n\n**T** – emperature monitoring\n\n**H** – old the use of aspirin, anticoagulants and thrombolytic agents with plicamycin (Mithracin)\n\n**E** – valuate results of renal and liver function tests\n\n**R** – educe pain with IV administration as prescribed by diluting the medication or applying warm compress on the injection site to distend the vein\n\n**A** – dminister antiemetic to prevent nausea and vomiting\n\n**P** – erform pulmonary function tests\n\n**Y** – ou (the RN) should utilize standard precautions when caring for the client",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**CONCEPT:** Antiemetics are administered 30 minutes before chemotherapy.\n\nWhen is the best time to administer the antiemetic in a client undergoing chemotherapy?",
+        "options": [
+          "1. When the client begins to feel nauseated",
+          "2. After completion of the treatment regimen", 
+          "3. At the same time with the chemotherapeutic agent",
+          "4. 30 minutes before chemotherapy is started"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE:** To combat the most common side effect of chemotherapy, the nurse should administer the antiemetic approximately 30 minutes before the treatment is started."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-17T23:59:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side of PDF page 48. Complete question-answer pair with CHEMOTHERAPY mnemonic key points.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

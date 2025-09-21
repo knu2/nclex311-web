@@ -1,0 +1,27 @@
+{
+  "book_page": 283,
+  "pdf_page": 142,
+  "content": {
+    "main_concept": "Autonomic Dysreflexia",
+    "key_points": "**CONCEPT** Autonomic dysreflexia is triggered by a full bladder or bowels.\\n\\n- **Autonomic dysreflexia** occurs after spinal cord injury at the level of T6 or above\\n- It may result to dangerously elevated blood pressure\\n\\n**Common causes (BOBS):**\\n- **B**ladder and bowel distention\\n- **O**bstructions (kidney stone) and constrictions (clothing, shoes, apparatus)\\n- **B**owel impaction\\n- **S**trong smells, pain, pressure\\n\\n**Common manifestations:**\\n- Pounding headache\\n- Profuse sweating\\n- Piloerection\\n\\n**Priority:** Sit the client up and assess for bladder patency.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following equipment should the nurse prepare at the bedside of a client with autonomic dysreflexia?",
+        "options": ["1. Tracheostomy set", "2. Endotracheal tube", "3. Tourniquet", "4. Catheterization set"],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE** The nurse should prepare a catheterization set at the bedside because autonomic dysreflexia is triggered by bladder distention."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T06:12:40Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 142. Single multiple choice question with clear rationale and comprehensive key points including BOBS mnemonic, manifestations, and priority actions.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

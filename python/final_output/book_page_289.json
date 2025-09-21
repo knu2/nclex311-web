@@ -1,0 +1,32 @@
+{
+  "book_page": 289,
+  "pdf_page": 145,
+  "content": {
+    "main_concept": "Osteoporosis - Steroid Therapy Complications",
+    "key_points": "**The risk factors for osteoporosis include:**\\n\\n**A - ging**\\n**I - mmobility**\\n**M - enopause**\\n**S - moking and long-term use of steroids**\\n\\n**Key Points:**\\n- **Osteoporosis** is the loss of bone matrix leading to bone weakness making it susceptible to fracture. It is usually associated with smoking, menopause, immobility, and hyperparathyroidism\\n- **X-ray reveals osteoporosis**\\n- Increase calcium and vitamin D in the diet\\n- Use conjugated estrogen therapy for menopausal women. Avoid smoking\\n- Encourage the client to perform active-weight bearing exercises like: brisk walking, jumping rope, hiking, tennis, and ballroom dancing\\n- **Swimming does not meet the criteria for resistance needed for prevention of osteoporosis**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following assessment findings is indicative of a complication from a long-term steroid therapy?",
+        "options": [
+          "1. Weight gain",
+          "2. Increased appetite",
+          "3. Gradual decrease in height",
+          "4. Insomnia"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nSteroids cause increased loss of calcium from the bones which may cause osteoporosis leading to gradual decrease in height."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T07:13:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete osteoporosis concept from right page of PDF 145. Multiple choice question identified by single correct answer (3) and focus on steroid therapy complications.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

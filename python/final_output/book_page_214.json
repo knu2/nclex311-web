@@ -1,0 +1,32 @@
+{
+  "book_page": 214,
+  "pdf_page": 108,
+  "content": {
+    "main_concept": "Metabolic Acidosis",
+    "key_points": "**Metabolic acidosis is characterized by low pH and low bicarbonate levels.**\\n\\n- **Causes**: Ketone overproduction, lactic acidosis, kidney disorders, GI disorders like diarrhea\\n\\n- **Manifestations** (CHAWD mnemonic):\\n  - **C**onfusion\\n  - **H**ypotension\\n  - **A**norexia\\n  - **W**eakness\\n  - **D**ull headache\\n  - **K**ussmaul's breathing",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following laboratory data suggest metabolic acidosis?",
+        "options": [
+          "1. Low pH and carbon dioxide levels",
+          "2. High pH and low carbon dioxide levels", 
+          "3. Low pH and low bicarbonate levels",
+          "4. High pH and high bicarbonate levels"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nLow pH and low bicarbonate levels are suggestive of metabolic acidosis."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T04:11:28Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 108, book page 214",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 168,
+  "pdf_page": 85,
+  "content": {
+    "main_concept": "Iron Deficiency Anemia (IDA)",
+    "key_points": "**Iron Deficiency Anemia** is characterized by decreased oxygen carrying capacity of the blood. The condition is usually associated with nutritional deficiency of iron.\\n\\n**Key Features:**\\n- **MILK is a poor source of iron**\\n- Manifestations include easy fatigability, poor sucking (infants), and chubby but pale babies (\"milk babies\")\\n- Lab data show decreased Hgb and Hct, and microcytic, hypochromic RBCs\\n\\n**Nursing Interventions:**\\n- Instruct the client to have frequent rest periods\\n- Increase iron in the diet (organ meat, egg yolk); **milk is a poor source of iron**\\n- Administer oral iron supplements as ordered\\n\\n*Breast milk and cow's milk are poor sources of iron. Furthermore, milk products inhibit the absorption of iron.*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements, if made by the mother of a 15-month-old child, reflects a need for further evaluation?",
+        "options": [
+          "1. \"My child takes vitamins every day.\"",
+          "2. \"My child consumes about a liter of milk in a day.\"",
+          "3. \"My child's table becomes messy during meal time.\"",
+          "4. \"My child is gaining around 1 lb a month.\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nBreast milk and cow's milk are poor sources of iron. Furthermore, milk products inhibit the absorption of iron. Therefore, a child who consumes a liter of milk in a day is at risk of having iron deficiency anemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T05:09:37Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete iron deficiency anemia concept with emphasis on milk as poor iron source and multiple choice question about excessive milk consumption in toddler",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

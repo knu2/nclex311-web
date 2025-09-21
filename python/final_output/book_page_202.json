@@ -1,0 +1,32 @@
+{
+  "book_page": 202,
+  "pdf_page": 102,
+  "content": {
+    "main_concept": "Asthma",
+    "key_points": "**Asthma Management**\\n\\n- **Definition**: Asthma is due to abnormal bronchial hyperactivity to certain substances\\n- **Risk Factors**: Include genetics, exposure to allergens and pollution, smoking, and obesity\\n- **Clinical Signs**: Dyspnea is a common sign\\n- **Laboratory**: ABG reveals respiratory acidosis\\n\\n**Activity Management:**\\n- Rest periods should be provided in between activities of a client with asthma\\n\\n**Trigger Avoidance (The 3 E's):**\\n- **Exercise** especially in cold weather\\n- **Environmental factors** like dust, pollen\\n- **Emotional factors**\\n\\n**Positioning & Breathing:**\\n- Instruct the client to sit upright and lean forward on a table during asthmatic attacks\\n- Encourage the client to do purse lip breathing",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**READ THIS**\\n\\n**QUESTION**\\n\\nWhich of the following activities is appropriate for a 12-year-old child with asthma?",
+        "options": [
+          "1. Soccer",
+          "2. 1,500-meter run",
+          "3. Baseball",
+          "4. Long distance biking"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nBaseball is an appropriate activity for an asthmatic child because it allows for rest periods during the game."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-19T02:41:29Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 102. Asthma question focusing on appropriate activity selection for children, emphasizing activities that allow for rest periods between exertion.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

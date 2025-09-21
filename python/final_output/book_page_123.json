@@ -1,0 +1,32 @@
+{
+  "book_page": 123,
+  "pdf_page": 62,
+  "content": {
+    "main_concept": "Nephrotoxic drugs should NOT be combined",
+    "key_points": "- **Drugs that are Nephrotoxic**:\\n  - **Aminoglycosides**: (gentamicin, streptomycin, neomycin)\\n  - **Chemotherapeutic agents**: (cisplatin, doxorubicin, adriamycin)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client who is undergoing chemotherapy with cisplatin (Platinol) has the following doctor's orders. Which one should the nurse question?",
+        "options": [
+          "1. Increase fluid intake.",
+          "2. Arrange for BUN and creatinine tests before therapy.",
+          "3. Monitor input and output.",
+          "4. Administer gentamicin (Garamycin) for secondary infection."
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nCisplatin (Platinol), an antineoplastic agent, and gentamicin (Garamycin), an aminoglycoside antibiotic, are both nephrotoxic drugs and will further impair renal function if given in combination."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T02:58:18Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 62",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

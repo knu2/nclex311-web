@@ -1,0 +1,32 @@
+{
+  "book_page": 136,
+  "pdf_page": 69,
+  "content": {
+    "main_concept": "Carbamazepine (Tegretol)",
+    "key_points": "- **Carbamazepine (Tegretol) is an antiepileptic agent**\n- **It is hepatotoxic and can cause fatal hepatitis**\n- **Administer the drug with food**\n- **Report bruising, unusual bleeding, sore throat, rash, and jaundice**\n- **Discontinue if any of the following occurs:**\n  - Measles-like rash\n  - Enlarged lymph nodes\n  - Hypersensitivity reaction\n  - Hepatotoxicity\n  - Bone marrow depression",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following laboratory data needs to be checked in a client who is taking carbamazepine (Tegretol)?",
+        "options": [
+          "1. Serum electrolytes",
+          "2. Urinalysis", 
+          "3. Complete blood count",
+          "4. Serum protein levels"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE** The client's CBC should be checked periodically because carbamazepine (Tegretol) can cause pancytopenia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:30:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 69. Question type identified as multiple_choice based on singular wording 'Which... laboratory data' seeking one answer.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

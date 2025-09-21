@@ -1,0 +1,32 @@
+{
+  "book_page": 47,
+  "pdf_page": 24,
+  "content": {
+    "main_concept": "Multiple Myeloma",
+    "key_points": "**Manifestations of Multiple Myeloma:**\\n\\n- **P** – ain\\n- **A** – nemia\\n- **I** – nsufficiency of renal function\\n- **N** – euplastic plasma cell proliferation\\n\\n**Core Concept:** Multiple myeloma is a malignant disorder of plasma cells that leads to extensive bone loss, increasing the risk for FRACTURES!",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following nursing diagnosis is a priority for a client with multiple myeloma?",
+        "options": [
+          "1. Risk for injury",
+          "2. Fear",
+          "3. Altered tissue perfusion",
+          "4. Ineffective breathing pattern"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nMultiple myeloma can lead to extensive bone loss due to the osteoclast-activity factor (OAF) produced by the plasma cells. This bone loss will eventually result in pathologic fractures putting the client at risk for injury."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:22:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete multiple myeloma concept from right side of PDF page 24",
+    "category": "Management of Care",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

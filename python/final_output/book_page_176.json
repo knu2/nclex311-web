@@ -1,0 +1,40 @@
+{
+  "book_page": 176,
+  "pdf_page": 89,
+  "content": {
+    "main_concept": "Fifth's Disease",
+    "key_points": "**Etiology and transmission:**\\n\\n- **Fifth's disease is caused by human parvovirus B19, transmitted via respiratory secretions**\\n- **It is common among children between 4 to 12 years of age, and resolves in about 7 to 10 days**\\n\\n**Clinical manifestations:**\\n\\n- **Red rash on the cheeks (slapped cheek appearance)**\\n- **Low grade fever, malaise and joint pain and swelling in the hands, wrists and knees**\\n\\n**Diagnostic methods:**\\n\\n- **Light and electron microscopy to detect B19 infections**\\n- **IgM antibody assay test detects antibody to parvovirus**\\n\\n**Management:**\\n\\n- **Provide frequent rest periods**\\n- **Take anti-inflammatory medications like aspirin and ibuprofen**\\n- **Follow standard precautions**\\n- **Increase iron in the diet**\\n- **Instruct the client to cover the mouth when coughing or sneezing**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements about Fifth's disease is NOT true?",
+        "options": [
+          "1. It is transmitted through the respiratory route.",
+          "2. Polymerase chain reaction detects the presence of the disease.",
+          "3. It is communicable until the rash develops.",
+          "4. It is characterized by pruritic rash with desquamation."
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nThe classic sign of Fifth's disease is erythema on the cheeks (slapped cheek appearance) and a tarry red rash on the trunk and limbs.\\n\\n![Slapped cheek appearance characteristic of Fifth's disease](fifths_disease_slapped_cheek.png)"
+      }
+    ]
+  },
+  "images": [
+    {
+      "filename": "fifths_disease_slapped_cheek.png",
+      "description": "Clinical photograph showing the characteristic 'slapped cheek' appearance of Fifth's disease with bilateral erythematous facial rash",
+      "medical_relevance": "high",
+      "content_type": "clinical_manifestation",
+      "context": "embedded in rationale to illustrate the classic presentation of Fifth's disease"
+    }
+  ],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 89, book page 176. Negative multiple choice question with characteristic clinical image embedded in rationale.",
+    "category": "Physiological Adaptation",
+    "reference": "Handbook of Infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

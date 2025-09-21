@@ -1,0 +1,32 @@
+{
+  "book_page": 305,
+  "pdf_page": 153,
+  "content": {
+    "main_concept": "Medication Administration",
+    "key_points": "**Key Points to Medication Administration in Children:**\\n\\n- **Do not pinch the child's nostrils** when administering medication\\n- **Place the child in a sitting position** with the head elevated when administering oral medication\\n- **Do not mix the medication** with the entire amount of milk formula in a feeding bottle\\n- **Place a bandage over the puncture site** when administering parenteral medications in toddlers and pre-schoolers to decrease fear of body mutilation\\n\\n**CONCEPT**: When administering oral medications to toddlers, providing them with choices will give them a sense of control",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following approaches is the best way to administer oral medication to a toddler?",
+        "options": [
+          "1. \"Be a good boy, take this medicine now.\"",
+          "2. \"If you don't take your medicine, you won't be able to go home.\"",
+          "3. \"Would you like to take your medicine with milk or water?\"",
+          "4. \"Don't take your medicine so you don't get well.\""
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nAllowing the child to make decision regarding his/her treatment is an appropriate approach because it gives the toddler a sense of autonomy."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T14:54:44Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right side content from PDF page 153 - complete concept with question, options, answer and rationale about pediatric medication administration",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

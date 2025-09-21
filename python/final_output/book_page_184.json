@@ -1,0 +1,32 @@
+{
+  "book_page": 184,
+  "pdf_page": 93,
+  "content": {
+    "main_concept": "HELLP Syndrome",
+    "key_points": "**HELLP Syndrome** manifestations:\\n\\n- **H** - emolysis\\n- **E** - levated\\n- **L** - iver enzymes\\n- **L** - ow\\n- **P** - latelet\\n\\n**Bleeding is a common sign of HELLP syndrome.** This maternal complication is characterized by the specific combination of hemolysis, elevated liver enzymes, and low platelet count.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following assessment findings on a client indicates the development of HELLP syndrome?",
+        "options": [
+          "1. Decreased ALT and AST",
+          "2. Petechiae on the extremities",
+          "3. Nausea, anorexia and vomiting",
+          "4. Abdominal and joint pain"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** Presence of petechiae on the client's extremities is indicative of the development of HELLP syndrome."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:11:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 93. Question type determined by singular 'assessment finding indicates' language seeking one best answer.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

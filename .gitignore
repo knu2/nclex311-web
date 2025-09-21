@@ -62,7 +62,7 @@ shared/pdfs/*.pdf
 *.jpeg
 python/extracted_content*/
 python/extracted_images/
-python/final_output/
+# python/final_output/
 
 # Python extraction results - temporary folders
 python/extracted_content*/

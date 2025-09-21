@@ -1,0 +1,32 @@
+{
+  "book_page": 312,
+  "pdf_page": 157,
+  "content": {
+    "main_concept": "Kegel's Exercises for Pelvic Floor Strengthening",
+    "key_points": "**Kegel's Exercises:**\n\n- **Primary purpose**: Strengthen the pelvic muscles (specifically pubococcygeal muscle)\n- **Target muscle**: Pubococcygeal muscle that supports pelvic organs\n- **Key benefit**: Prevention of urinary incontinence by strengthening vaginal muscles\n\n**Teaching Instructions:**\n- **Technique**: Teach the client to tighten the muscles of the pelvic floor by stopping the flow of urine while urinating and then releasing the muscle to re-start the flow\n- **Exercise schedule**: Instruct the client to perform 15 contractions in the morning and afternoon and 20 at night or exercise for 10 minutes three times a day\n- **Clinical rationale**: Urinary incontinence is usually due to weakened vaginal muscle\n\n**Key Concept**: Kegel's exercises strengthen the vaginal muscles.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following is the primary purpose of Kegel's exercises in a post-partum client?",
+        "options": [
+          "1. To promote uterine contraction",
+          "2. To strengthen the pelvic muscles",
+          "3. To prevent urinary tract infection",
+          "4. To prevent urinary incontinence"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\n\nUrinary incontinence is usually due to weakened vaginal muscle. Kegel's exercises will help prevent incontinence by strengthening the vaginal muscles.\n\n**Why Option 4 is correct (To prevent urinary incontinence):**\n- **Primary purpose**: The main goal of Kegel's exercises is to prevent urinary incontinence\n- **Mechanism**: Strengthens the pubococcygeal muscle that supports bladder control\n- **Postpartum relevance**: Childbirth can weaken pelvic floor muscles, leading to incontinence\n- **Evidence-based**: Proven effective for preventing and treating stress urinary incontinence\n\n**Why other options are incorrect:**\n- **Option 1** (Promote uterine contraction): Kegel's exercises target pelvic floor muscles, not uterine muscles\n- **Option 2** (Strengthen pelvic muscles): While true, this is the mechanism, not the primary clinical purpose\n- **Option 3** (Prevent UTI): Kegel's exercises do not directly prevent urinary tract infections\n\n**Clinical Teaching**: Clients should be taught to identify the correct muscles by stopping urine flow mid-stream, then practice regular contractions to maintain pelvic floor strength."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T06:26:36Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Multiple choice question focused on primary purpose of Kegel's exercises with comprehensive client education instructions. Content from left page of PDF page 157.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

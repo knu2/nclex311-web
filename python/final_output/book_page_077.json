@@ -1,0 +1,32 @@
+{
+  "book_page": 77,
+  "pdf_page": 39,
+  "content": {
+    "main_concept": "Dissociative Identity Disorder",
+    "key_points": "**Clinical manifestations of Dissociative Identity Disorder:**\\n\\n- **Dissociative Identity Disorder** is characterized by the presence of two or more identities or personalities that take control of a person's behavior\\n- **The priority goal of care** for clients with the disorder is to integrate the personalities with the original personality\\n- **The nurse should also establish a contract** to reduce self-harm and violence\\n- **Clients with dissociative identity disorder are suicidal** and may develop aggressive behavior towards self or others",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following nursing diagnoses is the highest priority for a client with dissociative identity disorder?",
+        "options": [
+          "1. Sensory perceptual alteration",
+          "2. Diversional activity deficit",
+          "3. Risk for self-directed violence",
+          "4. Altered thought process"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nA person with dissociative identity disorder may develop aggressive behavior towards self or others and such behavior may include suicide attempts or self-mutilation."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-17T02:32:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right side content from PDF page 39, complete question-answer pair with comprehensive key points",
+    "category": "Psychosocial Integrity",
+    "reference": "Psychiatric nursing resources"
+  }
+}

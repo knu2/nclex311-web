@@ -1,0 +1,33 @@
+{
+  "book_page": 192,
+  "pdf_page": 97,
+  "content": {
+    "main_concept": "Hemophilia",
+    "key_points": "**Hemarthrosis or bleeding into the joints is the hallmark sign of hemophilia.**\\n\\n**Pathophysiology:**\\n- Hemophilia is due to the deficiency of clotting factors\\n- It is a sex-linked recessive trait (type A and B), and more common in males but transmitted by females\\n\\n**Laboratory findings:**\\n- Lab data reveals prolonged partial thromboplastin time, and normal prothrombin time\\n\\n**Clinical manifestations:**\\n- Hemarthrosis (bleeding joints) usually occurs in the elbows, ankles and knees\\n- Increased pain means the bleeding continues\\n\\n**Management:**\\n- Administer missing coagulation factors as ordered\\n- Stop transfusion if hives, headache, tingling, chills, flushing or fever develops\\n- Administer short course of corticosteroids to relieve inflammation\\n- Refer to physical therapy to prevent contractures and orthotics to prevent joint injury\\n- Gentle, passive exercise 48 hours after the acute phase can be implemented for less severe hemarthroses\\n\\n**Prevention:**\\n- Avoid aspirin, contact sports, and rectal temperature monitoring to prevent bleeding\\n\\n**Emergency management (RICE):**\\n- **R**est\\n- **I**mmobilize\\n- **C**old compress (10-15 minutes)\\n- **E**levate\\n\\n**Complications:**\\n- Airway obstruction may occur due to bleeding in the neck and pharynx",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following joints are usually affected in hemophilia?\\n\\nSelect all that apply.",
+        "options": [
+          "1. Elbows",
+          "2. Wrists",
+          "3. Knees",
+          "4. Distal interphalangeal joints",
+          "5. Ankles"
+        ],
+        "correct_answer": "1, 3, 5",
+        "rationale": "**RATIONALE**\\n\\nHemorrhages into the joints or hemarthrosis are commonly found in the elbows, knees, and ankles."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:26:43Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 97. SATA question with 5 options, correct answers 1, 3, 5 focusing on major weight-bearing and frequently used joints.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 181,
+  "pdf_page": 91,
+  "content": {
+    "main_concept": "Sarcoidosis",
+    "key_points": "**Sarcoidosis** is a chronic, granulomatous multisystem disorder that notably affects the lungs.\\n\\n- **Manifestations**: Include fever, night sweats, cough, weight loss, polyarthritis, and mild anemia\\n- **Demographics**: The exact cause is unknown but the incidence is high in blacks, and young adults\\n- **Diagnosis**: Diagnosed with KVEIM test: sarcoid node antigen is injected intradermally and causes local nodular lesion in approximately 1 month\\n- **Treatment**: There is no specific treatment. Corticosteroids are given to control symptoms\\n- **Nursing Care**: Provide frequent rest periods and small frequent feedings",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following goals of care is appropriate for a client with sarcoidosis?",
+        "options": [
+          "1. To provide specific treatment",
+          "2. To provide frequent rest periods",
+          "3. To facilitate bowel elimination",
+          "4. To decrease skin irritation"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** A client with sarcoidosis requires provision of frequent rest periods because the disease leads to anemia that causes easy fatigability."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:00:37Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 91. Question type determined by singular 'goal of care is appropriate' language seeking one best answer.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 42,
+  "pdf_page": 22,
+  "content": {
+    "main_concept": "Myocardial Infarction",
+    "key_points": "**Myocardial Infarction:**\\n\\n- Myocardial infarction is due to destruction of cardiac tissue due to reduced coronary blood flow\\n- Characterized by crushing and excruciating lower sternal pain not relieved by rest and nitroglycerine\\n- Elevated creatinine phosphokinase and TROPONIN\\n- ECG reveals ST segment elevation or depression and T wave inversion\\n\\n**Priority Management:**\\n- Administer aspirin, nitroglycerin, and oxygen\\n- Administer Morphine to relieve the pain\\n\\n**Core Concept:** Diuretics promote excretion of excess fluids.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client with myocardial infarction develops rales in both lung fields. Which of the following doctor's order should the nurse carry out first?",
+        "options": [
+          "1. Measure abdominal conference.",
+          "2. Administer Lasix (furosemide) 40 mg intravenously stat.",
+          "3. Obtain serum potassium.",
+          "4. Monitor urine output."
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nRales heard in both lung fields in a client with MI are indicative of congestion. Diuretics such as furosemide should be administered to promote excretion of excess fluids from the lungs."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:22:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete myocardial infarction concept from left side of PDF page 22",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

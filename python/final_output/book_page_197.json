@@ -1,0 +1,32 @@
+{
+  "book_page": 197,
+  "pdf_page": 99,
+  "content": {
+    "main_concept": "Heart Failure",
+    "key_points": "**Heart Failure - Left vs Right-Sided**\\n\\n- **Progression**: Left-sided heart failure develops first before right-sided heart failure\\n\\n**Left-Sided Heart Failure Manifestations (Respiratory Symptoms):**\\n- Dyspnea on exertion\\n- Orthopnea\\n- Fatigue\\n- Cough\\n- Crackles\\n\\n**Right-Sided Heart Failure Manifestations (Systemic Symptoms):**\\n- Ascites\\n- Peripheral edema\\n- Hepatomegaly\\n- Jugular vein distention",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**READ THIS**\\n\\n**QUESTION**\\n\\nWhich of the following is an early sign of heart failure?",
+        "options": [
+          "1. Ascites",
+          "2. Neck vein distention", 
+          "3. Edema",
+          "4. Dyspnea"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nDyspnea is the earliest sign of left sided heart failure."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-19T02:28:29Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 99. Heart failure question focusing on early signs with comprehensive key points covering both left and right-sided heart failure manifestations.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

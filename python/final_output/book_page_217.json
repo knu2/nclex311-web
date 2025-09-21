@@ -1,0 +1,32 @@
+{
+  "book_page": 217,
+  "pdf_page": 109,
+  "content": {
+    "main_concept": "Cushing's Disease",
+    "key_points": "**Cushing's disease is characterized by:**\n\n- **Hypokalemia** • **Hypernatremia** • **Hyperglycemia** • **Hypertension**\n\n**Nursing considerations:**\n\n- **Check serum sodium, potassium, and glucose level**\n- **Monitor BP, intake & output and weight**\n- **Maintain the client on a high-potassium and low-sodium diet**\n- **Inform the client that there will be slow wound healing**\n- **Encourage intake of fruits**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following imbalances occur in Cushing's disease?\n\n**Select all that apply:**\n\n1. Hypernatremia\n2. Hyperkalemia\n3. Hypotension\n4. Hyperglycemia",
+        "options": [
+          "1. Hypernatremia",
+          "2. Hyperkalemia",
+          "3. Hypotension",
+          "4. Hyperglycemia"
+        ],
+        "correct_answer": "1, 4",
+        "rationale": "**RATIONALE**\n\nHypernatremia and hyperglycemia are characteristics of Cushing's disease."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T04:54:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 109. Question type determined as SATA based on 'Select all that apply' instruction and multiple correct answers (1, 4).",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 292,
+  "pdf_page": 147,
+  "content": {
+    "main_concept": "Osteoarthritis",
+    "key_points": "**Common risk factors for osteoarthritis are:**\n\n- **T**rauma\n- **A**ging\n- **O**besity\n\n**Clinical characteristics:**\n- Osteoarthritis is a chronic, non-inflammatory degenerative joint disease\n- Degeneration of the articular cartilage in the joints occurs\n- Initially manifested by pain and swelling in a weight bearing joint, usually aggravated by activity\n- The goal of care is to minimize discomfort\n\n**Implementation (WHAT):**\n- **W**eight control\n- **H**ot compress or icepacks\n- **A**spirin use\n- **T**runk assistive devices (cane)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following questions should the nurse ask when assessing a client with osteoarthritis?",
+        "options": [
+          "1. \"Is your pain worse at night?\"",
+          "2. \"Did you have fractures before?\"",
+          "3. \"Don't you think your food has something to do with it?\"",
+          "4. \"Do you have joint stiffness in the evening?\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nAsking a client with osteoarthritis for any history of fractures in the past, is assessing for the history of trauma which is one of the contributing factors for osteoarthritis."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side of PDF page 147, complete concept with question-answer pair and comprehensive key points",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

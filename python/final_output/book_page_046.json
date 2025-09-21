@@ -1,0 +1,32 @@
+{
+  "book_page": 46,
+  "pdf_page": 24,
+  "content": {
+    "main_concept": "Newborn Assessment",
+    "key_points": "**Newborn Assessment:**\\n\\n- Acrocyanosis in the newborn is due to premature peripheral circulation\\n- Apnea of 5 to 15 seconds decreases with time\\n- Sleeps for 20 hours a day\\n- Feeds 6 to 8 times a day\\n- Meconium is usually passed in 24 hours\\n- Bowel elimination occurs at an average of 6 stools per day in the first week\\n- Voiding occurs within first 24 hours\\n- Voiding occurs at an average of 10 to 15 times a day\\n- **Tremors and jitteriness indicate hypoxia**\\n\\n**Core Concept:** Restlessness in the neonate indicates hypoxia.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which infant in the newborn nursery is in need of priority nursing intervention?",
+        "options": [
+          "1. 10 hour-old baby with no bowel movement yet",
+          "2. 6 hour-old with cyanosis of the hands and feet",
+          "3. 2 hour-old baby with 15 second periods of apnea",
+          "4. 5 hour-old baby with tremors and jitteriness"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nTremors and jitteriness in the newborn indicate hypoxia requiring prompt assessment and intervention."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:22:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete newborn assessment concept from left side of PDF page 24",
+    "category": "Management of Care",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

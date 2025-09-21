@@ -1,0 +1,32 @@
+{
+  "book_page": 230,
+  "pdf_page": 116,
+  "content": {
+    "main_concept": "Marfan's Syndrome",
+    "key_points": "**Marfan's syndrome** is an inherited abnormal condition (autosomal dominant trait) characterized by elongation of the bones, often with associated abnormalities of the eyes and the cardiovascular system. It affects men and women equally.\\n\\n- **Physical characteristics**: There is muscular underdevelopment, joint hypermobility, and bone elongation (spider-like extremities)\\n- **Treatment**: There is no specific treatment\\n- **PRIORITY: SAFETY** - Prevent complications. Common complications include aneurysm, dislocation of the lens of the eyes, and kyphoscoliosis",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "An appropriate nursing diagnosis for a client with Marfan's syndrome is?",
+        "options": [
+          "1. Risk for injury",
+          "2. Pain", 
+          "3. Altered Elimination",
+          "4. Altered Nutrition"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nClients with Marfan's syndrome are at risk for injury due to muscular under development and joint hypermobility."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T05:32:01Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 116. No images present as confirmed by user.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

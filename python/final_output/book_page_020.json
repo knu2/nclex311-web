@@ -1,0 +1,32 @@
+{
+  "book_page": 20,
+  "pdf_page": 11,
+  "content": {
+    "main_concept": "Triage",
+    "key_points": "**Conditions Requiring Immediate Treatment**\\n\\n**CAMP PADS** - Mnemonic for urgent conditions:\\n\\n- **C** - Cardiac arrest\\n- **A** - Anaphylaxis\\n- **M** - Multiple trauma\\n- **P** - Profound shock\\n- **P** - Poisoning\\n- **A** - Active labor\\n- **D** - Drug overdose\\n- **S** - Severe head trauma, seizure\\n- **S** - Severe respiratory distress",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following conditions needs to be treated immediately?",
+        "options": [
+          "1. Urinary retention",
+          "2. Closed fracture", 
+          "3. Eye injury",
+          "4. Continuous bleeding"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nA client with continuous bleeding may develop hypovolemic shock thereby needing immediate assessment and intervention."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T06:45:21Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page from PDF page 11 - Complete question-answer pair with concept explanation",
+    "category": "Management of Care",
+    "reference": "Grossman, Valerie, G.A. Quick Reference to Triage Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

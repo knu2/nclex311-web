@@ -1,0 +1,32 @@
+{
+  "book_page": 262,
+  "pdf_page": 132,
+  "content": {
+    "main_concept": "Breast Cancer",
+    "key_points": "A common risk factor of breast cancer is nulliparity.\n\n**Breast cancer risk factors**\n\n- **H** – History in the family\n- **A** – Age\n- **S** – Sex\n\n- **B** – Benign breast disease\n- **E** – Early menarche\n- **E** – Estrogen replacement therapy (controversial issue)\n- **N** – Nulliparity\n\n- **B** – Biopsy result indicative of atypical ductal hyperplasia\n- **A** – Advanced age (late menopause)\n- **D** – Diet: high fat",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements made by a female client reflects a need for further evaluation?",
+        "options": [
+          "1. “I had a history of being hit with a ball when I was 9.”",
+          "2. “I had my first baby when I was 35 years old.”",
+          "3. “We lived in a house built in the 70’s since I was born.”",
+          "4. “I make sure that I get my flu shots yearly.”"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nNulliparity or having the first child after the age of 30, places the client at risk for breast cancer."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:04:03Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the left side of PDF page 132.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

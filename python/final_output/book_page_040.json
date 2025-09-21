@@ -1,0 +1,32 @@
+{
+  "book_page": 40,
+  "pdf_page": 21,
+  "content": {
+    "main_concept": "Post-Operative Care",
+    "key_points": "**Post Operative Care:**\\n\\n- Assess respiratory status\\n- Auscultate breath sounds to identify respiratory complications\\n- Encourage turning, coughing, and deep breathing while splinting the incision\\n- Assist the client with ambulation\\n- Administer pain medications as prescribed\\n\\n**Core Concept:** Surgical interventions on the chest and abdominal area may affect respiration.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "After a splenectomy, which of the following assessment is a nursing priority?",
+        "options": [
+          "1. The drainage on the client's dressing",
+          "2. The client's blood pressure", 
+          "3. The client's pupillary reaction",
+          "4. The quality of the client's respiration"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nDue to the proximity of the surgical incision to the diaphragm, initial nursing intervention postoperatively is to assess airway and maintain adequate respiratory function."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:22:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete post-operative care concept from left side of PDF page 21",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

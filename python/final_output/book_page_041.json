@@ -1,0 +1,32 @@
+{
+  "book_page": 41,
+  "pdf_page": 21,
+  "content": {
+    "main_concept": "Cooley's Anemia/Beta Thalassemia Major",
+    "key_points": "**Beta Thalassemia Major:**\\n\\n- Beta thalassemia major is an inherited form of anemia characterized by decreased and defective production of hemoglobin\\n- It affects Italians, Greeks, Africans, Malaysians, and Chinese\\n\\n**Core Concept:** Cooley's anemia is transmitted by the autosomal recessive pattern of inheritance.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "The parents of a child diagnosed with Cooley's anemia should be referred to a/an:",
+        "options": [
+          "1. Audiologist",
+          "2. Endocrinologist",
+          "3. Geneticist",
+          "4. Physical therapist"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nCooley's anemia is genetically determined and inherited disease through autosomal recessive pattern of inheritance. Therefore, the child's parents should be referred to a geneticist for genetic counseling."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:22:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete Cooley's anemia concept from right side of PDF page 21",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

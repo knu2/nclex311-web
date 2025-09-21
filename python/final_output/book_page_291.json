@@ -1,0 +1,32 @@
+{
+  "book_page": 291,
+  "pdf_page": 146,
+  "content": {
+    "main_concept": "Osteitis Deformans (Paget's Disease) - Laboratory Findings",
+    "key_points": "**Alkaline phosphatase is released from destroyed bones in a client with Paget's disease.**\\n\\n**Key Points:**\\n- **Paget's disease of the bone** is a skeletal disorder resulting from excessive osteoclastic activity affecting the long bones, pelvis, lumbar vertebrae, and the skull\\n- **Paget's disease of the nipple** is usually associated with underlying intraductal or invasive peri-areolar eruption\\n- **Serum alkaline phosphatase is usually elevated** in Paget's disease\\n- **Serum calcium, phosphorus, and albumin levels remain normal**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following substances is elevated in the blood of a client with Paget's disease?",
+        "options": [
+          "1. Acid phosphatase",
+          "2. Alkaline phosphatase",
+          "3. Creatinine kinase",
+          "4. Urea"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nSerum alkaline phosphatase is usually elevated in Paget's disease. However, serum calcium, phosphorus, and albumin levels remain normal."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T08:18:57Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete Paget's disease concept from right page of PDF 146. Multiple choice question identified by single correct answer (2) and focus on laboratory findings.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 74,
+  "pdf_page": 38,
+  "content": {
+    "main_concept": "Schizophrenia",
+    "key_points": "**Schizophrenia** is a group of psychotic disorders characterized by thought disturbance, bizarre behavior and abnormal motor behavior\\n\\n**Positive symptoms of Schizophrenia** (DHLAW):\\n- **D**elusions\\n- **H**allucinations\\n- **L**ooseness of association\\n- **A**gitation/anxiety\\n- **W**ord salad\\n\\n**Negative symptoms of Schizophrenia**:\\n- A**pathy**\\n- A**nhedonia**\\n- A**logia**\\n- A**volition**\\n- A**sociality**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions is the nursing priority when providing care for a client with schizophrenia?",
+        "options": [
+          "1. Assist the client with bathing.",
+          "2. Stay with the client at all times to show reassurance.",
+          "3. Interact with the client at regular intervals.",
+          "4. Assist the client with feeding."
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nUsing Maslow's Hierarchy of Needs theory in prioritizing, physiological needs come first. Food is a physiological need and is a nursing priority."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-17T02:25:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side content from PDF page 38, complete question-answer pair with comprehensive key points",
+    "category": "Psychosocial Integrity",
+    "reference": "Sadock, James Benjamin, et.al. Synopsis of Psychiatry, Philadelphia Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 119,
+  "pdf_page": 60,
+  "content": {
+    "main_concept": "Cholestyramine (Questran) promotes excretion of bile acids in the bowels",
+    "key_points": "- **Cholestyramine (Questran) is an antihyperlipidemic agent and bile acid sequestrant**\\n- **Common side effects include**:\\n  - **C**onstipation\\n  - **A**bdominal cramps\\n  - **B**ackache\\n  - **W**eakness and muscle pain\\n  - **E**xacerbation of hemorrhoids\\n  - **B**leeding\\n  - **S**kin irritation\\n- **Take the drug before meals**\\n- **Mix one packet or one scoop with water, milk, juice, soup or cereals**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following indicates successful use of cholestyramine (Questran) in a client with jaundice due to obstructive gallbladder disease?",
+        "options": [
+          "1. Decreased inflammation",
+          "2. Decreased itching",
+          "3. Decreased pain", 
+          "4. Decreased cholesterol levels"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nCholestyramine (Questran) binds with bile acid to be excreted in the stool. It prevents the accumulation of bile acids on the skin, thereby decreasing itching."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T02:44:06Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 60",
+    "category": "Pharmacological and Parenteral Therapies", 
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

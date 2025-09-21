@@ -1,0 +1,32 @@
+{
+  "book_page": 300,
+  "pdf_page": 151,
+  "content": {
+    "main_concept": "Abnormal Sounds",
+    "key_points": "**Remember the characteristics of:**\\n\\n- **Abdominal sounds**: Assessed using the diaphragm of the stethoscope. Normal gurgling high-pitched sounds are heard every 5 to 20 seconds\\n- **Breath sounds**: Auscultated using the diaphragm of the stethoscope. Normal breath sounds are identified as vesicular, bronchovesicular and bronchial sounds\\n- **Cardiac sounds**: Best heard using the diaphragm of the stethoscope. S1 and S2 are normal cardiac sounds; S3 is normal in children but may indicate heart failure in the elderly",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following sounds auscultated in the different parts of the body is abnormal?",
+        "options": [
+          "1. Vascular sound in the abdomen",
+          "2. Clear breath sounds in the chest", 
+          "3. S3 sounds in the sternum of a pediatric client",
+          "4. Growling sounds in the abdomen"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nA vascular sound or bruits heard over the abdomen is indicative of abdominal aortic aneurysm. Normally, the abdomen should have a \"growling\" sound."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T14:48:16Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side content from PDF page 151 - complete concept with question, options, answer and rationale",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

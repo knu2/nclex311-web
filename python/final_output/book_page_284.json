@@ -1,0 +1,33 @@
+{
+  "book_page": 284,
+  "pdf_page": 143,
+  "content": {
+    "main_concept": "Cataract Surgery - Post-operative Care",
+    "key_points": "**After eye surgery the client should avoid activities that increase intraocular pressure.**\\n\\n**Care of Clients with Cataract:**\\n- Prepare the client for surgery\\n- Postoperatively, instruct the client to:\\n  - **1. Avoid activities that require bending**\\n  - **2. Report sudden eye pain, this indicates hemorrhage**\\n  - **3. Avoid lifting and rapid head movements**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following activities is/are contraindicated after cataract surgery?\\n\\n**Select all that apply.**",
+        "options": [
+          "1. Vacuuming",
+          "2. Washing the hair in the bathroom sink",
+          "3. Tying shoe laces",
+          "4. Cooking",
+          "5. Watching TV"
+        ],
+        "correct_answer": "1, 2, 3",
+        "rationale": "**RATIONALE**\\n\\nPost-operative cataract clients should be advised not to bend from the waist to minimize increase in intraocular pressure and be cautioned against coughing or sneezing. Therefore, vacuuming, washing the hair in the bathroom sink and tying shoe laces are contraindicated."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T06:33:21Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete cataract surgery concept from left page of PDF 143. SATA question identified by 'Select all that apply' and multiple correct answers (1,2,3).",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

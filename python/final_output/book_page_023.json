@@ -1,0 +1,32 @@
+{
+  "book_page": 23,
+  "pdf_page": 12,
+  "content": {
+    "main_concept": "Delegation",
+    "key_points": "**Principles of Delegation (American Nurses Association)**\\n\\n**5 Rights of Delegation:**\\n\\n- **Right task** to be delegated\\n- **Under the right circumstances**\\n- **The right person** to do the task\\n- **The right direction and communication**\\n- **The right supervision** to ensure that the task is carried out safely\\n\\n**CONCEPT**: Preventing the spread of infection is considered when delegating tasks to nurses.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A staff nurse from the maternity ward is floated to the medical ward for the first 4 hours of the 3 to 11 pm shift. The charge nurse must assign three clients to the said nurse. Which of the following clients would be inappropriate to be assigned to this nurse?",
+        "options": [
+          "1. A 12-year-old with rheumatic fever",
+          "2. A 6-year-old post cardiac catheterization",
+          "3. A 20-year-old with methicillin resistant staphylococcus aureus",
+          "4. A 15-year-old scheduled for appendectomy"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nA client with methicillin resistant staphylococcus aureus is considered infectious and therefore, should not be delegated to the nurse because he/she will be an agent in spreading the infection when he/she returns to the maternity ward."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T06:45:21Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right page from PDF page 12 - Complete question-answer pair with delegation concept",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 250,
+  "pdf_page": 126,
+  "content": {
+    "main_concept": "24-Hour Urine Collection - Procedure and Calculation",
+    "key_points": "**24-Hour Urine Collection**\\n\\n**CONCEPT:** In collecting a specimen for 24-hour collection, discard the first voided urine.\\n\\n**Steps in 24-Hour Urine Collection:**\\n- **Clean the perineal area** before the client voids\\n- **Discard the first voided urine** and note the time\\n- **Save the next voiding** and all of the client's urine in the next 24 hours\\n- **Save the last voiding** and note the time\\n- **Refrigerate the urine specimen** or keep it on ice\\n\\n**Critical principle:** The first voided urine is always discarded to ensure accurate 24-hour collection timing and results.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "fill_in_blank",
+        "question_text": "The nurse is collecting a 24-hour urine specimen for Schilling test. The first voiding is 50 mL. In the next 6 hours, the client's voided urine is 420 mL. The next 16 hours yielded an average of 60 mL of urine per hour. The last voiding that occurred in the last 2 hours is 120 mL. How many mL of urine should the nurse document for the 24-hour urine collection?",
+        "options": [
+          "1. 1540 mL",
+          "2. 1500 mL",
+          "3. 1420 mL",
+          "4. 1370 mL"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nThe computation is as follows:\\n\\n420 mL – 2nd voiding + 960 mL – next 16 hrs (60 mL × 16 hrs) + 120 mL – last 2 hrs\\n\\n= 1500 mL – total amount of urine for 24 hour urine collection\\n\\n**The first voided urine of 50 mL should be discarded.**"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T02:48:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left book page covering 24-hour urine collection procedure with calculation question",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 72,
+  "pdf_page": 37,
+  "content": {
+    "main_concept": "Contract - Establishing therapeutic nurse-client relationships",
+    "key_points": "**Contract provides structure in the nurse-client relationship:**\n\n- **Structure**: A contract provides a structure in the nurse-client relationship\n- **Boundaries**: It defines specific boundaries, roles and expectations\n- **Compliance**: The nurse should ensure that the client agrees with the contract; noncompliance with the rules may delay discharge of the client\n- **Adult approach**: Establishing a contract realizes a more adult approach in relating with a client",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following nursing actions is the best way to prevent suicide in a depressed client?",
+        "options": [
+          "1. Frequent scheduled rounds",
+          "2. Establishing a \"no-self-harm\" contract",
+          "3. Restraining the client immediately upon admission",
+          "4. Keeping the client in an isolation room"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nEstablishing a \"no-self-harm\" contract enables the nurse to employ a more adult approach in addressing the behavioral problem of a suicidal client.\n\n**Category:** Psychosocial Integrity\n\n**REFERENCE:** Keltner, Norman L. et.al. Psychiatric Nursing Philadelphia, Mosby"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-16T09:33:27Z",
+    "extraction_confidence": "high",
+    "human_validated": true,
+    "notes": "Left page of PDF page 37 - Complete question-answer pair about suicide prevention contracts",
+    "category": "Psychosocial Integrity",
+    "reference": "Keltner, Norman L. et.al. Psychiatric Nursing Philadelphia, Mosby"
+  }
+}

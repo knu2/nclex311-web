@@ -1,0 +1,32 @@
+{
+  "book_page": 175,
+  "pdf_page": 88,
+  "content": {
+    "main_concept": "Fourth's Disease (Dukes' Disease)",
+    "key_points": "**Etiology:**\\n\\n- **Dukes' disease is a viral rash most commonly caused by toxin-producing strains of epidermolytic (exfoliative) Staphylococcus aureus**\\n\\n**Manifestations of Dukes' Disease:**\\n\\n- **Fever**\\n- **Nausea**\\n- **Vomiting**\\n- **Diarrhea**\\n- **Photophobia**\\n- **Lymphadenopathy**\\n- **Sore throat**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "The rash in Dukes' disease may be characterized as which of the following?",
+        "options": [
+          "1. Localized with bull's eye pattern",
+          "2. Generalized, vesicular and sometimes petechial",
+          "3. Sore spots found in the abdomen",
+          "4. Slapped cheek pattern"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nThe rash of Duke's disease is characterized as generalized, vesicular and sometimes petechial."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 88, book page 175. Multiple choice question about rash characteristics.",
+    "category": "Physiological Adaptation",
+    "reference": "Handbook of Infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

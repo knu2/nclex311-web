@@ -1,0 +1,33 @@
+{
+  "book_page": 131,
+  "pdf_page": 66,
+  "content": {
+    "main_concept": "Radioactive Iodine 131 - Handling Precautions and Safety Measures",
+    "key_points": "**Urine is the major source of contamination for clients treated with radioactive iodine 131.**\\n\\n**Key characteristics:**\\n- **Iodine 131 is an antithyroid**; it limits thyroid hormone secretion\\n- **Normal heart rate and adequate sleep** are indicators of effectiveness of treatment\\n- **Instruct patient to fast overnight** before administration because food delays its absorption\\n- **It will take several weeks (usually 6 weeks)** before therapeutic effects become noticeable\\n- **Urine and saliva are slightly radioactive** for 24 hours after administration\\n\\n**Safety considerations:**\\n- **Radioactive iodine is highly toxic**\\n- **Any materials that might have been contaminated** by this drug should be handled carefully",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "After the administration of radioactive iodine 131 to a client, the nurse should be careful in handling which of the following?\\n\\n**Select all that apply.**",
+        "options": [
+          "1. Blood",
+          "2. Sputum", 
+          "3. Bedpans",
+          "4. Urinals",
+          "5. Linens"
+        ],
+        "correct_answer": "3, 4, 5",
+        "rationale": "**RATIONALE**\\n\\nRadioactive iodine is highly toxic. Therefore, any materials that might have been contaminated by this drug should be handled carefully.\\n\\nSince urine is the major source of contamination for clients treated with radioactive iodine 131, bedpans and urinals require careful handling. Linens may also become contaminated through contact with the client or contaminated body fluids. Blood and sputum are not primary sources of contamination with radioactive iodine 131."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete SATA question-answer pair extracted from right side of PDF page 66. Question type identified by 'Select all that apply' text. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Gapuz, Ray, The ABC's of Passing Foreign Nursing Exams Philippines, Gapuz Publication"
+  }
+}

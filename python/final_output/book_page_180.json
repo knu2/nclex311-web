@@ -1,0 +1,32 @@
+{
+  "book_page": 180,
+  "pdf_page": 91,
+  "content": {
+    "main_concept": "Rabies",
+    "key_points": "**Rabies** is a severe viral infection of the CNS that is communicated to humans by the saliva of infected animals (raccoon, dogs, skunks, foxes, and bats).\\n\\n- **Symptoms**: Headache, pruritus, malaise, anorexia, and photophobia develop\\n- **Treatment**: There is no specific treatment. Treatment is symptomatic and supportive\\n- **First Aid**: Wash the bite vigorously with soap and water for at least 10 minutes\\n- **Infection Control**: The nurse should wear gown, gloves and eye protection when handling saliva and articles contaminated by saliva\\n- **Animal Management**: Confine the suspected animal for 10 days and let it be observed by a veterinarian\\n- **High Risk Persons**: Farm workers, forest rangers, spelunkers (cave explorers) and veterinarians",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Who among the following is most at risk for a raccoon bite?",
+        "options": [
+          "1. Garbage collectors",
+          "2. Aviary worker",
+          "3. Bus drivers",
+          "4. Veterinarians"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** Farm workers, forest rangers, cave explorers (spelunkers) and veterinarians are at risk of contracting rabies."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:00:37Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 91. Question type determined by singular 'Who among the following is most at risk' language seeking one best answer.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

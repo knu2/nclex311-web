@@ -1,0 +1,65 @@
+{
+  "book_page": 273,
+  "pdf_page": 137,
+  "content": {
+    "main_concept": "Cholecystectomy",
+    "key_points": "Nursing care of clients post-cholecystectomy\n\n- Priority: assess for pain and administer prescribed analgesic to facilitate deep breathing and coughing exercises\n- Encourage ambulation to prevent thromboembolism, and to stimulate bowel and bladder function.\n- Instruct the client to keep the incision or wound sites dry for 5 to 7 days.\n- Report signs of redness, pain or drainage.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following conditions is a client post-cholecystectomy at risk for?",
+        "options": [
+          "1. Tetany",
+          "2. Curling’s ulcer",
+          "3. Hypostatic pneumonia",
+          "4. Deep vein thrombosis"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE** The breathing pattern of a post-op client is impaired due to pain; therefore the client becoming unable to clear the airway increases the risk for hypostatic pneumonia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:15:43Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted right side of PDF page 137.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}
+
+{
+  "book_page": 273,
+  "pdf_page": 137,
+  "content": {
+    "main_concept": "Cholecystectomy",
+    "key_points": "Any condition that interferes with breathing increases risk for pneumonia.\n\n**Nursing care of clients post-cholecystectomy**\n\n- Priority: assess for pain and administer prescribed analgesic to facilitate deep breathing and coughing exercises\n- Encourage ambulation to prevent thromboembolism, and to stimulate bowel and bladder function.\n- Instruct the client to keep the incision or wound sites dry for 5 to 7 days.\n- Report signs of redness, pain or drainage.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following conditions is a client post-cholecystectomy at risk for?",
+        "options": [
+          "1. Tetany",
+          "2. Curling’s ulcer",
+          "3. Hypostatic pneumonia",
+          "4. Deep vein thrombosis"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nThe breathing pattern of a post-op client is impaired due to pain; therefore the client becoming unable to clear the airway increases the risk for hypostatic pneumonia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:12:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the right side of PDF page 137.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

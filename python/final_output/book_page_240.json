@@ -1,0 +1,27 @@
+{
+  "book_page": 240,
+  "pdf_page": 121,
+  "content": {
+    "main_concept": "Delirium Tremens",
+    "key_points": "**Delirium Tremens** - The onset of delirium tremens is 12 hours to 1 week after the client's last drink.\\n\\n**Clinical characteristics:**\\n\\n- **Timing**: Delirium tremens usually occurs 2-4 days after a client's last alcohol intake\\n- **Pathophysiology**: It is due to faulty metabolism of alcohol\\n- **Severity**: Characterized by blood alcohol level of more than 0.2%\\n\\n**Nursing interventions:**\\n\\n- **Environmental**: Provide a well-lighted room for the client because they fear shadows\\n- **Education**: Instruct the client to abstain from alcohol\\n- **Pharmacological**: Administer Librium (chlordiazepoxide) to the client; it is considered as the drug of choice for acute alcohol withdrawal syndrome",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client with alcohol abuse is admitted to the detoxification unit. Which of the following questions should the nurse ask the client immediately?",
+        "options": ["1. \"Are you having problems with your husband?\"", "2. \"At what age did you start drinking?\"", "3. \"What did you eat in the last 24 hours?\"", "4. \"When was your last drink?\""],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nDelirium tremens occur 12 hours to 1 week after a client's last intake of alcohol. Hence during the initial assessment, the nurse should ask the client when was the client's last alcohol intake to determine its probable recognition and intervention."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T08:41:26Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 121. Question type determined as multiple_choice based on singular wording and single correct answer. No medical images detected.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

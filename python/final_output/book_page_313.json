@@ -1,0 +1,38 @@
+{
+  "book_page": 313,
+  "pdf_page": 157,
+  "content": {
+    "main_concept": "Labor Contractions: True Labor vs False Labor Assessment",
+    "key_points": "**True Labor Contractions:**\n\n- **Location**: Located mainly in the back\n- **Pattern**: Occur at regular intervals\n- **Intensity**: Increases progressively\n- **Cervical changes**: Results in progressive cervical dilatation\n- **Activity response**: Unaffected by walking\n\n**False Labor Contractions (Braxton Hicks):**\n- **Pattern**: Occur at irregular intervals\n- **Intensity**: Remains the same or decreases\n- **Location**: Located mainly in the groin\n- **Cervical changes**: Do not lead to effacement or dilatation\n- **Response to intervention**: Relieved by mild sedation\n\n**Assessment of Uterine Contractions:**\n\n- **Duration**: Refers to the time from the beginning to the end of the same contraction\n- **Frequency**: Refers to the time from the beginning of the first contraction to the beginning of the next contraction\n- **Interval**: Refers to the time from the end of the first contraction to the beginning of the next contraction\n\n**Key Concept**: TRUE LABOR contractions are located mainly in the back; occur at regular intervals with increased intensity and results to progressive cervical dilatation.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following characteristics of contractions are found in clients with true labor contractions?\n\n**Select all that apply:**",
+        "options": [
+          "1. Occurs at regular intervals",
+          "2. Interval between contractions increases",
+          "3. Intensity decreases",
+          "4. Located mainly in the groin",
+          "5. Unaffected by walking",
+          "6. Relieved by mild sedation",
+          "7. Do not lead to effacement",
+          "8. Occurs at irregular intervals",
+          "9. Intensity remains the same",
+          "10. Results to progressive cervical dilatation"
+        ],
+        "correct_answer": "1, 5, 10",
+        "rationale": "**RATIONALE**\n\nContractions that occur at regular intervals associated with progressive cervical dilatation are characteristics of true labor.\n\n**True Labor Contraction Characteristics (Correct Options):**\n- **Option 1** (Occurs at regular intervals): True labor contractions follow a predictable pattern with consistent timing\n- **Option 5** (Unaffected by walking): True labor contractions continue regardless of maternal activity or position changes\n- **Option 10** (Results to progressive cervical dilatation): The hallmark of true labor is progressive cervical changes (effacement and dilatation)\n\n**False Labor/Braxton Hicks Characteristics (Incorrect Options):**\n- **Option 2** (Interval increases): False labor has irregular intervals\n- **Option 3** (Intensity decreases): True labor intensity increases, false labor may decrease\n- **Option 4** (Located in groin): False labor is typically felt in the groin; true labor is felt in the back\n- **Option 6** (Relieved by sedation): False labor can be relieved by rest or mild sedation\n- **Option 7** (No effacement): False labor does not cause cervical changes\n- **Option 8** (Irregular intervals): This describes false labor\n- **Option 9** (Same intensity): False labor maintains the same intensity\n\n**Clinical Assessment**: Nurses must assess contraction pattern, intensity, duration, frequency, and most importantly, cervical changes to differentiate true from false labor."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T06:26:36Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "SATA question with comprehensive educational content about labor contraction assessment, including detailed definitions of duration, frequency, and interval. Content from right page of PDF page 157.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

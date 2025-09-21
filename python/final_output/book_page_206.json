@@ -1,0 +1,32 @@
+{
+  "book_page": 206,
+  "pdf_page": 104,
+  "content": {
+    "main_concept": "Clostridium difficile - Infection Management and Dietary Considerations",
+    "key_points": "**Clostridium difficile Management**\\n\\n- **Association**: Clostridium difficile is usually associated with clindamycin use\\n- **Transmission**: Transmitted by contaminated hands or indirectly through contaminated equipment like bedpans, urinals, call bells, rectal thermometers, and toilet seats\\n- **Manifestations**: Foul-smelling, watery, and bloody diarrhea with fever and abdominal cramps\\n- **Prevention**: Emphasize the importance of thorough hand washing\\n- **Precautions**: Practice standard precautions\\n- **PRIORITY**: Place the client in a private room",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following oral solutions should not be given to a client with Clostridium difficile?",
+        "options": [
+          "1. Pedialyte",
+          "2. Gatorade",
+          "3. Water",
+          "4. Apple juice"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nThe presence of fructose and sorbitol in apple juice can induce persistent diarrhea. Therefore, it should be avoided for clients infected with Clostridium difficile."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 104. Question type determined by singular wording 'Which solution should not' seeking one contraindicated option.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

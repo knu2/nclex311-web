@@ -1,0 +1,32 @@
+{
+  "book_page": 232,
+  "pdf_page": 117,
+  "content": {
+    "main_concept": "Myasthenia Gravis",
+    "key_points": "**Myasthenia gravis** is characterized by faulty neuromuscular transmission of the voluntary muscles of the body due to a deficiency in acetylcholine receptor sites in the myoneural junction.\\n\\n- **Key characteristic**: Difficulty in swallowing is a common sign of myasthenia gravis\\n- **Muscle weakness**: Descending muscle weakness initially manifested by ptosis occurs\\n- **Diagnosis**: CT scan reveals hyperplasia of the thymus gland\\n- **Tensilon test**: Shows increased muscle strength 30 seconds after administration of Edrophonium\\n- **Priority**: Maintain patent airway\\n- **Medication precautions**: Instruct the client to avoid quinidine, morphine, and antibiotics since these may trigger muscle weakness\\n- **Activity restrictions**: Instruct the client to avoid prolonged talking over the phone especially before meals since this will weaken the facial muscles which are also used for eating",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which activity is contraindicated for a client with myasthenia gravis before meals?",
+        "options": [
+          "1. Deep breathing and coughing exercise",
+          "2. Range of motion exercises",
+          "3. Talking for long periods over the phone",
+          "4. Watching TV"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nA client with myasthenia gravis should be instructed to speak in a slow manner to avoid voice strain. Stress the importance of scheduled rest periods before meals since the muscles used for talking can be weakened by continuous activity."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T06:00:38Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 117. No images present as confirmed by user.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

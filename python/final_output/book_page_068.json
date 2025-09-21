@@ -1,0 +1,32 @@
+{
+  "book_page": 68,
+  "pdf_page": 35,
+  "content": {
+    "main_concept": "Therapeutic Communication",
+    "key_points": "**Open-ended questions:**\\n\\n- are those which can be answered in a variety of ways\\n\\n**Closed-ended questions:**\\n\\n- limit the client's answer to either \"yes\" or \"no\"",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following questions is appropriate to ask a client with diabetes mellitus?",
+        "options": [
+          "1. \"Do you have any complaints?\"",
+          "2. \"Are you frequently tired?\"",
+          "3. \"How do you clean your feet?\"",
+          "4. \"Do you feel thirsty all the time?\""
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nThe question in option C is open-ended and is therefore more therapeutic than the closed-ended questions in the other options."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T14:37:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Single therapeutic communication question from left side of PDF page 35",
+    "category": "Psychosocial Integrity",
+    "reference": "Keltner, Norman L. et.al. Psychiatric Nursing Philadelphia, Mosby"
+  }
+}

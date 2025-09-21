@@ -1,0 +1,32 @@
+{
+  "book_page": 189,
+  "pdf_page": 95,
+  "content": {
+    "main_concept": "Transfusion Reaction",
+    "key_points": "**In treatments requiring venous infusion, STOP the treatment at the first sign of adverse reaction.**\\n\\n**Signs of Immediate Transfusion Reaction - CRAMPS:**\\n- **C**hills and diaphoresis\\n- **R**apid thready pulse, rashes\\n- **A**pprehension\\n- **M**uscle aches, back pain, chest pain\\n- **P**allor and cyanosis\\n- **S**welling\\n\\n**Reminders:**\\n1. Only normal saline should be added to blood components\\n2. Medications are NEVER added to blood transfusions\\n3. Change the blood transfusion set every 4 to 6 hours to prevent septicemia\\n4. The most important step of administering a transfusion is confirming product compatibility and verifying client identity\\n5. If the blood is not administered in 30 minutes, return it to the blood bank",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following nursing actions is the priority of the nurse when a transfusion reaction occurs?",
+        "options": [
+          "1. Stop the blood transfusion and replace it with normal saline",
+          "2. Adjust the blood transfusion rate and monitor the client",
+          "3. Monitor the input and output",
+          "4. Refer to the physician immediately"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nAt the initial sign of a transfusion reaction, the nurse should immediately discontinue the transfusion and notify the physician."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:19:50Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 95. Clear multiple choice question with priority nursing action and comprehensive transfusion safety guidelines.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

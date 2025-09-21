@@ -1,0 +1,32 @@
+{
+  "book_page": 124,
+  "pdf_page": 63,
+  "content": {
+    "main_concept": "Potassium is primarily excreted in the urine",
+    "key_points": "- **Triamterene (Dyrenium) is a potassium-sparing diuretic**\\n- **It is contraindicated in hyperkalemia**\\n- **Report any of the following to the physician**:\\n  - change in weight of more than 3 lbs in 1 day\\n  - swelling of the ankles or fingers\\n  - fever\\n  - sore throat\\n  - unusual bleeding",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client has a potassium level of 2.8 mEq/L. Which of the following doctor's orders is appropriate?",
+        "options": [
+          "1. Chlorothiazide (Diuril)",
+          "2. Furosemide (Lasix)",
+          "3. Triamterene (Dyrenium)",
+          "4. Mannitol (Osmitrol)"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nTriamterene (Dyrenium) is a potassium-sparing diuretic and will not worsen hypokalemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:02:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 63",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

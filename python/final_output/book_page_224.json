@@ -1,0 +1,32 @@
+{
+  "book_page": 224,
+  "pdf_page": 113,
+  "content": {
+    "main_concept": "Hyperphosphatemia",
+    "key_points": "**CONCEPT:** When phosphorus level goes up, calcium level goes down and vice versa.\\n\\n**Phosphorus facilitates nerve and muscle activity, bone and tooth formation, and RBC production.**\\n\\n**The RDA is 800 to 1,200 mg.**\\n\\n**Causes of hyperphosphatemia:**\\n- Renal failure (most common)\\n- Hypoparathyroidism\\n- Chemotherapy\\n- Muscle necrosis\\n- Increased phosphorus absorption\\n\\n**Clinical manifestations:**\\n- Tetany\\n- Seizure\\n- Renal damage\\n\\n**Sources of phosphate:** eggs, fish, yellow cheese, almonds, chocolate, peanut, rye, and wheat",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following data in a client's history is related to hyperphosphatemia?",
+        "options": [
+          "1. Thyroid surgery",
+          "2. Gastric surgery", 
+          "3. Rectal surgery",
+          "4. Renal surgery"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nHypoparathyroidism occurs in about 4% of clients due to accidental removal of the parathyroid glands during thyroid surgery. Hypoparathyroidism leads to hypocalcemia and hyperphosphatemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T05:18:25Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extraction from left side of PDF page 113. Question about client history related to hyperphosphatemia with multiple choice format.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

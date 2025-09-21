@@ -1,0 +1,32 @@
+{
+  "book_page": 143,
+  "pdf_page": 72,
+  "content": {
+    "main_concept": "MAO Inhibitors",
+    "key_points": "- **Monoamine Oxidase Inhibitors (MAOI) increase appetite and promote adequate sleep**\n- **It is best taken after meals**\n- **Report headache; it indicates hypertensive crisis**\n- **Monitor the client's BP**\n- **Avoid tyramine-containing foods like:**\n  - **A**vocado\n  - **B**anana\n  - **C**heddar and aged cheese\n  - **S**oy sauce and preserved food",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following foods is allowed in a client taking MAOIs?",
+        "options": [
+          "1. Soy sauce",
+          "2. Fresh fish",
+          "3. Pickled dill",
+          "4. Red wine"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** Fresh fish does not contain any preservatives and is therefore allowed in a client taking MAO inhibitors."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:42:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 72. Question type identified as multiple_choice based on singular wording 'Which... foods' seeking one allowed food. Key points include ABCS mnemonic for tyramine-containing foods to avoid.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Gapuz, Ray, The ABC's of Passing Foreign Nursing Exams. Philippines, Gapuz Publication"
+  }
+}

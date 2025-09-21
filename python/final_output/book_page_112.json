@@ -1,0 +1,32 @@
+{
+  "book_page": 112,
+  "pdf_page": 57,
+  "content": {
+    "main_concept": "Candesartan cilexetil (Atacand)",
+    "key_points": "**Common side effects of candesartan cilexetil (Atacand):**\\n\\n- **R** - ash\\n- **A** - bdominal pain\\n- **N** - ausea\\n- **D** - iarrhea\\n\\n**Report:**\\n- Fever\\n- Chills\\n- Dizziness\\n- Pregnancy",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Candesartan cilexetil (Atacand) is usually prescribed to clients for which of the following purposes?",
+        "options": [
+          "1. To treat diarrhea",
+          "2. To decrease blood pressure",
+          "3. To enhance glucose utilization",
+          "4. To decrease ammonia absorption"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nCandesartan cilexetil (Atacand) is given to a client with hypertension because it decreases high blood pressure."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T02:21:42Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 57. CONCEPT: Candesartan cilexetil (Atacand) prevents vasoconstriction, leading to decreased blood pressure.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

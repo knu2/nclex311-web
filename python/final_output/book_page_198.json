@@ -1,0 +1,32 @@
+{
+  "book_page": 198,
+  "pdf_page": 100,
+  "content": {
+    "main_concept": "Cardiogenic Shock",
+    "key_points": "**Cardiogenic Shock Management**\\n\\n- **Definition**: Cardiogenic shock is due to the heart's inability to pump adequate amount of blood\\n- **Early Warning Signs**: The early warning signs include altered consciousness, tachycardia and tachypnea\\n- **Priority Assessment**: PRIORITY: assess the clients circulatory status (palpate the radial pulse first)\\n- **Positive Treatment Response**: A normal urine output indicates adequate fluid circulation in the body\\n- **Normal Urine Output**: 30 to 60 ml/hour",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**READ THIS**\\n\\n**QUESTION**\\n\\nWhich of the following assessment findings best indicate a positive response to the treatment of cardiogenic shock?",
+        "options": [
+          "1. Normal cardiac rhythm",
+          "2. Normal blood pressure",
+          "3. Urine output of 60 mL in 2 hours",
+          "4. Respiratory rate of 16 breaths per minute"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nA urine output of 60 mL in 2 hours is indicative of adequate fluid circulation. The normal urine output is 30 to 60 ml/hour."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-19T02:32:29Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 100. Cardiogenic shock question focusing on assessment of treatment response with emphasis on urine output as indicator of adequate circulation.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

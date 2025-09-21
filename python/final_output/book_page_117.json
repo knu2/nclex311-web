@@ -1,0 +1,32 @@
+{
+  "book_page": 117,
+  "pdf_page": 59,
+  "content": {
+    "main_concept": "Opioids cause respiratory depression",
+    "key_points": "- **Opioids produce analgesia**\\n- **It may cause dizziness, drowsiness, and disorientation**\\n- **Report to the physician**: severe nausea, vomiting, constipation, shortness of breath, difficulty of breathing\\n- **Avoid driving while taking this drug since it causes drowsiness**\\n- **Do not discontinue abruptly**\\n- **Check the BP; it may cause hypotension**\\n- **May cause bronchospasm**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following assessment parameters should the nurse monitor in a client who is receiving opioid?",
+        "options": [
+          "1. Heart rate",
+          "2. Temperature",
+          "3. Urine output",
+          "4. Respiratory rate"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nThe respiratory rate must be monitored closely in a client receiving opioids since the drug can cause respiratory depression."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T02:36:56Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 59",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 125,
+  "pdf_page": 63,
+  "content": {
+    "main_concept": "Chlorothiazide (Diuril) is best given in the morning",
+    "key_points": "- **Administer chlorothiazide (Diuril) with food or milk**\\n- **Record the weight**\\n- **Common side effects**: \\n  - **S**teven-Johnson's syndrome\\n  - **T**hrombocytopenia\\n  - **A**naphylaxis\\n  - **R**enal failure",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Chlorothiazide (Diuril) is best taken at which of the following times?",
+        "options": [
+          "1. Before breakfast",
+          "2. In the morning with meals",
+          "3. In the late afternoon",
+          "4. Before dinner"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nChlorothiazide (Diuril) causes diuresis which may potentially disturb sleep at night and is therefore best given in the morning. The nurse should instruct the client to stay near the comfort room."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:02:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 63",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

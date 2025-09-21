@@ -1,0 +1,32 @@
+{
+  "book_page": 304,
+  "pdf_page": 153,
+  "content": {
+    "main_concept": "Lyme Disease",
+    "key_points": "**Lyme Disease characteristics and prevention:**\\n\\n- **Definition**: Lyme disease is a multisystem infectious syndrome commonly affecting the skin, nervous system, heart, and joints\\n- **Transmission**: Lyme disease is usually transmitted through the bite of black legged ticks, which were initially found in Lyme, Connecticut\\n- **Characteristic sign**: Bull's eye rash, usually described as \"rounded rings\" of rash found in moist parts of the body, characterizes the disease\\n- **Assessment**: Ascertain if the client was exposed to deer ticks\\n- **Prevention measures**: Instruct the client to wear light colored clothing when going to the forest/woods or have himself/herself vaccinated\\n- **Tick removal**: When bitten by a tick, remove it by exerting slow steady upward pull and avoid squeezing it\\n\\n**CONCEPT**: Lyme disease is usually transmitted through the bite of black legged ticks, which were initially found in Lyme, Connecticut",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Who among the following clients is most at risk for Lyme disease?",
+        "options": [
+          "1. A 15-year-old adolescent from New York",
+          "2. A 20-year-old pregnant client from California",
+          "3. A 40-year-old obese client from New Mexico",
+          "4. A 30-year-old male from Connecticut"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nA person from Connecticut is at high risk for acquiring Lyme disease because the ticks causing the disease were initially found in that area."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T14:54:44Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side content from PDF page 153 - complete concept with question, options, answer and rationale about Lyme disease risk factors",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Handbook of infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

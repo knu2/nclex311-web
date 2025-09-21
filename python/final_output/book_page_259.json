@@ -1,0 +1,33 @@
+
+{
+  "book_page": 259,
+  "pdf_page": 130,
+  "content": {
+    "main_concept": "Alpha-fetoprotein Levels",
+    "key_points": "- An elevated alpha-fetoprotein level (>30 mg/dL) indicates the presence of neural tube defects.\n- A negative contraction stress test indicates that the fetal heart rate remains normal during uterine contraction.\n- A positive nonstress test indicates a reactive fetus.\n- An increase in glucose in the urine of a pregnant client can be due to accidental spilling of glucose in the urine during pregnancy.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following diagnostic test results from a pregnant client needs to be reported to the physician immediately?",
+        "options": [
+          "1. Contraction stress test: Negative",
+          "2. Non stress test: Positive",
+          "3. Urinalysis: Increased glucose levels",
+          "4. Alpha-fetoprotein level: 45 mg/dL"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\n\nThe normal alpha-fetoprotein level is 15-30 mg/dL. Elevated levels indicate neural tube defects while decreased levels indicate Down’s syndrome."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T04:58:14Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept content on a single book page.",
+    "category": "Reduction of Risk Potential",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 129,
+  "pdf_page": 65,
+  "content": {
+    "main_concept": "Insulin Therapy - Timing of Hypoglycemia with Regular Insulin",
+    "key_points": "**Hypoglycemia induced by insulin usually occurs BEFORE MEALS.**\\n\\n**Signs and Symptoms of Hypoglycemia:**\\n- **Diaphoresis**\\n- **Dizziness**\\n- **Decreased level of consciousness**\\n- **Difficulty in problem solving**\\n\\n**Regular insulin characteristics:**\\n- **Peak action:** 2 to 6 hours after administration\\n- **Hypoglycemia timing:** Coincides with peak insulin action\\n- **Most likely occurrence:** Before lunch when given in morning",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "After administration of regular insulin in the morning, when should the nurse expect the symptoms of hypoglycemia to occur?",
+        "options": [
+          "1. Before dinner",
+          "2. Before breakfast the next day",
+          "3. At midnight", 
+          "4. Before lunch"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nRegular insulin peak is in 2 to 6 hours. Hypoglycemia that occurs before lunch coincides with the peak of the regular insulin.\\n\\nWhen regular insulin is administered in the morning, its peak action occurs 2-6 hours later, which typically falls before the lunch meal. This timing makes before lunch the most likely time for hypoglycemic symptoms to occur, as glucose levels drop during the insulin's peak effectiveness period."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from right side of PDF page 65. Includes comprehensive signs and symptoms of hypoglycemia. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

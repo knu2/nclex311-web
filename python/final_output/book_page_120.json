@@ -1,0 +1,32 @@
+{
+  "book_page": 120,
+  "pdf_page": 61,
+  "content": {
+    "main_concept": "Steroid therapy causes bone marrow depression",
+    "key_points": "- **Peptic ulcer, diabetes mellitus, and viral infections are contraindications for steroid therapy**\\n- **Weigh the client daily**\\n- **Long-term steroid therapy may cause osteoporosis**\\n- **Instruct the client to avoid crowded areas and exposure to infection**\\n- **Report signs of infection like fever, redness and swelling**\\n- **Encourage good handwashing**\\n- **Restrict sodium intake**\\n- **A fall or an automobile accident may precipitate adrenal failure, which can be managed by immediate injection of hydrocortisone (Solu-cortef)**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following assessment findings in a client on prolonged steroid therapy indicates a complication?",
+        "options": [
+          "1. Weight gain",
+          "2. Easy fatigability",
+          "3. Progressive decrease in height",
+          "4. Anorexia"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nSteroid therapy increases the risk for osteoporosis, manifested by a progressive decrease in height."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T02:47:19Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 61",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

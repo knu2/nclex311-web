@@ -1,0 +1,32 @@
+{
+  "book_page": 208,
+  "pdf_page": 105,
+  "content": {
+    "main_concept": "Inflammatory Bowel Conditions - Differentiating Ulcerative Colitis, Crohn's Disease, and Diverticulitis",
+    "key_points": "**Inflammatory Bowel Conditions Comparison**\\n\\n**Ulcerative Colitis**\\n- Ulceration of the mucosa of the lower colon and rectum\\n- **Bloody mucoid diarrhea**: occurs 10-20 times daily\\n- Rapid weight loss occurs\\n- The disease is characterized by bloody mucoid diarrhea alternating with constipation\\n\\n**Crohn's Disease**\\n- Chronic inflammatory disease of the small intestines\\n- **Diarrhea frequency**: 3-4 times daily\\n- The client has more frequent loose stools\\n- Elderly female population affected\\n\\n**Diverticulitis**\\n- Inflammation of a pouch or saccular dilatation in the colon (diverticula)\\n- **Bowel patterns**: Alternates with constipation\\n- Left lower quadrant pain occurs\\n- Sigmoidoscopy confirms the diagnosis",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which assessment finding differentiates ulcerative colitis from Crohn's disease?",
+        "options": [
+          "1. Rapid weight loss occurs.",
+          "2. The disease is characterized by bloody mucoid diarrhea alternating with constipation.",
+          "3. The client has more frequent loose stools.",
+          "4. The client is an elderly female."
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nA client who complains of more frequent loose stools has ulcerative colitis, since diarrhea occurs 10-20 times in this condition."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 105. Question type determined by singular 'Which assessment finding' seeking one differentiating characteristic. Comprehensive comparison table included.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

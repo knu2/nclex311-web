@@ -1,0 +1,32 @@
+{
+  "book_page": 71,
+  "pdf_page": 36,
+  "content": {
+    "main_concept": "Suicide Risk Factors",
+    "key_points": "**Suicidal Risk Factors (SUICIDAL):**\\n\\n- **S** - ex, more women attempt suicide; more men commit suicide\\n- **U** - nsuccessful previous attempts\\n- **I** - dentification with a family member who committed suicide\\n- **C** - hronic\\n- **I** - llness\\n- **D** - epression\\n- **A** - ge; between 18-25 and above 40 years\\n- **L** - oss of a loved one\\n\\n**Key concept:**\\n\\n- Elderly clients with chronic illness are usually successful on their first suicidal attempt",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**CONCEPT**: Elderly clients with chronic illness are usually successful on their first suicidal attempt.\\n\\nWhich of the following clients is at greatest risk for suicide?",
+        "options": [
+          "1. 16-year-old male adolescent with history of drug addiction",
+          "2. 40-year-old divorced female with midlife crisis",
+          "3. 68-year-old female with multiple sclerosis who recently lost her husband in a car accident",
+          "4. 35-year-old with bipolar disorder"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nEarly loss, decreased social support, chronic illness or recent divorce are among the risk factors for suicide. Therefore, a 68-year-old female client with multiple sclerosis who recently lost her husband is at greater risk for committing suicide."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T14:37:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Suicide risk factors question from right side of PDF page 36 with SUICIDAL mnemonic",
+    "category": "Psychosocial Integrity",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 28,
+  "pdf_page": 15,
+  "content": {
+    "main_concept": "Carbon Monoxide Poisoning",
+    "key_points": "**The PRIORITY in carbon monoxide poisoning is to assess airway and breathing.**\\n\\n**Key Facts:**\\n\\n- The normal carboxy hemoglobin is less than 12%\\n- Severe carbon monoxide poisoning is present at levels greater than 30%\\n- Reverse hypoxia by administering 100% oxygen",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions is the priority in carbon monoxide poisoning?",
+        "options": [
+          "1. Administer 100% oxygen.",
+          "2. Assess the airway.",
+          "3. Obtain arterial blood gas levels.",
+          "4. Monitor the vital signs."
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nAssessing for patent airway and spontaneous breathing are priority interventions in a client with carbon monoxide poisoning."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T06:45:21Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page from PDF page 15 - Complete question-answer pair with carbon monoxide poisoning concept",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

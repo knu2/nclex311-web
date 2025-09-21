@@ -1,0 +1,32 @@
+{
+  "book_page": 185,
+  "pdf_page": 93,
+  "content": {
+    "main_concept": "Fetal Distress",
+    "key_points": "**Fetal Distress** - Meconium-stained amniotic fluid suggests fetal distress.\\n\\n**Signs and Symptoms of Fetal Distress:**\\n- Increase or decrease in intensity or frequency of fetal movement (FHR above 160 or below 120 beats per minute)\\n- Meconium-stained fluid\\n- Variable or late deceleration pattern\\n\\n**PRIORITY**: Position mother to the left side and administer oxygen.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements made by a client in labor reflects a need for further evaluation?",
+        "options": [
+          "1. \"I had a greenish discharge when my water broke.\"",
+          "2. \"I'm having backache for a couple of hours now.\"",
+          "3. \"My baby keeps moving.\"",
+          "4. \"My contractions come and go.\""
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE** \"I had a greenish discharge when my water broke\" is indicative of meconium-stained fluid reflective of fetal distress."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:11:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 93. Question type determined by singular 'statement reflects a need' language seeking one concerning statement.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

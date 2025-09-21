@@ -1,0 +1,32 @@
+{
+  "book_page": 138,
+  "pdf_page": 70,
+  "content": {
+    "main_concept": "Diazepam (Valium)",
+    "key_points": "- **Diazepam (Valium) is an anxiolytic/sedative**\n- **It is best taken before meals since food in the stomach delays absorption**\n- **Avoid driving and intake of alcohol and caffeine containing foods since it alters the effect of the drug**\n- **Administer it separately. It is incompatible with any drug**\n- **Not given when a patient is taking valerian or kava kava, or other herbal sedatives**\n- **Side effects of diazepam include drowsiness, dizziness, muscle weakness, confusion, constipation, and nausea and vomiting**\n- **Adverse effect of diazepam includes respiratory depression and abuse potential**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following drugs is contraindicated in clients with myasthenia gravis?",
+        "options": [
+          "1. Neostigmine (Prostigmine)",
+          "2. Diazepam (Valium)",
+          "3. Furosemide (Lasix)",
+          "4. Mannitol (Osmitrol)"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** A complication of myasthenia gravis is respiratory failure due to paralysis of respiratory muscles. Administration of diazepam (Valium) causes respiratory depression."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:35:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 70. Question type identified as multiple_choice based on singular wording 'Which... drugs' seeking one contraindicated drug.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins; Gapuz, Ray, The ABC's of Passing Foreign Nursing Exams, Philippines, Gapuz Publications"
+  }
+}

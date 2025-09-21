@@ -1,0 +1,32 @@
+{
+  "book_page": 75,
+  "pdf_page": 38,
+  "content": {
+    "main_concept": "Anorexia Nervosa",
+    "key_points": "**Anorexia nervosa** is characterized by fear of gaining weight.\\n\\n**Signs and symptoms** (ANOREXIA):\\n- **A**menorrhea (absence of menses for at least three consecutive months) in the absence of other organic cause is a common symptom\\n- **N**o other organic factor accounts for the weight loss\\n- **O**bviously thin but feels fat\\n- **R**efusal to maintain ideal body weight\\n- **E**pigastric discomforts\\n- **X**-symptoms like: hiding foods, collecting recipes\\n- **I**ntense fear of gaining weight\\n- **A**lways thinking about food\\n\\n**Additional considerations:**\\n- Decreased K levels due to vomiting and hypoglycemia occurs\\n- Monitor the client's weight\\n- Institute family therapy since most parents of anorexics are rigid, perfectionist, and domineering",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "The mother of a teenage girl makes all of the following statements. Which one needs further exploration by the nurse?",
+        "options": [
+          "1. \"I'll bring my daughter to the dermatologist for acne treatment.\"",
+          "2. \"I make it a point to check on her every now and then.\"",
+          "3. \"Girls sometimes just want to have fun.\"",
+          "4. \"I asked her to tell me if she needs anything.\""
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nThe statement reflects a tendency of the mother to be rigid and dominating. This is a common characteristic of parents of anorexic teenagers."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-17T02:27:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right side content from PDF page 38, complete question-answer pair with comprehensive key points",
+    "category": "Psychosocial Integrity",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}
