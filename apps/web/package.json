@@ -26,6 +26,7 @@
     "validate-import:full": "npx tsx scripts/validate-import.ts --full-report --spot-check=10",
     "rollback-import": "npx tsx scripts/rollback-import.ts --dry-run",
     "rollback-import:confirm": "npx tsx scripts/rollback-import.ts --confirm",
+    "db:clear": "npx tsx scripts/clear-database.ts",
     "bootstrap": "npm run migrate && npm run seed"
   },
   "dependencies": {
