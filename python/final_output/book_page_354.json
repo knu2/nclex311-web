@@ -1,0 +1,32 @@
+{
+  "book_page": 354,
+  "pdf_page": 178,
+  "content": {
+    "main_concept": "NGT Feeding - Gastric Residual Assessment",
+    "key_points": "**Assessing Gastric Residual**\n\n- Gastric residual is measured before each intermittent feeding and every 4 to 8 hours for continuous feedings\n- McClave et.al. (1992) suggested that a residual volume of 200 mL or less in a client with nasogastric tubes or a residual volume of 100 mL for clients with gastrostomy tube may indicate feeding intolerance\n- **Normal gastric residual**: should be less than 50% of the total amount of tube feedings\n- The NGT is removed when bowel peristalsis returns",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client received 200 mL of tube feedings. The nurse can administer the next feeding if there is:",
+        "options": [
+          "1. A gastric residual of 150 mL",
+          "2. A gastric residual of 80 mL", 
+          "3. A gastric residual of 120 mL",
+          "4. A gastric residual of 200 mL"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nA normal gastric residual should be less than 50% of the total amount of tube feedings. The nurse could therefore administer the next feeding when the gastric residual is 80 ml, which is less than 50% of 200 mL."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete NGT feeding concept from left page of PDF page 178. Includes comprehensive key points on gastric residual assessment and measurement guidelines.",
+    "category": "Basic Care and Comfort",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing. Philadelphia, Lippincott William and Wilkins"
+  }
+}

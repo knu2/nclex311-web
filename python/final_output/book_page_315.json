@@ -1,0 +1,33 @@
+{
+  "book_page": 315,
+  "pdf_page": 158,
+  "content": {
+    "main_concept": "Placenta Previa",
+    "key_points": "**In placenta previa, the placenta attaches low in the uterus.**\\n\\n**Key clinical features:**\\n- **Painless bright red vaginal bleeding** after the 7th month of pregnancy occurs\\n- **Ultrasound will show the location of the placenta**\\n\\n**Priority interventions:**\\n- **Immediate bed rest is the priority**\\n- **Administer IV fluids as ordered**\\n- **Do not perform vaginal exam**\\n\\n**CONCEPT:** Avoid intravaginal examination in clients with bleeding disorders.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following interventions should a nurse not implement in a client with placenta previa?\\n\\n**Select all that apply:**",
+        "options": [
+          "1. Performing a vaginal exam",
+          "2. Use of intravaginal fetal heart rate monitoring",
+          "3. Frequent assessment of maternal heart rate",
+          "4. Bed rest with bathroom privileges",
+          "5. Administering IV fluids as ordered"
+        ],
+        "correct_answer": "1, 2",
+        "rationale": "**RATIONALE**\\n\\nPerforming a vaginal exam and use of intravaginal fetal heart rate monitoring are contraindicated in clients with placenta previa because these procedures may puncture the placenta.\\n\\n**Key principle:** Avoid intravaginal examination in clients with bleeding disorders. Any procedure that involves insertion into the vaginal canal risks puncturing the low-lying placenta and causing severe hemorrhage."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T13:13:39Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right page content from PDF page 158, complete concept with SATA question and rationale",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 349,
+  "pdf_page": 175,
+  "content": {
+    "main_concept": "Black Cohosh - Menopausal Symptom Management",
+    "key_points": "**Black Cohosh Overview:**\\n\\n- **Primary Use**: Black cohosh is used for the relief of premenstrual discomfort, dysmenorrheal, and menopausal symptoms\\n- **Mechanism**: Black cohosh decreases menopausal symptoms\\n- **Duration Limit**: It should not be used for more than 6 months\\n\\n**Vaginal Limitations:**\\n- It does not affect the vaginal epithelium, so it does not relieve vaginal dryness\\n\\n**Overdose Manifestations:**\\n- Nausea\\n- Vomiting\\n- Dizziness\\n- Visual disturbance\\n- Slowed pulse rate\\n- Increased perspiration\\n\\n**Effective for treating:**\\n- Hot flashes\\n- Sweating\\n- Sleep disturbance\\n- Anxiety",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A decrease in which of the following manifestations of menopause indicates effectiveness of black cohosh?",
+        "options": [
+          "1. Diarrhea",
+          "2. Hot flashes",
+          "3. Nausea and vomiting", 
+          "4. Breast tenderness"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nBlack cohosh is effective in treating symptoms of menopause, including hot flashes, sweating, sleep disturbance, and anxiety.\\n\\n**Mechanism of Action:**\\n- Black cohosh specifically targets menopausal symptoms\\n- Most effective for vasomotor symptoms (hot flashes)\\n- Helps with mood-related symptoms\\n\\n**Important Limitations:**\\n- Does not affect vaginal epithelium\\n- Cannot relieve vaginal dryness\\n- Should not be used for more than 6 months\\n\\n**Primary Benefits:**\\n- Reduces hot flashes (primary indication)\\n- Decreases night sweats and perspiration\\n- Improves sleep patterns\\n- Reduces anxiety associated with menopause"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T13:58:54Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete content extracted from right side of PDF page 175. Multiple choice question type determined by single correct answer (2) and question format asking for 'which of the following'.",
+    "category": "Basic Care and Comfort",
+    "reference": "Herbal Medicine Handbook Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

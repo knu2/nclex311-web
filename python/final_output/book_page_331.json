@@ -1,0 +1,33 @@
+{
+  "book_page": 331,
+  "pdf_page": 166,
+  "content": {
+    "main_concept": "Early Signs of Infection in the Elderly",
+    "key_points": "**Early Signs of Infection in the Elderly**\n\n- **Increasing pain** - may be subtle indicator\n- **Fatigue** - early sign before typical symptoms appear\n- **Anorexia** - loss of appetite is common early indicator  \n- **Mental status changes** - confusion or altered cognition\n\n*Inflammatory response in the elderly is delayed - traditional signs like fever, redness, and swelling may not appear initially*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following are indicators of early signs of infection in the elderly?\\n\\n**Select all that apply:**",
+        "options": [
+          "1. Fever",
+          "2. Redness", 
+          "3. Fatigue",
+          "4. Swelling",
+          "5. Anorexia"
+        ],
+        "correct_answer": "3, 5",
+        "rationale": "**RATIONALE**\n\nThe older person may be unable to respond to an illness. These altered responses reinforce the need for the nurse to monitor older clients closely and be alert to signs of impending systemic complications. Fatigue and anorexia are two of the early signs of infection in the elderly.\n\n**Key points:**\n- Inflammatory response in the elderly is delayed\n- Traditional signs (fever, redness, swelling) may not appear initially\n- Fatigue and anorexia are often the first indicators\n- Mental status changes may also occur early\n- Nurses must monitor elderly clients closely for subtle changes"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T02:34:10Z", 
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "SATA question with complete rationale explaining delayed inflammatory response in elderly",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing. Philadelphia, Lippincott William and Wilkins"
+  }
+}

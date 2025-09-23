@@ -1,0 +1,32 @@
+{
+  "book_page": 352,
+  "pdf_page": 177,
+  "content": {
+    "main_concept": "Blue Cohosh - Oxytoxic Effects and Pregnancy Applications",
+    "key_points": "**Uses of Blue Cohosh:**\\n\\n- **Regulation of menstrual cycle**\\n- **Ease painful cramps**\\n- **Used to jumpstart stalled labor**\\n- **Used to stop bleeding**\\n\\n**Critical Concept:**\\n- **Blue cohosh has an oxytoxic effect**\\n- Used during the last 2-4 weeks of pregnancy\\n- Provides final toning to the uterus\\n\\n**Clinical Applications:**\\n- Labor stimulation when labor has stalled\\n- Uterine toning in late pregnancy\\n- Menstrual regulation and pain relief\\n- Hemostatic effects (bleeding control)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Blue cohosh is commonly used during the last 2-4 weeks of pregnancy in order to:",
+        "options": [
+          "1. Give the uterus final toning",
+          "2. Promote closure of the cervix",
+          "3. Regulate menstruation",
+          "4. Prevent bleeding"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nBlue cohosh has an oxytoxic effect, hence it is used during the last few weeks of pregnancy in order to give the uterus final toning.\\n\\n**Mechanism of Action:**\\n- **Oxytoxic effect**: Similar to oxytocin, causing uterine contractions\\n- **Uterine toning**: Prepares the uterus for labor by strengthening muscle tone\\n- **Late pregnancy use**: Specifically used in the last 2-4 weeks before delivery\\n\\n**Clinical Rationale:**\\n- **Option 1 (Correct)**: Final uterine toning is the primary use in late pregnancy\\n- **Option 2**: Cervical closure is not the intended effect of blue cohosh\\n- **Option 3**: Menstruation regulation is used outside of pregnancy\\n- **Option 4**: While blue cohosh can help with bleeding, the primary late-pregnancy use is uterine toning\\n\\n**Safety Considerations:**\\n- Should only be used under proper guidance\\n- Timing is critical - used specifically in late pregnancy\\n- Oxytoxic effects make it effective for labor preparation"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T14:13:55Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete content extracted from left side of PDF page 177. Multiple choice question about Blue Cohosh's primary use in late pregnancy. Key concept: oxytoxic effect for uterine toning.",
+    "category": "Basic Care and Comfort",
+    "reference": "Herbal Medicine Handbook Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

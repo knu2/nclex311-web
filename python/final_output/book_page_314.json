@@ -1,0 +1,32 @@
+{
+  "book_page": 314,
+  "pdf_page": 158,
+  "content": {
+    "main_concept": "Duration of Contractions",
+    "key_points": "**Characteristics of uterine contractions:**\\n\\n- **Mild contractions** feel like the tip of the nose\\n- **Moderate contractions** feel like the chin\\n- **Strong contractions** feel like the forehead\\n- **The normal duration of contractions is 30 to 90 seconds**\\n- **Any contraction that lasts longer than 90 seconds may possibly cause uterine rupture and fetal hypoxia**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following client's needs to be assessed first by the nurse?",
+        "options": [
+          "1. A 30-year-old primigravida in the first stage of labor with regular contraction lasting 30-45 seconds",
+          "2. A 20-year-old primigravida in the first stage of labor with regular contraction lasting 45-60 seconds", 
+          "3. A 25-year-old multigravida in the first stage of labor with 2 contractions in the last 3 minutes",
+          "4. A 27-year-old primigravida in the first stage of labor with 3 contractions in the last 5 minutes"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nThe presence of only 3 contractions in 5 minutes indicates that the average duration of each contraction is 100 seconds, which is beyond the normal duration.\\n\\nThe normal duration of contractions is 30-90 seconds. Any contraction that lasts longer than 90 seconds may possibly cause uterine rupture and fetal hypoxia, making this client the priority for assessment."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T13:13:39Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page content from PDF page 158, complete concept with question and rationale",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

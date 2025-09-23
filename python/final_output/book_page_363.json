@@ -1,0 +1,40 @@
+{
+  "book_page": 363,
+  "pdf_page": 182,
+  "content": {
+    "main_concept": "Pavlik Harness",
+    "key_points": "**CONCEPT: A Pavlik harness helps to keep the legs abducted in developmental dysplasia of the hips (DDH).**\\n\\n**Key Care Instructions:**\\n\\n- **Purpose**: Pavlik harness is used to keep the legs in abduction\\n- **Positioning**: By flexing up the legs and allowing the knees to fall outwards, the hips are held in proper position\\n- **Duration**: The harness is applied to hold the hips and knees up with the legs apart (abducted). It is usually worn for 24 hours for 8-12 weeks\\n- **Bathing**: The removal of the harness for bathing depends on the doctor's recommendation. If it cannot be removed for bathing, sponge bath can be done\\n- **Fit**: The harness strap for the chest and legs should be firm but not too tight. If the child cries incessantly, notify the doctor. This could mean that the harness is too tight\\n- **Clothing**: The baby can wear diapers under the harness. All clothing should be worn over the Pavlik harness. Use hip dysplasia pants with easy snaps over the harness\\n- **Skin Care**: Do not use lotion, powder, ointment under the harness\\n- **Cleaning**: To clean a soiled part of the harness, use water, soap and nail brush. Dry using a hair dryer or blot dry using a towel. Do not tumble dry the harness as it may shrink",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which position is best to put the leg of a child with developmental dysplasia of the hips?",
+        "options": [
+          "1. Adduction",
+          "2. External rotation",
+          "3. Abduction",
+          "4. Pronation"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nFor a child with developmental dysplasia of the hips (DDH), the recommended position to put the legs in is abduction. This position helps to stabilize the hip joint and can aid in proper alignment and development of the hip socket (acetabulum) and femoral head.\\n\\n**Pavlik harness is used to keep the legs in abduction.**\\n\\n**By flexing up the legs and allowing the knees to fall outwards, the hips are held in proper position.**\\n\\n**Care Instructions:**\\n\\n- The harness is applied to hold the hips and knees up with the legs apart (abducted). It is usually worn for 24 hours for 8-12 weeks\\n- The removal of the harness for bathing depends on the doctor's recommendation. If it cannot be removed for bathing, sponge bath can be done\\n- The harness strap for the chest and legs should be firm but not too tight. If the child cries incessantly, notify the doctor. This could mean that the harness is too tight\\n- The baby can wear diapers under the harness. All clothing should be worn over the Pavlik harness. Use hip dysplasia pants with easy snaps over the harness\\n- Do not use lotion, powder, ointment under the harness\\n- To clean a soiled part of the harness, use water, soap and nail brush. Dry using a hair dryer or blot dry using a towel. Do not tumble dry the harness as it may shrink"
+      }
+    ]
+  },
+  "images": [
+    {
+      "filename": "pavlik_harness_illustration.png",
+      "description": "Medical illustration showing proper positioning of Pavlik harness for developmental dysplasia of hips, demonstrating abduction positioning",
+      "medical_relevance": "high",
+      "content_type": "clinical_assessment",
+      "context": "Referenced in rationale section to illustrate proper Pavlik harness positioning and leg abduction"
+    }
+  ],
+  "extraction_metadata": {
+    "timestamp": "2025-09-23T02:53:02Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right book page from PDF page 182. Complete question-answer pair with comprehensive Pavlik harness care instructions. One image in rationale section to be manually copied by user.",
+    "category": "Basic Care and Comfort",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

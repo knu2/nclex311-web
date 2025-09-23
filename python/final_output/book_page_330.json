@@ -1,0 +1,32 @@
+{
+  "book_page": 330,
+  "pdf_page": 166,
+  "content": {
+    "main_concept": "Skin Care for the Elderly - Xerosis Management",
+    "key_points": "**Skin Care for the Elderly**\n\n- **Avoid excessive use of soap** - reduces skin drying\n- **Avoid direct application of heat and cold** - elderly skin is more fragile\n- **Encourage use of sunscreen during all outdoor activities** - protect aging skin\n- **Increase fluid intake** - helps maintain skin hydration\n\n*Xerosis is characterized by dry irritated skin and is a common problem in the elderly*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions is appropriate for an elderly client with xerosis?",
+        "options": [
+          "1. Immerse the body in cold water for 30 minutes",
+          "2. Increase fluid intake to 2,000 mL daily", 
+          "3. Use alcohol on the skin",
+          "4. Use soap at least 5 times a day"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nXerosis is a common problem in the elderly. Treatment should include drinking 2000 mL of liquid daily.\n\n**Key considerations:**\n- Xerosis is characterized by dry irritated skin\n- Adequate hydration is essential for skin health in elderly clients\n- Cold water immersion would worsen dry skin conditions\n- Alcohol and excessive soap use would further dry and irritate the skin"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T02:34:10Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair with key points for xerosis management in elderly",
+    "category": "Health Promotion and Maintenance",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

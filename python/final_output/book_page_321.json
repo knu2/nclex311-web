@@ -1,0 +1,32 @@
+{
+  "book_page": 321,
+  "pdf_page": 161,
+  "content": {
+    "main_concept": "Perineal Hematoma/Postpartum Hematoma",
+    "key_points": "**CONCEPT:** Pain in the perineal area during postpartum period indicates perineal hematoma.\\n\\n**Manifestations of Perineal Hematoma (CAPS):**\\n\\n- **C**omplaints of pressure and pain\\n- **A**bsence of lochial flow\\n- **P**ossible decrease in blood pressure\\n- **S**kin that is discolored and painful to touch (first sign)\\n\\n**Key clinical finding:**\\n- **Severe pain is the hallmark symptom** of perineal hematoma\\n- The hematoma causes pressure in the perineal area resulting in severe perineal pain\\n- Pain is often disproportionate to visible findings",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following assessment findings in the perineal area of a postpartum increases the suspicion of perineal hematoma?",
+        "options": [
+          "1. Edema",
+          "2. Redness",
+          "3. Severe pain",
+          "4. Warmth"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nThe hematoma causes pressure in the perineal area resulting in severe perineal pain.\\n\\n**Key principle:** Pain in the perineal area during postpartum period indicates perineal hematoma. Severe pain is the hallmark symptom and often the first indication of this complication.\\n\\n**CAPS Assessment for Perineal Hematoma:**\\n- **C**omplaints of pressure and pain\\n- **A**bsence of lochial flow\\n- **P**ossible decrease in blood pressure\\n- **S**kin that is discolored and painful to touch (first sign)\\n\\n**Clinical significance:** Early recognition of severe perineal pain allows for prompt intervention before complications develop."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T13:30:56Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right page content from PDF page 161, complete concept with question and CAPS mnemonic for assessment",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "book_page": 353,
+  "pdf_page": 177,
+  "content": {
+    "main_concept": "Celiac Disease - Gluten-Free Diet Management and Food Restrictions",
+    "key_points": "**Celiac's Disease Overview:**\\n\\n- **Definition**: Celiac's disease is characterized by permanent inability to tolerate dietary gluten in the small intestines\\n- **Pathophysiology**: Genetic disease involving malabsorption of many nutrients resulting from pathologic changes in the small intestinal mucosa induced by ingestion of gluten\\n- **Diagnostic finding**: Small bowel biopsy indicates abnormal mucosa\\n\\n**Lifetime Avoidance Required:**\\n- **B** - arley\\n- **R** - ye\\n- **W** - heat\\n- **(BRW = Gluten-containing grains)**\\n\\n**Foods Which Are Allowed:**\\n- **Corn** cereals\\n- **Soybeans**\\n- **Rice** cake\\n- **Corn flakes** (gluten-free)\\n- **Oatmeal** (can be given to clients with Celiac's disease)\\n\\n**Clinical Management:**\\n- If the client attends a party, instruct the mother to prepare a homemade cake for the child to bring to the party since commercially prepared cakes are made of wheat\\n- Refer the parents to a geneticist",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following foods are allowed for a client with Celiac's disease?\\n\\n**Select all that apply.**",
+        "options": [
+          "1. Cereals",
+          "2. Oatmeal", 
+          "3. Rice cake",
+          "4. Vanilla cake",
+          "5. Soybeans",
+          "6. Corn flakes",
+          "7. Wheat bread"
+        ],
+        "correct_answer": "1, 2, 3, 5, 6",
+        "rationale": "**RATIONALE**\\n\\nCeliac's disease is a genetic disease involving malabsorption of many nutrients resulting from pathologic changes in the small intestinal mucosa induced by ingestion of gluten. Foods that are allowed: corn, cereals, soybeans and rice.\\n\\n**Foods ALLOWED for Celiac's Disease:**\\n- **1. Cereals** (✓) - Corn cereals are gluten-free\\n- **2. Oatmeal** (✓) - Oats can be given to clients with Celiac's disease\\n- **3. Rice cake** (✓) - Rice is naturally gluten-free\\n- **5. Soybeans** (✓) - Legumes are gluten-free\\n- **6. Corn flakes** (✓) - Made from corn, which is gluten-free\\n\\n**Foods to AVOID (contain gluten):**\\n- **4. Vanilla cake** (✗) - Typically made with wheat flour\\n- **7. Wheat bread** (✗) - Contains wheat, which has gluten\\n\\n**Remember BRW - Must Avoid:**\\n- **B** - arley\\n- **R** - ye  \\n- **W** - heat\\n\\n**Clinical Teaching:**\\n- Lifetime gluten-free diet required\\n- Homemade foods preferred over commercial products\\n- Always check ingredients for hidden gluten sources\\n- Genetic counseling recommended for families"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T14:13:55Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete content extracted from right side of PDF page 177. SATA question about foods allowed in Celiac disease. Key concept: lifetime avoidance of BRW (Barley, Rye, Wheat) grains containing gluten.",
+    "category": "Basic Care and Comfort",
+    "reference": "Gapuz, Ray, The ABC's of Passing Foreign Nursing Exams. Philippines, Gapuz Publications"
+  }
+}

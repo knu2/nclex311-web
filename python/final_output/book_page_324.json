@@ -1,0 +1,32 @@
+{
+  "book_page": 324,
+  "pdf_page": 163,
+  "content": {
+    "main_concept": "Newborn Weight Loss",
+    "key_points": "**Weight Loss Concept:**\\n\\nWeight loss of 5% to 10% of the birth weight is normal in the first two weeks of life.\\n\\n**Normal characteristics of the newborn:**\\n\\n**ABC Mnemonic:**\\n\\n- **A** – pnea of less than 20 seconds\\n- **B** – reathing that is abdominal and irregular\\n- **C** – yanosis of the distal extremities (acrocyanosis)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following assessment findings is considered normal?",
+        "options": [
+          "1. 25 seconds of apnea",
+          "2. Pallor",
+          "3. Jaundice in the first 24 hours",
+          "4. Weight of 2700 grams in the second week down from 3000 grams at birth"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nA change in weight of 3000 grams at birth to 2700 grams on the second week is still normal. The weight loss of 300 grams falls within the acceptable range of weight loss for neonates, which is 5% to 10% of the birth weight."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T02:06:38Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete newborn weight loss concept from left side of PDF page 163. Weight loss of 5% to 10% of birth weight is normal in first two weeks. Includes ABC mnemonic for normal newborn characteristics.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

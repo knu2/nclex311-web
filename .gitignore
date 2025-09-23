@@ -56,17 +56,19 @@ python/__pycache__/
 # PDF files (potentially sensitive content)
 shared/pdfs/*.pdf
 
-# Extracted content and working directories
-*.png
-*.jpg
-*.jpeg
+# Extracted content and working directories (temporary processing)
+# Ignore images in temporary processing folders but not in final_output
+python/extracted_content*/*.png
+python/extracted_content*/*.jpg
+python/extracted_content*/*.jpeg
+python/extracted_images/*.png
+python/extracted_images/*.jpg
+python/extracted_images/*.jpeg
 python/extracted_content*/
 python/extracted_images/
-python/final_output/
+# python/final_output/ - now tracked for final results
 
 # Python extraction results - temporary folders
-python/extracted_content*/
-python/extracted_images*/
 python/extracted_content_page*/
 python/extracted_images_page*/
 python/extraction_results.json

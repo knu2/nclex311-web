@@ -1,0 +1,32 @@
+{
+  "book_page": 318,
+  "pdf_page": 160,
+  "content": {
+    "main_concept": "Amniotic Fluid Embolism",
+    "key_points": "**CONCEPT:** A common sign of amniotic fluid embolism is dyspnea.\\n\\n**Definition:**\\n- **Amniotic fluid embolism is a condition where in amniotic fluid escapes into maternal circulation through the placental site into the pulmonary arterioles**\\n\\n**Clinical manifestations:**\\n- **Dyspnea is the initial manifestation**\\n- Sudden dyspnea with chest pain after delivery\\n\\n**Nursing interventions:**\\n- **Initiate oxygen therapy as ordered**\\n- **Maintain and monitor fluids**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "If a client is diagnosed to be suffering from amniotic fluid embolism, which system would the nurse direct his assessment?",
+        "options": [
+          "1. Nervous",
+          "2. Cardiovascular",
+          "3. Respiratory",
+          "4. Gastrointestinal"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nSudden dyspnea with chest pain after delivery is indicative of amniotic fluid embolism.\\n\\n**Key principle:** Dyspnea is the initial manifestation of amniotic fluid embolism. The condition occurs when amniotic fluid escapes into maternal circulation through the placental site into the pulmonary arterioles, causing respiratory compromise as the primary symptom.\\n\\n**Priority assessment:** Focus on respiratory system due to pulmonary involvement and dyspnea as the cardinal sign."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T13:21:36Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page content from PDF page 160, complete concept with question and rationale",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}
