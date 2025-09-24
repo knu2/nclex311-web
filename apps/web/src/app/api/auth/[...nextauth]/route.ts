@@ -10,7 +10,6 @@ import { supabase } from '@/lib/database';
  */
 export const {
   handlers: { GET, POST },
-  auth,
 } = NextAuth({
   providers: [
     Credentials({
@@ -24,6 +23,9 @@ export const {
           return null;
         }
 
+        const email = credentials.email as string;
+        const password = credentials.password as string;
+
         try {
           // Cast to untyped client for flexible selects (typed schema may diverge)
           const client =
@@ -31,7 +33,7 @@ export const {
           const { data, error } = await client
             .from('users')
             .select('id, email, password_hash')
-            .eq('email', credentials.email)
+            .eq('email', email)
             .limit(1)
             .maybeSingle();
 
@@ -39,10 +41,7 @@ export const {
             return null;
           }
 
-          const isValid = await bcrypt.compare(
-            credentials.password,
-            data.password_hash
-          );
+          const isValid = await bcrypt.compare(password, data.password_hash);
           if (!isValid) {
             return null;
           }
@@ -65,8 +64,8 @@ export const {
   callbacks: {
     async session({ session, token }) {
       if (token && session.user && token.sub) {
-        // @ts-expect-error augmenting user type for id
-        session.user.id = token.sub;
+        // Add user id to session from token
+        (session.user as { id?: string }).id = token.sub;
       }
       return session;
     },

@@ -95,13 +95,11 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
       } catch (error) {
         if (error instanceof z.ZodError) {
           const fieldErrors: Record<string, string> = {};
-          if (error.errors && Array.isArray(error.errors)) {
-            error.errors.forEach(err => {
-              if (err.path && err.path[0]) {
-                fieldErrors[err.path[0] as string] = err.message;
-              }
-            });
-          }
+          error.issues.forEach(issue => {
+            if (issue.path && issue.path[0]) {
+              fieldErrors[issue.path[0] as string] = issue.message;
+            }
+          });
           setErrors(fieldErrors);
         } else {
           setSubmitError('An unexpected error occurred. Please try again.');
