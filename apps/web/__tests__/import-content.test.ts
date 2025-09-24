@@ -6,30 +6,35 @@ import { jest } from '@jest/globals';
 
 // Mock dependencies
 jest.unstable_mockModule('@supabase/supabase-js', () => ({
-  createClient: jest.fn(() => ({
-    from: jest.fn(() => ({
-      insert: jest.fn(() => ({
+  createClient: jest.fn(
+    (
+      url: string = 'https://mock-url.supabase.co',
+      key: string = 'mock-key'
+    ) => ({
+      from: jest.fn(() => ({
+        insert: jest.fn(() => ({
+          select: jest.fn(() => ({
+            single: jest.fn(() => ({
+              data: { id: 'mock-id' },
+              error: null,
+            })),
+          })),
+        })),
         select: jest.fn(() => ({
-          single: jest.fn(() => ({
-            data: { id: 'mock-id' },
+          eq: jest.fn(() => ({
+            single: jest.fn(() => ({
+              data: null,
+              error: null,
+            })),
+          })),
+          limit: jest.fn(() => ({
+            data: [],
             error: null,
           })),
         })),
       })),
-      select: jest.fn(() => ({
-        eq: jest.fn(() => ({
-          single: jest.fn(() => ({
-            data: null,
-            error: null,
-          })),
-        })),
-        limit: jest.fn(() => ({
-          data: [],
-          error: null,
-        })),
-      })),
-    })),
-  })),
+    })
+  ),
 }));
 
 jest.unstable_mockModule('@vercel/blob', () => ({
@@ -70,7 +75,10 @@ describe('ContentImporter', () => {
     const blobModule = await import('@vercel/blob');
     const fsModule = await import('fs/promises');
 
-    mockSupabase = (supabaseModule.createClient as jest.Mock)();
+    mockSupabase = (supabaseModule.createClient as jest.Mock)(
+      'https://mock-url.supabase.co',
+      'mock-key'
+    );
     mockPut = blobModule.put as jest.Mock;
     mockReadFile = fsModule.readFile as jest.Mock;
     mockReaddir = fsModule.readdir as jest.Mock;

@@ -1,4 +1,5 @@
 import type { User, Environment } from '@nclex311/types';
+import Link from 'next/link';
 
 export default function Home() {
   // Test workspace dependency resolution
@@ -55,6 +56,15 @@ export default function Home() {
                 <li>• Database integration</li>
               </ul>
             </div>
+          </div>
+
+          <div className="mt-6">
+            <Link
+              href="/auth-demo"
+              className="inline-block rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              🔐 Try Authentication Demo
+            </Link>
           </div>
         </div>
       </main>

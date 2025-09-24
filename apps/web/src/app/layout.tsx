@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import SessionProvider from '@/components/SessionProvider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -13,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'NCLEX 311 - NCLEX Practice Test Platform',
+  title: 'NCLEX 311 - Practice & Study',
   description:
-    'Comprehensive NCLEX practice test platform for nursing students',
+    'Interactive NCLEX preparation with practice questions and comprehensive study materials',
 };
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
