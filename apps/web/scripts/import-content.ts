@@ -342,16 +342,27 @@ class ContentImporter {
     // Type guard for unknown data
     if (!data || typeof data !== 'object') return false;
     const typedData = data as Record<string, unknown>;
+
+    // Check required fields step by step
+    const hasBookPage = typeof typedData.book_page === 'number';
+    const hasContent = !!typedData.content;
+    const content = typedData.content as Record<string, unknown>;
+    const hasMainConcept =
+      hasContent && typeof content.main_concept === 'string';
+    const hasQuestions = hasContent && Array.isArray(content.questions);
+    const hasImages = Array.isArray(typedData.images);
+    const hasMetadata = !!typedData.extraction_metadata;
+    const metadata = typedData.extraction_metadata as Record<string, unknown>;
+    const hasCategory = hasMetadata && typeof metadata.category === 'string';
+
     return (
-      typeof typedData.book_page === 'number' &&
-      typedData.content &&
-      typeof (typedData.content as Record<string, unknown>).main_concept ===
-        'string' &&
-      Array.isArray((typedData.content as Record<string, unknown>).questions) &&
-      Array.isArray(typedData.images) && // Images at root level
-      typedData.extraction_metadata &&
-      typeof (typedData.extraction_metadata as Record<string, unknown>)
-        .category === 'string'
+      hasBookPage &&
+      hasContent &&
+      hasMainConcept &&
+      hasQuestions &&
+      hasImages &&
+      hasMetadata &&
+      hasCategory
     );
   }
 
