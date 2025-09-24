@@ -201,7 +201,7 @@ export interface Chapter {
 **Key Attributes:**
 - `id`: `string` - Unique identifier for the concept.
 - `title`: `string` - The title of the concept.
-- `slug`: `string` - A unique, URL-friendly identifier derived from the title (e.g., "what-is-nursing-ethics").
+- `slug`: `string` - A globally unique, URL-friendly identifier with intelligent collision resolution (see Section 4.10 for details).
 - `content`: `string` - The main body of the educational text for the concept.
 - `conceptNumber`: `number` - A number to order the concept within its parent chapter.
 - `chapterId`: `string` - A foreign key linking the concept to its parent `Chapter`.
@@ -221,16 +221,111 @@ export interface Concept {
 #### Relationships
 - Belongs to one **Chapter**
 - Has many **Questions**
+- Has many **Images** (optional)
 - Is associated with many **Users** through **Bookmarks**
 - Is associated with many **Users** through **CompletedConcepts**
 - Has many **Comments**
 
 ---
 
+### 4.10. Slug Uniqueness Architecture
+
+**Purpose:** Ensures all concept slugs are globally unique while maintaining readability and avoiding URL conflicts during content import.
+
+**Problem Statement:** During content import from NCLEX materials, identical concept titles appear multiple times both within and across chapters (e.g., "Triage" appears twice in "Management of Care", "Heart Failure" appears twice in "Physiological Adaptation").
+
+**Solution: Enhanced Sequential Numbering Strategy**
+
+#### Core Algorithm
+1. **Base Slug Generation**: Generate clean slug from concept title
+2. **Contextual Differentiation**: Attempt intelligent disambiguation using content analysis
+3. **Sequential Numbering**: Fall back to numbered suffixes for true duplicates
+4. **Global Uniqueness**: Enforce uniqueness across all concepts regardless of chapter
+
+#### Implementation Details
+```typescript
+interface ConceptContext {
+  title: string;
+  chapterTitle: string;
+  bookPage: number;
+  keyPoints: string;
+  category: string;
+}
+
+class SmartSlugGenerator {
+  async generateUniqueConceptSlug(context: ConceptContext): Promise<string> {
+    // 1. Generate base slug
+    const baseSlug = this.generateBaseSlug(context.title);
+    
+    // 2. Check database for conflicts
+    const conflicts = await this.checkSlugConflicts(baseSlug);
+    
+    if (conflicts.length === 0) {
+      return baseSlug; // Clean slug available
+    }
+    
+    // 3. Try contextual differentiation
+    const contextualSlug = this.tryContextualDifferentiation(context, conflicts);
+    if (contextualSlug) {
+      return contextualSlug;
+    }
+    
+    // 4. Fall back to sequential numbering
+    return this.generateSequentialSlug(baseSlug, conflicts);
+  }
+  
+  private tryContextualDifferentiation(context: ConceptContext, existing: string[]): string | null {
+    // Extract meaningful differentiators from content:
+    // - Medical specialties: pediatric, adult, geriatric
+    // - Body systems: cardiac, pulmonary, renal
+    // - Severity: acute, chronic, severe, mild
+    // - Treatment context: medication, surgery, assessment
+    // - Page context: page-{number}
+    
+    const differentiators = this.extractKeyDifferentiators(context.keyPoints);
+    
+    for (const diff of differentiators) {
+      const candidateSlug = `${this.generateBaseSlug(context.title)}-${diff}`;
+      if (!existing.includes(candidateSlug)) {
+        return candidateSlug;
+      }
+    }
+    
+    return null;
+  }
+}
+```
+
+#### URL Structure Examples
+```
+/concepts/triage                    (first occurrence)
+/concepts/triage-emergency          (contextual differentiation)
+/concepts/triage-2                  (sequential fallback)
+/concepts/heart-failure             (first occurrence)
+/concepts/heart-failure-acute       (contextual differentiation)
+/concepts/heart-failure-2           (sequential fallback)
+```
+
+#### Database Constraints
+- **Global Uniqueness**: `UNIQUE (slug)` constraint on concepts table
+- **No Composite Keys**: Slugs are globally unique, not scoped to chapters
+- **Import Safety**: Database-backed conflict detection prevents violations
+
+#### Benefits
+1. **Clean URLs**: First occurrence gets clean, readable slug
+2. **Intelligent Disambiguation**: Context-aware differentiation when possible
+3. **Reliable Fallback**: Sequential numbering ensures no failures
+4. **SEO Friendly**: Meaningful URLs for most content
+5. **Future Proof**: Handles unlimited content expansion
+
+**Implementation Reference:** See [Content Import System Architecture](./architecture/content-import-system.md) for complete technical specifications, database integration patterns, and testing strategies.
+
+---
+
 
 ### 4.4. Question
 
-**Purpose:** Represents a single quiz question associated with a `Concept`. This model is designed to be flexible to support the various question formats required by the PRD.
+**Purpose:** Represents a single quiz question associated with a `Concept`. This model is designed to be flexible to support the various question formats required by the PRD, including sequencing and prioritization questions.
 
 **Key Attributes:**
 - `id`: `string` - Unique identifier for the question.
@@ -246,6 +341,7 @@ export enum QuestionType {
   SELECT_ALL_THAT_APPLY = 'SELECT_ALL_THAT_APPLY', // Multiple correct answers
   FILL_IN_THE_BLANK = 'FILL_IN_THE_BLANK',
   MATRIX_GRID = 'MATRIX_GRID',
+  PRIORITIZATION = 'PRIORITIZATION', // Drag-and-drop sequencing/ordering questions
 }
 
 export interface Question {

@@ -20,6 +20,10 @@ import { join, resolve, extname } from 'path';
 import { put } from '@vercel/blob';
 import sharp from 'sharp';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import {
+  SmartSlugGenerator,
+  ConceptContext,
+} from '../src/lib/smart-slug-generator.js';
 
 // Database types for schema validation
 interface Database {
@@ -124,7 +128,12 @@ interface BookPageData {
 
 interface BookQuestion {
   id: number;
-  type: 'SATA' | 'multiple_choice' | 'fill_in_blank' | 'matrix_grid';
+  type:
+    | 'SATA'
+    | 'multiple_choice'
+    | 'fill_in_blank'
+    | 'matrix_grid'
+    | 'prioritization';
   question_text: string;
   options: string[];
   correct_answer: string | MatrixCorrectAnswer;
@@ -162,6 +171,7 @@ class ContentImporter {
   private imagesDir: string;
   private dryRun: boolean;
   private chapterMap: Map<string, string> = new Map(); // category -> chapter_id
+  private slugGenerator: SmartSlugGenerator | null = null;
 
   constructor(dataDir: string, imagesDir: string, dryRun: boolean = false) {
     this.dataDir = resolve(dataDir);
@@ -177,6 +187,11 @@ class ContentImporter {
       errors: [],
       startTime: new Date(),
     };
+
+    // Initialize SmartSlugGenerator if not in dry run mode
+    if (!this.dryRun && supabase) {
+      this.slugGenerator = new SmartSlugGenerator(supabase);
+    }
   }
 
   /**
@@ -206,7 +221,7 @@ class ContentImporter {
       }
 
       this.displayFinalReport();
-    } catch {
+    } catch (error) {
       this.handleError('Import failed', error);
       throw error;
     }
@@ -224,7 +239,7 @@ class ContentImporter {
       if (!dataStat.isDirectory()) {
         throw new Error(`Data path is not a directory: ${this.dataDir}`);
       }
-    } catch {
+    } catch (_error) {
       throw new Error(`Data directory not accessible: ${this.dataDir}`);
     }
 
@@ -234,7 +249,7 @@ class ContentImporter {
       if (!imagesStat.isDirectory()) {
         throw new Error(`Images path is not a directory: ${this.imagesDir}`);
       }
-    } catch {
+    } catch (_error) {
       throw new Error(`Images directory not accessible: ${this.imagesDir}`);
     }
 
@@ -337,7 +352,7 @@ class ContentImporter {
 
       await this.importPageContent(pageData);
       this.progress.pagesProcessed++;
-    } catch {
+    } catch (error) {
       this.handleError(`Processing file ${filePath}`, error);
     }
   }
@@ -405,17 +420,35 @@ class ContentImporter {
     chapterId: string
   ): Promise<{ id: string }> {
     const conceptTitle = pageData.content.main_concept;
-    const conceptSlug = this.generateSlug(conceptTitle);
     const conceptContent = `${pageData.content.main_concept}\n\n${pageData.content.key_points}`;
+
+    // Get chapter info for context
+    const chapterInfo = CHAPTERS.find(
+      ch => this.chapterMap.get(ch.title) === chapterId
+    );
+    const chapterTitle = chapterInfo?.title || 'Unknown Chapter';
 
     console.log(`  💡 Creating concept: ${conceptTitle}`);
 
-    if (!this.dryRun) {
+    if (!this.dryRun && this.slugGenerator) {
+      // Use SmartSlugGenerator for intelligent slug creation
+      const context: ConceptContext = {
+        title: conceptTitle,
+        chapterTitle: chapterTitle,
+        bookPage: pageData.book_page,
+        keyPoints: pageData.content.key_points,
+        category: pageData.extraction_metadata.category,
+      };
+
+      const slugResult =
+        await this.slugGenerator.generateUniqueConceptSlug(context);
+      this.slugGenerator.logSlugDecision(slugResult, context);
+
       const { data: conceptData, error: conceptError } = await supabase
         .from('concepts')
         .insert({
           title: conceptTitle,
-          slug: conceptSlug,
+          slug: slugResult.slug,
           content: conceptContent,
           concept_number: pageData.book_page, // Use book page as concept number
           chapter_id: chapterId,
@@ -430,6 +463,11 @@ class ContentImporter {
       this.progress.conceptsProcessed++;
       return conceptData;
     } else {
+      // Fallback for dry run or when slug generator not available
+      const conceptSlug = this.generateSlug(conceptTitle);
+      console.log(
+        `    🧪 [DRY RUN] Would create concept with slug: ${conceptSlug}`
+      );
       this.progress.conceptsProcessed++;
       return { id: `mock-concept-${pageData.book_page}` };
     }
@@ -449,6 +487,7 @@ class ContentImporter {
       multiple_choice: 'MULTIPLE_CHOICE',
       fill_in_blank: 'FILL_IN_THE_BLANK',
       matrix_grid: 'MATRIX_GRID',
+      prioritization: 'PRIORITIZATION',
     };
 
     const mappedType = questionTypeMap[question.type] || 'MULTIPLE_CHOICE';
@@ -511,10 +550,17 @@ class ContentImporter {
 
     // Handle different correct answer formats
     if (typeof question.correct_answer === 'string') {
-      // Standard format: "1,3" or "4"
-      correctAnswers = question.correct_answer
-        .split(',')
-        .map(a => parseInt(a.trim()));
+      if (question.type === 'prioritization') {
+        // PRIORITIZATION format: "2, 4, 3, 1" represents the correct sequence
+        // For prioritization questions, we store the sequence as-is in a single option
+        // The correct answer string represents the proper order of items
+        correctAnswers = [1]; // Only one "correct" option containing the sequence
+      } else {
+        // Standard format: "1,3" or "4"
+        correctAnswers = question.correct_answer
+          .split(',')
+          .map(a => parseInt(a.trim()));
+      }
     } else if (
       typeof question.correct_answer === 'object' &&
       question.type === 'matrix_grid'
@@ -529,21 +575,39 @@ class ContentImporter {
       }
     }
 
-    for (let i = 0; i < question.options.length; i++) {
-      const optionText = question.options[i];
-      const isCorrect = correctAnswers.includes(i + 1);
-
+    if (question.type === 'prioritization') {
+      // For prioritization questions, create a single option with the correct sequence
       const { error } = await supabase.from('options').insert({
-        text: optionText,
-        is_correct: isCorrect,
+        text: question.correct_answer as string, // Store the sequence directly
+        is_correct: true,
         question_id: questionId,
       });
 
       if (error) {
-        throw new Error(`Failed to insert option: ${error.message}`);
+        throw new Error(
+          `Failed to insert prioritization option: ${error.message}`
+        );
       }
 
       this.progress.optionsProcessed++;
+    } else {
+      // Handle other question types normally
+      for (let i = 0; i < question.options.length; i++) {
+        const optionText = question.options[i];
+        const isCorrect = correctAnswers.includes(i + 1);
+
+        const { error } = await supabase.from('options').insert({
+          text: optionText,
+          is_correct: isCorrect,
+          question_id: questionId,
+        });
+
+        if (error) {
+          throw new Error(`Failed to insert option: ${error.message}`);
+        }
+
+        this.progress.optionsProcessed++;
+      }
     }
   }
 
@@ -570,7 +634,7 @@ class ContentImporter {
       // Check if image file exists
       try {
         await stat(imagePath);
-      } catch {
+      } catch (_error) {
         console.warn(`⚠️  Image file not found: ${imagePath}, skipping...`);
         return;
       }
@@ -586,7 +650,7 @@ class ContentImporter {
         const metadata = await sharp(imageBuffer).metadata();
         width = metadata.width || 800;
         height = metadata.height || 600;
-      } catch {
+      } catch (_error) {
         console.warn(
           `⚠️  Could not extract image dimensions for ${image.filename}, using defaults`
         );
@@ -619,7 +683,7 @@ class ContentImporter {
 
       this.progress.imagesProcessed++;
       console.log(`      ✅ Image uploaded: ${blob.url}`);
-    } catch {
+    } catch (error) {
       this.handleError(`Importing image ${image.filename}`, error);
     }
   }
@@ -728,7 +792,7 @@ program
 
       await importer.import();
       process.exit(0);
-    } catch {
+    } catch (error) {
       console.error(
         '💥 Import failed:',
         error instanceof Error ? error.message : error

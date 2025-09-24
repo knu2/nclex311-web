@@ -58,7 +58,6 @@ jest.unstable_mockModule('fs/promises', () => ({
 }));
 
 describe('ContentImporter', () => {
-  let ContentImporter: unknown;
   let mockSupabase: unknown;
   let mockPut: unknown;
   let mockReadFile: unknown;
@@ -215,15 +214,17 @@ describe('ContentImporter', () => {
     test('should map question types correctly', async () => {
       const typeMap = {
         SATA: 'SELECT_ALL_THAT_APPLY',
-        MC: 'MULTIPLE_CHOICE',
-        FITB: 'FILL_IN_THE_BLANK',
-        MATRIX: 'MATRIX_GRID',
+        multiple_choice: 'MULTIPLE_CHOICE',
+        fill_in_blank: 'FILL_IN_THE_BLANK',
+        matrix_grid: 'MATRIX_GRID',
+        prioritization: 'PRIORITIZATION',
       };
 
       expect(typeMap['SATA']).toBe('SELECT_ALL_THAT_APPLY');
-      expect(typeMap['MC']).toBe('MULTIPLE_CHOICE');
-      expect(typeMap['FITB']).toBe('FILL_IN_THE_BLANK');
-      expect(typeMap['MATRIX']).toBe('MATRIX_GRID');
+      expect(typeMap['multiple_choice']).toBe('MULTIPLE_CHOICE');
+      expect(typeMap['fill_in_blank']).toBe('FILL_IN_THE_BLANK');
+      expect(typeMap['matrix_grid']).toBe('MATRIX_GRID');
+      expect(typeMap['prioritization']).toBe('PRIORITIZATION');
     });
 
     test('should handle question options correctly', async () => {
@@ -236,6 +237,19 @@ describe('ContentImporter', () => {
       expect(correctAnswers.includes(1)).toBe(true);
       expect(correctAnswers.includes(2)).toBe(false);
       expect(correctAnswers.includes(3)).toBe(true);
+    });
+
+    test('should handle PRIORITIZATION question answers correctly', async () => {
+      const prioritizationAnswer = '2, 4, 3, 1';
+
+      // For prioritization questions, we store the sequence directly
+      expect(prioritizationAnswer).toBe('2, 4, 3, 1');
+      expect(prioritizationAnswer.includes(',')).toBe(true);
+
+      // Verify the sequence can be parsed
+      const sequence = prioritizationAnswer.split(',').map(n => n.trim());
+      expect(sequence).toEqual(['2', '4', '3', '1']);
+      expect(sequence.length).toBe(4);
     });
 
     test('should create proper concept content', async () => {

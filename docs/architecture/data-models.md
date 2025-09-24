@@ -68,10 +68,21 @@ export interface Chapter {
 **Key Attributes:**
 - `id`: `string` - Unique identifier for the concept.
 - `title`: `string` - The title of the concept.
-- `slug`: `string` - A unique, URL-friendly identifier derived from the title (e.g., "what-is-nursing-ethics").
+- `slug`: `string` - A globally unique, URL-friendly identifier with intelligent collision resolution. Uses contextual differentiation and sequential numbering to handle duplicate concept titles during import.
 - `content`: `string` - The main body of the educational text for the concept.
 - `conceptNumber`: `number` - A number to order the concept within its parent chapter.
 - `chapterId`: `string` - A foreign key linking the concept to its parent `Chapter`.
+
+**Slug Generation Strategy:**
+- **Base Generation**: Clean slug from title (e.g., "triage", "heart-failure")
+- **Contextual Differentiation**: Extract context from content when collisions occur (e.g., "triage-emergency", "heart-failure-acute")
+- **Sequential Fallback**: Append numbers for true duplicates (e.g., "triage-2", "heart-failure-2")
+- **Global Uniqueness**: Enforced across all concepts regardless of chapter
+
+**Common Collision Examples:**
+- "Triage" → `triage`, `triage-emergency`, `triage-2`
+- "Heart Failure" → `heart-failure`, `heart-failure-acute`, `heart-failure-2`
+- "Guillain-Barre Syndrome" → `guillain-barre-syndrome`, `guillain-barre-syndrome-2`
 
 ### TypeScript Interface
 ```typescript
@@ -113,6 +124,7 @@ export enum QuestionType {
   SELECT_ALL_THAT_APPLY = 'SELECT_ALL_THAT_APPLY', // Multiple correct answers
   FILL_IN_THE_BLANK = 'FILL_IN_THE_BLANK',
   MATRIX_GRID = 'MATRIX_GRID',
+  PRIORITIZATION = 'PRIORITIZATION', // Drag-and-drop sequencing/ordering questions
 }
 
 export interface Question {
