@@ -1,0 +1,32 @@
+{
+  "book_page": 245,
+  "pdf_page": 123,
+  "content": {
+    "main_concept": "Nursing Care of Clients with Cervical Radium Implants",
+    "key_points": "**Nursing Care of Clients with Radium Implants**\\n\\n**CONCEPT:** Complete bed rest is indicated for a client with cervical radium implant to prevent dislodge.\\n\\n**RADIO Mnemonic:**\\n- **R** - estrict visitors\\n- **A** - void direct contact around the implant site. Maintain proper position when providing nursing care depending on the sources of radiation\\n- **D** - o not touch a dislodged radiation source with bare hands, instead, use long handled forceps\\n- **I** - mplement strict isolation and radiation precautions\\n- **O** - rganize nursing tasks to minimize exposure to the client (30 minutes per shift)\\n- **O** - bserve for signs of complications: nausea, vomiting, bleeding, infection\\n\\n**Note the following:**\\n- pregnant women or individuals below 18 years old should not be allowed to go inside the room\\n- visitors should stand 6 feet away from the client",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following instructions is NOT indicated for a client with cervical cancer with radium implant?",
+        "options": [
+          "1. Complete bed rest",
+          "2. Brief periods of ambulation",
+          "3. Assuming a low-Fowler's position",
+          "4. Ensuring bladder emptying"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nCervical cancer clients with radium implant require complete bed rest. Allowing the client brief periods of ambulation will potentially cause dislodge of the implanted radium."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T02:34:41Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right book page covering cervical radium implant nursing care with RADIO mnemonic",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

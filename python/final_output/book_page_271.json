@@ -1,0 +1,32 @@
+{
+  "book_page": 271,
+  "pdf_page": 136,
+  "content": {
+    "main_concept": "Prevention of Complications",
+    "key_points": "Appropriate interventions prevent complications.\n\n- To prevent sickle cell crisis, the priority intervention is to promote hydration.\n- To prevent dyspnea, a client with myocardial infarction should be given frequent rest periods.\n- To prevent lead poisoning, children who are living in houses built in the 60’s should be assessed and the parents referred to housing authorities.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Who among the following clients is at greatest risk for complications?",
+        "options": [
+          "1. Mrs. Jones with history of sickle cell anemia, who frequently drinks water",
+          "2. Mr. Tad with history of M.I., who takes time to sit in between his lectures",
+          "3. Nemia, who lives in a neighborhood of houses built in the 70’s",
+          "4. Mimi, 15 weeks AOG having pica with ice chips"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\n\nPica with ice chips in a pregnant client increases the risk for physiologic anemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:12:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the right side of PDF page 136.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

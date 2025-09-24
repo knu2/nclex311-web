@@ -1,0 +1,32 @@
+{
+  "book_page": 186,
+  "pdf_page": 94,
+  "content": {
+    "main_concept": "Intermittent Claudication",
+    "key_points": "**Intermittent claudication** refers to calf pain that is worsened by activity and relieved by REST.\\n\\n**Measures to relieve intermittent claudication include:**\\n- Smoking cessation\\n- Walking and range of motion exercises\\n- Avoidance of leg crossing while sitting\\n\\n**Report: BRIN**\\n- **B**ruises and blisters\\n- **R**edness and swelling\\n- **I**tching\\n- **N**ew areas of ulceration",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "How should the nurse assess for intermittent claudication?",
+        "options": [
+          "1. Ask the client to stand up and close the eyes.",
+          "2. Ask the client to smoke a cigarette and then cough.",
+          "3. Ask the client to walk until he complains of pain and then allow him to rest.",
+          "4. Ask the client to flex and extend the lower extremity."
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nTo assess for the presence of intermittent claudication, the nurse should instruct the client to walk until he complains of pain and then allow him to rest and assess if the rest relieved the pain."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:17:39Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 94. Clear multiple choice question with 4 options and definitive rationale.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

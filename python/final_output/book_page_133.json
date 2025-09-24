@@ -1,0 +1,32 @@
+{
+  "book_page": 133,
+  "pdf_page": 67,
+  "content": {
+    "main_concept": "Methimazole (Tapazole) - Effectiveness Evaluation in Hyperthyroidism",
+    "key_points": "**Methimazole (Tapazole) blocks autonomic nervous system reaction.**\\n\\n**Administration:**\\n- **Take methimazole (Tapazole) around the clock** at 8-hour intervals\\n\\n**Common side effects include:**\\n- **Dizziness**\\n- **Weakness**\\n- **Drowsiness**\\n- **Vertigo**\\n- **Vomiting**\\n- **Anorexia**\\n- **Rash**\\n- **Itching**\\n\\n**Report to the physician:**\\n- **Fever**\\n- **Sore throat**\\n- **Unusual bleeding**\\n- **Bruising**\\n- **Headache**\\n- **Body malaise**\\n\\n**Key evaluation focus:** Decreased pulse rate indicates blocking of autonomic nervous system response",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following questions should the nurse ask to evaluate the effectiveness of methimazole (Tapazole) therapy in a client with hyperthyroidism?",
+        "options": [
+          "1. \"Have you noticed any improvement in your vision?\"",
+          "2. \"Has your pulse rate decreased?\"",
+          "3. \"Do you eat better now?\"",
+          "4. \"Do you still have difficulty sleeping?\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nA decrease in the pulse rate indicates blocking of the autonomic nervous system, the expected effect of methimazole (Tapazole).\\n\\nMethimazole works by blocking the sympathetic nervous system response that is heightened in hyperthyroidism. Tachycardia is a hallmark sign of hyperthyroidism, so a decreasing pulse rate is a key indicator that the medication is effectively reducing thyroid hormone effects on the cardiovascular system."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from right side of PDF page 67. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

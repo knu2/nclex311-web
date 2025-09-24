@@ -1,0 +1,33 @@
+
+{
+  "book_page": 254,
+  "pdf_page": 128,
+  "content": {
+    "main_concept": "Guthrie Test",
+    "key_points": "- A positive Guthrie test indicates decreased metabolism of phenylalanine, leading to phenylketonuria.\n- The urine phenylketonuria (PKU) test is normally done after 4 to 6 weeks of age.\n- If the tests are positive, a blood phenylalanine test is performed.\n- Factors that interfere with the results: 1. feeding problems 2. intake of drugs (aspirin, antibiotics, salicylates) 3. prematurity 4. lack of protein intake",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A positive Guthrie capillary blood test reflects which of the following?",
+        "options": [
+          "1. A metabolic disorder",
+          "2. A dietary deficiency",
+          "3. A traumatic injury",
+          "4. A cancerous lesion"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\n\nA positive Guthrie test indicates presence of phenylketonuria, a metabolic disorder."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T04:54:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept content on a single book page.",
+    "category": "Reduction of Risk Potential",
+    "reference": "Pagana, Kathleen Deska and Timothy James Pagana. Mosby’s Diagnostic and Laboratory Test References, Missouri, Mosby-Year Book Inc."
+  }
+}

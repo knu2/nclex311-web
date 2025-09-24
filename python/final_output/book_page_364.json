@@ -1,0 +1,40 @@
+{
+  "book_page": 364,
+  "pdf_page": 183,
+  "content": {
+    "main_concept": "Halo Vest",
+    "key_points": "**CONCEPT: If a client is wearing a halo vest, assess for signs of shoulder stress or pressure ulcer.**\\n\\n**Key Care Instructions:**\\n\\n- Avoid putting powder inside the vest\\n- Turn the client as a unit and do not use the halo vest to lift the client\\n- Assess for signs of shoulder stress or pressure ulcer\\n- To enter the car, move back into the seat with the buttocks first\\n- The wrench for removing the halo-vest should always be taped to the front part of the vest in case of emergency\\n- Do not loosen or adjust the vest. Discuss it with the doctor\\n- Do not allow soap or water to enter the vest\\n- The client can ride a car with the vest but not drive with it\\n- Sponge bath is done daily in a flat position. Showering is not allowed\\n\\n**Complications:**\\n\\nComplications may include migration, loosening or penetration of one or more of the pins, scalp infection, skull fracture, cerebral hemorrhage, paresthesia, pressure sores. Contact the doctor when any of these occurs including when wearing the halo hurts and the vest rubs.\\n\\n**DANGER SIGNALS:**\\n\\n- Sudden neck pain\\n- Clicking sounds at the pin sites\\n- Arm or leg numbness or weakness\\n- Redness and/or swelling around the pins\\n- Excessive difficulty in eating\\n- Open sores under the vest\\n- Fluid drainage at the pin sites\\n- Fever",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "In halo vest traction, skin care should focus on which body part?\\n\\n![Halo Vest Illustration](halo_vest_illustration.png)",
+        "options": [
+          "1. Head",
+          "2. Upper arm", 
+          "3. Neck",
+          "4. Shoulder"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nHalo vest can cause shoulder stress or pressure ulcers."
+      }
+    ]
+  },
+  "images": [
+    {
+      "filename": "halo_vest_illustration.png",
+      "description": "Medical illustration of halo vest traction device showing proper positioning and components",
+      "medical_relevance": "high",
+      "content_type": "clinical_assessment",
+      "context": "Embedded in question text to illustrate halo vest positioning and demonstrate why shoulder care is critical"
+    }
+  ],
+  "extraction_metadata": {
+    "timestamp": "2025-09-23T02:59:25Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left book page from PDF page 183. Complete question-answer pair with comprehensive halo vest care instructions, complications, and danger signals. Image source: Wikimedia Creator: BruceBlaus https://commons.wikimedia.org/wiki/File:Halo_Brace.png",
+    "category": "Basic Care and Comfort",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

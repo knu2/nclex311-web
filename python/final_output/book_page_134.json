@@ -1,0 +1,32 @@
+{
+  "book_page": 134,
+  "pdf_page": 68,
+  "content": {
+    "main_concept": "Vasopressin (Pitressin) - Therapeutic Effect Evaluation in Diabetes Insipidus",
+    "key_points": "**Vasopressin (Pitressin) increases the specific gravity of the urine.**\\n\\n**Mechanism of action:**\\n- **Vasopressin (Pitressin) promotes reabsorption of water**\\n- Helps kidney concentrate urine in diabetes insipidus\\n\\n**Common side effects include:**\\n- **Tremors**\\n- **Sweating**\\n- **Vertigo**\\n- **Vomiting**\\n\\n**Report immediately:**\\n- **Drowsiness**\\n- **Light headedness**\\n- **Headache**\\n- **Coma**\\n- **Convulsions**\\n\\n**Critical warning:** These indicate **WATER INTOXICATION**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client with diabetes insipidus is receiving vasopressin (Pitressin). Which of the following findings indicates that the drug is exerting its therapeutic effect?",
+        "options": [
+          "1. The urine becomes more concentrated.",
+          "2. The urine becomes light yellow.",
+          "3. The urine becomes alkaline.",
+          "4. The urine output increases in amount."
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nAn increase in the specific gravity of the urine indicates the ability of the kidney to concentrate the urine, which is a positive outcome of the use of vasopressin (Pitressin).\\n\\nDiabetes insipidus results from insufficient antidiuretic hormone (ADH), leading to excessive urine production and dilute urine. Vasopressin acts as synthetic ADH, promoting water reabsorption in the kidneys and producing more concentrated urine with higher specific gravity."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from left side of PDF page 68. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

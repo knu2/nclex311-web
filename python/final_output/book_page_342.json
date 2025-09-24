@@ -1,0 +1,32 @@
+{
+  "book_page": 342,
+  "pdf_page": 172,
+  "content": {
+    "main_concept": "Ginkgo Biloba",
+    "key_points": "**CONCEPT**: Ginkgo biloba can cause bleeding\\n\\n**KEY POINTS:**\\n\\n- Ginkgo biloba improves blood circulation\\n- Contraindications: Pregnancy, lactation, clotting disorders\\n- Monitor: RR, HR, PT, PTT\\n- Uses: DIPDAT mnemonic\\n  - **D** - ementia and Alzheimer's disease\\n  - **I** - ntermittent claudication\\n  - **P** - MS\\n  - **D** - iabetic retinopathy\\n  - **A** - ltitude sickness\\n  - **T** - innitus\\n- Side effects: Severe side effects are rare\\n  - Headache\\n  - Dizziness\\n  - Heart palpitations\\n  - GI reactions\\n  - Rash (resembles poison ivy)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client who is scheduled for knee surgery in two weeks is being interviewed by the nurse, which of the following herbal remedies should the nurse instruct the client to stop taking as it can increase post-surgery bleeding?",
+        "options": [
+          "1. St. John's wort",
+          "2. Ginkgo biloba",
+          "3. Kava-kava",
+          "4. Valerian"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nGinkgo biloba is a blood thinner which puts the client at risk for bleeding."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T04:55:56Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Ginkgo Biloba content extracted from book page 342 (left side of PDF page 172). No medical images present as confirmed.",
+    "category": "Basic Care and Comfort",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

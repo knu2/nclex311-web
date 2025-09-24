@@ -1,0 +1,32 @@
+{
+  "book_page": 201,
+  "pdf_page": 101,
+  "content": {
+    "main_concept": "Tuberculosis",
+    "key_points": "**Tuberculosis (TB)**\\n\\n- **Definition**: TB is a respiratory infection caused by mycobacterium tuberculosis\\n- **High Risk Population**: Immunosuppressed clients are at risk for TB\\n- **Reactivation Risk Factors**: Include gastrectomy, Hodgkins' disease, leukemia, Silicosis, AIDS, and use of steroids\\n\\n**Infection Control:**\\n- Instruct the client to cover the mouth and nose when coughing\\n- Implement TB precautions\\n\\n**Drug Therapy:**\\n- **Combination therapy**: Combination of drugs is used to prevent bacterial resistance\\n- **Duration**: Should be taken for 6-12 months\\n- **First-line drugs**: Rifampicin, INH, Streptomycin and Ethambutol\\n- **Second-line drugs**: Noncompliance can lead to drug-resistant TB. Treatment may require capreomycin, streptomycin, para-aminosalicylic acid, cycloserine, amikacin and quinolone drugs",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**READ THIS**\\n\\n**QUESTION**\\n\\nWhich of the following clients is most at risk for tuberculosis?",
+        "options": [
+          "1. A 12-year-old child with asthma",
+          "2. A 45-year-old obese client",
+          "3. A 68-year-old client who is taking prednisone",
+          "4. A 20-year-old pregnant client with leg edema"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nPrednisone is a steroid that decreases immune resistance to infection, making the client at risk to becoming infected with tuberculosis."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-19T02:38:29Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 101. Tuberculosis question focusing on risk factor identification, emphasizing immunosuppression from steroid use as primary risk factor.",
+    "category": "Physiological Adaptation",
+    "reference": "Handbook of Infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

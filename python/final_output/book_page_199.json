@@ -1,0 +1,32 @@
+{
+  "book_page": 199,
+  "pdf_page": 100,
+  "content": {
+    "main_concept": "Pericarditis",
+    "key_points": "**Pericarditis Management**\\n\\n- **Definition**: Pericarditis is the inflammation of the pericardium\\n- **Bedrest Priority**: Bedrest is indicated for clients with inflammatory conditions of the heart\\n- **Treatment Priority**: PRIORITY: BEDREST\\n- **Pain Characteristics**: Sharp pain that radiates to the neck, shoulders, back, and arms is a common manifestation\\n- **Pleuritic Pain**: Pleuritic chest pain increases with deep inspiration and decreases when the client sits up and leans forward\\n\\n**Cardiac Tamponade Complications:**\\n- **Definition**: Cardiac tamponade is characterized by buildup of over 30 ml of fluid in the pericardium\\n- **Manifestations**: Cardiac tamponade manifests as: muffled heart sounds, jugular vein distention, and hypotension",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**READ THIS**\\n\\n**QUESTION**\\n\\nWhich of the following interventions is not appropriate for a client with pericarditis?",
+        "options": [
+          "1. Complete bed rest",
+          "2. Ambulate the client for 30 minutes daily",
+          "3. Semi-Fowlers position",
+          "4. Low sodium diet"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nClients with pericarditis should remain on bed rest when chest pain, fever and friction rub occur."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-19T02:32:29Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 100. Pericarditis question focusing on inappropriate interventions, emphasizing bedrest priority for inflammatory heart conditions.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

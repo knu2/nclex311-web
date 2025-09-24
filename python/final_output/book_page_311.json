@@ -1,0 +1,32 @@
+{
+  "book_page": 311,
+  "pdf_page": 156,
+  "content": {
+    "main_concept": "Supine Hypotensive Syndrome (SHS) Management",
+    "key_points": "**Supine Hypotensive Syndrome (SHS):**\n\n- **Pathophysiology**: Due to the compression of the venous return to the heart by the large uterus\n- **Prevention principle**: Proper positioning prevents SHS\n- **Priority intervention**: Position the client on the left lateral position\n- **Physiologic rationale**: Cardiac output increases by 25-30% with an increase in uterine flow when the woman turns from her back to lateral position\n- **Clinical significance**: Prevents supine hypotensive syndrome and maintains adequate maternal and fetal circulation\n\n**Key Concept**: Proper positioning prevents SHS.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions is the highest priority for a client with supine hypotensive syndrome?",
+        "options": [
+          "1. Refer to the physician at once.",
+          "2. Assess the blood pressure every 2 to 4 hours.",
+          "3. Place the client on her left side.",
+          "4. Place the client on Trendelenburg position."
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nCardiac output increases by 25-30% with an increase in uterine flow when the woman turns from her back to lateral position, thereby preventing supine hypotensive syndrome.\n\n**Why Option 3 is correct (Place the client on her left side):**\n- **Immediate intervention**: Relieves compression of the inferior vena cava by the gravid uterus\n- **Physiologic benefit**: Improves venous return to the heart\n- **Cardiac output**: Increases by 25-30% when turning from supine to lateral position\n- **Uterine perfusion**: Increases blood flow to the uterus and placenta\n- **Safety**: Safe, immediate, and effective intervention that can be performed by any nurse\n\n**Why other options are incorrect:**\n- **Option 1** (Refer to physician): Delays immediate treatment; positioning should be done first\n- **Option 2** (Monitor BP q2-4h): Monitoring is important but doesn't address the immediate problem\n- **Option 4** (Trendelenburg): May worsen the compression and is not appropriate for pregnant clients with SHS\n\n**Clinical Priority**: The priority is immediate relief of the underlying cause (vena cava compression) through proper positioning, not just monitoring or referral."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T03:14:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Multiple choice priority question focused on immediate management of supine hypotensive syndrome with detailed pathophysiology explanation. Content from right page of PDF page 156.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "book_page": 310,
+  "pdf_page": 156,
+  "content": {
+    "main_concept": "Manifestations of Pregnancy: Presumptive vs Probable Symptoms",
+    "key_points": "**Pregnancy Manifestations Classification:**\n\n**Presumptive manifestations** (subjective data):\n- **A** - menorrhea\n- **B** - reast changes\n- **C** - olor changes (face, abdomen, vagina)\n- **Q** - uickening\n- **N** - ausea and vomiting\n- **U** - rinary frequency\n- **Additional**: Fatigue, striae gravidarum\n\n**Probable manifestations** (objective findings):\n- **B** - raxton Hicks contraction\n- **B** - allotement\n- **B** - lood and urine laboratory tests\n- **F** - etal outline felt by examiner\n- **H** - egar's sign\n- **C** - hadwick's sign\n- **G** - oodell's sign\n\n**Key Concept**: Presumptive manifestations include subjective data while probable manifestations include objective findings.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following manifestations of pregnancy are considered presumptive symptoms?\n\n**Select all that apply:**",
+        "options": [
+          "1. Amenorrhea",
+          "2. Hegar's sign",
+          "3. Chloasma",
+          "4. Chadwick's sign",
+          "5. Striae gravidarum",
+          "6. Goodell's signs",
+          "7. Frequent urination",
+          "8. Positive pregnancy test",
+          "9. Fatigue"
+        ],
+        "correct_answer": "1, 3, 5, 7, 9",
+        "rationale": "**RATIONALE**\n\nPresumptive symptoms suggest, but do not prove pregnancy. These include: amenorrhea, breast changes, chloasma/melasma, linea nigra, striae gravidarum, nausea and vomiting, urinary frequency and fatigue.\n\n**Presumptive Symptoms (Subjective - what the patient reports):**\n- **Amenorrhea** (option 1) - absence of menstruation\n- **Chloasma** (option 3) - skin pigmentation changes on face\n- **Striae gravidarum** (option 5) - stretch marks\n- **Frequent urination** (option 7) - urinary frequency\n- **Fatigue** (option 9) - tiredness and exhaustion\n\n**Probable Symptoms (Objective - what can be observed/measured):**\n- **Hegar's sign** (option 2) - softening of lower uterine segment\n- **Chadwick's sign** (option 4) - bluish discoloration of cervix/vagina\n- **Goodell's sign** (option 6) - softening of cervix\n- **Positive pregnancy test** (option 8) - laboratory confirmation\n\n**Memory Aid**: Presumptive symptoms are what the woman **feels** and reports, while probable symptoms are what healthcare providers can **observe** and measure."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T03:14:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "SATA question with comprehensive educational content including mnemonic devices for remembering presumptive vs probable manifestations. Content from left page of PDF page 156.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

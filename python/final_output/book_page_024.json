@@ -1,0 +1,32 @@
+{
+  "book_page": 24,
+  "pdf_page": 13,
+  "content": {
+    "main_concept": "Delegation",
+    "key_points": "**CONCEPT**: Do not delegate:\\n\\n**ATE** - Remember this acronym:\\n\\n- **A** - Assessment\\n- **T** - Teaching\\n- **E** - Evaluation\\n\\n**Principles of Delegation:**\\n\\n- RNs must not delegate a task that is within the scope of nursing practice\\n- Assessment, discharge planning or health education should not be delegated",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions can be delegated by the registered nurse to unlicensed assistive personnel?",
+        "options": [
+          "1. Assessing contractions in a client in labor",
+          "2. Evaluating the effects of antipsychotics in a client with schizophrenia",
+          "3. Teaching a diabetic client on foot care",
+          "4. Obtaining a routine urine specimen"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nObtaining a urine specimen is a routine standard procedure and hence, could be delegated. Anything that requires assessment, teaching, and evaluation should not be delegated."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T06:45:21Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page from PDF page 13 - Complete question-answer pair with delegation concept",
+    "category": "Management of Care",
+    "reference": ""
+  }
+}

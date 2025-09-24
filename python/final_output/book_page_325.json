@@ -1,0 +1,32 @@
+{
+  "book_page": 325,
+  "pdf_page": 163,
+  "content": {
+    "main_concept": "Mongolian Spot",
+    "key_points": "**Mongolian Spots:**\\n\\n- Mongolian spots are irregular areas of deep blue pigmentation in the sacral and gluteal areas in the lower back of newborns of Asian, Africans, Hispanics, Southern Europeans, and Native Americans.\\n\\n- The spots may fade as the child reaches 5 years of age.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Mongolian spots are usually found in babies born from which of the following race?\\n\\nSelect all that apply.",
+        "options": [
+          "1. Asians",
+          "2. Hispanics", 
+          "3. Africans",
+          "4. Native American Indians"
+        ],
+        "correct_answer": "1, 2, 3, 4",
+        "rationale": "**RATIONALE**\\n\\nMongolian spots tend to occur in children of Asians, Southern Europeans, Hispanics, Africans, or Native Americans."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T02:06:38Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete Mongolian spot concept from right side of PDF page 163. All ethnic groups listed are correct answers. Spots are bluish discoloration in buttocks found in dark-skinned babies that fade by age 5.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

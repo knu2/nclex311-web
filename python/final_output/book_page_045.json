@@ -1,0 +1,32 @@
+{
+  "book_page": 45,
+  "pdf_page": 23,
+  "content": {
+    "main_concept": "Labor Process",
+    "key_points": "**Labor Process:**\\n\\n- The labor process in a primipara usually lasts for 12 to 15 hours, while in a multipara, it is usually 7 to 8 hours\\n\\n**Danger signs of labor:**\\n- **A** - bnormal pulse (more than 100 in the mother; and FHR of above 160 or below 120 in the fetus)\\n- **B** – lood pressure changes (BP above 140/90)\\n- **C** – ontour that is abnormal in the lower abdomen (indicates a full bladder which can impede fetal head descent)\\n\\n**Core Concept:** Labor progresses at a faster rate in a multipara than in a primipara.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following clients should the nurse bring immediately to the delivery room?",
+        "options": [
+          "1. A 36-year-old primipara with 7 cm dilatation, fetus at station 0 and intact membranes",
+          "2. A 25-year-old primipara with regular contractions every 2 minutes, lasting 60-90 seconds, with 8 cm dilatation",
+          "3. A 28-year-old multi-para with 8 cm dilatation and regular contractions occurring every 2-3 minutes lasting 45-60 seconds",
+          "4. A 21-year-old primipara with 9 cm dilatation and regular contractions occurring every 5 minutes"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nA multipara should be brought to the delivery room when the cervical dilatation is about 8-9 cm."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:22:30Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete labor process concept from right side of PDF page 23",
+    "category": "Management of Care",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

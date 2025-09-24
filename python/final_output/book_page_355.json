@@ -1,0 +1,32 @@
+{
+  "book_page": 355,
+  "pdf_page": 178,
+  "content": {
+    "main_concept": "Bolus Tube Feedings - Timing and Administration",
+    "key_points": "**Bolus Tube Feeding Guidelines**\n\n- Check residual volume every 4 hours before each feeding or before giving medicine\n- In bolus tube feeding approximately 300 to 400 mL of formula is administered over 30 to 60 minutes period every 3 to 6 hours\n- **Feeding schedule**: Bolus feeding in a client with nasogastric tube should resemble normal meal feeding\n- **Timing principle**: Best given to match normal eating patterns and daily routines",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Bolus tube feedings are best given at which of the following time?",
+        "options": [
+          "1. At midday in between periods of rest",
+          "2. Before the client goes to bed",
+          "3. Before the client watches his favorite late night TV show",
+          "4. In the late afternoon and at dawn"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nBolus feeding is best given before the client watches his favorite late night TV show because this schedule resembles a normal feeding pattern."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete Bolus Tube Feedings concept from right page of PDF page 178. Includes comprehensive guidelines on feeding timing, volume, and administration principles.",
+    "category": "Basic Care and Comfort", 
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

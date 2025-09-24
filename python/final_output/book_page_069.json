@@ -1,0 +1,32 @@
+{
+  "book_page": 69,
+  "pdf_page": 35,
+  "content": {
+    "main_concept": "Defense Mechanism - Denial",
+    "key_points": "- **Denial** is the refusal to admit an unacceptable idea or behavior\\n\\n- The nurse should recognize that denial is the clients' normal reaction to stressful events\\n\\n- **Denial** is a common problem among alcoholic clients",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements if made by a woman who delivers a child with a cleft palate indicates a typical response of clients to such situations?",
+        "options": [
+          "1. \"This is heaven's curse.\"",
+          "2. \"What will other people say?\"",
+          "3. \"Are you sure you brought me my baby?\"",
+          "4. \"Things like this really happen. It's nobody's fault.\""
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nThe statement \"Are you sure you brought me my baby?\" is an example of denial whereby the mother initially could not accept the baby's condition."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T14:37:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Single defense mechanism question from right side of PDF page 35",
+    "category": "Psychosocial Integrity",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

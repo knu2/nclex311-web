@@ -25,35 +25,13 @@ import {
   ConceptContext,
 } from '../src/lib/smart-slug-generator.js';
 
-// Database types for schema validation
-interface Database {
-  public: {
-    Tables: {
-      images: {
-        Insert: {
-          filename: string;
-          blob_url: string;
-          alt_text: string;
-          width: number;
-          height: number;
-          file_size: number;
-          extraction_confidence: string;
-          medical_content: string;
-          concept_id?: string | null;
-          question_id?: string | null;
-        };
-      };
-    };
-  };
-}
-
-// Create Supabase client with types
+// Create Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-let supabase: SupabaseClient<Database> | null = null;
+let supabase: SupabaseClient | null = null;
 if (supabaseUrl && supabaseKey) {
-  supabase = createClient<Database>(supabaseUrl, supabaseKey);
+  supabase = createClient(supabaseUrl, supabaseKey);
 }
 
 if (!supabase) {
@@ -299,9 +277,9 @@ class ContentImporter {
             .select('id')
             .single();
 
-          if (chapterError) {
+          if (chapterError || !chapterData?.id) {
             throw new Error(
-              `Failed to create chapter: ${chapterError.message}`
+              `Failed to create chapter: ${chapterError?.message ?? 'Unknown error creating chapter'}`
             );
           }
 
@@ -361,15 +339,19 @@ class ContentImporter {
    * Validate JSON structure matches expected format
    */
   private validateJSONStructure(data: unknown): data is BookPageData {
+    // Type guard for unknown data
+    if (!data || typeof data !== 'object') return false;
+    const typedData = data as Record<string, unknown>;
     return (
-      data &&
-      typeof data.book_page === 'number' &&
-      data.content &&
-      typeof data.content.main_concept === 'string' &&
-      Array.isArray(data.content.questions) &&
-      Array.isArray(data.images) && // Images at root level
-      data.extraction_metadata &&
-      typeof data.extraction_metadata.category === 'string'
+      typeof typedData.book_page === 'number' &&
+      typedData.content &&
+      typeof (typedData.content as Record<string, unknown>).main_concept ===
+        'string' &&
+      Array.isArray((typedData.content as Record<string, unknown>).questions) &&
+      Array.isArray(typedData.images) && // Images at root level
+      typedData.extraction_metadata &&
+      typeof (typedData.extraction_metadata as Record<string, unknown>)
+        .category === 'string'
     );
   }
 

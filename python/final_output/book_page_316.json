@@ -1,0 +1,32 @@
+{
+  "book_page": 316,
+  "pdf_page": 159,
+  "content": {
+    "main_concept": "Preterm Labor",
+    "key_points": "**CONCEPT:** UTI increases the incidence of preterm labor.\\n\\n**Key definitions:**\\n- **Preterm labor is characterized by uterine contractions occurring after 20 weeks gestation and before 37 weeks of gestation**\\n\\n**Risk factors include:**\\n- **Multiple gestation**\\n- **Maternal bleeding**\\n- **Medical conditions like placenta previa**\\n- **Maternal age: <20 or >35 years old**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "After the discharge of a client who is at 35 weeks gestation following treatment of acute pyelonephritis, the discharge instruction should focus on the signs and symptoms of:",
+        "options": [
+          "1. Preterm labor",
+          "2. Polyhydramnios",
+          "3. Polyuria", 
+          "4. Congestive heart failure"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nA gravida client with acute pyelonephritis should be advised to watch out for signs and symptoms of preterm labor because urinary tract infections predispose client to preterm labor.\\n\\n**Key principle:** UTI increases the incidence of preterm labor. Pregnant clients with urinary tract infections, including pyelonephritis, are at increased risk for developing preterm labor due to the inflammatory process and potential bacterial translocation."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T13:18:08Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page content from PDF page 159, complete concept with question and rationale",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

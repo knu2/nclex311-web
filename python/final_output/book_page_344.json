@@ -1,0 +1,32 @@
+{
+  "book_page": 344,
+  "pdf_page": 173,
+  "content": {
+    "main_concept": "Saw Palmetto",
+    "key_points": "**CONCEPT**: Saw palmetto decreases the inner lining of the prostate gland which puts pressure on the urethra, thereby facilitating urination\\n\\n**KEY POINTS:**\\n\\n- Saw Palmetto stops progression of BPH like Proscar (finasteride)\\n- Eases urinary difficulty\\n- Interferes with iron absorption\\n- Contraindications: Pregnancy, lactation\\n- Uses: BADCAB mnemonic\\n  - **B** - PH\\n  - **A** - sthma\\n  - **D** - iuretic\\n  - **C** - ough\\n  - **A** - stringent\\n  - **B** - ronchitis\\n- Side effects:\\n  - Cramping\\n  - Nausea\\n  - Diarrhea\\n  - Headache",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following symptoms in a client with benign prostatic hypertrophy decreases with intake of saw palmetto?",
+        "options": [
+          "1. Headache",
+          "2. Dysuria",
+          "3. Polyuria",
+          "4. Hematuria"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nSaw palmetto decreases the size of the inner lining of the prostate gland which puts pressure on the urethra thereby relieving dysuria."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T13:50:02Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Saw Palmetto content extracted from book page 344 (left side of PDF page 173). No medical images present as confirmed.",
+    "category": "Basic Care and Comfort",
+    "reference": "Herbal Medicine Handbook"
+  }
+}

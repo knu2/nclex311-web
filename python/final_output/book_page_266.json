@@ -1,0 +1,33 @@
+{
+  "book_page": 266,
+  "pdf_page": 134,
+  "content": {
+    "main_concept": "Polycythemia Vera",
+    "key_points": "Polycythemia vera is characterized by increased RBC mass and hemoglobin.\n\n**Manifestations of Polycythemia Vera:**\n\n- **R** – Reddish purple hue of skin\n- **U** – Uric acid formation\n- **S** – Splenomegaly\n- **H** – Headache and hepatomegaly\n\n**Treatment includes:**\n\n- Phlebotomy (withdrawal of 250 to 500 mL of blood)\n- Allopurinol (Zyloprim) to decrease uric acid levels\n- Antihistamine, to decrease pruritus",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following laboratory data are elevated in polycythemia vera?\n\nSelect all that apply:",
+        "options": [
+          "1. Hemoglobin",
+          "2. Hematocrit",
+          "3. Blood Glucose",
+          "4. Red blood cell count",
+          "5. Urine output"
+        ],
+        "correct_answer": "1, 2, 4",
+        "rationale": "**RATIONALE**\n\nPolycythemia vera is a chronic myeloproliferative disorder involving all bone marrow elements, resulting in an increase in RBC mass and hematocrit."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:07:53Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the left side of PDF page 134.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

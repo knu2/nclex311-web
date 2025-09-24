@@ -1,0 +1,32 @@
+{
+  "book_page": 346,
+  "pdf_page": 174,
+  "content": {
+    "main_concept": "Ma Huang",
+    "key_points": "**CONCEPT**: Ma Huang is a central nervous system stimulant\\n\\n**KEY POINTS:**\\n\\n**Effects of Ma Huang:**\\n- Weight loss\\n- Enhanced energy level\\n\\n**Side effects:**\\n- Cardiac arrythmias\\n- Headache\\n- Insomnia\\n- Nervousness\\n- Depression (children)\\n- Dizziness\\n\\n**Withdrawal effects:**\\n- Severe depression\\n- Irritability\\n- Fatigue\\n\\n**Contraindications:**\\n- Do not use with MAOI antidepressants because their combination may cause hypertensive crisis",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following indicates a common effect of Ma Huang?",
+        "options": [
+          "1. Fatigue",
+          "2. Increased energy level",
+          "3. Irritability",
+          "4. Severe depression"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nAn increased energy level is a common effect of Ma Huang because it stimulates the central nervous system."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T13:54:33Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Ma Huang content extracted from book page 346 (left side of PDF page 174). No medical images present as confirmed.",
+    "category": "Basic Care and Comfort",
+    "reference": "Herbal Medicine Handbook Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

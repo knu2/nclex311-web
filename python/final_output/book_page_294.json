@@ -1,0 +1,32 @@
+{
+  "book_page": 294,
+  "pdf_page": 148,
+  "content": {
+    "main_concept": "Hypophysectomy",
+    "key_points": "**CONCEPT**\n\nRemoval of the pituitary gland leads to infertility.\n\n**During surgery the client will be:**\n- Use nasal sprays 5 times a day, to relieve sinus congestion\n- It is normal for vision to wax and wane for 3-4 months after surgery\n- Showering is allowed once cleared by the doctor but do not submerge\n\n**Post-operative care:**\n- After surgery there will be small amount of bloody nasal discharge that lasts for 3 weeks. If the discharge constantly drips like faucet or a salty taste behind the throat occurs, call the doctor\n- Mucus and blood may drain while blowing the nose 12 weeks after surgery. This is not a cause for alarm\n\n**Nursing Care Principles for Clients (HEAD):**\n- **H**ead of the bed should be elevated\n- **E**valuate the vital signs and neurological status including the level of consciousness\n- **A**void sneezing, coughing, and blowing the nose\n- **D**iabetes insipidus, manifested by polyuria, may occur due to ADH disturbances",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Hypophysectomy will possibly cause emotional difficulty in which of the following clients?",
+        "options": [
+          "1. 45-year-old post-menopausal",
+          "2. 30-year-old multipara",
+          "3. 25-year-old newlywed female",
+          "4. 50-year-old male"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nA 25-year-old newlywed female client may encounter emotional difficulties because hypophysectomy could lead to infertility."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side only of PDF page 148, complete concept with question-answer pair and comprehensive key points including HEAD mnemonic",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

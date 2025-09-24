@@ -1,0 +1,27 @@
+{
+  "book_page": 277,
+  "pdf_page": 139,
+  "content": {
+    "main_concept": "Albumin",
+    "key_points": "**CONCEPT** A decreased albumin level leads to edema.\\n\\n- **The normal albumin level is 3.5 to 5 g/dL**\\n\\n**Fluid volume excess** is also referred to as fluid overload, a condition characterized by excess of total body fluid.\\n\\n**May be related to:**\\n- **Congestive heart failure**\\n- **Cirrhosis**\\n- **Cushing's syndrome**\\n\\n**May lead to edema due to decreased albumin levels**\\n\\n**Pathophysiology:** Albumin is significant in maintaining the colloid osmotic or oncotic pressure that draws water into the vasculature. Should the albumin level decrease, the oncotic pressure decreases, leading to the movement of fluid from the vasculature to the interstitial space causing edema and eventually decreasing the fluid in the vascular system.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client has an albumin level of 2.8 mg/dL. Which of the following nursing diagnosis is considered a priority?",
+        "options": ["1. Fluid volume excess", "2. Fluid volume deficit", "3. Altered thermoregulation", "4. Fluid and electrolyte imbalance"],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE** Albumin is significant in maintaining the colloid osmotic or oncotic pressure that draws water into the vasculature. Should the albumin level decrease, the oncotic pressure decreases, leading to the movement of fluid from the vasculature to the interstitial space causing edema and eventually decreasing the fluid in the vascular system."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T06:21:12Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 139. Single multiple choice question focusing on nursing diagnosis priority for hypoalbuminemia. Comprehensive pathophysiology of oncotic pressure and fluid volume excess with related conditions.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

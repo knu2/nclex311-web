@@ -1,0 +1,32 @@
+{
+  "book_page": 225,
+  "pdf_page": 113,
+  "content": {
+    "main_concept": "Syndrome of Inappropriate Antidiuretic Hormone (SIADH)",
+    "key_points": "**CONCEPT:** SIADH causes fluid retention.\\n\\n**Syndrome of Inappropriate Antidiuretic Hormone Secretion (SIADH) may occur in clients with:**\\n- Lung cancer\\n- Severe pneumonia\\n- Pneumothorax\\n- Lead poisoning\\n- Brain surgery\\n- Tumor\\n- Infection\\n\\n**SIADH leads to dilutional hyponatremia.**\\n\\n**PRIORITY:** \\n- Fluid restriction\\n- Daily weight monitoring\\n- Monitoring of urine, blood chemistries, and neurologic status",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of these manifestations suggest the development of a complication in a client with syndrome of inappropriate antidiuretic hormone secretion (SIADH)?",
+        "options": [
+          "1. Polyuria",
+          "2. Weight loss",
+          "3. Distended neck veins",
+          "4. Muscle rigidity"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nSIADH causes vascular overload usually manifested by neck vein distention."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T05:18:25Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extraction from right side of PDF page 113. Question about SIADH complications with multiple choice format.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

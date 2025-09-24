@@ -1,0 +1,32 @@
+{
+  "book_page": 251,
+  "pdf_page": 126,
+  "content": {
+    "main_concept": "Mantoux Test - Assessment and Interpretation",
+    "key_points": "**Mantoux Test**\\n\\n**CONCEPT:** Mantoux test DOES NOT differentiate previous and present exposure to Mycobacterium tuberculosis.\\n\\n**Interpretation of Mantoux Test Result:**\\n\\n**5 mm or more induration is considered positive in people with:**\\n- Known HIV or unknown HIV but with risk factors for HIV\\n- Recent contact with active tuberculosis\\n- Fibrotic changes on chest x-ray consistent with healed TB\\n\\n**10 mm or more induration is considered positive in people with:**\\n- Medical conditions like diabetes mellitus, end stage renal disease\\n- Prolonged corticosteroid therapy\\n- Origin from areas of the world where TB is common (Asia, Latin America, Africa)\\n- Children below 4 years old\\n\\n**Key principle:** The test detects tuberculosis exposure (past or present, active or inactive) but cannot distinguish between them.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following questions should the nurse ask the client before Mantoux test is done?",
+        "options": [
+          "1. \"Do you have a family history of TB?\"",
+          "2. \"Did you have a positive test for TB in the past?\"",
+          "3. \"Do you have friends who have been treated for TB?\"",
+          "4. \"Do you have any allergies?\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nTuberculin skin test (PPD) or Mantoux test is used to detect tuberculosis exposure in the past or in the present, active or inactive. Hence, it is appropriate for the nurse to obtain history of exposure to tuberculosis in the past before the test is done."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T02:48:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right book page covering Mantoux test procedure, interpretation criteria, and pre-test assessment",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

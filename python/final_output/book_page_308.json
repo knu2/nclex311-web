@@ -1,0 +1,42 @@
+{
+  "book_page": 308,
+  "pdf_page": 155,
+  "content": {
+    "main_concept": "Norplant Contraceptive Implant Site",
+    "key_points": "**Norplant Contraceptive System:**\n\n- **Implantation site**: Norplant capsules are placed under the skin of a woman's upper arm\n- **Duration**: Can prevent pregnancy for at least 5 years\n- **Effectiveness**: Effective within 24 hours after insertion\n- **Side effects**: Can cause changes in menstrual bleeding, and may cause headache, breast tenderness, acne, weight gain, hair loss and more hair growth on the face\n- **Insertion technique**: Inserted in the midportion of the upper arm about 8-10 cm above the elbow crease",
+    "questions": [
+      {
+        "id": 1,
+        "type": "fill_in_blank",
+        "question_text": "Which of the following body parts is the usual site used for implantation of Norplant?\n\n![Anatomical diagram showing body parts for Norplant implantation](norplant_anatomy_diagram.png)\n\n**Instructions**: Put an X on the areas.",
+        "options": [],
+        "correct_answer": "Upper arm (midportion, 8-10 cm above elbow crease)",
+        "rationale": "**RATIONALE**\n\nNorplant is inserted in the midportion of the upper arm about 8-10 cm above the elbow crease.\n\n![Norplant insertion site illustration](norplant_insertion_site.png)\n\n**Key Concept**: Norplant capsules are usually placed under the skin of a woman's upper arm."
+      }
+    ]
+  },
+  "images": [
+    {
+      "filename": "norplant_anatomy_diagram.png",
+      "description": "Anatomical diagram showing body parts with areas for Norplant implantation site selection",
+      "medical_relevance": "high",
+      "content_type": "question_anatomical_diagram",
+      "context": "embedded in question text for site identification exercise"
+    },
+    {
+      "filename": "norplant_insertion_site.png", 
+      "description": "Illustration showing proper Norplant insertion site on upper arm",
+      "medical_relevance": "high",
+      "content_type": "clinical_procedure_illustration",
+      "context": "embedded in rationale to demonstrate correct placement location"
+    }
+  ],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T15:27:16Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Fill-in-blank/image marking question with anatomical diagrams in both question and rationale sections. Content consolidated from left page of PDF page 155.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

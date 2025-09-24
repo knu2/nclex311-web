@@ -1,0 +1,32 @@
+{
+  "book_page": 139,
+  "pdf_page": 70,
+  "content": {
+    "main_concept": "Isotretinoin (Accutane)",
+    "key_points": "- **Isotretinoin (Accutane) is an anti-acne medication; it decreases sebaceous gland size**\n- **It is best taken in the morning with meals because it causes insomnia**\n- **Have a pregnancy test; the drug is fetotoxic**\n- **Ensure that the client is not pregnant**\n- **Discontinue the drug if visual disturbances occur**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following discharge instructions should a nurse provide a client who is taking Isotretinoin (Accutane)?",
+        "options": [
+          "1. \"Avoid chocolates and fried foods while taking the drug.\"",
+          "2. \"Make sure you take your contraceptive pills as prescribed.\"",
+          "3. \"It is safe for you to get pregnant.\"",
+          "4. \"Abortion is not a potential effect of the drug.\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** Advise clients to take contraceptive pills while taking isotretinoin (Accutane) to prevent pregnancy because this drug is fetotoxic."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:35:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 70. Question type identified as multiple_choice based on singular wording 'Which... discharge instructions' seeking one appropriate instruction.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 170,
+  "pdf_page": 86,
+  "content": {
+    "main_concept": "Zollinger-Ellison Syndrome (ZES)",
+    "key_points": "**ZES is due to the presence of a tumor that causes:**\\n\\n- **Hypersecretion of gastric acids**\\n- **Duodenal ulcers**\\n- **Gastrinomas in the pancreas**\\n\\n**Treatment:**\\n\\n- **Treated with high doses of H2-receptor antagonist**\\n- **Sandostatin (Octreotide)** is administered to promote suppression of gastric acids",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following findings is common in clients with Zollinger-Ellison Syndrome?",
+        "options": [
+          "1. Elevated hydrochloric acid",
+          "2. Elevated urine specific gravity", 
+          "3. Elevated serum calcium levels",
+          "4. Elevated uric acid levels"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nAn elevated hydrochloric acid level is indicative of Zollinger-Ellison Syndrome."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 86, book page 170",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

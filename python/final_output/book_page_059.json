@@ -1,0 +1,32 @@
+{
+  "book_page": 59,
+  "pdf_page": 30,
+  "content": {
+    "main_concept": "Cohorting - Pediatric Room Assignment",
+    "key_points": "**Cohorting for Pediatric Clients**\\n\\n- **Preschoolers should be placed in a room with children belonging to the same age group**\\n- **Age-appropriate room assignment promotes developmental needs**\\n- **Consider both medical condition and developmental stage**\\n- **Helps with social interaction and emotional support**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following clients is the best roommate for a 4-year-old child with nephrotic syndrome?",
+        "options": [
+          "1. 3-year-old boy with conjunctivitis",
+          "2. 2-year-old girl with laryngotracheobronchitis",
+          "3. 7-year-old boy with fever of unknown origin",
+          "4. 5-year-old girl with asthma"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nFor pediatric room assignments, age-appropriate matching is important for developmental needs. A 3-year-old child is closest in age and developmental stage to a 4-year-old, making them the most appropriate roommate. Additionally, conjunctivitis is not highly contagious when proper precautions are taken."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T09:00:51Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right page content from PDF page 30. Question type determined by singular form 'Which of the following clients is the best roommate' and single answer expected.",
+    "category": "Management of Care",
+    "reference": "Pediatric Nursing Guidelines"
+  }
+}

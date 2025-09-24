@@ -1,0 +1,32 @@
+{
+  "book_page": 178,
+  "pdf_page": 90,
+  "content": {
+    "main_concept": "Histoplasmosis",
+    "key_points": "**Histoplasmosis** is a fungal infection caused by *Histoplasma capsulatum* transmitted through ingestion of soil contaminated by bat and bird manure. The incubation period is 5 to 18 days.\\n\\n- **Symptoms**: Initially asymptomatic with mild respiratory symptoms, cough, dyspnea, and hemoptysis\\n- **Treatment**: Involves antifungal therapy, surgery, and supportive care\\n- **Medications**: Administer fluconazole, amphotericin B and steroids as ordered\\n- **Isolation**: Disease does not require isolation. Face mask is worn to prevent ingestion of contaminated soil\\n- **Referrals**: Refer the client to a social worker and occupational therapist\\n- **Prevention**: To prevent the occurrence of the disease, instruct the client to avoid going to chicken coops, barns, caves, and under bridges",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A 10-year-old child who loves to visit the aviary developed cough, fever, dyspnea, and hemoptysis. The nurse should refer the child to the physician for possible treatment of:",
+        "options": [
+          "1. Tuberculosis",
+          "2. Histoplasmosis", 
+          "3. Sarcoidosis",
+          "4. Lyme's disease"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** A child with history of exposure to bird or bat manure with development of cough, fever, dyspnea or hemoptysis is more likely suffering from histoplasmosis."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T09:54:52Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 90. Question type determined by singular 'possible treatment of' language seeking one diagnosis.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

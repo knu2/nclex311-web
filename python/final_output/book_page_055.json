@@ -1,0 +1,32 @@
+{
+  "book_page": 55,
+  "pdf_page": 28,
+  "content": {
+    "main_concept": "German Measles (Rubella)",
+    "key_points": "**German Measles (Rubella)**\\n\\n- **The incubation period of Rubella is 14 to 21 days**\\n- **Prodromal symptoms like low grade fever, anorexia, headache and coryza occurs first, followed by rubella rash that begins on the face**\\n- **Forscheimer spots (small red petechial macule on the soft palate) may precede or accompany the rash**\\n- **Aspirin is given for fever and joint pains**\\n\\n**German measles is transmitted by droplet spread of the virus.**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following equipment is/are necessary when providing care to a client with German measles?",
+        "options": [
+          "1. Mask",
+          "2. Mask and gloves",
+          "3. Gloves and gown",
+          "4. Mask and gown"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nGerman measles (Rubella) is transmitted by droplet spread, requiring droplet precautions with mask and gloves for protection during client care."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T09:00:51Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right page content from PDF page 28. Question appears to be multiple choice despite SATA format based on single answer provided.",
+    "category": "Safety and Infection Control",
+    "reference": "CDC Guidelines for Isolation Precautions"
+  }
+}

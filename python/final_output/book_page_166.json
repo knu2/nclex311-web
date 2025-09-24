@@ -1,0 +1,32 @@
+{
+  "book_page": 166,
+  "pdf_page": 84,
+  "content": {
+    "main_concept": "G6PD Deficiency",
+    "key_points": "**Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency** is an X-linked recessive condition characterized by hemolysis (destruction of RBC).\\n\\n**Key Features:**\\n- X-linked recessive inheritance pattern\\n- Primary pathophysiology: **hemolysis** (destruction of red blood cells)\\n- Common manifestation: **Jaundice**\\n- Treatment consideration: **Prepare the client for blood transfusion**\\n\\n*G6PD deficiency is characterized by hemolysis.*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "G6PD deficiency can lead to which of the following conditions?",
+        "options": [
+          "1. Leukopenia",
+          "2. Anemia",
+          "3. Bone marrow depression",
+          "4. Polycythemia"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nG6PD is an X-linked recessive condition characterized by hemolysis that leads to anemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T05:05:48Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete G6PD deficiency concept with X-linked inheritance, hemolysis pathophysiology, and multiple choice question about resulting anemia",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 53,
+  "pdf_page": 27,
+  "content": {
+    "main_concept": "Rotavirus Isolation Precautions",
+    "key_points": "**Rotavirus**\\n\\n- **Rotavirus is the most common cause of severe diarrhea among children.**\\n- **Rotavirus infection is manifested by acute gastroenteritis.**\\n\\n**Contact and Standard Precautions Required:**\\n- Contact precautions for prevention of transmission\\n- Standard precautions for all client care\\n- Private room recommended for isolation",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "A client with rotavirus infection should be placed under what type of isolation precautions? Select All That Apply",
+        "options": [
+          "1. Contact",
+          "2. Droplet",
+          "3. Airborne",
+          "4. Standard"
+        ],
+        "correct_answer": "1, 4",
+        "rationale": "**RATIONALE**\\n\\nRotavirus is the most common cause of severe diarrhea among children and requires contact and standard precautions to prevent transmission of the gastrointestinal infection."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T09:00:51Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Right page content from PDF page 27. Question type determined by 'Select All That Apply' phrase and multiple correct answers (1, 4).",
+    "category": "Safety and Infection Control",
+    "reference": "CDC Guidelines for Isolation Precautions"
+  }
+}

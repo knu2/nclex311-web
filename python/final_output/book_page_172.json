@@ -1,0 +1,32 @@
+{
+  "book_page": 172,
+  "pdf_page": 87,
+  "content": {
+    "main_concept": "Measles (Rubeola)",
+    "key_points": "**Initial symptoms of measles include:**\\n\\n- **Fever, photophobia, coryza, malaise, anorexia, cough, and hoarseness**\\n\\n**Diagnostic sign:**\\n\\n- **The hallmark sign is the presence of Koplik's spots**\\n\\n**Prevention and precautions:**\\n\\n- **Implement airborne precautions**\\n- **The MMR vaccine should not be given to pregnant women, immunosuppressed clients, and clients with allergy to neomycin**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "The measles virus can be transmitted in which of the following manner? Select all that apply.",
+        "options": [
+          "1. Dust particles",
+          "2. Air currents",
+          "3. Inhalation", 
+          "4. Evaporated droplets"
+        ],
+        "correct_answer": "1, 2, 3, 4",
+        "rationale": "**RATIONALE**\\n\\nMeasles is spread by direct contact or by contaminated airborne respiratory droplets. The portal of entry is the upper respiratory tract."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 87, book page 172. SATA question with all transmission methods correct.",
+    "category": "Physiological Adaptation",
+    "reference": "Handbook of Infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

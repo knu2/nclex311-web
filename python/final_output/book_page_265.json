@@ -1,0 +1,32 @@
+{
+  "book_page": 265,
+  "pdf_page": 133,
+  "content": {
+    "main_concept": "Cardiac Catheterization",
+    "key_points": "Distal peripheral pulses should be assessed after cardiac catheterization.\n\n**Cardiac Catheterization**\n\n- Cardiac catheterization measures oxygen concentration, saturation, tension and pressure in various chambers of the heart. Determines need for cardiac surgery.\n- Obtain informed consent.\n- Assess for allergy.\n- NPO for 6 hours before the procedure.\n- After: check peripheral and apical pulses every 15 minutes for 2-4 hours. Check puncture site for bleeding. Keep a 20 lbs. sandbag at the bedside, to apply pressure in case bleeding occurs\n- Keep extremity extended for 4-6 hours.\n- Notify the physician if the client complains of numbness, tingling, cool extremities, pale or cyanotic or if there is sudden loss of peripheral pulses.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "After cardiac catheterization the client complains of sudden loss of peripheral pulses. What should the nurse do?",
+        "options": [
+          "1. Document the findings in the chart.",
+          "2. Inform the client that it is an expected effect after the procedure.",
+          "3. Report the findings to the physician immediately.",
+          "4. Apply a 20 lbs. sandbag at the distal portion of the extremities."
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nAfter cardiac catheterization, the nurse should notify the physician of the manifestations of circulatory and nerve impairment like: numbness, tingling, cool extremities, pallor or cyanosis, and sudden loss of peripheral pulses."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:05:47Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the right side of PDF page 133.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

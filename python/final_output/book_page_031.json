@@ -1,0 +1,32 @@
+{
+  "book_page": 31,
+  "pdf_page": 16,
+  "content": {
+    "main_concept": "Multiple Sclerosis",
+    "key_points": "**CONCEPT** Multiple sclerosis is characterized by periods of remission and exacerbation.\\n\\n**Factors that can trigger exacerbation of multiple sclerosis**\\n\\n**F** – atigue\\n**S** – tress\\n**P** – regnancy\\n**A** – cute illness",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following discharge instructions is a priority for the nurse to include in the long-term care plan for a client with multiple sclerosis?",
+        "options": [
+          "1. Referring the client for group therapy",
+          "2. Teaching the client to recognize manifestations of myasthenic crisis",
+          "3. Monitoring the client for fluctuation of vital signs",
+          "4. Teaching the client to identify factors that cause exacerbation of the disease"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE** Inform the client with multiple sclerosis prior to discharge about the factors that may exacerbate the condition, so the client may learn to avoid them."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:10:55Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 16",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

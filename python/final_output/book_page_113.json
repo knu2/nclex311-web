@@ -1,0 +1,32 @@
+{
+  "book_page": 113,
+  "pdf_page": 57,
+  "content": {
+    "main_concept": "Tuberculosis (TB)",
+    "key_points": "**Rifampicin causes:**\\n- red orange discoloration of body secretions\\n- nausea\\n- vomiting\\n\\n**INH causes:**\\n- peripheral neuritis\\n- **3H**: hepatitis, hepatic enzyme elevation, hypersensitivity\\n\\n**Ethambutol causes:**\\n- optic neuritis (diminished red-green color discrimination)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "What is the purpose of the combination drug therapy for a client with tuberculosis (TB)?",
+        "options": [
+          "1. To prolong the effects of the drug",
+          "2. To decrease the side effects of the drugs",
+          "3. To decrease the deviation of the treatment",
+          "4. To prevent the development of resistant strains of the TB organism"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nMulti-drug therapy for tuberculosis is required to prevent development of drug resistant strains of TB organism."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T02:21:42Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 57. CONCEPT: Multi-drug therapy prevents development of resistant TB organism.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Handbook of Infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

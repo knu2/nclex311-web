@@ -1,0 +1,27 @@
+{
+  "book_page": 282,
+  "pdf_page": 142,
+  "content": {
+    "main_concept": "Guillain-Barre Syndrome",
+    "key_points": "**CONCEPT** Ascending paralysis occurs in Guillain-Barre Syndrome.\\n\\n- **Guillain-Barre syndrome** is usually triggered by an acute infection (Campylobacter jejuni, Epstein-Barr, H. influenzae, HIV) that causes molecular mimicry\\n\\n- **Treatment for GBS** include use of a ventilator, intravenous immunoglobulin, plasma exchange to remove antibodies from the blood, and corticosteroids",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "When assessing a client with Guillain-Barre syndrome, the nurse should focus on which of the following body systems?",
+        "options": ["1. Decreasing leg strength", "2. Decreasing voice volume", "3. Muscle weakness in the legs", "4. Dragging sensation in the arms"],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** A decrease in voice volume indicates progressive ascending neuropathy towards the laryngeal area. This can possibly lead to breathing difficulty."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T06:12:40Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 142. Single multiple choice question with clear rationale focusing on respiratory assessment priority in ascending paralysis.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

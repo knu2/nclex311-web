@@ -1,0 +1,32 @@
+{
+  "book_page": 98,
+  "pdf_page": 50,
+  "content": {
+    "main_concept": "Oxytocin (Pitocin) - Water Intoxication Risk",
+    "key_points": "**KEY POINTS**\n\n- Oxytocin (Pitocin) is an oxytocic; it is used to induce labor after artificial rupture of the membranes\n\n- Report the development of rash\n\n- Monitor the BP\n\n- Discontinue if hypertension develops",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "**CONCEPT:** Oxytocin (Pitocin) causes retention of water.\n\nWhich of the following adverse effects occur in prolonged oxytocin (Pitocin) administration?",
+        "options": [
+          "1. Labile mood",
+          "2. Water intoxication",
+          "3. Fever",
+          "4. Deep rapid breathing"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE:** Prolonged administration of oxytocin (Pitocin) leads to severe water intoxication."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-17T23:59:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side of PDF page 50. Complete question-answer pair with key points about oxytocin water retention risk.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

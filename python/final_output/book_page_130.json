@@ -1,0 +1,32 @@
+{
+  "book_page": 130,
+  "pdf_page": 66,
+  "content": {
+    "main_concept": "Rosiglitazone (Avandia) - Laboratory Monitoring for Antidiabetic Agent",
+    "key_points": "**Rosiglitazone (Avandia) is an antidiabetic agent.**\\n\\n- **In clients receiving rosiglitazone (Avandia), monitor glucose levels**\\n- **May decrease the effect of contraceptives**\\n\\n**Report:**\\n- **Sore Throat**\\n- **Bleeding**\\n- **Bruising**\\n- **Light Colored Stools**\\n\\n**Mechanism of action:** Stimulates insulin receptor sites to lower blood glucose and improve the action of insulin",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following laboratory data should the nurse primarily monitor in a client who is receiving rosiglitazone (Avandia)?",
+        "options": [
+          "1. Urine output",
+          "2. White blood cell count",
+          "3. Platelet count",
+          "4. Blood sugar levels"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nRosiglitazone (Avandia) is an antidiabetic agent that stimulates insulin receptor sites to lower blood glucose and improve the action of insulin. Therefore, blood sugar levels should be monitored carefully.\\n\\nAs a thiazolidinedione antidiabetic medication, rosiglitazone works by increasing insulin sensitivity in peripheral tissues. Regular monitoring of blood glucose levels is essential to assess therapeutic effectiveness and prevent hypoglycemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from left side of PDF page 66. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

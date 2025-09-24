@@ -1,0 +1,32 @@
+{
+  "book_page": 249,
+  "pdf_page": 125,
+  "content": {
+    "main_concept": "Intake and Output Monitoring - Tube Feeding Management",
+    "key_points": "**Intake and Output Monitoring**\\n\\n**CONCEPT:** In clients with feeding and drainage tubes, monitoring the intake and output is the priority.\\n\\n**Key nursing responsibilities:**\\n- **For clients with tube feedings:** record the amount of formula actually taken by the client and report decreased urine output\\n- **Maintaining the function of the tubes** is a continuous responsibility of the nurse\\n- **Priority focus:** Monitoring intake and output takes precedence over other assessments\\n\\n**Clinical application:** When a client has multiple tubes (urinary catheter, nasogastric tube, chest tube), the priority nursing action is comprehensive intake and output monitoring to ensure proper fluid balance and tube function.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client has an indwelling urinary catheter that drains an average of 40 mL of urine/hour. He also has a nasogastric tube in place and a chest tube attached to a 3-way bottle system. Which of the following actions is a nursing priority?",
+        "options": [
+          "1. Assessing the patency of the chest tubes",
+          "2. Checking the placement of the nasogastric tube",
+          "3. Recording the amount of urine output",
+          "4. Monitoring the client's intake and output"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nMonitoring the client's intake and output is a priority nursing action in a client with feeding and drainage tubes."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T02:40:11Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right book page covering intake/output monitoring for clients with multiple drainage and feeding tubes",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

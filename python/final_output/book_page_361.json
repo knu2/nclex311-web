@@ -1,0 +1,32 @@
+{
+  "book_page": 361,
+  "pdf_page": 181,
+  "content": {
+    "main_concept": "Dysphagia - Dietary Management and Feeding Techniques",
+    "key_points": "**Feeding a Client with Dysphagia**\n\n- **Solid foods are easier to swallow than liquids** (core principle)\n- Instruct the client to eat slowly\n- Place the client in an upright position\n- Administer moist and bolus shaped foods like scrambled eggs\n- **Avoid sticky foods**: ice cream, milk, and peanut butter\n- **Avoid tepid foods**. Hot and cold foods are appropriate because it activates the swallowing mechanism\n- **For clients with hemiplegia**: place the food on the unaffected side of the mouth",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following is an appropriate diet for a client with dysphagia?",
+        "options": [
+          "1. Mashed potato and orange juice",
+          "2. Grapefruit juice and vegetable soup",
+          "3. Broiled porkchops and vegetables", 
+          "4. Milk and creamed soup"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\n\nBroiled pork chops and vegetables are solid foods that are easy to swallow for a client with dysphagia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete dysphagia concept from right page of PDF page 181. Includes comprehensive feeding guidelines, food texture principles, and positioning strategies for safe swallowing.",
+    "category": "Basic Care and Comfort",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

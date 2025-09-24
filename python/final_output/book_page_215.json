@@ -1,0 +1,32 @@
+{
+  "book_page": 215,
+  "pdf_page": 108,
+  "content": {
+    "main_concept": "Addison's Disease",
+    "key_points": "**Stress triggers Addisonian crisis.**\\n\\n- **Etiology**: Addison's disease is caused by adrenal hypofunction usually due to autoimmune disease\\n\\n- **Clinical Manifestations**: Hypotension and bronze skin pigmentation\\n\\n- **Laboratory Values**: Causes hyponatremia, hyperkalemia, and hypoglycemia\\n\\n- **Nursing Management**:\\n  - Monitor fluid and electrolyte balance\\n  - Explain the need for lifelong medications\\n  - Maintain a high sodium and low potassium diet\\n  - Advise the client to avoid infection, trauma or stress since these increases the risk for Addisonian crisis",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following instructions should a nurse provide a client with Addison's disease?",
+        "options": [
+          "1. \"Stop taking your steroids after you feel better.\"",
+          "2. \"Make sure you take your steroids before visiting your dentist.\"",
+          "3. \"Watching live concerts is a good way to decrease your stress.\"",
+          "4. \"You may need to eat extra servings of fruits.\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nSources of stress include surgical procedures, infection or development of other illness. Hence, the nurse should instruct the client to take steroids prior to visiting a dentist."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T04:11:28Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 108, book page 215",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 167,
+  "pdf_page": 84,
+  "content": {
+    "main_concept": "Thyroidectomy Complications",
+    "key_points": "**Complications of Thyroid Surgery - 4H:**\\n\\n- **H** - emorrhage\\n- **H** - ypothyroidism\\n- **H** - ypoparathyroidism\\n- **H** - ypocalcemia\\n\\n**Hypocalcemia Assessment:**\\n- Assess for irritability, twitching, and spasms of hands and feet\\n- **Clinical manifestations:** tingling sensation around the lips, Chvostek's sign, and Trousseau's sign\\n\\n*Hypocalcemia is manifested by tingling sensation around the lips, Chvostek's sign, and Trousseau's sign.*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements made by a client post-thyroidectomy indicate a complication?",
+        "options": [
+          "1. \"I have a tendency to limit my head movement.\"",
+          "2. \"My facial muscles are relaxed.\"",
+          "3. \"I have a tingling sensation around my lips.\"",
+          "4. \"I feel some sense of pressure in my arm when the nurse took my blood pressure.\""
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nComplaint of tingling sensation around the lips is indicative of hypocalcemia due to accidental removal of the parathyroid glands during a thyroidectomy."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T05:05:48Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete thyroidectomy complications concept with 4H mnemonic and multiple choice question about hypocalcemia signs post-surgery",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

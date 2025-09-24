@@ -1,0 +1,32 @@
+{
+  "book_page": 326,
+  "pdf_page": 164,
+  "content": {
+    "main_concept": "Growth and Development - Motor Development",
+    "key_points": "**Motor Development Concept:**\\n\\nA child discovers the hands at 3 months, has voluntary grasp at 6 months, develops the pincer grasp at 9 months and has hand preference at 12 months.\\n\\n**Developmental Timeline:**\\n\\n**1 month to 2-3 months:**\\n- The hands are kept in a fist\\n- Discovers the hands, holds objects using the hands, and brings it to the mouth\\n\\n**4 months to 12 months:**\\n- Grasps objects with both hands\\n- Palmar grasp disappears\\n- Uses index finger and thumb to hold objects\\n- Hand dominance is apparent",
+    "questions": [
+      {
+        "id": 1,
+        "type": "prioritization",
+        "question_text": "Please arrange the following milestones in motor development in ascending order?",
+        "options": [
+          "1. Prepares to use the right hand",
+          "2. Plays with the fingers",
+          "3. Picks a cheerio with the thumbs and index finger", 
+          "4. Holds a toy with both hands"
+        ],
+        "correct_answer": "2, 4, 3, 1",
+        "rationale": "**RATIONALE**\\n\\nGrowth and development are continuous processes and proceed in an orderly sequence. Development proceeds cephalocaudally, from proximal to distal parts, and from gross to refined skills."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T02:19:32Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete motor development concept from left side of PDF page 164. Prioritization question asking for ascending order of developmental milestones from 3 to 12 months. Includes detailed developmental timeline.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

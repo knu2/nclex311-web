@@ -367,7 +367,7 @@ class ImportValidator {
           title: concept.title,
           status: isValid ? 'valid' : 'invalid',
           details: isValid
-            ? `Valid concept with ${concept.questions?.length || 0} questions in chapter "${concept.chapters?.title}"`
+            ? `Valid concept with ${concept.questions?.length || 0} questions in chapter "${(concept.chapters as { title?: string })?.title || 'Unknown'}"`
             : 'Missing required fields',
         });
       }
@@ -403,7 +403,7 @@ class ImportValidator {
           id: question.id,
           status: isValid ? 'valid' : 'invalid',
           details: isValid
-            ? `Valid ${question.type} question with ${question.options?.length || 0} options in concept "${question.concepts?.title}"`
+            ? `Valid ${question.type} question with ${question.options?.length || 0} options in concept "${(question.concepts as { title?: string })?.title || 'Unknown'}"`
             : 'Missing required fields or no correct answer',
         });
       }

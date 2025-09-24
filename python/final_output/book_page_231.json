@@ -1,0 +1,32 @@
+{
+  "book_page": 231,
+  "pdf_page": 116,
+  "content": {
+    "main_concept": "AIDS Dementia Complex / HIV Encephalopathy",
+    "key_points": "**AIDS dementia complex** is characterized by unsteady gait and incoordination.\\n\\n**Early manifestations:**\\n- Forgetfulness\\n- Reduced concentration\\n- Ataxia, Apathy\\n- Agitation\\n- Clumsiness\\n- Slowed movement\\n\\n**Late manifestations:**\\n- Paraplegia\\n- Vegetative state\\n- Mutism\\n\\n**Treatment:** Treated with anti-retroviral therapy that penetrates the central nervous system.\\n\\n**Examples of medications:**\\n- Zidovudine (AZT)\\n- Stavudine hydroxyurea (d4T)\\n- Nevirapine (Viramune)\\n- Abacavir",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions is appropriate for a client with AIDS dementia complex?",
+        "options": [
+          "1. Provide various activities",
+          "2. Assist the client with ambulation",
+          "3. Increase exercise activities",
+          "4. Minimize reminders"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nAssisting the client with ambulation is an appropriate nursing intervention because clients with AIDS dementia complex have unsteady gait and incoordination."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T05:32:01Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 116. No images present as confirmed by user.",
+    "category": "Physiological Adaptation",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

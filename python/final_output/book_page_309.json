@@ -1,0 +1,32 @@
+{
+  "book_page": 309,
+  "pdf_page": 155,
+  "content": {
+    "main_concept": "Obstetric Client Prioritization and Assessment",
+    "key_points": "**Obstetric Emergency Prioritization:**\n\n- **Assessment principle**: Clients with complications should be assessed first\n- **Bleeding complications**: Bleeding is a danger sign of pregnancy\n- **Abruptio placenta**: Uterine tenderness and dark vaginal bleeding indicate abruptio placenta\n- **Placenta previa**: A boggy uterus with bright red vaginal bleeding indicates placenta previa\n- **Priority assessment**: Life-threatening complications require immediate attention",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which obstetrical client should the nurse assess first?",
+        "options": [
+          "1. A 25-year-old class II cardiac client with dyspnea and ankle edema",
+          "2. A 27-year-old client with pre-term labor and intact membrane", 
+          "3. 30-year-old multiparous post-caesarean delivery 3 days ago",
+          "4. A 35-year-old on her 36 weeks of gestation reporting uterine tenderness and dark vaginal bleeding"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\n\nA client on her 36 weeks gestation with uterine tenderness and dark vaginal bleeding is more likely suffering from abruptio placenta, which is a complication in pregnancy.\n\n**Key Clinical Points:**\n- **Abruptio placenta** is a life-threatening emergency requiring immediate assessment\n- **Dark vaginal bleeding + uterine tenderness** = classic signs of placental abruption\n- **36 weeks gestation** places both mother and fetus at significant risk\n- This client has the highest priority due to potential for rapid deterioration and hemorrhage\n\n**Comparison with other options:**\n- Option 1: Cardiac issues are concerning but stable\n- Option 2: Pre-term labor with intact membranes is less urgent\n- Option 3: Post-cesarean day 3 is routine recovery unless complications present"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T15:27:16Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Multiple choice prioritization question focused on obstetric emergency recognition. Content from right page of PDF page 155. No medical images present as specified by user.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

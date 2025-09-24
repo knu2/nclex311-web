@@ -1,0 +1,32 @@
+{
+  "book_page": 22,
+  "pdf_page": 12,
+  "content": {
+    "main_concept": "Prioritizing",
+    "key_points": "**When answering questions related to prioritizing, FOCUS on the following:**\\n\\n1. **Physiologic needs**\\n2. **Acute conditions**\\n3. **Signs of complications**\\n\\n**CONCEPT**: A client with acute physiologic alteration who is exhibiting symptoms of a COMPLICATION is a priority.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following clients should the nurse attend to first?",
+        "options": [
+          "1. A three-year-old child with otitis media admitted for fever and ear ache",
+          "2. A 25-year-old manic client with hyperactivity and insomnia",
+          "3. A 30-year-old client with angina pectoris complaining of chest pain in the last 30 minutes",
+          "4. A 27-year-old gravida 2 para 1 client who is 8 months pregnant with positive contraction stress test"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nThe client with angina pectoris, who is complaining of chest pain in the last 20 minutes, has a physiologic problem which is acute. Chest pain that is more than 20 minutes is indicative of myocardial infarction, a possible complication of angina."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T06:45:21Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left page from PDF page 12 - Complete question-answer pair with prioritizing concept",
+    "category": "Management of Care",
+    "reference": "Gapuz, Ray, The ABC's of Passing Foreign Nursing Exams Philippines, Gapuz Publication"
+  }
+}

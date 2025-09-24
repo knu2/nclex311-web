@@ -1,0 +1,32 @@
+{
+  "book_page": 345,
+  "pdf_page": 173,
+  "content": {
+    "main_concept": "Ginkgo Biloba Drug Interactions",
+    "key_points": "**CONCEPT**: GINKGO BILOBA thins the blood\\n\\n**KEY POINTS:**\\n\\n- Ginkgo biloba improves blood circulation\\n- Contraindications: Pregnancy, lactation, clotting disorders\\n- Monitor: RR, HR, PT, PTT\\n- Uses: DIPDAT mnemonic\\n  - **D** - ementia and Alzheimer's disease\\n  - **I** - ntermittent claudication\\n  - **P** - MS\\n  - **D** - iabetic retinopathy\\n  - **A** - ltitude sickness\\n  - **T** - innitus\\n- Side effects: Severe side effects are rare\\n  - Headache\\n  - Dizziness\\n  - Heart palpitations\\n  - GI reactions\\n  - Rash (resembles poison ivy)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Ginkgo biloba should not be used by a client who is also receiving which of the following medications?\\n\\nSelect all that apply.",
+        "options": [
+          "1. Warfarin",
+          "2. Heparin",
+          "3. Aspirin",
+          "4. Streptokinase"
+        ],
+        "correct_answer": "1, 2, 3, 4",
+        "rationale": "**RATIONALE**\\n\\nGinkgo biloba thins the blood, therefore should not be given with warfarin, heparin, aspirin, and streptokinase because when taken together may increase the risk for bleeding."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T13:50:02Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Ginkgo Biloba drug interactions content extracted from book page 345 (right side of PDF page 173). SATA question format explicitly stated. No medical images present as confirmed.",
+    "category": "Basic Care and Comfort",
+    "reference": "Herbal Medicine Handbook Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

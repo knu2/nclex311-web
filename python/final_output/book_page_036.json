@@ -1,0 +1,32 @@
+{
+  "book_page": 36,
+  "pdf_page": 19,
+  "content": {
+    "main_concept": "Osteomalacia",
+    "key_points": "**CONCEPT** Osteomalacia is due to vitamin D deficiency.\\n\\n- Osteomalacia is the softening of the bones due to a deficiency in vitamin D, calcium, or phosphate, inadequate exposure to sunlight, celiac disease, hyperparathyroidism, and gastric surgery.\\n\\n**Manifestation:**\\n- Bone pain\\n- Muscle weakness myopathy\\n- Bone pain\\n- Tetany\\n\\n- Treatment includes easing bone pain and spasm, and vitamin D and calcium supplements.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following is the primary cause of osteomalacia?",
+        "options": [
+          "1. Excessive vitamin D intake",
+          "2. Inadequate sunlight exposure",
+          "3. Inadequate parathyroid hormone",
+          "4. Excessive intake of calcium"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** Sunlight exposure is crucial for the synthesis of vitamin D in the skin. Since vitamin D is essential for proper calcium absorption and bone health, inadequate sunlight exposure can lead to osteomalacia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:10:55Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 19",
+    "category": "Management of Care",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

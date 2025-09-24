@@ -1,0 +1,33 @@
+
+{
+  "book_page": 252,
+  "pdf_page": 127,
+  "content": {
+    "main_concept": "Magnetic Resonance Imaging (MRI)",
+    "key_points": "- MRI provides cross-sectional images of brain tissue. It is more detailed than a CT scan.\n- Contraindications: pregnant women, obesity (more than 300 lbs.), claustrophobic clients, clients with unstable vital signs, and clients with metal implants like pacemaker, hip replacements, jewelries, and nitroglycerin patch.\n- Temporarily remove nitroglycerin patch during MRI procedure.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following questions should the nurse ask a client who is scheduled for magnetic resonance imaging?",
+        "options": [
+          "1. “Did you have hip replacement surgery?”",
+          "2. “Do you have a history of sore throat?”",
+          "3. “Can you tolerate a fatty meal?”",
+          "4. “Do you have any history of trauma?”"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\n\nPrior to MRI procedure, the nurse should remove all metal (including metallic drug patches) from the client and report presence of any metal implants to the physician."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T04:52:01Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept content on a single book page.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 212,
+  "pdf_page": 107,
+  "content": {
+    "main_concept": "Urinary Retention",
+    "key_points": "**Small amounts of voiding may be a sign of over distended bladder.**\\n\\n- **Complications**: Urinary retention can lead to urinary infection and possibly renal failure\\n- **Assessment Priority**: Catheterization is done only when all other measures are unsuccessful\\n- **Comfort Measures**: Sitz bath or warm compresses are used to relax the urinary sphincters",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A post-op client has 20-30 mL of urine every 15 to 30 minutes. What should the nurse do initially?",
+        "options": [
+          "1. Apply cold compress on the lower abdomen.",
+          "2. Administer Urecholine (bethanechol) as prescribed.",
+          "3. Catheterize the client.",
+          "4. Palpate the bladder."
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nA client with 20-30 mL urine output every 15-30 minutes may be having urinary retention. The nurse should initially assess the client by palpating the bladder."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T03:58:57Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 107, book page 212",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

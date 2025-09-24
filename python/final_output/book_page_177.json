@@ -1,0 +1,40 @@
+{
+  "book_page": 177,
+  "pdf_page": 89,
+  "content": {
+    "main_concept": "Herpes Zoster",
+    "key_points": "**Clinical characteristic:**\\n\\n- **Severe deep pain occurs in herpes zoster**\\n\\n**Nursing care for clients with Herpes Zoster:**\\n\\n- **Primary goal of care is to relieve itching and pain**\\n- **Administer cortisone, antidepressants, and acyclovir**\\n- **Apply cold compress, and avoid scratching the lesions**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "![Herpes zoster vesicular rash in dermatomal distribution](herpes_zoster_vesicular_rash.png)\n\nWhich of the following is the priority consideration for a client with herpes zoster?",
+        "options": [
+          "1. Comfort",
+          "2. Respiration",
+          "3. Mobility",
+          "4. Rest"
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nClients with herpes zoster experience severe deep pain; therefore, provision of comfort is a priority consideration."
+      }
+    ]
+  },
+  "images": [
+    {
+      "filename": "herpes_zoster_vesicular_rash.png",
+      "description": "Clinical photograph showing herpes zoster (shingles) with characteristic vesicular rash following a dermatomal distribution on the torso",
+      "medical_relevance": "high",
+      "content_type": "clinical_manifestation",
+      "context": "embedded in question text to show clinical presentation for priority assessment question"
+    }
+  ],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 89, book page 177. Multiple choice question about priority nursing considerations with characteristic herpes zoster clinical image embedded in question text.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

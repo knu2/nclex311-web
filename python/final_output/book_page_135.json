@@ -1,0 +1,32 @@
+{
+  "book_page": 135,
+  "pdf_page": 68,
+  "content": {
+    "main_concept": "Lindane (Kwell) - Contraindications and Neurotoxicity Considerations",
+    "key_points": "**Lindane (Kwell) is neurotoxic.**\\n\\n**Effectiveness indicators:**\\n- **Lindane (Kwell) is considered effective** if there are no lice in the hair and there are no eggs attached to hair shafts\\n\\n**Administration guidelines:**\\n- **Applied twice:** immediately after diagnosis and a week after\\n- **May be administered to all individuals** living in the house\\n- **Do not apply to face**\\n- **Use gloves to remove nits** by using a fine-toothed comb rinsed in vinegar\\n\\n**Critical contraindication:**\\n- **Neurotoxic effects** make it dangerous for clients with seizure disorders\\n\\n**Safety considerations:**\\n- Contraindicated in clients with neurological conditions\\n- Risk of seizures and other neurological complications",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Lindane (Kwell) is contraindicated in which of the following clients?",
+        "options": [
+          "1. 50-year-old with gastric ulcer",
+          "2. 20-year-old with seizures",
+          "3. 30-year-old newly married",
+          "4. 15-year-old with acne"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nLindane (Kwell) is neurotoxic; therefore, it is contraindicated in clients with seizure disorders.\\n\\nLindane can cross the blood-brain barrier and cause central nervous system toxicity, including seizures, tremors, and other neurological complications. Clients with existing seizure disorders are at significantly higher risk for experiencing these serious adverse effects, making lindane use dangerous and contraindicated in this population."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from right side of PDF page 68. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "book_page": 307,
+  "pdf_page": 154,
+  "content": {
+    "main_concept": "Measles Vaccine",
+    "key_points": "CONCEPT Allergy to eggs or egg protein is a contraindication to measles vaccine.\n\n**KEY POINTS**\n\n**Vaccination Schedule: Children: First dose: 12-15 months, Second dose: 4-6 years.**\n\nAdults: At least one dose for those without immunity; two doses for certain groups like healthcare workers or international travelers.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Before the administration of measles vaccine, which of the following questions should the nurse ask the caregiver of the client?",
+        "options": [
+          "1. “Is the child vomiting today?”",
+          "2. “Did you notice any strange behavior in the child lately?”",
+          "3. “Is the child able to drink from a glass?”",
+          "4. “Is the child allergic to eggs?”"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE** Before the administration of measles vaccine, the nurse should ask the caregiver if the child has allergy to eggs and chickens because the vaccine is inoculated from eggs."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T15:19:38Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Content extracted from the right side of PDF page 154.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Karch, Amy, Lippincott’s Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

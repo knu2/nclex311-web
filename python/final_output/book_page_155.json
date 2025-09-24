@@ -1,0 +1,32 @@
+{
+  "book_page": 155,
+  "pdf_page": 78,
+  "content": {
+    "main_concept": "Somogyi phenomenon",
+    "key_points": "In a client with diabetes mellitus assess the following:\\n\\n**CONCEPT**: In a client with diabetes mellitus, if glucose levels are normal or high at 2-3 AM, suspect dawn phenomenon, if it is initially low and then it becomes high, suspect Somogyi phenomenon.\\n\\n**Key differences:**\\n- **Hyperglycemia occurs** in both dawn phenomenon and Somogyi phenomenon\\n- **Dawn phenomenon** is a natural reaction of the body while **Somogyi phenomenon** is related to excess or ill-timed insulin before bedtime, missed meals or snacks at bedtime, and inadvertent insulin administration\\n- To identify the cause of hyperglycemia early in the morning in a client with diabetes mellitus, it is best to monitor or check one's blood sugar levels\\n\\n**Dawn phenomenon** can result from the release of growth hormone, cortisol, and catecholamines that raises blood sugar levels early in the morning.\\n\\n**Management comparison:**\\n- **Management of Somogyi phenomenon** involves adjustment of insulin dose before bedtime\\n- The use of **insulin pump is the most effective treatment** for combating dawn phenomenon\\n\\n**Treatment for Somogyi phenomenon include:**\\n- Changing the type of insulin\\n- Adjusting the timing of insulin administration\\n- Lowering the dose of insulin before bedtime\\n\\nSomogyi phenomenon is managed by eating bedtime snacks after insulin administration. Using insulin pump is the best intervention for dawn phenomenon. Somogyi phenomenon is managed by lowering the dose of insulin before bedtime.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A 27-year-old client with type 1 diabetes mellitus tells the nurse that she came across an article on Somogyi phenomenon. She tells the nurse that she observed that she feels \"cold sweats and clammy hands\" at around 2-3 AM but she is surprised to note that her sugar levels are usually high before her breakfast time. Which instruction should the nurse provide the client?",
+        "options": [
+          "1. Avoid eating snacks at bedtime",
+          "2. Increase the insulin dose before bedtime",
+          "3. Use insulin pump instead of injection",
+          "4. Adjusting the timing of insulin administration"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nTo answer the question, focus on this information: \"cold sweats and clammy hands\" at around 2-3 AM but she is surprised to note that her sugar levels are usually high before her breakfast time. This set of data implies that the client is experiencing hypoglycemia at 2-3 AM (\"cold sweats and clammy hands\") followed by high sugar levels before breakfast. This information indicates Somogyi phenomenon. Somogyi phenomenon is also known as rebound hyperglycemia.\\n\\nDawn phenomenon can result from the release of growth hormone, cortisol, and catecholamines that raises blood sugar levels early in the morning.\\n\\nManagement of Somogyi phenomenon involves adjustment of insulin dose before bedtime, while the use of insulin pump is the most effective treatment for combating dawn phenomenon.\\n\\nTreatment for Somogyi phenomenon include:\\n- Changing the type of insulin\\n- Adjusting the timing of insulin administration\\n- Lowering the dose of insulin before bedtime\\n\\nSomogyi phenomenon is managed by eating bedtime snacks after insulin administration. Using insulin pump is the best intervention for dawn phenomenon. Somogyi phenomenon is managed by lowering the dose of insulin before bedtime.\\n\\n**Ray's NGN Tip:** An effective intervention for Somogyi phenomenon and Dawn phenomenon is to monitor the blood glucose levels at 2-3 AM and in the morning before breakfast."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:45:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete Somogyi phenomenon concept consolidating content from book pages 155-156 (PDF pages 78-79 right and left sides respectively). Multiple choice question with single correct answer asking for appropriate instruction to provide the client.",
+    "category": "Physiological Adaptation",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing. Philadelphia, Lippincott William and Wilkins"
+  }
+}

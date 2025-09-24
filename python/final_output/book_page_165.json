@@ -1,0 +1,32 @@
+{
+  "book_page": 165,
+  "pdf_page": 83,
+  "content": {
+    "main_concept": "Cardiopulmonary Resuscitation (CPR)",
+    "key_points": "**Basic Life Support for Health Care Providers (AHA Guidelines, 2020):**\\n\\n1. **Verify scene safety**\\n2. **Recognize cardiac arrest** (Check for responsiveness)\\n3. **Activate emergency response system**\\n4. **Compression-ventilation ratio without advanced airway:**\\n   - Adults and Adolescents: 1 or 2 rescuers (30:2)\\n   - Children and Infants: 1 rescuer (30:2); 2 or more rescuers (15:2)\\n5. **Compression-ventilation ratio with advanced airway:**\\n   - Adults and Adolescents: Continuous compressions at a rate of 100-120/min, Give 1 breath every 6 seconds\\n   - Children and Infants: Continuous compressions at a rate of 100-120/min, Give 1 breath every 2-3 seconds (20-30 breaths/min)\\n6. **Compression rate: 100-120/min**\\n7. **Allow complete recoil of chest after compression**\\n8. **Minimize interruptions**\\n\\n*In CPR, the shorter the time needed to deliver breaths, the faster the rescuer can resume chest compressions.*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice", 
+        "question_text": "Which of the following statements about cardiopulmonary resuscitation is not TRUE?",
+        "options": [
+          "1. Longer breaths are more effective in increasing oxygen levels in a client.",
+          "2. Longer breaths delay performance of chest compression.",
+          "3. Ideally, rescue breaths should be given in one second.",
+          "4. It is better to deliver rescue breaths in a shorter time when performing CPR."
+        ],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE**\\n\\nLonger breaths can delay the resumption of cardiac compression, thereby decreasing blood return to the heart."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T05:01:26Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete CPR concept with AHA 2020 Basic Life Support guidelines and multiple choice question about rescue breathing effectiveness (asking for NOT TRUE statement)",
+    "category": "Physiological Adaptation",
+    "reference": "Part 3: Adult Basic and Advanced Life Support: 2020 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care. https://www.ahajournals.org/doi/10.1161/CIR.0000000000000916"
+  }
+}

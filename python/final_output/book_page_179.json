@@ -1,0 +1,32 @@
+{
+  "book_page": 179,
+  "pdf_page": 90,
+  "content": {
+    "main_concept": "Salmonellosis",
+    "key_points": "**Salmonellosis** is an infection caused by Salmonella bacteria, usually associated with intake of soft-boiled egg (egg salad) or half cooked meat, ingestion of contaminated water, dry milk, chocolate bars and drugs.\\n\\n- **Diagnosis**: Stool exam reveals presence of organism\\n- **Prevention Instructions**: Thoroughly cook all eggs and chicken, turkey and duck meat. Refrigerate meat and foods and avoid keeping them at room temperature for a prolonged period of time\\n- **Hand Hygiene**: Wash hands thoroughly after bowel movement\\n- **Isolation**: Continue standard precautions until three consecutive stool cultures are negative\\n- **Complications**: Report sudden pain in the right lower abdomen which indicates bowel perforation",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following is the priority discharge instruction for a client who has been treated with salmonellosis?",
+        "options": [
+          "1. Keep food at room temperature.",
+          "2. Thoroughly cook all eggs and meat.",
+          "3. Strain the water before using it.",
+          "4. Do not refrigerate chocolate bars."
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** Salmonellosis is associated with the intake of soft-boiled eggs or half-cooked meat. Therefore, it is important to instruct the client to cook meat and eggs thoroughly."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T09:54:52Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 90. Question type determined by singular 'priority discharge instruction' language seeking one best answer.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

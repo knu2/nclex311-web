@@ -336,7 +336,11 @@ export async function runQuery(
   params: Record<string, unknown> = {}
 ) {
   try {
-    const { data, error } = await supabase.rpc(functionName, params);
+    // Type guard to ensure params are properly handled
+    const safeParams = params && typeof params === 'object' ? params : {};
+    // Type assertion for RPC calls since Database interface doesn't define RPC functions
+    const client = supabase as unknown as SupabaseClient;
+    const { data, error } = await client.rpc(functionName, safeParams);
     if (error) throw error;
     return { rows: data };
   } catch (error) {

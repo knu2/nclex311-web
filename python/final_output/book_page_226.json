@@ -1,0 +1,32 @@
+{
+  "book_page": 226,
+  "pdf_page": 114,
+  "content": {
+    "main_concept": "Spinal Cord Injury",
+    "key_points": "**CONCEPT:** In bladder training the most significant factor is REGULARITY.\\n\\n**Spinal cord injury involves partial or complete disruption of nerve tracts and neurons resulting in paralysis and sensory loss.**\\n\\n**Depends on the level of injury:**\\n- **Cervical:** Quadriplegia\\n- **Thoracic:** Paraplegia\\n- **Lumbar:** Paraplegia\\n\\n**X-RAY reveals the location and extent of injury.**\\n\\n**Avoid hyperflexion and hyperextension of the spine. Log-roll the client.**\\n\\n**Keep a catheter at the bedside to prevent bladder distention, which may stimulate autonomic dysreflexia.**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client is undergoing rehabilitation after spinal cord injury. Which of the following discharge instructions should the nurse tell the client?",
+        "options": [
+          "1. \"Minimize your fluid intake to prevent nocturia.\"",
+          "2. \"Make sure that you empty your bladder as scheduled.\"", 
+          "3. \"Increase your intake of cranberry juice.\"",
+          "4. \"Avoid soda at all times.\""
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nClients with spinal cord injury should establish a regular schedule of voiding (every 2-3 hours) because the most significant factor in bladder training is regularity."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-19T05:21:05Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extraction from left side of PDF page 114. Question about discharge instructions for spinal cord injury rehabilitation with multiple choice format.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

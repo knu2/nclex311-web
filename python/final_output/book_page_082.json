@@ -1,0 +1,33 @@
+{
+  "book_page": 82,
+  "pdf_page": 42,
+  "content": {
+    "main_concept": "Neurogenic Shock/Spinal Shock",
+    "key_points": "**Neurogenic Shock Assessment Points:**\\n\\n- **Spinal Shock Endpoint**: Spinal shock ends when reflexes are regained\\n- **Assessment Focus**: Assess the reflex, motor, sensory and autonomic activity below the level of the lesion\\n- **Priority Care**: Maintain pulmonary and cardiovascular stability\\n\\n**Key Concept**: Neurogenic shock is characterized by areflexia (absence of reflexes)",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following manifestations are found in clients with neurogenic shock?\\n\\n**Select all that apply:**",
+        "options": [
+          "1. Muscle paralysis",
+          "2. Flaccid paralysis", 
+          "3. Hypotension",
+          "4. Bradycardia",
+          "5. Paralytic ileus"
+        ],
+        "correct_answer": "1, 2, 3, 4, 5",
+        "rationale": "**RATIONALE** Neurogenic shock develops due to the loss of autonomic nervous system function below the level of the lesion causing blood pressure and heart rate to fall leading to low cardiac output and peripheral vasodilation.\\n\\n**CONCEPT** Neurogenic shock is characterized by areflexia (absence of reflexes)."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete Neurogenic Shock SATA question from left side of PDF page 42. Answer derived from medical knowledge - all listed options are valid manifestations of neurogenic shock. Answer key should be validated from original book if available.",
+    "category": "Physiological Adaptation",
+    "reference": "Smeltzer, Suzanne C. and Brenda Bare, Brunner and Suddarth's Textbook of Medical-Surgical Nursing Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

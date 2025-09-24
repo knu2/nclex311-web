@@ -1,0 +1,32 @@
+{
+  "book_page": 128,
+  "pdf_page": 65,
+  "content": {
+    "main_concept": "Desmopressin Acetate (Stimate) - Treatment for Von Willebrand's Disease",
+    "key_points": "**Desmopressin acetate (Stimate) is used in the treatment of von Willebrand's disease.**\\n\\n- **May cause facial flushing**\\n- **Monitor the nasal passages** when using the nares in long-term therapy\\n\\n**Common side effects include:**\\n- **Gastric cramping**\\n- **Facial flushing**\\n- **Headache**\\n- **Nasal irritation**\\n\\n**Important monitoring:**\\n- **Report:** drowsiness, shortness of breath, and headache",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Desmopressin acetate (Stimate) is ordered for a client with Von Willebrand's disease for which of the following reasons?",
+        "options": [
+          "1. To promote reabsorption of water",
+          "2. To increase von Willebrand's factor",
+          "3. To treat chronic autonomic failure",
+          "4. To decrease nocturnal enuresis"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nDesmopressin acetate (Stimate) increases the von Willebrand factor, thereby increasing the levels of factor VIII and preventing bleeding.\\n\\nVon Willebrand's disease is a bleeding disorder caused by a deficiency or dysfunction of von Willebrand factor. Desmopressin works by releasing stored von Willebrand factor from endothelial cells, which helps improve hemostasis and reduce bleeding episodes."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete question-answer pair extracted from left side of PDF page 65. No images present per user confirmation.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

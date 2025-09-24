@@ -1,0 +1,32 @@
+{
+  "book_page": 145,
+  "pdf_page": 73,
+  "content": {
+    "main_concept": "Clozapine (Clozaril) - Nursing Considerations and Safety",
+    "key_points": "**Clozapine (Clozaril) decreases the symptoms of schizophrenia.**\n\n**CONCEPT: Clozapine (Clozaril) causes leukopenia.**\n\n- **Best taken after meals**\n- **Inform client about weekly blood check for WBC**\n- **Report**: fever, sore throat, lethargy, malaise, and signs of infection\n- **Smoking may decrease drug effectiveness**\n- **Rise slowly to avoid dizziness**\n- **Ice chips or sugarless gum may help relieve dry mouth**\n\n**Additional Monitoring Guidelines:**\n\n- **If the client's WBC count drops below 3,500/mm³, monitor the client for signs of infection**\n- **If the client's WBC count drops below 2,000/mm³, place the client in protective isolation**\n- **Avoid use of St. John's Wort** while taking Clozapine (Clozaril); it may decrease Clozaril levels\n- **Monitor RR; may cause respiratory arrest**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following actions constitute an act of negligence on the part of the nurse?",
+        "options": [
+          "1. Administering clozapine (Clozaril) to a client after meals",
+          "2. Instructing the client on clozapine (Clozaril) to suck on ice chips",
+          "3. Administering clozapine (Clozaril) in a client despite a WBC count of 1,500/mm³",
+          "4. Withholding clozapine (Clozaril) to a client who uses St. John's Wort."
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE**\\n\\nClozapine (Clozaril) decreases WBC. Therefore, administration of the drug in a client with a low WBC count of 1,500/mm³ is a negligent act."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:43:13Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 73, includes question, answer options, rationale, and comprehensive key points with WBC monitoring guidelines",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "Karch, Amy, Lippincott's Nursing Drug Guide Philadelphia, Lippincott Williams and Wilkins"
+  }
+}

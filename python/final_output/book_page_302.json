@@ -1,0 +1,32 @@
+{
+  "book_page": 302,
+  "pdf_page": 152,
+  "content": {
+    "main_concept": "West Nile Virus",
+    "key_points": "**West Nile virus transmission and prevention:**\\n\\n- **Transmission**: West Nile virus causes inflammation of the brain\\n- **Vector**: It is transmitted to humans by the bite of a mosquito\\n- **Reservoir**: Birds serve as the reservoir of the West Nile virus\\n- **Vectors**: Mosquitoes serve as the vectors\\n- **Incubation period**: From 5 to 15 days\\n- **Early manifestations**: Fever, headache, and body malaise\\n- **Prevention**: Apply insect repellant on the skin like DEET (N-diethyl-metatoluamide)\\n- **Additional transmission routes**: WN virus can be transmitted through a bite of infected mosquito, blood transfusion, organ transplant, breast milk, and transplacental (mother-to-child)\\n\\n**CONCEPT**: West Nile virus is transmitted by the bite of infected mosquito",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following instructions will help prevent infection with West Nile virus?",
+        "options": [
+          "1. Avoid exposure to deer ticks.",
+          "2. Eliminate mosquito breeding places.",
+          "3. Use sunscreen lotion when outdoors.",
+          "4. Avoid going barefoot at home."
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nThe West Nile virus is transmitted to humans by the bite of a mosquito (primarily Culex species) infected with the virus. Eliminating mosquito breeding places will reduce the risk of becoming infected."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T14:50:45Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side content from PDF page 152 - complete concept with question, options, answer and rationale about West Nile virus prevention",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Handbook of infectious Diseases, Pennsylvania, Springhouse"
+  }
+}

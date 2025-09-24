@@ -1,0 +1,32 @@
+{
+  "book_page": 62,
+  "pdf_page": 32,
+  "content": {
+    "main_concept": "Hypokalemia",
+    "key_points": "**CONCEPT**: Diuresis causes potassium excretion.\n\n**Normal potassium level**: 3.5-5.3 mEq/L.\n\n**Muscle weakness, nausea, and vomiting** occur both in hypokalemia and hyperkalemia.\n\n**Common manifestations of hypokalemia include:**\n- Malaise, mental confusion, muscle cramps, metabolic alkalosis\n- Fatigue, flaccidity\n- Depression, dysrhythmia\n- Decreased GI motility\n\n**Common manifestations of hyperkalemia include:**\n- Metabolic acidosis\n- Ventricular acidosis\n- Diarrhea",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "A client was admitted due to multiple somatic complaints. The client's laboratory results are as follows: Na 150 mEq/L; K 3.2 mEq/L; glucose 185 mg/dl and oxygen saturation of 93%. Which of the following doctor's orders should the nurse question?",
+        "options": [
+          "1. Low sodium diet",
+          "2. Furosemide (Lasix) in the morning", 
+          "3. Blood sugar monitoring twice a day",
+          "4. Oxygen at 2-3 LPM"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**: Furosemide (Lasix) is a potassium-wasting diuretic, which may worsen hypokalemia."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T14:23:45Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extraction from single page. No images present as confirmed by user. Question type determined by singular wording asking for one best answer.",
+    "category": "Safety and Infection Control",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

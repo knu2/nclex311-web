@@ -1,0 +1,32 @@
+{
+  "book_page": 183,
+  "pdf_page": 92,
+  "content": {
+    "main_concept": "Disseminated Intravascular Coagulation (DIC)",
+    "key_points": "**DIC** is characterized by widespread coagulation all over the body resulting in subsequent depletion of clotting factors.\\n\\n- **Manifestations**: It is characterized by petechiae and ecchymosis on the skin, mucous membrane, heart, lungs and other organs\\n- **Monitoring**: Monitor for signs of bleeding (e.g. tarry stool, hemoptysis and nose bleeding)\\n- **Medication**: Administer heparin as ordered. Heparin inhibits thrombin thus preventing further clot formation and allowing coagulation factors to accumulate\\n- **Supportive Care**: Administer blood transfusion as ordered\\n- **Patient Education**: Instruct the client to avoid aspirin or aspirin-containing compounds",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following is the priority goal of care for a client with disseminated intravascular coagulation?",
+        "options": [
+          "1. To prevent bleeding",
+          "2. To prevent clot formation",
+          "3. To avoid aspirin",
+          "4. To prolong the bleeding time"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE** In DIC, widespread coagulation all over the body resulting in subsequent depletion of clotting factors lead to severe hemorrhage. Therefore, to prevent bleeding, the widespread clotting should be prevented."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:06:49Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 92. Question type determined by singular 'priority goal of care' language seeking one best answer.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

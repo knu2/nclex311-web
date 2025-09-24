@@ -1,0 +1,32 @@
+{
+  "book_page": 322,
+  "pdf_page": 162,
+  "content": {
+    "main_concept": "Postpartum Depression",
+    "key_points": "Manifestations of Postpartum Depression\\n\\n**WILDIE Mnemonic:**\\n\\n- **W** – ithdrawal from family\\n- **I** – nsomnia\\n- **L** – oss of interest in activities\\n- **L** – actation difficulties\\n- **D** – ecreased sexual responsiveness, dysmenorrhea\\n- **I** – neffective coping\\n- **E** – xaggerated and prolonged moodiness",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements if made by a postpartum client indicates a need for further evaluation?",
+        "options": [
+          "1. \"I don't think I will have enough milk for my baby.\"",
+          "2. \"I usually have after pains when I breastfeed my baby.\"", 
+          "3. \"I will never forget my birthing experience.\"",
+          "4. \"The baby isn't as cute as I expected.\""
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nThe mother's statement, \"The baby isn't as cute as expected\" reflects loss of interest to her baby, which is indicative of postpartum depression."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-21T13:36:43Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete postpartum depression concept from left side of PDF page 162. Includes WILDIE mnemonic for manifestations.",
+    "category": "Health Promotion and Maintenance",
+    "reference": "Pillitteri, Adele. Maternal and Child Health Nursing, Philadelphia. Lippincott Williams and Wilkins"
+  }
+}

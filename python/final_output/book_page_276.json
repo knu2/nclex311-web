@@ -1,0 +1,27 @@
+{
+  "book_page": 276,
+  "pdf_page": 139,
+  "content": {
+    "main_concept": "Abdominal Paracentesis",
+    "key_points": "**CONCEPT** Removal of fluid in the abdomen through abdominal paracentesis facilitates normal breathing.\\n\\n**Abdominal paracentesis** is done to examine contents of the peritoneal fluid and to relieve shortness of breath when ventilation is impaired.\\n\\n**Pre-procedure:**\\n- Obtain informed consent\\n- Instruct the client to **void immediately prior to procedure** to prevent accidental puncture of the urinary bladder\\n- During the procedure, instruct the client to **sit up with feet resting on foot stool**\\n\\n**Evaluate the effect of the procedure by assessing:**\\n- **Weight**\\n- **Abdominal girth**\\n- **Respiratory rate**\\n\\n**Post-procedure monitoring:**\\n- Notify the physician if the urine becomes bloody, pink or red",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following observations indicate that abdominal paracentesis was effective?",
+        "options": ["1. Respiratory rate decreases from 36 to 20 per minute.", "2. Protein level decreases from 6.5 mg/dL to 5 mg/dL.", "3. Urine specific gravity increases from 1.016 to 1.030.", "4. Blood pressure decreases from 140/60 to 120/60."],
+        "correct_answer": "1",
+        "rationale": "**RATIONALE** Massive ascites may cause abdominal discomfort and dyspnea due to pressure exerted by the fluid against the diaphragm. Hence, a decreased respiratory rate is an indication that the client's diaphragm is able to expand."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T06:21:12Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from left side of PDF page 139. Single multiple choice question focusing on effectiveness of paracentesis by improved respiratory function. Comprehensive procedure guide including positioning, consent, and monitoring parameters.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

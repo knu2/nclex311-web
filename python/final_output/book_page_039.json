@@ -1,0 +1,32 @@
+{
+  "book_page": 39,
+  "pdf_page": 20,
+  "content": {
+    "main_concept": "Shigellosis",
+    "key_points": "**CONCEPT** Shigellosis is characterized by frequent loose watery stools.\\n\\n- Shigellosis is also known as bacillary dysentery. It is transmitted by fecal-oral route.\\n\\n**Manifestations include:**\\n- high fever\\n- diarrhea with tenesmus\\n\\n**PRIORITY: Prevent dehydration**",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following is a common finding in shigellosis?",
+        "options": [
+          "1. Rash",
+          "2. Constipation",
+          "3. Diarrhea",
+          "4. Barking cough"
+        ],
+        "correct_answer": "3",
+        "rationale": "**RATIONALE** Shigella bacteria invade the intestinal mucosa and cause inflammation resulting in severe diarrhea."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-15T08:10:55Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from right side of PDF page 20",
+    "category": "Management of Care",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

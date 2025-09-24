@@ -1,0 +1,33 @@
+
+{
+  "book_page": 260,
+  "pdf_page": 131,
+  "content": {
+    "main_concept": "Breast Cancer",
+    "key_points": "- A common risk factor of breast cancer is nulliparity.\n- Breast cancer risk factors\n- **H** – istory in the family\n- **A** – ge\n- **S** – ex\n- **B** – enign breast disease\n- **E** – arly menarche\n- **E** – strogen replacement therapy (controversial issue)\n- **N** – ulliparity\n- **B** – iopsy result indicative of atypical ductal hyperplasia\n- **A** – dvanced age (late menopause)\n- **D** – iet: high fat",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following statements made by a female client reflects a need for further evaluation?",
+        "options": [
+          "1. “I had a history of being hit with a ball when I was 9.”",
+          "2. “I had my first baby when I was 35 years old.”",
+          "3. “We lived in a house built in the 70’s since I was born.”",
+          "4. “I make sure that I get my flu shots yearly.”"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nNulliparity or having the first child after the age of 30, places the client at risk for breast cancer."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T04:58:14Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept content on a single book page.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

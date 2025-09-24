@@ -1,0 +1,32 @@
+{
+  "book_page": 339,
+  "pdf_page": 170,
+  "content": {
+    "main_concept": "Vegan Diet - Nutritional Deficiencies and Considerations",
+    "key_points": "**Vegan Diet Considerations**\n\n- **Seventh Day Adventists are vegetarians** - religious dietary practices\n- **Individuals practicing Hinduism, Jainism, and Buddhism are also vegetarians** - cultural and religious dietary restrictions\n- **Vegetables are rich in vitamin B9 (folacin) but deficient in vitamin B12 (cyanocobalamin)** - key nutritional gap\n- **Leading many vegetarians to suffer from pernicious anemia due to low intake of Vitamin B12** - clinical consequence\n\n*Vegans do not eat any animal products, making them particularly susceptible to B12 deficiency*",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following vitamins is deficient in a client on vegan diet?",
+        "options": [
+          "1. Vitamin C",
+          "2. Vitamin B12",
+          "3. Vitamin A", 
+          "4. Vitamin K"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nAnimal products are rich in Vitamin B12. Therefore, vegetarians are Vitamin B12-deficient because they do not eat any animal products.\n\n**Key nutritional considerations:**\n- **Vitamin B12 (cyanocobalamin)** is primarily found in animal products (meat, dairy, eggs)\n- **Vegans exclude all animal products** from their diet, creating risk for deficiency\n- **Pernicious anemia** can develop from prolonged B12 deficiency\n- **Vegetables are rich in vitamin B9 (folacin)** but deficient in B12\n\n**Why other options are incorrect:**\n- **Vitamin C** - abundant in fruits and vegetables consumed by vegans\n- **Vitamin A** - available in plant sources as beta-carotene\n- **Vitamin K** - found in green leafy vegetables consumed by vegans"
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-22T04:34:14Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Multiple choice question about vitamin deficiencies in vegan diets with focus on B12 deficiency and pernicious anemia risk",
+    "category": "Basic Care and Comfort", 
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

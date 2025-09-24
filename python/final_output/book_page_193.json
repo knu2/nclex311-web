@@ -1,0 +1,32 @@
+{
+  "book_page": 193,
+  "pdf_page": 97,
+  "content": {
+    "main_concept": "Aplastic Anemia",
+    "key_points": "**Aplastic anemia is characterized by pancytopenia.**\\n\\n**Pathophysiology:**\\n- Aplastic anemia is due to bone marrow hypoplasia or aplasia resulting in pancytopenia (decreased WBC, RBC and platelets)\\n\\n**Laboratory findings:**\\n- Lab data reveals decreased RBC, WBC and platelet count\\n\\n**Management:**\\n- Prepare the client for bone marrow transplant\\n- Assess for signs and symptoms of bleeding\\n\\n**Important distinction:**\\n- Factor IX deficiency is associated with hemophilia B or Christmas disease, NOT with aplastic anemia",
+    "questions": [
+      {
+        "id": 1,
+        "type": "SATA",
+        "question_text": "Which of the following blood components are affected in aplastic anemia?\\n\\nSelect all that apply.",
+        "options": [
+          "1. Erythrocytes",
+          "2. Leukocytes",
+          "3. Thrombocytes",
+          "4. Factor IX"
+        ],
+        "correct_answer": "1, 2, 3",
+        "rationale": "**RATIONALE**\\n\\nDeficiency of factor IX is associated with hemophilia B or Christmas disease not with aplastic anemia. Aplastic anemia is characterized by bone marrow hypoplasia or aplasia resulting in decreased RBCs, WBCs, and platelets."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T10:26:43Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept from right side of PDF page 97. SATA question with 4 options, correct answers 1, 2, 3 (pancytopenia) excluding Factor IX which is related to hemophilia.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

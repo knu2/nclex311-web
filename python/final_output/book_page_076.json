@@ -1,0 +1,32 @@
+{
+  "book_page": 76,
+  "pdf_page": 39,
+  "content": {
+    "main_concept": "Bulimia Nervosa",
+    "key_points": "**Bulimia** involves binge eating and purging.\\n\\n**Weight loss** is a common sign, other signs and symptoms include (BULIMIA):\\n- **B**inge eating\\n- **U**nder strict dieting or vigorous exercise\\n- **L**ack of control over eating binges\\n- **I**nduced vomiting\\n- **M**inimum of two binge eating episode in a week for a period of three months\\n- **I**ncreased or persistent concern over body size or shape\\n- **A**buse of laxatives or diuretics\\n\\n**Additional considerations:**\\n- Hypokalemia and hypoglycemia occur",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following behaviors of a client with bulimia nervosa reflects a need for further investigation?",
+        "options": [
+          "1. The client attends a support group gathering.",
+          "2. The client uses the bathroom immediately after meals.",
+          "3. The client stays in the dayroom after meals.",
+          "4. The client recognizes the presence of a problem"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\\n\\nA bulimic client who uses the bathroom immediately after meals should be investigated further considering that bulimic clients induce vomiting after binge eating."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-17T02:30:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Left side content from PDF page 39, complete question-answer pair with comprehensive key points",
+    "category": "Psychosocial Integrity",
+    "reference": "Psychiatric nursing resources"
+  }
+}

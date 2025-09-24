@@ -1,0 +1,32 @@
+{
+  "book_page": 264,
+  "pdf_page": 133,
+  "content": {
+    "main_concept": "Cardiac Catheterization",
+    "key_points": "The question and the answer must be related.\n\n**Post Cardiac Catheterization Care**\n\n- Monitor the vital signs every 30 minutes for 2 hours initially.\n- Notify the physician if any of the following occurs:\n  - **P** - ale or cyanotic extremity\n  - **U** - ndetectable or sudden loss of peripheral pulse or signs of dysrhythmias\n  - **L** - ocalized tingling\n  - **S** - ensory deficits like numbness\n  - **E** - xtremity that is cool\n- Keep the extremity extended for 4 to 6 hours.\n- Maintain strict bed rest for 6 to 12 hours. Do not elevate the head of the bed more than 15 degrees.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "After femoral cardiac catheterization of a client, which of the following doctor’s order should the nurse question?",
+        "options": [
+          "1. Apply pressure dressing at the insertion site for 24 hours.",
+          "2. Maintain the client in a flat position for 6-8 hours.",
+          "3. Assess the color of the legs every hour for 4 hours.",
+          "4. Check the brachial pulses every hour for 4 hours."
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\n\nThe femoral vein was used for vascular access during catheterization; therefore, checking the brachial pulse is not appropriate."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:05:47Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the left side of PDF page 133.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

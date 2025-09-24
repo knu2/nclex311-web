@@ -1,0 +1,32 @@
+{
+  "book_page": 140,
+  "pdf_page": 71,
+  "content": {
+    "main_concept": "Drug-Induced Anaphylaxis",
+    "key_points": "- **Common manifestations of anaphylaxis:**\n  - Stridor (laryngeal edema)\n  - Lump in the throat\n  - Urticaria\n  - Flushing\n  - Nausea and vomiting",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following interventions should the nurse carry out to prevent anaphylaxis before administering an antibiotic?",
+        "options": [
+          "1. Check the client's chart for any allergy.",
+          "2. Ask the client's relatives for history of allergy.",
+          "3. Ask the client about food idiosyncrasies.",
+          "4. Ask the client if he had previous reactions with antibiotics."
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE** To determine the presence of hypersensitivity reactions to any drug, it is important for the nurse to assess history of previous drug allergy."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-18T03:40:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 71. Question type identified as multiple_choice based on singular wording 'Which... interventions' seeking one prevention intervention.",
+    "category": "Pharmacological and Parenteral Therapies",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

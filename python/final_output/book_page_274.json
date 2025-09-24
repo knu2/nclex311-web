@@ -1,0 +1,32 @@
+{
+  "book_page": 274,
+  "pdf_page": 138,
+  "content": {
+    "main_concept": "Tube Drainage",
+    "key_points": "Absence of drainage in a tube needs to be assessed.\n\n**T-tube**\n- Sudden increase in drainage (>500 mL/24 hours) indicates obstruction.\n\n**Sengstaken-Blakemore tube**\n- Increased bloody drainage indicates persistent bleeding.\n\n**Urinary catheter**\n- The normal urine output is 30 to 60 mL per hour.\n\n**Nephrostomy tubes**\n- Urine output of less than 30 mL per hour or absence of output for more than 15 minutes should be reported to the physician.\n\n**Gastric tube**\n- Bright red gastric drainage is expected within 12 hours after gastrectomy.",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following clients would the nurse visit first?",
+        "options": [
+          "1. A client with a urinary catheter drainage of 60 mL in 2 hours",
+          "2. A client with no drainage from a nephrostomy tube",
+          "3. A client with 300 mL of yellowish drainage from a T-tube",
+          "4. A client with 20 mL of bright red gastric drainage 10 hours post-gastrectomy"
+        ],
+        "correct_answer": "2",
+        "rationale": "**RATIONALE**\n\nA nephrostomy tube without output requires immediate assessment and intervention since it is indicative of obstruction."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-09-20T05:12:04Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Extracted content from the left side of PDF page 138.",
+    "category": "Reduction of Risk Potential",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}

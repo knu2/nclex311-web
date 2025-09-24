@@ -1,0 +1,32 @@
+{
+  "book_page": 204,
+  "pdf_page": 103,
+  "content": {
+    "main_concept": "Cystic Fibrosis - Breathing Exercises and Activity Recommendations",
+    "key_points": "**Exercises for Clients with Cystic Fibrosis**\\n\\n- **Coughing** - Promotes clearance of respiratory secretions\\n- **Deep breathing** - Helps prevent respiratory complications\\n- **Huffing** - Alternative coughing technique to clear airways\\n- **Blowing** - Stimulates deep breathing and respiratory muscle strength",
+    "questions": [
+      {
+        "id": 1,
+        "type": "multiple_choice",
+        "question_text": "Which of the following instruments is best for a child with cystic fibrosis who wants to join the school band?",
+        "options": [
+          "1. Piano",
+          "2. Drums", 
+          "3. Lyre",
+          "4. Trumpet"
+        ],
+        "correct_answer": "4",
+        "rationale": "**RATIONALE**\\n\\nA client with cystic fibrosis is encouraged to do breathing exercises to prevent and minimize respiratory complications. Hence, it is appropriate for a child with cystic fibrosis to use a trumpet (blowing instrument) because it stimulates deep breathing."
+      }
+    ]
+  },
+  "images": [],
+  "extraction_metadata": {
+    "timestamp": "2025-01-14T12:00:00Z",
+    "extraction_confidence": "high",
+    "human_validated": false,
+    "notes": "Complete concept extracted from left side of PDF page 103. Question type determined by singular wording 'Which instrument' seeking one best answer.",
+    "category": "Physiological Adaptation",
+    "reference": "The Lippincott Manual of Nursing Practice Philippine Edition, Lippincott Williams and Wilkins"
+  }
+}
