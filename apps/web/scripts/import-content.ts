@@ -254,7 +254,7 @@ class ContentImporter {
     }
 
     // Test database connection
-    if (!this.dryRun) {
+    if (!this.dryRun && supabase) {
       const { error } = await supabase.from('chapters').select('id').limit(1);
       if (error) {
         throw new Error(`Database connection failed: ${error.message}`);
@@ -275,7 +275,7 @@ class ContentImporter {
 
       console.log(`  📖 Creating chapter: ${chapter.title}`);
 
-      if (!this.dryRun) {
+      if (!this.dryRun && supabase) {
         // Check if chapter already exists
         const { data: existing } = await supabase
           .from('chapters')
@@ -444,7 +444,7 @@ class ContentImporter {
         await this.slugGenerator.generateUniqueConceptSlug(context);
       this.slugGenerator.logSlugDecision(slugResult, context);
 
-      const { data: conceptData, error: conceptError } = await supabase
+      const { data: conceptData, error: conceptError } = await supabase!
         .from('concepts')
         .insert({
           title: conceptTitle,
@@ -494,7 +494,7 @@ class ContentImporter {
 
     console.log(`    ❓ Importing question (${mappedType})`);
 
-    if (!this.dryRun) {
+    if (!this.dryRun && supabase) {
       const { data: questionData, error: questionError } = await supabase
         .from('questions')
         .insert({
@@ -577,7 +577,7 @@ class ContentImporter {
 
     if (question.type === 'prioritization') {
       // For prioritization questions, create a single option with the correct sequence
-      const { error } = await supabase.from('options').insert({
+      const { error } = await supabase!.from('options').insert({
         text: question.correct_answer as string, // Store the sequence directly
         is_correct: true,
         question_id: questionId,
@@ -596,7 +596,7 @@ class ContentImporter {
         const optionText = question.options[i];
         const isCorrect = correctAnswers.includes(i + 1);
 
-        const { error } = await supabase.from('options').insert({
+        const { error } = await supabase!.from('options').insert({
           text: optionText,
           is_correct: isCorrect,
           question_id: questionId,
@@ -664,7 +664,7 @@ class ContentImporter {
       });
 
       // Insert into database
-      const { error } = await supabase.from('images').insert({
+      const { error } = await supabase!.from('images').insert({
         filename: image.filename,
         blob_url: blob.url,
         alt_text: image.description,
