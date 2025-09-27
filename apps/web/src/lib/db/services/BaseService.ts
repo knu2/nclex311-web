@@ -148,8 +148,8 @@ export abstract class BaseService {
           .limit(1);
 
         return results[0] || null;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       `findById:${(table as any)[Symbol.for('drizzle:Name')]}`
     );
   }
@@ -209,8 +209,8 @@ export abstract class BaseService {
             hasPrev: page > 1,
           },
         };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       `findWithPagination:${(table as any)[Symbol.for('drizzle:Name')]}`
     );
   }
@@ -231,8 +231,8 @@ export abstract class BaseService {
           .returning();
 
         return results[0];
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       `create:${(table as any)[Symbol.for('drizzle:Name')]}`
     );
   }
@@ -256,8 +256,8 @@ export abstract class BaseService {
           .returning();
 
         return results[0] || null;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       `updateById:${(table as any)[Symbol.for('drizzle:Name')]}`
     );
   }
@@ -280,8 +280,8 @@ export abstract class BaseService {
           .returning({ id: (table as any).id });
 
         return results.length > 0;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       `deleteById:${(table as any)[Symbol.for('drizzle:Name')]}`
     );
   }
@@ -305,8 +305,8 @@ export abstract class BaseService {
           .limit(1);
 
         return results.length > 0;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       `existsById:${(table as any)[Symbol.for('drizzle:Name')]}`
     );
   }
