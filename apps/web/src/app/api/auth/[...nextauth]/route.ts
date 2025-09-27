@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import bcrypt from 'bcrypt';
-import { supabase } from '@/lib/database';
+import { UserService } from '@/lib/db/services';
 
 /**
  * NextAuth credentials provider for email/password login
@@ -27,29 +26,18 @@ export const {
         const password = credentials.password as string;
 
         try {
-          // Cast to untyped client for flexible selects (typed schema may diverge)
-          const client =
-            supabase as unknown as import('@supabase/supabase-js').SupabaseClient;
-          const { data, error } = await client
-            .from('users')
-            .select('id, email, password_hash')
-            .eq('email', email)
-            .limit(1)
-            .maybeSingle();
+          // Use UserService to authenticate user
+          const userService = new UserService();
+          const user = await userService.authenticateUser(email, password);
 
-          if (error || !data?.password_hash) {
-            return null;
-          }
-
-          const isValid = await bcrypt.compare(password, data.password_hash);
-          if (!isValid) {
+          if (!user) {
             return null;
           }
 
           return {
-            id: data.id,
-            email: data.email,
-            name: data.email,
+            id: user.id,
+            email: user.email,
+            name: user.email, // Use email as display name since fullName doesn't exist in current schema
           };
         } catch (error) {
           console.error('Auth error:', error);

@@ -9,6 +9,14 @@ const { TextEncoder, TextDecoder } = require('util');
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
+// Add setImmediate/clearImmediate polyfills for postgres compatibility
+if (typeof setImmediate === 'undefined') {
+  global.setImmediate = (callback, ...args) => setTimeout(callback, 0, ...args);
+}
+if (typeof clearImmediate === 'undefined') {
+  global.clearImmediate = id => clearTimeout(id);
+}
+
 // Add fetch polyfill for Node.js environment
 if (!global.fetch) {
   global.fetch = require('node-fetch');

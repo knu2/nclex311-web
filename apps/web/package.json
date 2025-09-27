@@ -27,6 +27,10 @@
     "rollback-import": "npx tsx scripts/rollback-import.ts --dry-run",
     "rollback-import:confirm": "npx tsx scripts/rollback-import.ts --confirm",
     "db:clear": "npx tsx scripts/clear-database.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
     "bootstrap": "npm run migrate && npm run seed"
   },
   "dependencies": {
@@ -39,9 +43,12 @@
     "bcrypt": "^6.0.0",
     "commander": "^14.0.1",
     "dotenv": "^17.2.2",
+    "drizzle-kit": "^0.31.5",
+    "drizzle-orm": "^0.44.5",
     "next": "15.5.2",
     "next-auth": "^5.0.0-beta.29",
     "pg": "^8.16.3",
+    "postgres": "^3.4.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sharp": "^0.34.4",

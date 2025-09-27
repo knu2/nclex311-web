@@ -89,14 +89,20 @@ describe('ContentImporter', () => {
     jest.clearAllMocks();
 
     // Setup default mock responses
-    mockStat.mockResolvedValue({
+    (
+      mockStat as jest.MockedFunction<typeof import('fs/promises').stat>
+    ).mockResolvedValue({
       isDirectory: () => true,
       size: 1024,
-    });
+    } as any);
 
-    mockReaddir.mockResolvedValue(['book_page_016.json']);
+    (
+      mockReaddir as jest.MockedFunction<typeof import('fs/promises').readdir>
+    ).mockResolvedValue(['book_page_016.json'] as any);
 
-    mockReadFile.mockResolvedValue(
+    (
+      mockReadFile as jest.MockedFunction<typeof import('fs/promises').readFile>
+    ).mockResolvedValue(
       JSON.stringify({
         book_page: 16,
         pdf_page: 9,
@@ -131,13 +137,15 @@ describe('ContentImporter', () => {
           category: 'Management of Care',
           reference: 'Test reference',
         },
-      })
+      }) as any
     );
   });
 
   describe('Environment Validation', () => {
     test('should validate data directory exists', async () => {
-      mockStat.mockRejectedValueOnce(new Error('Directory not found'));
+      (
+        mockStat as jest.MockedFunction<typeof import('fs/promises').stat>
+      ).mockRejectedValueOnce(new Error('Directory not found'));
 
       // We can't directly test the class without importing the actual module
       // This would require restructuring the import script to be more testable
@@ -178,7 +186,11 @@ describe('ContentImporter', () => {
     });
 
     test('should handle JSON parsing errors', async () => {
-      mockReadFile.mockResolvedValueOnce('invalid json {');
+      (
+        mockReadFile as jest.MockedFunction<
+          typeof import('fs/promises').readFile
+        >
+      ).mockResolvedValueOnce('invalid json {' as any);
 
       // Test would catch JSON parsing errors
       expect(() => JSON.parse('invalid json {')).toThrow();

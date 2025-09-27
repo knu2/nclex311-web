@@ -1,0 +1,59 @@
+/**
+ * Main schema export file for NCLEX311 Drizzle ORM
+ * Centralizes all table schemas and type exports
+ */
+
+// Export all user-related schemas and types
+export * from './users';
+
+// Export all content-related schemas and types
+export * from './content';
+
+// Re-export commonly used Drizzle types
+export type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
+
+// Export database schema for connection typing
+import { users } from './users';
+import {
+  chapters,
+  concepts,
+  questions,
+  options,
+  images,
+  chaptersRelations,
+  conceptsRelations,
+  questionsRelations,
+  optionsRelations,
+  imagesRelations,
+} from './content';
+
+/**
+ * Complete database schema including all tables and relations
+ * Used for Drizzle ORM initialization and type inference
+ */
+export const schema = {
+  // Tables
+  users,
+  chapters,
+  concepts,
+  questions,
+  options,
+  images,
+
+  // Relations
+  chaptersRelations,
+  conceptsRelations,
+  questionsRelations,
+  optionsRelations,
+  imagesRelations,
+};
+
+// Export table names for reference
+export const tableNames = {
+  users: 'users',
+  chapters: 'chapters',
+  concepts: 'concepts',
+  questions: 'questions',
+  options: 'options',
+  images: 'images',
+} as const;

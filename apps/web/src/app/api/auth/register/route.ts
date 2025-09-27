@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
 import { z } from 'zod';
-import { supabase } from '@/lib/database';
+import { UserService, ServiceError } from '@/lib/db/services';
 import { handleApiError } from '@/lib/errors';
 
 const RegisterSchema = z.object({
@@ -20,42 +19,29 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         { status: 400 }
       );
     }
+
     const { email, password } = RegisterSchema.parse(
       body as { email: string; password: string }
     );
 
-    // Hash password securely
-    const passwordHash = await bcrypt.hash(password, 12);
+    // Use UserService to register new user
+    const userService = new UserService();
+    const user = await userService.registerUser(email, password);
 
-    // Use untyped client for flexible column selection
-    const client =
-      supabase as unknown as import('@supabase/supabase-js').SupabaseClient;
+    // Return user data without sensitive information
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordHash, ...safeUserData } = user;
 
-    // Insert user - rely on unique constraint for email
-    const { data, error } = await client
-      .from('users')
-      .insert({ email, password_hash: passwordHash, subscription: 'FREE' })
-      .select('id, email, subscription')
-      .single();
-
-    if (error) {
-      // Unique violation code from Postgres
-      if (
-        error &&
-        typeof error === 'object' &&
-        'code' in error &&
-        error.code === '23505'
-      ) {
-        return NextResponse.json(
-          { error: 'Email already exists' },
-          { status: 409 }
-        );
-      }
-      throw error;
+    return NextResponse.json({ user: safeUserData }, { status: 201 });
+  } catch (error) {
+    // Handle service errors with specific status codes
+    if (error instanceof ServiceError) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode }
+      );
     }
 
-    return NextResponse.json({ user: data }, { status: 201 });
-  } catch (error) {
     return handleApiError(error, 'auth.register.POST');
   }
 }

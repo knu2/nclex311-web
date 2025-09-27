@@ -14,6 +14,14 @@ const customJestConfig = {
     '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
+  testEnvironmentOptions: {
+    customExportConditions: ['node', 'node-addons'],
+  },
+  globals: {
+    'process.env': {
+      NODE_ENV: 'test',
+    },
+  },
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
