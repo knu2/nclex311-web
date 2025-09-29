@@ -8,7 +8,8 @@ This table represents the single source of truth for the project's technology st
 | :--- | :--- | :--- | :--- | :--- |
 | **Frontend Language** | TypeScript | ~5.x | Type safety, developer experience | Industry standard for modern web development; catches errors early. |
 | **Frontend Framework**| Next.js | 15.5.x | Full-stack React framework | Latest stable version with React 19 support. Enables rapid development with unified FE/BE. |
-| **UI Component Library**| Tailwind CSS | v4.x | Utility-first CSS framework | Rapid styling with modern CSS features. Radix UI to be added for accessible component primitives. |
+| **UI Styling** | Tailwind CSS | v4.x | Utility-first CSS framework | For rapid and custom styling of components and layouts. |
+| **UI Component Library**| MUI (Material-UI) | ~5.x | React component library | To accelerate development with a comprehensive set of pre-built, accessible components. |
 | **State Management** | React Built-in (useState/useContext) | N/A | Client-side state management | Built-in React hooks sufficient for current scope. Zustand planned for complex global state. |
 | **Backend Language** | TypeScript | ~5.x | Type safety for API routes | Consistent language across the stack simplifies development. |
 | **Backend Framework**| Next.js API Routes | 15.5.x | Serverless backend logic | Specified in PRD. Tightly integrated with the frontend, ideal for this architecture. |

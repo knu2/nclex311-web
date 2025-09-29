@@ -31,7 +31,7 @@
 6.  Pushing to the `main` branch automatically triggers deployment to staging environment.
 7.  Database schema baseline is created and migration strategy is established.
 
-## Story 1.1.5: Development Environment & Local Setup
+## Story 1.2: Development Environment & Local Setup
 
 *   **As a** developer,
 *   **I want** to have comprehensive documentation and tooling for local development setup,
@@ -46,7 +46,7 @@
 6.  Code formatting and linting tools are configured and documented.
 7.  Git hooks are set up for pre-commit linting and formatting.
 
-## Story 1.2 (Revised): Database Import from Pre-Extracted JSON and Images
+## Story 1.3 (Revised): Database Import from Pre-Extracted JSON and Images
 
 *   **As a** content manager,
 *   **I want** to use a TypeScript import script to process pre-extracted JSON files and associated medical images into the database,
@@ -61,7 +61,7 @@
 6.  A spot-check of imported data confirms that concepts, questions, options, and images are correctly linked and accessible.
 7.  The database schema is updated to support image entities and their relationships to concepts and questions.
 
-## Story 1.3: User Authentication
+## Story 1.4: User Authentication
 
 *   **As a** new user,
 *   **I want** to sign up for a new account and log in using my email and password,
@@ -73,7 +73,20 @@
 3.  A logged-in user can log out.
 4.  The system prevents registration with an already-used email address.
 
-## Story 1.4: Content Browsing & Freemium Access
+## Story 1.5: Refactor Authentication UI
+
+*   **As a** user,
+*   **I want** the sign-up and login experience to match the established visual design and component library,
+*   **so that** the application feels cohesive and professional.
+
+**Acceptance Criteria:**
+1.  The Login and Registration forms are refactored to use components from the project's designated component library (MUI).
+2.  All colors, fonts, and spacing on the authentication pages must conform to the `Branding & Style Guide` in `docs/front-end-spec.md`.
+3.  The layout of the forms must be fully responsive and adhere to the `Responsiveness Strategy` in `docs/front-end-spec.md`.
+4.  All interactive elements must meet the `Accessibility Requirements` (WCAG 2.1 AA) defined in `docs/front-end-spec.md`.
+5.  Existing authentication functionality remains unchanged and is verified by existing E2E tests.
+
+## Story 1.6: Content Browsing & Freemium Access
 
 *   **As a** guest or free user,
 *   **I want** to browse the list of all chapters and concepts, and access the full content for the first four chapters,
@@ -85,7 +98,7 @@
 3.  Attempting to access a concept from chapters 5-8 prompts a non-premium user to upgrade.
 4.  The UI clearly distinguishes between free and premium content.
 
-## Story 1.5 (Revised): Interactive Quizzing with Multiple Question Formats
+## Story 1.7 (Revised): Interactive Quizzing with Multiple Question Formats
 
 *   **As a** free user,
 *   **I want** to take quizzes that include various question formats (like Multiple Choice, Select All That Apply, etc.) and receive immediate feedback,
