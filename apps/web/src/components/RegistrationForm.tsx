@@ -2,6 +2,9 @@
 
 import React, { useState, useCallback } from 'react';
 import { z } from 'zod';
+import { TextField, Button, Alert, CircularProgress, Box } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { IconButton, InputAdornment } from '@mui/material';
 
 const RegistrationSchema = z
   .object({
@@ -40,6 +43,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +57,14 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
     },
     [errors]
   );
+
+  const handleTogglePasswordVisibility = useCallback(() => {
+    setShowPassword(prev => !prev);
+  }, []);
+
+  const handleToggleConfirmPasswordVisibility = useCallback(() => {
+    setShowConfirmPassword(prev => !prev);
+  }, []);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -112,95 +125,129 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmit} className={className}>
-      <div className="mb-4">
-        <label
-          htmlFor="email"
-          className="mb-2 block text-sm font-medium text-gray-700"
-        >
-          Email Address
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          className={`w-full rounded-md border px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 ${errors.email ? 'border-red-500' : 'border-gray-300'} ${isLoading ? 'cursor-not-allowed bg-gray-50' : 'bg-white'} `}
-          disabled={isLoading}
-          autoComplete="email"
-          required
-        />
-        {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-        )}
-      </div>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      className={className}
+      sx={{ width: '100%' }}
+    >
+      {/* Email Field */}
+      <TextField
+        type="email"
+        id="email"
+        name="email"
+        label="Email Address"
+        value={formData.email}
+        onChange={handleInputChange}
+        error={!!errors.email}
+        helperText={errors.email}
+        disabled={isLoading}
+        autoComplete="email"
+        required
+        fullWidth
+        variant="outlined"
+      />
 
-      <div className="mb-4">
-        <label
-          htmlFor="password"
-          className="mb-2 block text-sm font-medium text-gray-700"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-          className={`w-full rounded-md border px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 ${errors.password ? 'border-red-500' : 'border-gray-300'} ${isLoading ? 'cursor-not-allowed bg-gray-50' : 'bg-white'} `}
-          disabled={isLoading}
-          autoComplete="new-password"
-          required
-          minLength={8}
-        />
-        {errors.password && (
-          <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-        )}
-      </div>
+      {/* Password Field */}
+      <TextField
+        type={showPassword ? 'text' : 'password'}
+        id="password"
+        name="password"
+        label="Password"
+        value={formData.password}
+        onChange={handleInputChange}
+        error={!!errors.password}
+        helperText={errors.password}
+        disabled={isLoading}
+        autoComplete="new-password"
+        required
+        fullWidth
+        variant="outlined"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleTogglePasswordVisibility}
+                onMouseDown={e => e.preventDefault()}
+                edge="end"
+                disabled={isLoading}
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
 
-      <div className="mb-6">
-        <label
-          htmlFor="confirmPassword"
-          className="mb-2 block text-sm font-medium text-gray-700"
-        >
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleInputChange}
-          className={`w-full rounded-md border px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} ${isLoading ? 'cursor-not-allowed bg-gray-50' : 'bg-white'} `}
-          disabled={isLoading}
-          autoComplete="new-password"
-          required
-        />
-        {errors.confirmPassword && (
-          <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
-        )}
-      </div>
+      {/* Confirm Password Field */}
+      <TextField
+        type={showConfirmPassword ? 'text' : 'password'}
+        id="confirmPassword"
+        name="confirmPassword"
+        label="Confirm Password"
+        value={formData.confirmPassword}
+        onChange={handleInputChange}
+        error={!!errors.confirmPassword}
+        helperText={errors.confirmPassword}
+        disabled={isLoading}
+        autoComplete="new-password"
+        required
+        fullWidth
+        variant="outlined"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle confirm password visibility"
+                onClick={handleToggleConfirmPasswordVisibility}
+                onMouseDown={e => e.preventDefault()}
+                edge="end"
+                disabled={isLoading}
+              >
+                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
 
+      {/* Submit Error */}
       {submitError && (
-        <div className="mb-4 rounded-md border border-red-300 bg-red-50 p-3">
-          <p className="text-sm text-red-800">{submitError}</p>
-        </div>
+        <Alert severity="error" sx={{ mt: 2, mb: 2 }}>
+          {submitError}
+        </Alert>
       )}
 
-      <button
+      {/* Submit Button */}
+      <Button
         type="submit"
+        variant="contained"
+        color="success"
         disabled={isLoading}
-        className={`w-full rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-          isLoading
-            ? 'cursor-not-allowed bg-gray-400'
-            : 'bg-green-600 hover:bg-green-700 focus:ring-green-500'
-        } `}
+        fullWidth
+        size="large"
+        sx={{
+          mt: 2,
+          py: 1.5, // Increase button height for better touch targets
+          position: 'relative',
+        }}
       >
+        {isLoading && (
+          <CircularProgress
+            size={20}
+            sx={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              marginLeft: '-10px',
+              marginTop: '-10px',
+            }}
+          />
+        )}
         {isLoading ? 'Creating Account...' : 'Create Account'}
-      </button>
-    </form>
+      </Button>
+    </Box>
   );
 };
 

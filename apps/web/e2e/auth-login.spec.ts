@@ -80,10 +80,10 @@ test.describe('Authentication Login Functionality', () => {
     await page.locator('#password').fill('wrongpassword');
     await page.getByRole('button', { name: /sign in/i }).click();
 
-    // Should show error message
-    await expect(
-      page.locator('.text-red-600, .text-red-500, [role=\"alert\"]')
-    ).toBeVisible({ timeout: 5000 });
+    // Should show error message - look for invalid credentials error
+    await expect(page.getByText(/invalid email or password/i)).toBeVisible({
+      timeout: 5000,
+    });
 
     // Should still be on login form
     await expect(page.locator('#email')).toBeVisible();
@@ -206,9 +206,9 @@ test.describe('Authentication Login Functionality', () => {
     await registerUser(page, testUser);
 
     // Test login loading state
-    await page.getByRole('button', { name: 'Sign In' }).click();
-    await page.getByLabel('Email').fill(testUser.email);
-    await page.getByLabel('Password').fill(testUser.password);
+    await page.getByRole('tab', { name: 'Sign In' }).click();
+    await page.locator('#email').fill(testUser.email);
+    await page.locator('#password').fill(testUser.password);
 
     // Click submit and check for loading state
     await page.getByRole('button', { name: /sign in/i }).click();
@@ -279,7 +279,7 @@ test.describe('Authentication Registration Functionality', () => {
 
     // Should show error about duplicate email
     await expect(
-      page.locator('.text-red-600, .text-red-500, [role=\"alert\"]')
+      page.getByText(/account with this email already exists/i)
     ).toBeVisible({ timeout: 5000 });
   });
 
@@ -297,7 +297,7 @@ test.describe('Authentication Registration Functionality', () => {
 
     // Should show password validation error
     await expect(
-      page.locator('.text-red-600, .text-red-500, [role=\"alert\"]')
+      page.getByText(/password must be at least 8 characters/i)
     ).toBeVisible({ timeout: 5000 });
   });
 });

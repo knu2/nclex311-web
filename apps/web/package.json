@@ -34,6 +34,10 @@
     "bootstrap": "npm run migrate && npm run seed"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.2",
+    "@mui/material": "^7.3.2",
     "@nclex311/types": "*",
     "@supabase/supabase-js": "^2.57.4",
     "@types/bcrypt": "^6.0.0",

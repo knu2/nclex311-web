@@ -4,6 +4,19 @@ import React, { useState } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import LoginForm from '@/components/LoginForm';
 import RegistrationForm from '@/components/RegistrationForm';
+import AuthLayout from '@/components/AuthLayout';
+import {
+  Box,
+  Button,
+  Tabs,
+  Tab,
+  Typography,
+  Alert,
+  CircularProgress,
+  Container,
+  Paper,
+} from '@mui/material';
+import { ExitToApp, AccountCircle, Info } from '@mui/icons-material';
 
 export default function AuthDemoPage() {
   const { data: session, status } = useSession();
@@ -11,123 +24,179 @@ export default function AuthDemoPage() {
 
   if (status === 'loading') {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-lg">Loading...</div>
-      </div>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        <CircularProgress size={40} />
+        <Typography variant="body1" color="text.secondary">
+          Loading...
+        </Typography>
+      </Box>
     );
   }
 
   if (session?.user) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50">
-        <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900">Welcome!</h1>
-            <p className="mt-2 text-gray-600">
-              You are successfully logged in.
-            </p>
-          </div>
+      <Box
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          bgcolor: 'background.default',
+          py: 4,
+        }}
+      >
+        <Container maxWidth="sm">
+          <Paper
+            elevation={1}
+            sx={{
+              p: 4,
+              borderRadius: 2,
+            }}
+          >
+            <Box sx={{ textAlign: 'center', mb: 3 }}>
+              <AccountCircle
+                sx={{ fontSize: 48, color: 'success.main', mb: 1 }}
+              />
+              <Typography variant="h1" sx={{ mb: 1 }}>
+                Welcome!
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                You are successfully logged in.
+              </Typography>
+            </Box>
 
-          <div className="space-y-4">
-            <div className="rounded-lg bg-green-50 p-4">
-              <h3 className="font-medium text-green-800">User Information</h3>
-              <p className="mt-1 text-sm text-green-700">
-                Email: {session.user.email}
-              </p>
-              {session.user.name && (
-                <p className="text-sm text-green-700">
-                  Name: {session.user.name}
-                </p>
-              )}
-            </div>
+            <Box sx={{ mb: 3 }}>
+              <Alert severity="success" sx={{ mb: 2 }}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                  User Information
+                </Typography>
+                <Typography variant="body2">
+                  Email: {session.user.email}
+                </Typography>
+                {session.user.name && (
+                  <Typography variant="body2">
+                    Name: {session.user.name}
+                  </Typography>
+                )}
+              </Alert>
 
-            <button
-              onClick={() => signOut()}
-              className="w-full rounded-md bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-700"
-            >
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </div>
+              <Button
+                onClick={() => signOut()}
+                variant="contained"
+                color="error"
+                size="large"
+                fullWidth
+                startIcon={<ExitToApp />}
+                sx={{ py: 1.5 }}
+              >
+                Sign Out
+              </Button>
+            </Box>
+          </Paper>
+        </Container>
+      </Box>
     );
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900">NCLEX 311</h1>
-          <p className="mt-2 text-gray-600">
-            Sign in to your account or create a new one
-          </p>
-        </div>
+    <AuthLayout
+      title="NCLEX 311"
+      subtitle="Sign in to your account or create a new one"
+    >
+      {/* Tab Navigation */}
+      <Box sx={{ mb: 3 }}>
+        <Tabs
+          value={activeTab}
+          onChange={(_, value) => setActiveTab(value)}
+          variant="fullWidth"
+          sx={{
+            '& .MuiTab-root': {
+              textTransform: 'none',
+              fontWeight: 500,
+              minHeight: 48,
+            },
+          }}
+        >
+          <Tab
+            label="Sign In"
+            value="login"
+            id="login-tab"
+            aria-controls="login-panel"
+          />
+          <Tab
+            label="Create Account"
+            value="register"
+            id="register-tab"
+            aria-controls="register-panel"
+          />
+        </Tabs>
+      </Box>
 
-        {/* Tab Navigation */}
-        <div role="tablist" className="flex rounded-lg bg-gray-100 p-1">
-          <button
-            role="tab"
-            aria-selected={activeTab === 'login'}
-            onClick={() => setActiveTab('login')}
-            className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-              activeTab === 'login'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Sign In
-          </button>
-          <button
-            role="tab"
-            aria-selected={activeTab === 'register'}
-            onClick={() => setActiveTab('register')}
-            className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-              activeTab === 'register'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Create Account
-          </button>
-        </div>
-
-        {/* Form Content */}
-        <div className="mt-6">
-          {activeTab === 'login' ? (
+      {/* Form Content */}
+      <Box>
+        {activeTab === 'login' ? (
+          <Box role="tabpanel" id="login-panel" aria-labelledby="login-tab">
             <LoginForm
               onSuccess={() => {
-                // The session will update automatically
                 console.log('Login successful');
               }}
             />
-          ) : (
+          </Box>
+        ) : (
+          <Box
+            role="tabpanel"
+            id="register-panel"
+            aria-labelledby="register-tab"
+          >
             <RegistrationForm
               onSuccess={user => {
                 console.log('Registration successful:', user);
-                // After successful registration, switch to login
                 setActiveTab('login');
-                alert(`Account created for ${user.email}! Please sign in.`);
+                // Show success message using Material-UI pattern
+                setTimeout(() => {
+                  alert(`Account created for ${user.email}! Please sign in.`);
+                }, 100);
               }}
             />
-          )}
-        </div>
+          </Box>
+        )}
+      </Box>
 
-        {/* Demo Info */}
-        <div className="mt-8 rounded-lg bg-blue-50 p-4">
-          <h3 className="text-sm font-medium text-blue-800">
-            Authentication Demo
-          </h3>
-          <p className="mt-1 text-xs text-blue-700">
-            This demonstrates the complete user authentication system with
-            registration, login, and session management.
-          </p>
-          <div className="mt-2 text-xs text-blue-600">
-            <p>• Passwords are hashed with bcrypt</p>
-            <p>• Email uniqueness enforced</p>
-            <p>• NextAuth JWT session management</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      {/* Demo Info */}
+      <Alert severity="info" icon={<Info />} sx={{ mt: 4 }}>
+        <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+          Authentication Demo
+        </Typography>
+        <Typography variant="body2" sx={{ mb: 1 }}>
+          This demonstrates the complete user authentication system with
+          registration, login, and session management.
+        </Typography>
+        <Box
+          component="ul"
+          sx={{
+            pl: 2,
+            m: 0,
+            '& li': {
+              fontSize: '0.8rem',
+              lineHeight: 1.4,
+            },
+          }}
+        >
+          <li>Passwords are hashed with bcrypt</li>
+          <li>Email uniqueness enforced</li>
+          <li>NextAuth JWT session management</li>
+          <li>Material-UI theme with NCLEX311 branding</li>
+        </Box>
+      </Alert>
+    </AuthLayout>
   );
 }
