@@ -74,3 +74,4 @@ python/final_output/
 python/extracted_content_page*/
 python/extracted_images_page*/
 python/extraction_results.json
+.vercel
