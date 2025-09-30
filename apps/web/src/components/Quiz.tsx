@@ -73,7 +73,10 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
       if (currentQuestion.type === 'SELECT_ALL_THAT_APPLY') {
         // Multi-select question
         if (checked) {
-          newAnswers = [...currentAnswers.filter(id => id !== optionId), optionId];
+          newAnswers = [
+            ...currentAnswers.filter(id => id !== optionId),
+            optionId,
+          ];
         } else {
           newAnswers = currentAnswers.filter(id => id !== optionId);
         }
@@ -133,30 +136,34 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
   // Determine if answer is correct
   const correctOptions = currentQuestion.options.filter(opt => opt.isCorrect);
   const correctOptionIds = correctOptions.map(opt => opt.id);
-  const isCorrect = showFeedback && 
+  const isCorrect =
+    showFeedback &&
     userAnswer.length === correctOptionIds.length &&
     userAnswer.every(id => correctOptionIds.includes(id)) &&
     correctOptionIds.every(id => userAnswer.includes(id));
 
   const getOptionStatus = (optionId: string, isCorrectOption: boolean) => {
     if (!showFeedback) return 'default';
-    
+
     const isSelected = userAnswer.includes(optionId);
-    
+
     if (isCorrectOption) {
       return 'correct';
     } else if (isSelected && !isCorrectOption) {
       return 'incorrect';
     }
-    
+
     return 'default';
   };
 
   const getOptionColor = (status: string) => {
     switch (status) {
-      case 'correct': return 'success.light';
-      case 'incorrect': return 'error.light';
-      default: return 'transparent';
+      case 'correct':
+        return 'success.light';
+      case 'incorrect':
+        return 'error.light';
+      default:
+        return 'transparent';
     }
   };
 
@@ -168,22 +175,23 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
             <QuizIcon color="primary" sx={{ mr: 1 }} />
             <Typography variant="h3" component="h3">
-              Practice Question {state.currentQuestionIndex + 1} of {questions.length}
+              Practice Question {state.currentQuestionIndex + 1} of{' '}
+              {questions.length}
             </Typography>
-            <Chip 
-              label={currentQuestion.type.replace(/_/g, ' ')} 
+            <Chip
+              label={currentQuestion.type.replace(/_/g, ' ')}
               size="small"
               color="primary"
               variant="outlined"
               sx={{ ml: 2 }}
             />
           </Box>
-          
+
           <Divider sx={{ mb: 3 }} />
-          
-          <Typography 
-            variant="body1" 
-            sx={{ 
+
+          <Typography
+            variant="body1"
+            sx={{
               fontSize: '1.1rem',
               lineHeight: 1.6,
               mb: 2,
@@ -195,7 +203,8 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
           {currentQuestion.type === 'SELECT_ALL_THAT_APPLY' && (
             <Alert severity="info" sx={{ mb: 2 }}>
               <Typography variant="body2">
-                <strong>Select all that apply:</strong> This question may have multiple correct answers.
+                <strong>Select all that apply:</strong> This question may have
+                multiple correct answers.
               </Typography>
             </Alert>
           )}
@@ -205,17 +214,19 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
         <FormControl component="fieldset" fullWidth sx={{ mb: 3 }}>
           {currentQuestion.type === 'SELECT_ALL_THAT_APPLY' ? (
             <FormGroup>
-              {currentQuestion.options.map((option) => {
+              {currentQuestion.options.map(option => {
                 const status = getOptionStatus(option.id, option.isCorrect);
                 const isSelected = userAnswer.includes(option.id);
-                
+
                 return (
                   <FormControlLabel
                     key={option.id}
                     control={
                       <Checkbox
                         checked={isSelected}
-                        onChange={(e) => handleAnswerChange(option.id, e.target.checked)}
+                        onChange={e =>
+                          handleAnswerChange(option.id, e.target.checked)
+                        }
                         disabled={isSubmitted}
                       />
                     }
@@ -226,11 +237,16 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
                       borderRadius: 1,
                       backgroundColor: getOptionColor(status),
                       border: `2px solid ${
-                        status === 'correct' ? 'success.main' : 
-                        status === 'incorrect' ? 'error.main' : 'transparent'
+                        status === 'correct'
+                          ? 'success.main'
+                          : status === 'incorrect'
+                            ? 'error.main'
+                            : 'transparent'
                       }`,
                       '&:hover': {
-                        backgroundColor: isSubmitted ? getOptionColor(status) : 'action.hover',
+                        backgroundColor: isSubmitted
+                          ? getOptionColor(status)
+                          : 'action.hover',
                         transition: 'all 0.15s ease-out',
                       },
                       '& .MuiFormControlLabel-label': {
@@ -245,11 +261,11 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
           ) : (
             <RadioGroup
               value={userAnswer[0] || ''}
-              onChange={(e) => handleAnswerChange(e.target.value)}
+              onChange={e => handleAnswerChange(e.target.value)}
             >
-              {currentQuestion.options.map((option) => {
+              {currentQuestion.options.map(option => {
                 const status = getOptionStatus(option.id, option.isCorrect);
-                
+
                 return (
                   <FormControlLabel
                     key={option.id}
@@ -262,11 +278,16 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
                       borderRadius: 1,
                       backgroundColor: getOptionColor(status),
                       border: `2px solid ${
-                        status === 'correct' ? 'success.main' : 
-                        status === 'incorrect' ? 'error.main' : 'transparent'
+                        status === 'correct'
+                          ? 'success.main'
+                          : status === 'incorrect'
+                            ? 'error.main'
+                            : 'transparent'
                       }`,
                       '&:hover': {
-                        backgroundColor: isSubmitted ? getOptionColor(status) : 'action.hover',
+                        backgroundColor: isSubmitted
+                          ? getOptionColor(status)
+                          : 'action.hover',
                         transition: 'all 0.15s ease-out',
                       },
                       '& .MuiFormControlLabel-label': {
@@ -302,10 +323,10 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
         {/* Immediate Feedback - Following user flow spec */}
         {showFeedback && (
           <Box sx={{ mb: 3 }}>
-            <Alert 
+            <Alert
               severity={isCorrect ? 'success' : 'error'}
               icon={isCorrect ? <CorrectIcon /> : <IncorrectIcon />}
-              sx={{ 
+              sx={{
                 mb: 2,
                 '& .MuiAlert-message': {
                   fontSize: '1rem',
@@ -319,9 +340,9 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
 
             {/* Detailed Rationale - Following user flow spec */}
             {currentQuestion.explanation && (
-              <Paper 
-                sx={{ 
-                  p: 3, 
+              <Paper
+                sx={{
+                  p: 3,
                   backgroundColor: 'action.hover',
                   border: '1px solid',
                   borderColor: 'divider',
@@ -341,11 +362,13 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
 
         {/* Navigation - Following user flow: "Option to go to Next Concept or back to List" */}
         {isSubmitted && (
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <Button
               variant="outlined"
               onClick={handlePrevious}
@@ -362,15 +385,14 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
             <Button
               variant="contained"
               onClick={handleNext}
-              sx={{ 
+              sx={{
                 textTransform: 'none',
                 fontWeight: 600,
               }}
             >
-              {state.currentQuestionIndex < questions.length - 1 
-                ? 'Next Question' 
-                : 'Complete Quiz'
-              }
+              {state.currentQuestionIndex < questions.length - 1
+                ? 'Next Question'
+                : 'Complete Quiz'}
             </Button>
           </Box>
         )}

@@ -60,19 +60,19 @@ export const Paywall: React.FC<PaywallProps> = ({
       >
         {/* Lock Icon Header */}
         <Box sx={{ mb: 3 }}>
-          <LockIcon 
-            sx={{ 
-              fontSize: 64, 
+          <LockIcon
+            sx={{
+              fontSize: 64,
               color: 'warning.main',
               mb: 2,
-            }} 
+            }}
           />
           {chapterNumber && (
             <Chip
               label={`Chapter ${chapterNumber} - Premium Content`}
               color="warning"
               variant="filled"
-              sx={{ 
+              sx={{
                 mb: 2,
                 fontSize: '0.9rem',
                 fontWeight: 600,
@@ -82,9 +82,9 @@ export const Paywall: React.FC<PaywallProps> = ({
         </Box>
 
         {/* Compelling Headline */}
-        <Typography 
-          variant="h1" 
-          component="h1" 
+        <Typography
+          variant="h1"
+          component="h1"
           gutterBottom
           sx={{
             fontSize: { xs: '1.5rem', sm: '1.75rem' },
@@ -96,21 +96,22 @@ export const Paywall: React.FC<PaywallProps> = ({
           Unlock Your Full Potential
         </Typography>
 
-        <Typography 
-          variant="body1" 
+        <Typography
+          variant="body1"
           color="text.secondary"
           sx={{ mb: 4, fontSize: '1.1rem' }}
         >
-          This concept is part of our premium content. Upgrade to access all chapters and accelerate your NCLEX-RN preparation.
+          This concept is part of our premium content. Upgrade to access all
+          chapters and accelerate your NCLEX-RN preparation.
         </Typography>
 
         {/* Value Proposition */}
         <Box sx={{ textAlign: 'left', mb: 4 }}>
-          <Typography 
-            variant="h3" 
-            component="h2" 
+          <Typography
+            variant="h3"
+            component="h2"
             gutterBottom
-            sx={{ 
+            sx={{
               textAlign: 'center',
               mb: 3,
               color: 'text.primary',
@@ -118,7 +119,7 @@ export const Paywall: React.FC<PaywallProps> = ({
           >
             Premium Membership Includes:
           </Typography>
-          
+
           <List sx={{ py: 0 }}>
             {benefits.map((benefit, index) => (
               <ListItem key={index} sx={{ py: 0.5, px: 0 }}>
@@ -142,10 +143,10 @@ export const Paywall: React.FC<PaywallProps> = ({
 
         {/* Pricing */}
         <Box sx={{ mb: 4 }}>
-          <Typography 
-            variant="h2" 
+          <Typography
+            variant="h2"
             component="div"
-            sx={{ 
+            sx={{
               fontSize: '2rem',
               fontWeight: 700,
               color: 'primary.main',
@@ -153,11 +154,11 @@ export const Paywall: React.FC<PaywallProps> = ({
             }}
           >
             ₱2,999
-            <Typography 
+            <Typography
               component="span"
               variant="body2"
               color="text.secondary"
-              sx={{ 
+              sx={{
                 fontSize: '1rem',
                 fontWeight: 400,
                 ml: 1,
@@ -166,9 +167,9 @@ export const Paywall: React.FC<PaywallProps> = ({
               / year
             </Typography>
           </Typography>
-          
-          <Typography 
-            variant="body2" 
+
+          <Typography
+            variant="body2"
             color="success.main"
             sx={{ fontWeight: 600 }}
           >
@@ -177,13 +178,15 @@ export const Paywall: React.FC<PaywallProps> = ({
         </Box>
 
         {/* Action Buttons */}
-        <Box sx={{ 
-          display: 'flex', 
-          flexDirection: { xs: 'column', sm: 'row' },
-          gap: 2,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            gap: 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <Button
             variant="contained"
             size="large"
@@ -225,12 +228,14 @@ export const Paywall: React.FC<PaywallProps> = ({
         </Box>
 
         {/* Trust Signal */}
-        <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'divider' }}>
-          <Typography 
-            variant="body2" 
+        <Box
+          sx={{ mt: 4, pt: 3, borderTop: '1px solid', borderColor: 'divider' }}
+        >
+          <Typography
+            variant="body2"
             color="text.secondary"
-            sx={{ 
-              display: 'flex', 
+            sx={{
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: 1,

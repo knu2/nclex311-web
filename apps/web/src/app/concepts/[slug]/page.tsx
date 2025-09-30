@@ -63,10 +63,10 @@ export default function ConceptPage() {
     const fetchConcept = async () => {
       try {
         setState(prev => ({ ...prev, loading: true, error: null }));
-        
+
         const response = await fetch(`/api/concepts/${slug}`);
         const result = await response.json();
-        
+
         if (response.status === 403 && result.premiumRequired) {
           // Following user flow: Premium Content → Display 'Premium Content' message
           setState(prev => ({
@@ -77,11 +77,11 @@ export default function ConceptPage() {
           }));
           return;
         }
-        
+
         if (!response.ok) {
           throw new Error(result.message || 'Failed to fetch concept');
         }
-        
+
         if (result.success && result.data) {
           setState(prev => ({
             ...prev,
@@ -113,7 +113,9 @@ export default function ConceptPage() {
   const handleUpgrade = () => {
     // TODO: Implement subscription/payment flow
     // For now, just show alert
-    alert('Upgrade functionality will be implemented with Maya Business payment integration.');
+    alert(
+      'Upgrade functionality will be implemented with Maya Business payment integration.'
+    );
   };
 
   const handleBookmarkToggle = () => {
@@ -155,9 +157,7 @@ export default function ConceptPage() {
     return (
       <Container maxWidth="lg" sx={{ py: 3 }}>
         <Alert severity="error" sx={{ mb: 2 }}>
-          <Typography variant="body2">
-            {state.error}
-          </Typography>
+          <Typography variant="body2">{state.error}</Typography>
         </Alert>
         <Button
           variant="outlined"
@@ -187,9 +187,7 @@ export default function ConceptPage() {
     return (
       <Container maxWidth="lg" sx={{ py: 3 }}>
         <Alert severity="info" sx={{ mb: 2 }}>
-          <Typography variant="body2">
-            Concept not found.
-          </Typography>
+          <Typography variant="body2">Concept not found.</Typography>
         </Alert>
         <Button
           variant="outlined"
@@ -219,10 +217,14 @@ export default function ConceptPage() {
 
         {/* Breadcrumbs - Following front-end spec */}
         <Breadcrumbs separator="›" sx={{ mb: 2 }}>
-          <Link 
-            color="inherit" 
-            href="/dashboard" 
-            sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+          <Link
+            color="inherit"
+            href="/dashboard"
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+            }}
           >
             <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
             Dashboard
@@ -238,7 +240,14 @@ export default function ConceptPage() {
 
       {/* Concept Header */}
       <Paper sx={{ p: 3, mb: 3, borderRadius: 2 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            mb: 2,
+          }}
+        >
           <Box sx={{ flexGrow: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
               <Typography variant="h1" component="h1" sx={{ mr: 2 }}>
@@ -252,20 +261,23 @@ export default function ConceptPage() {
               />
             </Box>
             <Typography variant="body2" color="text.secondary">
-              Chapter {concept.chapter.chapterNumber} • Concept {concept.conceptNumber}
+              Chapter {concept.chapter.chapterNumber} • Concept{' '}
+              {concept.conceptNumber}
             </Typography>
           </Box>
-          
+
           {/* Action Buttons */}
           <Box sx={{ display: 'flex', gap: 1 }}>
             <IconButton
               onClick={handleBookmarkToggle}
               color={state.isBookmarked ? 'secondary' : 'default'}
-              aria-label={state.isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+              aria-label={
+                state.isBookmarked ? 'Remove bookmark' : 'Add bookmark'
+              }
             >
               {state.isBookmarked ? <BookmarkIcon /> : <BookmarkBorderIcon />}
             </IconButton>
-            
+
             <Button
               variant={state.isCompleted ? 'contained' : 'outlined'}
               startIcon={<CompleteIcon />}
@@ -282,9 +294,9 @@ export default function ConceptPage() {
         <Divider sx={{ mb: 3 }} />
 
         {/* Concept Content - Following front-end spec layout */}
-        <Typography 
-          variant="body1" 
-          sx={{ 
+        <Typography
+          variant="body1"
+          sx={{
             fontSize: '1.1rem',
             lineHeight: 1.7,
             whiteSpace: 'pre-wrap',
@@ -301,13 +313,12 @@ export default function ConceptPage() {
             Practice Questions
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            Test your understanding of this concept with {concept.questions.length} practice question{concept.questions.length !== 1 ? 's' : ''}.
+            Test your understanding of this concept with{' '}
+            {concept.questions.length} practice question
+            {concept.questions.length !== 1 ? 's' : ''}.
           </Typography>
-          
-          <Quiz
-            questions={concept.questions}
-            onComplete={handleQuizComplete}
-          />
+
+          <Quiz questions={concept.questions} onComplete={handleQuizComplete} />
         </Box>
       )}
 
@@ -315,21 +326,24 @@ export default function ConceptPage() {
       {state.isCompleted && (
         <Alert severity="success" sx={{ mt: 3 }}>
           <Typography variant="body2">
-            🎉 Great job! You&apos;ve completed this concept. 
-            {concept.questions.length > 0 && ' Keep practicing to reinforce your learning.'}
+            🎉 Great job! You&apos;ve completed this concept.
+            {concept.questions.length > 0 &&
+              ' Keep practicing to reinforce your learning.'}
           </Typography>
         </Alert>
       )}
 
       {/* Navigation - Following user flow: "Option to go to Next Concept or back to List" */}
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'center',
-        mt: 4,
-        pt: 3,
-        borderTop: '1px solid',
-        borderColor: 'divider',
-      }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mt: 4,
+          pt: 3,
+          borderTop: '1px solid',
+          borderColor: 'divider',
+        }}
+      >
         <Button
           variant="outlined"
           onClick={handleGoBack}

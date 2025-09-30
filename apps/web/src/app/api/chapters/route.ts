@@ -15,14 +15,14 @@ const contentService = new ContentService();
 export async function GET() {
   try {
     const chapters = await contentService.getAllChaptersWithConcepts();
-    
+
     return NextResponse.json({
       success: true,
       data: chapters,
     });
   } catch (error) {
     console.error('Failed to fetch chapters:', error);
-    
+
     return NextResponse.json(
       {
         success: false,

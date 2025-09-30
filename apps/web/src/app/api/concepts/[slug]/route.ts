@@ -64,11 +64,10 @@ export async function GET(
       success: true,
       data: result.data,
     });
-
   } catch (error) {
     const params = await context.params;
     console.error(`Failed to fetch concept ${params.slug}:`, error);
-    
+
     if (error instanceof Error && error.message.includes('not found')) {
       return NextResponse.json(
         {

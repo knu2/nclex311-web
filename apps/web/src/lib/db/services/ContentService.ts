@@ -109,15 +109,11 @@ export class ContentService extends BaseService {
         .limit(1);
 
       if (!conceptData[0]) {
-        throw new ServiceError(
-          'Concept not found',
-          'CONCEPT_NOT_FOUND',
-          404
-        );
+        throw new ServiceError('Concept not found', 'CONCEPT_NOT_FOUND', 404);
       }
 
       const { concepts: concept, chapters: chapter } = conceptData[0];
-      
+
       if (!chapter) {
         throw new ServiceError(
           'Chapter not found for concept',
@@ -127,7 +123,8 @@ export class ContentService extends BaseService {
       }
 
       // Check freemium access
-      const isPremium = chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT;
+      const isPremium =
+        chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT;
       const hasAccess = !isPremium || user?.subscription === 'PREMIUM';
 
       // If no access, return restricted result
@@ -190,15 +187,11 @@ export class ContentService extends BaseService {
         .limit(1);
 
       if (!conceptData[0]) {
-        throw new ServiceError(
-          'Concept not found',
-          'CONCEPT_NOT_FOUND',
-          404
-        );
+        throw new ServiceError('Concept not found', 'CONCEPT_NOT_FOUND', 404);
       }
 
       const { concepts: concept, chapters: chapter } = conceptData[0];
-      
+
       if (!chapter) {
         throw new ServiceError(
           'Chapter not found for concept',
@@ -208,7 +201,8 @@ export class ContentService extends BaseService {
       }
 
       // Check freemium access
-      const isPremium = chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT;
+      const isPremium =
+        chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT;
       const hasAccess = !isPremium || user?.subscription === 'PREMIUM';
 
       // If no access, return restricted result

@@ -30,7 +30,12 @@ interface TabPanelProps {
 /**
  * Tab panel component for tabbed content
  */
-const TabPanel: React.FC<TabPanelProps> = ({ children, value, index, ...other }) => {
+const TabPanel: React.FC<TabPanelProps> = ({
+  children,
+  value,
+  index,
+  ...other
+}) => {
   return (
     <div
       role="tabpanel"
@@ -51,7 +56,9 @@ export default function DashboardPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(0);
   const [chapters, setChapters] = useState<ChapterWithConcepts[]>([]);
-  const [filteredChapters, setFilteredChapters] = useState<ChapterWithConcepts[]>([]);
+  const [filteredChapters, setFilteredChapters] = useState<
+    ChapterWithConcepts[]
+  >([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -62,14 +69,14 @@ export default function DashboardPage() {
       try {
         setLoading(true);
         setError(null);
-        
+
         const response = await fetch('/api/chapters');
         const result = await response.json();
-        
+
         if (!response.ok) {
           throw new Error(result.message || 'Failed to fetch chapters');
         }
-        
+
         if (result.success) {
           setChapters(result.data);
           setFilteredChapters(result.data);
@@ -95,19 +102,23 @@ export default function DashboardPage() {
     }
 
     const query = searchQuery.toLowerCase().trim();
-    const filtered = chapters.map(chapter => ({
-      ...chapter,
-      concepts: chapter.concepts.filter(concept =>
-        concept.title.toLowerCase().includes(query) ||
-        `concept ${concept.conceptNumber}`.toLowerCase().includes(query) ||
-        `chapter ${chapter.chapterNumber}`.toLowerCase().includes(query) ||
-        chapter.title.toLowerCase().includes(query)
-      )
-    })).filter(chapter => 
-      chapter.concepts.length > 0 || 
-      chapter.title.toLowerCase().includes(query) ||
-      `chapter ${chapter.chapterNumber}`.toLowerCase().includes(query)
-    );
+    const filtered = chapters
+      .map(chapter => ({
+        ...chapter,
+        concepts: chapter.concepts.filter(
+          concept =>
+            concept.title.toLowerCase().includes(query) ||
+            `concept ${concept.conceptNumber}`.toLowerCase().includes(query) ||
+            `chapter ${chapter.chapterNumber}`.toLowerCase().includes(query) ||
+            chapter.title.toLowerCase().includes(query)
+        ),
+      }))
+      .filter(
+        chapter =>
+          chapter.concepts.length > 0 ||
+          chapter.title.toLowerCase().includes(query) ||
+          `chapter ${chapter.chapterNumber}`.toLowerCase().includes(query)
+      );
 
     setFilteredChapters(filtered);
   }, [searchQuery, chapters]);
@@ -138,7 +149,8 @@ export default function DashboardPage() {
           Welcome back!
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Continue your NCLEX-RN preparation journey. Free access to Chapters 1-4, upgrade for full content.
+          Continue your NCLEX-RN preparation journey. Free access to Chapters
+          1-4, upgrade for full content.
         </Typography>
       </Box>
 
@@ -213,34 +225,42 @@ export default function DashboardPage() {
               error={error}
               onConceptClick={handleConceptClick}
             />
-            
-            {searchQuery && filteredChapters.length === 0 && !loading && !error && (
-              <Box textAlign="center" py={4}>
-                <Typography variant="body1" color="text.secondary">
-                  No concepts found matching &quot;{searchQuery}&quot;
-                </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                  Try adjusting your search terms or browse all chapters.
-                </Typography>
-              </Box>
-            )}
+
+            {searchQuery &&
+              filteredChapters.length === 0 &&
+              !loading &&
+              !error && (
+                <Box textAlign="center" py={4}>
+                  <Typography variant="body1" color="text.secondary">
+                    No concepts found matching &quot;{searchQuery}&quot;
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mt: 1 }}
+                  >
+                    Try adjusting your search terms or browse all chapters.
+                  </Typography>
+                </Box>
+              )}
           </TabPanel>
 
           {/* My Bookmarks Tab */}
           <TabPanel value={activeTab} index={1}>
             <Box textAlign="center" py={6}>
-              <BookmarkIcon 
-                sx={{ 
-                  fontSize: 64, 
-                  color: 'text.disabled', 
-                  mb: 2 
-                }} 
+              <BookmarkIcon
+                sx={{
+                  fontSize: 64,
+                  color: 'text.disabled',
+                  mb: 2,
+                }}
               />
               <Typography variant="h3" color="text.secondary" gutterBottom>
                 Bookmarks Coming Soon
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Save your favorite concepts for quick access. This feature will be available in the next update.
+                Save your favorite concepts for quick access. This feature will
+                be available in the next update.
               </Typography>
             </Box>
           </TabPanel>
@@ -248,18 +268,19 @@ export default function DashboardPage() {
           {/* Completed Tab */}
           <TabPanel value={activeTab} index={2}>
             <Box textAlign="center" py={6}>
-              <CompletedIcon 
-                sx={{ 
-                  fontSize: 64, 
-                  color: 'text.disabled', 
-                  mb: 2 
-                }} 
+              <CompletedIcon
+                sx={{
+                  fontSize: 64,
+                  color: 'text.disabled',
+                  mb: 2,
+                }}
               />
               <Typography variant="h3" color="text.secondary" gutterBottom>
                 Progress Tracking Coming Soon
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Track your completed concepts and overall progress. This feature will be available in the next update.
+                Track your completed concepts and overall progress. This feature
+                will be available in the next update.
               </Typography>
             </Box>
           </TabPanel>

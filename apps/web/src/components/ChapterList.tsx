@@ -54,19 +54,21 @@ const ConceptItem: React.FC<ConceptItemProps> = ({ concept, onClick }) => {
           borderRadius: 1,
           mb: 0.5,
           '&:hover': {
-            backgroundColor: concept.isPremium ? 'warning.light' : 'action.hover',
+            backgroundColor: concept.isPremium
+              ? 'warning.light'
+              : 'action.hover',
             transform: 'translateX(4px)',
             transition: 'all 0.2s ease-in-out',
           },
         }}
       >
         <ListItemIcon sx={{ minWidth: 40 }}>
-          <ConceptIcon 
-            color={concept.isPremium ? 'disabled' : 'primary'} 
+          <ConceptIcon
+            color={concept.isPremium ? 'disabled' : 'primary'}
             fontSize="small"
           />
         </ListItemIcon>
-        
+
         <ListItemText
           primary={concept.title}
           secondary={`Concept ${concept.conceptNumber}`}
@@ -80,14 +82,10 @@ const ConceptItem: React.FC<ConceptItemProps> = ({ concept, onClick }) => {
             color: 'text.secondary',
           }}
         />
-        
+
         {concept.isPremium && (
           <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}>
-            <LockIcon 
-              fontSize="small" 
-              color="warning"
-              sx={{ mr: 0.5 }}
-            />
+            <LockIcon fontSize="small" color="warning" sx={{ mr: 0.5 }} />
             <Chip
               label="Premium"
               size="small"
@@ -118,25 +116,17 @@ export const ChapterList: React.FC<ChapterListProps> = ({
 }) => {
   const [expandedChapters, setExpandedChapters] = useState<string[]>([]);
 
-  const handleAccordionChange = (chapterId: string) => (
-    event: React.SyntheticEvent,
-    isExpanded: boolean
-  ) => {
-    setExpandedChapters(prev => 
-      isExpanded 
-        ? [...prev, chapterId]
-        : prev.filter(id => id !== chapterId)
-    );
-  };
+  const handleAccordionChange =
+    (chapterId: string) =>
+    (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpandedChapters(prev =>
+        isExpanded ? [...prev, chapterId] : prev.filter(id => id !== chapterId)
+      );
+    };
 
   if (loading) {
     return (
-      <Box 
-        display="flex" 
-        justifyContent="center" 
-        alignItems="center" 
-        py={4}
-      >
+      <Box display="flex" justifyContent="center" alignItems="center" py={4}>
         <CircularProgress />
         <Typography variant="body2" sx={{ ml: 2 }}>
           Loading chapters...
@@ -148,9 +138,7 @@ export const ChapterList: React.FC<ChapterListProps> = ({
   if (error) {
     return (
       <Alert severity="error" sx={{ my: 2 }}>
-        <Typography variant="body2">
-          {error}
-        </Typography>
+        <Typography variant="body2">{error}</Typography>
       </Alert>
     );
   }
@@ -167,11 +155,13 @@ export const ChapterList: React.FC<ChapterListProps> = ({
 
   return (
     <Box sx={{ width: '100%' }}>
-      {chapters.map((chapter) => {
+      {chapters.map(chapter => {
         const isExpanded = expandedChapters.includes(chapter.id);
         const isFreeChapter = chapter.chapterNumber <= 4;
         const conceptCount = chapter.concepts.length;
-        const freeConceptCount = chapter.concepts.filter(c => !c.isPremium).length;
+        const freeConceptCount = chapter.concepts.filter(
+          c => !c.isPremium
+        ).length;
 
         return (
           <Accordion
@@ -193,22 +183,35 @@ export const ChapterList: React.FC<ChapterListProps> = ({
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               sx={{
-                backgroundColor: isFreeChapter ? 'success.light' : 'warning.light',
+                backgroundColor: isFreeChapter
+                  ? 'success.light'
+                  : 'warning.light',
                 borderRadius: 1,
                 '&.Mui-expanded': {
                   borderBottomLeftRadius: 0,
                   borderBottomRightRadius: 0,
                 },
                 '&:hover': {
-                  backgroundColor: isFreeChapter ? 'success.main' : 'warning.main',
+                  backgroundColor: isFreeChapter
+                    ? 'success.main'
+                    : 'warning.main',
                   '& .MuiTypography-root': {
-                    color: isFreeChapter ? 'success.contrastText' : 'warning.contrastText',
+                    color: isFreeChapter
+                      ? 'success.contrastText'
+                      : 'warning.contrastText',
                   },
                 },
                 minHeight: 64,
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', pr: 1 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  width: '100%',
+                  pr: 1,
+                }}
+              >
                 <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
                   {isFreeChapter ? (
                     <FreeIcon color="success" sx={{ mr: 1 }} />
@@ -216,7 +219,7 @@ export const ChapterList: React.FC<ChapterListProps> = ({
                     <LockIcon color="warning" sx={{ mr: 1 }} />
                   )}
                 </Box>
-                
+
                 <Box sx={{ flexGrow: 1 }}>
                   <Typography variant="h3" component="h2" sx={{ mb: 0.5 }}>
                     Chapter {chapter.chapterNumber}: {chapter.title}
@@ -226,7 +229,7 @@ export const ChapterList: React.FC<ChapterListProps> = ({
                     {!isFreeChapter && ` • ${freeConceptCount} free`}
                   </Typography>
                 </Box>
-                
+
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Chip
                     label={isFreeChapter ? 'Free' : 'Premium'}
@@ -241,10 +244,10 @@ export const ChapterList: React.FC<ChapterListProps> = ({
                 </Box>
               </Box>
             </AccordionSummary>
-            
+
             <AccordionDetails sx={{ p: 0 }}>
               <List sx={{ p: 1 }}>
-                {chapter.concepts.map((concept) => (
+                {chapter.concepts.map(concept => (
                   <ConceptItem
                     key={concept.id}
                     concept={concept}
