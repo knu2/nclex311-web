@@ -13,7 +13,7 @@
     "type-check": "npm run type-check --workspace=apps/web",
     "lint": "npm run lint --workspace=apps/web",
     "test": "npm run test --workspaces --if-present",
-    "prepare": "husky"
+    "prepare": "[ -n \"$CI\" ] || husky"
   },
   "devDependencies": {
     "husky": "^9.1.7",
