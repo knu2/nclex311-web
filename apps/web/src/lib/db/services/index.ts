@@ -9,6 +9,9 @@ export * from './BaseService';
 // Export user service
 export * from './UserService';
 
+// Export content service
+export * from './ContentService';
+
 // Re-export connection utilities for services that need direct access
 export {
   getConnection,

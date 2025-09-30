@@ -4,6 +4,7 @@ import {
   varchar,
   text,
   integer,
+  bigint,
   timestamp,
   json,
   boolean,
@@ -19,10 +20,8 @@ export const chapters = pgTable('chapters', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
   title: varchar('title', { length: 255 }).notNull(),
+  chapterNumber: integer('chapter_number').notNull(),
   slug: varchar('slug', { length: 255 }).notNull().unique(),
-  description: text('description'),
-  orderIndex: integer('order_index').notNull(),
-  metadata: json('metadata'),
 });
 
 /**
@@ -38,9 +37,8 @@ export const concepts = pgTable('concepts', {
     .references(() => chapters.id, { onDelete: 'cascade' }),
   title: varchar('title', { length: 255 }).notNull(),
   slug: varchar('slug', { length: 255 }).notNull().unique(),
-  description: text('description'),
-  orderIndex: integer('order_index').notNull(),
-  metadata: json('metadata'),
+  content: text('content').notNull(),
+  conceptNumber: integer('concept_number').notNull(),
 });
 
 /**
@@ -54,13 +52,9 @@ export const questions = pgTable('questions', {
   conceptId: uuid('concept_id')
     .notNull()
     .references(() => concepts.id, { onDelete: 'cascade' }),
-  questionText: text('question_text').notNull(),
-  questionType: varchar('question_type', { length: 50 }).notNull(),
-  correctAnswer: text('correct_answer'),
-  explanation: text('explanation'),
-  difficultyLevel: varchar('difficulty_level', { length: 20 }),
-  orderIndex: integer('order_index').notNull(),
-  metadata: json('metadata'),
+  text: text('text').notNull(),
+  type: varchar('type', { length: 50 }).notNull(),
+  rationale: text('rationale'),
 });
 
 /**
@@ -76,8 +70,6 @@ export const options = pgTable('options', {
     .references(() => questions.id, { onDelete: 'cascade' }),
   text: text('text').notNull(),
   isCorrect: boolean('is_correct').notNull().default(false),
-  orderIndex: integer('order_index').notNull(),
-  metadata: json('metadata'),
 });
 
 /**
@@ -87,20 +79,20 @@ export const options = pgTable('options', {
 export const images = pgTable('images', {
   id: uuid('id').defaultRandom().primaryKey(),
   filename: varchar('filename', { length: 255 }).notNull(),
-  blobUrl: varchar('blob_url', { length: 512 }).notNull(),
-  altText: text('alt_text').notNull(),
+  blobUrl: text('blob_url').notNull(),
+  alt: text('alt').notNull(),
   width: integer('width').notNull(),
   height: integer('height').notNull(),
-  fileSize: integer('file_size').notNull(),
+  fileSize: bigint('file_size', { mode: 'number' }).notNull(),
   extractionConfidence: varchar('extraction_confidence', {
-    length: 20,
+    length: 10,
   }).notNull(),
   medicalContent: text('medical_content').notNull(),
   conceptId: uuid('concept_id').references(() => concepts.id, {
-    onDelete: 'set null',
+    onDelete: 'cascade',
   }),
   questionId: uuid('question_id').references(() => questions.id, {
-    onDelete: 'set null',
+    onDelete: 'cascade',
   }),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
