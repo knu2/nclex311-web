@@ -6,7 +6,6 @@ import {
   integer,
   bigint,
   timestamp,
-  json,
   boolean,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';

@@ -3,7 +3,6 @@
  * Testing API endpoints for chapters and concepts with access restrictions
  */
 
-import request from 'supertest';
 import { createMocks } from 'node-mocks-http';
 import { GET as getChapters } from '@/app/api/chapters/route';
 import { GET as getConcept } from '@/app/api/concepts/[slug]/route';
@@ -24,15 +23,19 @@ jest.mock('next-auth', () => ({
   getServerSession: jest.fn(),
 }));
 
+// Import services dynamically to avoid linting errors with require
+import { ContentService, UserService } from '@/lib/db/services';
+
 describe('Freemium Access Control API Tests', () => {
-  let mockContentService: any;
-  let mockUserService: any;
+  let mockContentService: ReturnType<
+    typeof ContentService.prototype.constructor
+  >;
+  let mockUserService: ReturnType<typeof UserService.prototype.constructor>;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    
+
     // Get mocked service instances
-    const { ContentService, UserService } = require('@/lib/db/services');
     mockContentService = new ContentService();
     mockUserService = new UserService();
   });
@@ -73,19 +76,21 @@ describe('Freemium Access Control API Tests', () => {
         },
       ];
 
-      mockContentService.getAllChaptersWithConcepts.mockResolvedValue(mockChapters);
+      mockContentService.getAllChaptersWithConcepts.mockResolvedValue(
+        mockChapters
+      );
 
       const { req } = createMocks({ method: 'GET' });
-      const response = await getChapters(req as any);
+      const response = await getChapters(req as never);
       const data = await response.json();
 
       expect(response.status).toBe(200);
       expect(data.success).toBe(true);
       expect(data.data).toHaveLength(2);
-      
+
       // Verify free content is accessible
       expect(data.data[0].concepts[0].isPremium).toBe(false);
-      
+
       // Verify premium content is marked
       expect(data.data[1].concepts[0].isPremium).toBe(true);
     });
@@ -96,7 +101,7 @@ describe('Freemium Access Control API Tests', () => {
       );
 
       const { req } = createMocks({ method: 'GET' });
-      const response = await getChapters(req as any);
+      const response = await getChapters(req as never);
       const data = await response.json();
 
       expect(response.status).toBe(500);
@@ -139,29 +144,34 @@ describe('Freemium Access Control API Tests', () => {
 
       mockContentService.getConceptBySlug.mockResolvedValue(mockConceptResult);
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/pain-management',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'pain-management' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'pain-management' }),
       });
       const data = await response.json();
 
       expect(response.status).toBe(200);
       expect(data.success).toBe(true);
       expect(data.data.chapter.chapterNumber).toBe(3);
-      expect(mockContentService.getConceptBySlug).toHaveBeenCalledWith('pain-management', null);
+      expect(mockContentService.getConceptBySlug).toHaveBeenCalledWith(
+        'pain-management',
+        null
+      );
     });
 
     it('should allow access to chapter 4 concept for free user', async () => {
-      const { getServerSession } = require('next-auth');
-      getServerSession.mockResolvedValue({
+      const nextAuth = await import('next-auth');
+      (nextAuth.getServerSession as jest.Mock).mockResolvedValue({
         user: { email: mockFreeUser.email },
       });
 
-      mockUserService.findByEmail.mockResolvedValue(mockFreeUser);
+      (mockUserService.findByEmail as jest.Mock).mockResolvedValue(
+        mockFreeUser
+      );
 
       const mockConceptResult = {
         hasAccess: true,
@@ -191,13 +201,13 @@ describe('Freemium Access Control API Tests', () => {
 
       mockContentService.getConceptBySlug.mockResolvedValue(mockConceptResult);
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/infection-control',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'infection-control' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'infection-control' }),
       });
       const data = await response.json();
 
@@ -216,13 +226,13 @@ describe('Freemium Access Control API Tests', () => {
 
       mockContentService.getConceptBySlug.mockResolvedValue(mockConceptResult);
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/advanced-cardiac-monitoring',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'advanced-cardiac-monitoring' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'advanced-cardiac-monitoring' }),
       });
       const data = await response.json();
 
@@ -236,12 +246,14 @@ describe('Freemium Access Control API Tests', () => {
     });
 
     it('should block access to chapter 5 concept for free user', async () => {
-      const { getServerSession } = require('next-auth');
-      getServerSession.mockResolvedValue({
+      const nextAuth = await import('next-auth');
+      (nextAuth.getServerSession as jest.Mock).mockResolvedValue({
         user: { email: mockFreeUser.email },
       });
 
-      mockUserService.findByEmail.mockResolvedValue(mockFreeUser);
+      (mockUserService.findByEmail as jest.Mock).mockResolvedValue(
+        mockFreeUser
+      );
 
       const mockConceptResult = {
         hasAccess: false,
@@ -251,13 +263,13 @@ describe('Freemium Access Control API Tests', () => {
 
       mockContentService.getConceptBySlug.mockResolvedValue(mockConceptResult);
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/advanced-life-support',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'advanced-life-support' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'advanced-life-support' }),
       });
       const data = await response.json();
 
@@ -270,12 +282,14 @@ describe('Freemium Access Control API Tests', () => {
     });
 
     it('should allow access to chapter 5 concept for premium user', async () => {
-      const { getServerSession } = require('next-auth');
-      getServerSession.mockResolvedValue({
+      const nextAuth = await import('next-auth');
+      (nextAuth.getServerSession as jest.Mock).mockResolvedValue({
         user: { email: mockPremiumUser.email },
       });
 
-      mockUserService.findByEmail.mockResolvedValue(mockPremiumUser);
+      (mockUserService.findByEmail as jest.Mock).mockResolvedValue(
+        mockPremiumUser
+      );
 
       const mockConceptResult = {
         hasAccess: true,
@@ -305,13 +319,13 @@ describe('Freemium Access Control API Tests', () => {
 
       mockContentService.getConceptBySlug.mockResolvedValue(mockConceptResult);
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/advanced-life-support',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'advanced-life-support' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'advanced-life-support' }),
       });
       const data = await response.json();
 
@@ -326,8 +340,10 @@ describe('Freemium Access Control API Tests', () => {
     });
 
     it('should handle session errors gracefully', async () => {
-      const { getServerSession } = require('next-auth');
-      getServerSession.mockRejectedValue(new Error('Session service unavailable'));
+      const nextAuth = await import('next-auth');
+      (nextAuth.getServerSession as jest.Mock).mockRejectedValue(
+        new Error('Session service unavailable')
+      );
 
       // Should still proceed without user context (guest access)
       const mockConceptResult = {
@@ -344,18 +360,20 @@ describe('Freemium Access Control API Tests', () => {
 
       mockContentService.getConceptBySlug.mockResolvedValue(mockConceptResult);
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/basic-nursing',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'basic-nursing' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'basic-nursing' }),
       });
-      const data = await response.json();
 
       expect(response.status).toBe(200);
-      expect(mockContentService.getConceptBySlug).toHaveBeenCalledWith('basic-nursing', null);
+      expect(mockContentService.getConceptBySlug).toHaveBeenCalledWith(
+        'basic-nursing',
+        null
+      );
     });
 
     it('should return 404 for non-existent concept', async () => {
@@ -363,13 +381,13 @@ describe('Freemium Access Control API Tests', () => {
         new Error('Concept not found')
       );
 
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/non-existent-concept',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: 'non-existent-concept' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: 'non-existent-concept' }),
       });
       const data = await response.json();
 
@@ -379,13 +397,13 @@ describe('Freemium Access Control API Tests', () => {
     });
 
     it('should return 400 for missing slug parameter', async () => {
-      const { req } = createMocks({ 
+      const { req } = createMocks({
         method: 'GET',
         url: '/api/concepts/',
       });
 
-      const response = await getConcept(req as any, { 
-        params: { slug: '' } 
+      const response = await getConcept(req as never, {
+        params: Promise.resolve({ slug: '' }),
       });
       const data = await response.json();
 
