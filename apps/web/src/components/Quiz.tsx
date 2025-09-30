@@ -339,7 +339,7 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
             </Alert>
 
             {/* Detailed Rationale - Following user flow spec */}
-            {currentQuestion.explanation && (
+            {currentQuestion.rationale && (
               <Paper
                 sx={{
                   p: 3,
@@ -353,7 +353,7 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
                   Rationale:
                 </Typography>
                 <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-                  {currentQuestion.explanation}
+                  {currentQuestion.rationale}
                 </Typography>
               </Paper>
             )}
