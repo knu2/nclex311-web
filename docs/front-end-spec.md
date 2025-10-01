@@ -35,14 +35,14 @@ graph TD
     end
 
     subgraph Authenticated User Area
-        C --> D{Dashboard}
-        D --> E[Browse Chapters/Concepts]
-        E --> F[Concept & Quiz Viewer]
-        F --> G[Comments]
-        D --> H[My Bookmarks]
-        D --> I[My Progress]
-        D --> J[Profile/Settings]
-        E -- Premium Content --> K[Upgrade to Premium]
+        C --> D{Concept Viewer with Sidebar}
+        D --> E[All Chapters View]
+        D --> F[Progress Dashboard]
+        D --> G[Bookmarks View]
+        D --> H[Notes Modal]
+        D --> I[Discussion Modal]
+        D -- Premium Content --> J[Upgrade to Premium]
+        D --> K[Profile/Settings]
     end
 
     subgraph CMS (Admin)
@@ -52,16 +52,38 @@ graph TD
     end
 ```
 
-### Navigation Structure
+### Navigation Structure - REDESIGNED
 
-*   **Primary Navigation (for logged-in users):** A persistent header containing links to:
-    *   Dashboard
-    *   Browse All Concepts
-    *   A user menu with options for Profile, Settings, and Logout.
-*   **Secondary Navigation:**
-    *   On the Dashboard, we could use tabs for "All Concepts", "My Bookmarks", and "My Progress".
-    *   When viewing a concept, breadcrumbs like `Home > Chapter 4 > Concept 4.2` will help with orientation.
-*   **Breadcrumb Strategy:** We will use breadcrumbs to show the user's location within the content hierarchy, for example: `Dashboard > Endocrine System > Diabetes Mellitus`.
+**NEW ARCHITECTURE:** Sidebar-based navigation with persistent concept list and contextual views
+
+*   **Primary Navigation (Sidebar):**
+    *   **Desktop (≥768px):** Persistent left sidebar (280px width) with sticky positioning, always visible
+    *   **Mobile (<768px):** Slide-out drawer sidebar triggered by hamburger menu (☰) in mobile header, with overlay background
+    *   **Structure:**
+        *   Logo and app title at top
+        *   Current chapter's concept list (vertical scroll)
+        *   Collapsible "View More/Less" to show all concepts in chapter (initial: 3-4 visible)
+        *   Footer section with quick-access buttons: 📚 All Chapters, 📊 Progress, 🔖 Bookmarks
+        *   Premium upsell banner integrated at sidebar bottom
+
+*   **Concept List Items:**
+    *   Display concept title and number
+    *   Visual indicators: ✅ for completed concepts
+    *   Active concept: Blue background (#e8f0fe) with left border accent (#2c5aa0)
+    *   Hover state: Light blue background
+    *   Click navigates to that concept (replaces content area)
+
+*   **Content Area Views:** Main content area switches between:
+    1. **Concept Viewer** (default) - Single concept with quiz, rationale, connections
+    2. **All Chapters View** - Grid of all 8 chapters with progress indicators
+    3. **Progress Dashboard** - Detailed progress tracking by chapter
+    4. **Bookmarks View** - Grid of bookmarked concepts with notes
+
+*   **Modals (Overlay):**
+    *   **Notes Modal:** Full-screen overlay for personal note-taking
+    *   **Discussion Modal:** Full-screen overlay for community discussions
+
+*   **Breadcrumbs:** Not required in new design - sidebar provides persistent context
 
 ---
 
@@ -88,28 +110,36 @@ graph TD
     I --> B;
 ```
 
-### Flow 2: Browsing and Studying a Free Concept
+### Flow 2: Browsing and Studying a Free Concept - REDESIGNED
 
-*   **User Goal:** To evaluate the platform's value by accessing free content and taking a quiz.
-*   **Entry Points:** The main dashboard or the "Browse All Concepts" page.
-*   **Success Criteria:** The user successfully reads a concept, completes its quiz, and views the feedback and rationale.
+*   **User Goal:** To read a concept and complete its quiz in a seamless, single-scroll experience.
+*   **Entry Points:** Sidebar concept list, "All Chapters" view, or direct navigation.
+*   **Success Criteria:** The user reads the concept, answers the quiz inline, views rationale, and can take follow-up actions (notes, discussion, bookmark).
 
-#### Flow Diagram
+#### Flow Diagram - NEW INLINE QUIZ PATTERN
 ```mermaid
 graph TD
-    A[User on Dashboard/Concept List] --> B{Selects a Concept};
-    B -- Free Concept (Ch 1-4) --> C[Display Concept & Quiz Viewer];
-    C --> D[User reads concept text];
-    D --> E[User starts quiz];
-    E --> F[Answers question/s];
-    F --> G{Submits Answer/s};
-    G --> H[Show immediate Correct/Incorrect feedback];
-    H --> I[Display detailed rationale];
-    I --> J[Option to go to Next Concept or back to List];
-
-    B -- Premium Concept (Ch 5-8) --> K[Display 'Premium Content' message];
-    K --> L[Show 'Upgrade' button];
-    L --> M[Redirect to Subscription Page];
+    A[User clicks concept in sidebar] --> B[Content area updates to show concept];
+    B --> C[User scrolls and reads 'READ THIS' section];
+    C --> D[User sees animated arrow pointing to quiz];
+    D --> E[User clicks on a quiz option];
+    E --> F[Option highlights with blue border];
+    F --> G[Quiz feedback appears inline below];
+    G -- Correct --> H[Green feedback: 'Correct!' with rationale card expansion];
+    G -- Incorrect --> I[Yellow/red feedback: 'Incorrect' with rationale card expansion];
+    H --> J[Key Points section expands with bullet list];
+    I --> J;
+    J --> K[Action buttons appear: 'Try Again' and 'Discussion'];
+    K --> L{User chooses action};
+    L -- Try Again --> E;
+    L -- Discussion --> M[Discussion Modal opens];
+    L -- Continue --> N[User scrolls to connection cards];
+    N --> O[User clicks Next Concept or related topic];
+    O --> B;
+    
+    B -- Premium Concept --> P[Premium paywall overlay];
+    P --> Q[Show 'Upgrade' button];
+    Q --> R[Redirect to Subscription Page];
 ```
 
 ### Flow 3: Premium Subscription Upgrade
@@ -198,43 +228,320 @@ graph TD
 
 ### Key Screen Layouts
 
-#### Screen: Main Dashboard
+#### Screen: Main Layout (Sidebar + Content Area) - REDESIGNED
 
-*   **Purpose:** To serve as the user's central hub, providing an overview of all content and personalized lists.
-*   **Key Elements:**
-    *   **Header:** Contains the app logo, primary navigation (Dashboard, Browse, Profile), and a search bar.
-    *   **Welcome Message:** A simple, personalized greeting (e.g., "Welcome back, [User Name]!").
-    *   **Tabbed Navigation:** A set of tabs to switch between three views:
-        1.  **All Concepts:** The default view, showing a list of all chapters.
-        2.  **My Bookmarks:** A list of concepts the user has bookmarked.
-        3.  **Completed:** A list of concepts the user has marked as complete.
-    *   **Content Area:** Displays the list of items corresponding to the selected tab. For "All Concepts," this will be an accordion-style list of chapters that expand to show the concepts within.
+*   **Purpose:** Primary application layout providing persistent navigation and contextual content display.
+*   **Layout Structure:**
+    *   **Two-column layout on desktop:** Sidebar (280px fixed) + Content Area (flexible, max-width 800px)
+    *   **Single-column on mobile:** Content area full-width, sidebar as slide-out drawer
+
+##### Left Sidebar (Navigation)
+*   **Desktop Behavior:** Always visible, sticky positioned, scrolls independently
+*   **Mobile Behavior:** Hidden by default, slides in from left when hamburger (☰) clicked, overlay dims background
+*   **Sidebar Sections:**
+    1.  **Header:**
+        *   Logo (Ray Gapuz Review System, 60px height)
+        *   App title: "NCLEX 311" (blue, 1.3rem)
+        *   Subtitle: "Functional Nursing Concepts" (gray, 0.85rem)
+    2.  **Concept List (Scrollable):**
+        *   Current chapter title (uppercase, small, gray)
+        *   Concept items (padding 0.75rem, rounded corners)
+        *   Completed concepts: Green checkmark ✅ prefix
+        *   Active concept: Blue background (#e8f0fe) with left border (#2c5aa0)
+        *   Initially shows 3-4 concepts, rest hidden
+        *   "View More" button expands to show all ~30 concepts
+    3.  **Footer:**
+        *   Quick action buttons (full-width, stacked):
+            *   📚 All Chapters
+            *   📊 Progress  
+            *   🔖 Bookmarks
+        *   Premium upsell banner:
+            *   Title: "🚀 Unlock Premium"
+            *   Description: "Access all 323 concepts across 8 chapters"
+            *   "Upgrade Now" button (small, blue)
+
+##### Mobile Header (Mobile Only)
+*   **Visible only on <768px screens**
+*   **Background:** Blue (#2c5aa0)
+*   **Content:** App title, hamburger menu (☰) on right
+*   **Interaction:** Hamburger opens sidebar drawer with overlay
+
 *   **Interaction Notes:**
-    *   The search bar should filter the "All Concepts" list in real-time as the user types.
-    *   Each concept in a list should be a clickable item that navigates to the `Concept/Quiz Viewer`.
-    *   A clear visual indicator (e.g., a lock icon) should differentiate premium chapters/concepts from free ones.
+    *   Clicking any concept in sidebar loads that concept in content area (no page reload)
+    *   Sidebar stays visible on desktop during navigation
+    *   Mobile: Sidebar auto-closes after concept selection
+    *   Visual feedback: Hover states on all interactive elements
 
-#### Screen: Concept/Quiz Viewer
+#### Screen: Concept/Quiz Viewer - REDESIGNED
 
-*   **Purpose:** To provide a focused view for reading a concept, taking the associated quiz, and reviewing the rationale.
-*   **Key Elements:**
-    *   **Header:** A minimal header showing the Chapter and Concept title. It should include a "Back" button to return to the list and a "Bookmark" icon.
-    *   **Breadcrumbs:** e.g., `Chapter 2 > Cardiac Glycosides`
-    *   **Concept Body:** The main text content of the concept, formatted for readability with clear headings and lists.
-    *   **"Mark as Complete" Button:** A button or checkbox allowing users to track their progress.
-    *   **Quiz Area:**
-        *   A clear separator between the concept text and the quiz.
-        *   The question is presented, followed by the answer options (e.g., radio buttons for multiple choice).
-        *   A "Submit Answer" button.
-    *   **Feedback/Rationale Area (Initially Hidden):**
-        *   After submission, this area appears, showing whether the answer was correct or incorrect.
-        *   The detailed rationale text is displayed below the feedback.
-    *   **Navigation:** "Previous Concept" and "Next Concept" buttons at the very bottom to allow sequential study.
-    *   **Comments Section:** Below the main content and quiz, allowing for community discussion.
+*   **Purpose:** Single-scroll experience for reading concept, taking quiz, and accessing additional features.
+*   **Layout:** Right content area (sidebar remains visible on desktop)
+
+##### Content Header
+*   **Bookmark Button:** Star icon (☆/★) in top-right corner (44px tap target)
+*   **Title:** Concept title (H1, 1.75rem desktop, dark gray)
+*   **Meta:** "Functional Nursing Concept #X | Chapter Name" (small, gray text)
+*   **Bottom Border:** 2px blue underline
+
+##### Content Body (Vertical Scroll)
+
+**1. "READ THIS" Section**
+*   **Visual Treatment:**
+    *   Warm gradient background (orange tones: #fff8f3 to #fef7f0)
+    *   Left border: 4px solid orange (#ff6b35)
+    *   Rounded corners (8px)
+    *   Padding: 1.5rem
+*   **Content:**
+    *   Heading: "📖 READ THIS" (red color, 1.1rem, bold)
+    *   Concept explanation text with markdown formatting support
+    *   Key terms in **bold**
+
+**2. Visual Arrow Element (NEW)**
+*   **Purpose:** Visual transition from concept to quiz
+*   **Design:**
+    *   Vertical gradient line (orange to blue, 40px height)
+    *   Downward arrow head (blue)
+    *   Pill-shaped label: "Test your knowledge!" (blue background, white text)
+    *   Centered between sections
+
+**3. "ANSWER THIS" Quiz Section**
+*   **Visual Treatment:**
+    *   Cool gradient background (blue tones: #f0f8ff to #e6f3ff)
+    *   Left border: 4px solid blue (#2c5aa0)
+    *   Rounded corners (8px)
+*   **Content:**
+    *   Heading: "🧠 ANSWER THIS" (blue, 1.1rem, bold)
+    *   **Quiz Question Card:**
+        *   White background, shadow, rounded
+        *   Question text (H4, 1rem, line-height 1.5)
+        *   **Answer Options:**
+            *   White cards with 2px border (#e1e7f0)
+            *   Hover: Blue border, slight lift animation
+            *   Selected: Blue border, light blue background
+            *   Correct (post-submission): Green border, green background
+            *   Incorrect (post-submission): Red/orange border, yellow background
+            *   Minimum height: 44px (touch-friendly)
+
+**4. Quiz Feedback (Appears on Answer Selection)**
+*   **Correct:** Green feedback card with "✓ Correct!" message
+*   **Incorrect:** Yellow/red feedback card with "✗ Try Again" message
+
+**5. Rationale Section (Expands After Answer)**
+*   **Background:** Light gray (#f8f9fc)
+*   **Heading:** "📋 Rationale" (H4)
+*   **Content:** Detailed explanation with markdown support
+
+**6. Key Points Section (Expands After Answer)**
+*   **Background:** Light yellow (#fff9e6)
+*   **Left Border:** 4px orange
+*   **Heading:** "🔑 Key Points" (orange)
+*   **Content:** Bullet list of key takeaways
+
+**7. Reference Section**
+*   **Background:** Light gray
+*   **Heading:** "📚 Reference" (H4)
+*   **Content:** Citation information (author, title, publisher)
+
+**8. Connection Cards (Grid Layout)**
+*   **Three cards in row (desktop), stacked on mobile:**
+    1.  **Next Concept:** Title, concept name, number
+    2.  **Prerequisites:** Title, concept name, number  
+    3.  **Related Topic:** Title, concept name, number
+*   **Styling:** White cards, border, hover effect (lift + shadow)
+*   **Click:** Navigate to that concept
+
+**9. Action Buttons**
+*   **Grid Layout (responsive):**
+    *   💬 Discussion (Primary blue button)
+    *   ✅ Mark Complete (Outline button)
+    *   📝 Take Notes (Outline button)
+*   **Mobile:** Stacked vertically
+*   **Desktop:** Horizontal grid
+
 *   **Interaction Notes:**
-    *   The entire screen should be a single, scrollable view on mobile.
-    - On submission, the page should not reload. The feedback and rationale should appear smoothly in place.
-    *   The "Bookmark" and "Mark as Complete" actions should give immediate visual feedback (e.g., icon changes color, a small toast message appears).
+    *   Quiz answers are clickable cards (not radio buttons)
+    *   No "Submit" button - answer selection triggers immediate feedback
+    *   Rationale and key points expand with smooth animation
+    *   After answering, "Try Again" and "Discussion" buttons appear
+    *   Bookmark icon toggles between ☆ (unfilled) and ★ (filled, orange)
+    *   Toast notification on bookmark/complete actions
+
+#### Modal: Personal Notes (NEW)
+
+*   **Purpose:** Allow users to write personal notes about a concept for later review.
+*   **Trigger:** Clicking "📝 Take Notes" button on concept page
+*   **Layout:** Full-screen modal overlay (mobile) or centered modal (desktop)
+*   **Structure:**
+    1.  **Header (Blue Background):**
+        *   Title: "📝 Personal Notes"
+        *   Close button (×) in top-right (44px tap target)
+    2.  **Concept Info Banner:**
+        *   Concept title (H4, bold)
+        *   Meta info: "Chapter Name • Concept #X"
+    3.  **Content Area (Scrollable):**
+        *   **Tips Section:**
+            *   Light blue background (#e8f0fe)
+            *   Heading: "💡 Note-Taking Tips"
+            *   Bullet list of suggestions
+        *   **Textarea:**
+            *   Large text input (min 150px height)
+            *   Placeholder text with examples
+            *   Character counter: "X / 2000 characters"
+            *   Resizable (vertical only)
+    4.  **Footer Actions:**
+        *   "Cancel" button (outline)
+        *   "💾 Save Notes" button (primary blue)
+*   **Interaction Notes:**
+    *   Modal dims background with 50% opacity overlay
+    *   Clicking overlay or close button closes modal
+    *   Unsaved changes prompt warning before closing
+    *   Saves to user's profile, associated with concept
+
+#### Modal: Discussion/Community (NEW)
+
+*   **Purpose:** Facilitate community discussion and Q&A about each concept.
+*   **Trigger:** Clicking "💬 Discussion" button on concept page
+*   **Layout:** Full-screen modal overlay (mobile) or centered modal (desktop)
+*   **Structure:**
+    1.  **Header (Blue Background):**
+        *   Title: "💬 Discussion: [Concept Name]"
+        *   Close button (×) in top-right
+    2.  **New Post Form:**
+        *   Background: Light gray (#f8f9fc)
+        *   Post type selector:
+            *   💬 Discussion button (default active)
+            *   ❓ Question button
+        *   Textarea: "Share your thoughts..."
+        *   User indicator: "Posting as: [Name] (Student)"
+        *   "📤 Post" button (primary blue)
+    3.  **Discussion Feed (Scrollable):**
+        *   **Instructor Posts (Pinned):**
+            *   Green border (#00b894)
+            *   Avatar circle with "Dr" or initials
+            *   Badges: "Instructor" (green), "Pinned" (yellow)
+            *   Post content with formatting
+            *   Engagement: 👍 Like count, 💬 Reply count
+        *   **Student Posts:**
+            *   White background, gray border
+            *   Avatar circle with initial
+            *   Author name, "Student" role, timestamp
+            *   Post content
+            *   Engagement buttons: 👍 Like, 💬 Reply
+*   **Interaction Notes:**
+    *   Posts load dynamically as user scrolls
+    *   Like button toggles blue when active
+    *   Reply button opens nested comment thread
+    *   Instructor posts always shown at top
+
+#### View: All Chapters Grid (NEW)
+
+*   **Purpose:** Display all 8 chapters with progress indicators and access controls.
+*   **Trigger:** Clicking "📚 All Chapters" button in sidebar
+*   **Layout:** Replaces concept viewer in content area
+*   **Structure:**
+    1.  **Back Button:** "← Back to Current Chapter" (full-width, blue)
+    2.  **Header:**
+        *   Title: "📚 All NCLEX 311 Chapters & Concepts" (H1, centered)
+        *   Subtitle: "Complete overview of all 323 Functional Nursing Concepts"
+        *   Search bar: "🔍 Search concepts..." (real-time filter)
+    3.  **Stats Overview (4-column grid, 2x2 on mobile):**
+        *   "144 Free Concepts Available"
+        *   "179 Premium Concepts"
+        *   "19 Concepts Completed"
+        *   "85% Average Quiz Score"
+    4.  **Chapter Cards Grid:**
+        *   **Grid Layout:** Auto-fit, min 320px per card
+        *   **Free Chapters (1-4):**
+            *   Badge: "Free" (green)
+            *   Chapter title and page range
+            *   Progress bar with percentage
+            *   Concept preview list (3 items)
+            *   "Continue Learning" button (blue)
+        *   **Premium Chapters (5-8):**
+            *   Badge: "Premium" (yellow/orange)
+            *   Locked progress bar
+            *   🔒 lock icons on concepts
+            *   "🚀 Upgrade to Premium" button (yellow bg)
+*   **Interaction Notes:**
+    *   Search filters cards in real-time
+    *   Clicking free chapter card navigates to first concept
+    *   Clicking premium card shows upgrade modal
+    *   Progress bars animate on load
+
+#### View: Progress Dashboard (NEW)
+
+*   **Purpose:** Detailed progress tracking by chapter with completion statistics.
+*   **Trigger:** Clicking "📊 Progress" button in sidebar
+*   **Layout:** Replaces concept viewer in content area
+*   **Structure:**
+    1.  **Back Button:** "← Back to Current Chapter"
+    2.  **Header:**
+        *   Title: "📊 Your Learning Progress" (H1, centered)
+        *   Subtitle: "Track your mastery of NCLEX 311 concepts"
+    3.  **Stats Overview (4-column grid):**
+        *   "3 Concepts Completed"
+        *   "85% Average Quiz Score"
+        *   "144 Free Concepts Available"
+        *   "6 Concepts Bookmarked"
+    4.  **Progress Details Section:**
+        *   Heading: "Completed Concepts by Chapter" (H3)
+        *   **Chapter Progress Cards:**
+            *   Chapter title (H4, blue)
+            *   Completion count: "(3/30 Concepts Completed)"
+            *   Progress bar (animated, green gradient)
+            *   **Completed Concepts List:**
+                *   ✅ Concept name (Concept #X)
+                *   If none: "No concepts completed in this chapter yet."
+*   **Interaction Notes:**
+    *   Progress bars animate on load
+    *   Clicking concept name navigates to that concept
+    *   Stats update in real-time
+
+#### View: Bookmarks Grid (NEW)
+
+*   **Purpose:** Display all bookmarked concepts with personal notes and quick actions.
+*   **Trigger:** Clicking "🔖 Bookmarks" button in sidebar
+*   **Layout:** Replaces concept viewer in content area
+*   **Structure:**
+    1.  **Back Button:** "← Back to Current Chapter"
+    2.  **Header:**
+        *   Title: "🔖 My Bookmarks" (H1, centered)
+        *   Subtitle: "Your saved concepts for quick reference and review"
+    3.  **Bookmark Stats (4-column grid):**
+        *   "6 Total Bookmarks"
+        *   "4 From Free Concepts"
+        *   "2 Recent This Week"
+        *   "3 Study Sessions"
+    4.  **Filter Buttons:**
+        *   Pill-shaped buttons in horizontal row
+        *   Options: All Bookmarks, Recent, By Chapter, With Notes
+        *   Active button: Blue background
+    5.  **Bookmark Cards Grid:**
+        *   **Auto-fit grid, min 300px per card**
+        *   **Card Structure:**
+            *   Header (light gray background):
+                *   Concept title (bold)
+                *   Meta: "Chapter • Concept #X"
+                *   Date: "Bookmarked X time ago"
+                *   Star button (★, orange) in top-right
+            *   Content:
+                *   Concept preview text (gray, small)
+                *   Personal note (if exists): Yellow box with "📝 Personal Note:" prefix
+            *   Actions (horizontal buttons):
+                *   "📖 Study" (primary blue)
+                *   "🧠 Quiz" (primary blue)
+                *   "🗑️ Remove" (red)
+    6.  **Empty State (if no bookmarks):**
+        *   Large 🔖 icon
+        *   "No Bookmarks Yet" heading
+        *   "Start bookmarking concepts.." message
+        *   "Browse Concepts" button
+*   **Interaction Notes:**
+    *   Filter buttons toggle visibility of cards
+    *   Star button toggles bookmark status
+    *   Study button navigates to concept
+    *   Quiz button scrolls to quiz section
+    *   Remove button shows confirmation, then removes
 
 #### Screen: Subscription/Upgrade Page
 

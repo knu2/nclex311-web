@@ -110,7 +110,7 @@ This table represents the single source of truth for the project's technology st
 | :--- | :--- | :--- | :--- | :--- |
 | **Frontend Language** | TypeScript | ~5.x | Type safety, developer experience | Industry standard for modern web development; catches errors early. |
 | **Frontend Framework**| Next.js | ~14.x | Full-stack React framework | Specified in PRD. Enables rapid development with unified FE/BE. |
-| **UI Component Library**| Radix UI + Tailwind CSS | latest | Building accessible, custom components | Radix provides unstyled, accessible primitives; Tailwind allows for rapid, custom styling to match brand guidelines. |
+|| **UI Component Library**| Material-UI (MUI) | ~6.x | Building accessible, branded components | Established in Story 1.5; provides comprehensive component library with built-in accessibility and theme customization matching brand guidelines. |
 | **State Management** | Zustand | ~4.x | Global client-side state management | Simple, lightweight, and unopinionated. Avoids boilerplate for managing state like user session or bookmarks. |
 | **Backend Language** | TypeScript | ~5.x | Type safety for API routes | Consistent language across the stack simplifies development. |
 | **Backend Framework**| Next.js API Routes | ~14.x | Serverless backend logic | Specified in PRD. Tightly integrated with the frontend, ideal for this architecture. |

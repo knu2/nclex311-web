@@ -2,6 +2,31 @@
 
 **Goal:** This foundational epic will establish the project's technical backbone, including the Next.js application, database schema, testing frameworks, and a basic CI/CD pipeline. It will deliver the initial, tangible user value: the ability to sign up and study the first four chapters for free. The one-time content import from the source PDF will also be completed within this epic.
 
+## Epic Status Update (2025-10-01)
+
+**Completion Status:** ✅ Backend Complete, ⚠️ UI Layer Superseded by Epic 1.5
+
+### What's Preserved
+- ✅ **Stories 1.0-1.5:** Complete and valid
+- ✅ **Story 1.6 Backend:** ContentService with freemium access control, API endpoints (GET /chapters, GET /concepts/{slug}), database schema and data models, business logic and API tests
+- ✅ **Story 1.5 Foundation:** MUI theme configuration (`src/lib/theme.ts`), brand colors, responsive patterns, accessibility standards
+
+### What's Superseded
+- ⚠️ **Story 1.6 UI Components:** Dashboard component with tabs, ChapterList accordion, basic Paywall component, concept viewer page layout (`app/concepts/[slug]/page.tsx`)
+- ⚠️ **Story 1.6.1:** Markdown rendering requirement incorporated into Epic 1.5.3 (Concept Viewer)
+- ⚠️ **Story 1.7:** Interactive quizzing requirement incorporated into Epic 1.5.4 (Inline Quiz Interaction)
+
+### Rationale
+Approved UX mockup (`scratchpad/sample_chapter_demo_v23.html`) introduces sidebar-based navigation and inline quiz interactions that provide superior user experience compared to the original dashboard-centric design. Backend work remains valuable and fully reusable.
+
+### Reference Documents
+- **UX Redesign Analysis:** `docs/ux-redesign-summary.md`
+- **Updated Frontend Spec:** `docs/front-end-spec.md`
+- **Sprint Change Proposal:** `docs/sprint-change-proposal-scp-2025-001.md`
+- **New Epic:** Epic 1.5 - UX Enhancement (`docs/prd/epic-1.5-ux-enhancement.md`)
+
+---
+
 ## Story 1.0: Repository Setup & Project Scaffolding
 
 *   **As a** developer,

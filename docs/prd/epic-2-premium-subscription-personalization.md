@@ -2,6 +2,23 @@
 
 **Goal:** This epic will implement the secure payment workflow for premium subscriptions, our core business objective. It will also enhance user value by providing personalization features, allowing users to bookmark concepts for quick review and track which concepts they have completed.
 
+## Epic Status Update (2025-10-01)
+
+**Changes from Epic 1.5 Integration:**
+
+- ❌ **Story 2.3 (Basic User Dashboard):** Removed - Functionality provided by Epic 1.5.8 (Progress Dashboard) and Epic 1.5.9 (Bookmarks View)
+- ✅ **Story 2.1 (Premium Subscription Workflow):** No changes - Proceed as planned
+- ✅ **Story 2.2 (Concept Bookmarking):** Enhanced by Epic 1.5.9 which provides rich Bookmarks View UI with notes display and quick-action buttons
+- ✅ **Story 2.4 (Mark as Complete):** Enhanced by Epic 1.5.8 which provides Progress Dashboard UI with chapter-by-chapter completion tracking
+
+**Implementation Note:** Stories 2.2 and 2.4 should reference Epic 1.5 stories as dependencies for UI integration. The backend bookmark and completion tracking APIs remain as specified, but the UI layer is provided by Epic 1.5.
+
+**Reference Documents:**
+- **Sprint Change Proposal:** `docs/sprint-change-proposal-scp-2025-001.md`
+- **Epic 1.5 Stories:** `docs/prd/epic-1.5-ux-enhancement.md`
+
+---
+
 ## Story 2.1: Premium Subscription Workflow
 
 *   **As a** free user,

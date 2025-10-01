@@ -38,10 +38,14 @@ The platform will be built on a freemium model, providing free access to a porti
 5.  **FR5:** The system shall provide a responsive content viewer for all 323 concepts and their associated multiple-choice questions.
 6.  **FR6:** The system shall provide instant feedback and rationales for quiz questions.
 7.  **FR7:** The system shall allow users to bookmark concepts for later review.
-8.  **FR8:** The system shall provide a basic user dashboard listing concepts marked as complete.
+8.  **FR8:** The system shall provide a progress dashboard showing chapter-by-chapter completion tracking, and a bookmarks view for saved concepts with personal notes.
 9.  **FR9:** The system shall include a Content Management System (CMS) for managing concepts, questions, and rationales.
 10. **FR10:** The CMS shall include a utility to import pre-extracted JSON content and associated medical images into the database, with images stored in Vercel Blob Storage.
 11. **FR11:** The system shall allow users to post comments on concepts.
+12. **FR12:** The system shall provide a sidebar navigation interface showing the current chapter's concept list with completion indicators and quick-access buttons.
+13. **FR13:** The system shall allow users to create and save personal notes (up to 2000 characters) for any concept.
+14. **FR14:** The system shall provide a discussion/community interface where users can post questions and discussions, with support for instructor posts and student replies.
+15. **FR15:** The system shall provide an all chapters grid view with search/filter functionality and progress visualization.
 
 ### Non-Functional
 
@@ -68,11 +72,16 @@ The UX vision is to create a modern, mobile-first, and highly intuitive web appl
 
 ### Core Screens and Views
 
-*   **Login/Sign-Up Screen:** A clean and simple form for user authentication.
-*   **Main Dashboard:** A central hub that lists all NCLEX categories and concepts, and provides access to the user's bookmarked items and completed concepts.
-*   **Concept/Quiz Viewer:** The primary interface where users read concept text and take the associated quiz.
-*   **Subscription/Upgrade Page:** A clear and secure page for users to upgrade to the premium plan, integrated with Maya Business.
-*   **User Profile/Settings Page:** A basic page for managing account details.
+*   **Login/Sign-Up Screen:** A clean and simple form for user authentication (implemented with MUI components).
+*   **Sidebar Navigation:** Persistent navigation panel showing current chapter's concepts with completion indicators (desktop: always visible; mobile: drawer).
+*   **Concept/Quiz Viewer:** Single-scroll interface with "READ THIS" content section, visual arrow transition, and "ANSWER THIS" quiz section with inline feedback.
+*   **All Chapters View:** Grid-based overview of all 8 chapters with progress visualization and free/premium indicators.
+*   **Progress Dashboard:** Detailed chapter-by-chapter progress tracking with animated progress bars and completed concepts lists.
+*   **Bookmarks View:** Grid of bookmarked concepts with personal notes display and quick-action buttons.
+*   **Notes Modal:** Full-screen overlay for personal note-taking with character limit and tips section.
+*   **Discussion Modal:** Community discussion interface with instructor posts, student replies, and engagement features.
+*   **Subscription/Upgrade Page:** Clear and secure page for premium upgrade, integrated with Maya Business.
+*   **User Profile/Settings Page:** Basic page for managing account details.
 
 ### Accessibility: WCAG AA
 
@@ -117,12 +126,19 @@ The testing strategy will focus on a combination of unit tests for individual co
 
 1.  **Epic 1: Foundation & Freemium Experience**
     *   **Goal:** Establish the core application infrastructure, import all content, and allow users to sign up and study the four free chapters.
+    *   **Status:** Backend complete; UI layer superseded by Epic 1.5.
 
-2.  **Epic 2: Premium Subscription & Personalization**
-    *   **Goal:** Implement the payment gateway to allow users to upgrade to a premium subscription and provide a personal dashboard for bookmarking and tracking completed concepts.
+2.  **Epic 1.5: UX Enhancement - Modern Learning Interface**
+    *   **Goal:** Implement the approved modern UI design with sidebar navigation, inline quiz interactions, and enhanced engagement features (notes, discussion, progress tracking, bookmarks).
+    *   **Note:** Incorporates requirements from original Stories 1.6.1 (markdown rendering), 1.7 (interactive quizzing), and absorbs Epic 3 Stories 3.1-3.2 (commenting).
 
-3.  **Epic 3: Community Engagement**
-    *   **Goal:** Foster a supportive learning environment by enabling users to leave comments on concepts.
+3.  **Epic 2: Premium Subscription & Personalization**
+    *   **Goal:** Implement the payment gateway for premium subscriptions.
+    *   **Note:** Story 2.3 (Basic Dashboard) removed; functionality provided by Epic 1.5. Stories 2.2 (Bookmarking) and 2.4 (Mark Complete) enhanced by Epic 1.5 views.
+
+4.  **Epic 3: Community Engagement**
+    *   **Goal:** Content moderation for community discussions.
+    *   **Note:** Stories 3.1-3.2 (View/Post Comments) absorbed into Epic 1.5.6 (Discussion Modal). Only Story 3.3 (Moderation) remains.
 
 ---
 

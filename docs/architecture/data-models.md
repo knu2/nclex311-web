@@ -33,6 +33,7 @@ export interface User {
 - Has many **Bookmarks**
 - Has many **Completed Concepts**
 - Has many **Comments**
+- Has many **Notes**
 
 ---
 
@@ -93,6 +94,13 @@ export interface Concept {
   content: string; // Markdown content
   conceptNumber: number;
   chapterId: string;
+  // NEW FIELDS for Epic 1.5:
+  connectionConcepts?: {
+    nextConceptId?: string; // For "Next Concept" card
+    prerequisiteConceptId?: string; // For "Prerequisites" card
+    relatedConceptId?: string; // For "Related Topic" card
+  };
+  keyPoints?: string[]; // For "Key Points" section after quiz
 }
 ```
 
@@ -103,6 +111,7 @@ export interface Concept {
 - Is associated with many **Users** through **Bookmarks**
 - Is associated with many **Users** through **CompletedConcepts**
 - Has many **Comments**
+- Has many **Notes**
 
 ---
 
@@ -263,24 +272,70 @@ export interface CompletedConcept {
 
 ---
 
+## Note
+
+**Purpose:** Stores personal notes that users create for specific concepts. Introduced in Epic 1.5.5 to enable the Notes Modal feature.
+
+**Key Attributes:**
+- `id`: `string` - Unique identifier for the note.
+- `userId`: `string` - Foreign key linking to the `User` who created the note.
+- `conceptId`: `string` - Foreign key linking to the `Concept` the note is about.
+- `content`: `string` - The text content of the note (max 2000 characters).
+- `createdAt`: `DateTime` - Timestamp of when the note was created.
+- `updatedAt`: `DateTime` - Timestamp of the last update to the note.
+
+### TypeScript Interface
+```typescript
+export interface Note {
+  id: string;
+  userId: string;
+  conceptId: string;
+  content: string; // Max 2000 characters
+  createdAt: string; // ISO 8601 date string
+  updatedAt: string; // ISO 8601 date string
+}
+```
+
+### Relationships
+- Belongs to one **User**
+- Belongs to one **Concept**
+
+---
+
 ## Comment
 
-**Purpose:** Represents a comment posted by a logged-in `User` on a specific `Concept` page. This model is the foundation for the community discussion features outlined in Epic 3.
+**Purpose:** Represents a discussion post or question posted by a `User` on a specific `Concept` within the Discussion Modal. Supports instructor posts with special badges and threaded replies. Enhanced for Epic 1.5.6.
 
 **Key Attributes:**
 - `id`: `string` - Unique identifier for the comment.
 - `text`: `string` - The content of the comment.
 - `userId`: `string` - Foreign key linking to the `User` who posted the comment.
 - `conceptId`: `string` - Foreign key linking to the `Concept` the comment is on.
+- `postType`: `enum` - Type of post ('DISCUSSION' or 'QUESTION').
+- `isPinned`: `boolean` - Whether the post is pinned (typically for instructor posts).
+- `likesCount`: `number` - Number of likes the post has received.
+- `repliesCount`: `number` - Number of replies to this post.
+- `parentId`: `string` (optional) - Foreign key for threaded replies, links to parent Comment.
 - `createdAt`: `DateTime` - Timestamp of when the comment was posted.
-- `updatedAt`: `DateTime` - Timestamp of the last update to the comment (if editing is allowed in the future).
+- `updatedAt`: `DateTime` - Timestamp of the last update to the comment.
 
 ### TypeScript Interface
 ```typescript
+export enum PostType {
+  DISCUSSION = 'DISCUSSION',
+  QUESTION = 'QUESTION',
+}
+
+export enum UserRole {
+  STUDENT = 'STUDENT',
+  INSTRUCTOR = 'INSTRUCTOR',
+}
+
 // A partial User object to avoid exposing sensitive user data
 export interface Commenter {
   id: string;
-  name: string; // Or a username
+  name: string;
+  role: UserRole; // NEW - to distinguish instructors
   avatarUrl?: string;
 }
 
@@ -288,6 +343,12 @@ export interface Comment {
   id: string;
   text: string;
   conceptId: string;
+  userId: string;
+  postType: PostType; // NEW
+  isPinned: boolean; // NEW - for instructor posts
+  likesCount: number; // NEW
+  repliesCount: number; // NEW
+  parentId?: string; // NEW - for threaded replies
   user: Commenter; // Embed partial user info for display
   createdAt: string; // ISO 8601 date string
   updatedAt: string; // ISO 8601 date string
@@ -297,6 +358,8 @@ export interface Comment {
 ### Relationships
 - Belongs to one **User**
 - Belongs to one **Concept**
+- May belong to one parent **Comment** (for replies)
+- Has many child **Comments** (replies)
 
 ---
 

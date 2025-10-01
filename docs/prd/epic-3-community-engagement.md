@@ -2,6 +2,32 @@
 
 **Goal:** This epic will foster a supportive learning environment by enabling users to view and post comments on individual concepts. This encourages peer-to-peer learning and discussion, adding a valuable social dimension to the study experience.
 
+## Epic Status Update (2025-10-01)
+
+**Changes from Epic 1.5 Integration:**
+
+- ❌ **Story 3.1 (View Comments):** Absorbed into Epic 1.5.6 (Discussion Modal)
+- ❌ **Story 3.2 (Post a Comment):** Absorbed into Epic 1.5.6 (Discussion Modal)
+- ✅ **Story 3.3 (Basic Comment Moderation):** No changes - Proceed as planned for CMS
+
+**Rationale:** Epic 1.5.6 implements a comprehensive Discussion Modal with enhanced features including:
+- Instructor posts with special badges and pinning
+- Student replies with threaded discussions
+- Like functionality for posts
+- Distinction between "Discussion" and "Question" post types
+- Reply counts and engagement metrics
+
+This provides a superior user experience compared to the original simple comment list design, while maintaining the same backend Comment data model (with enhancements for the new features).
+
+**Remaining Scope:** Epic 3 now focuses solely on CMS moderation capabilities for the discussion content created in Epic 1.5.6. Story 3.3 will provide content managers with tools to moderate the enhanced discussion system.
+
+**Reference Documents:**
+- **Sprint Change Proposal:** `docs/sprint-change-proposal-scp-2025-001.md`
+- **Epic 1.5 Story 1.5.6:** Discussion Modal (see `docs/prd/epic-1.5-ux-enhancement.md`)
+- **Updated Comment Model:** `docs/architecture/data-models.md`
+
+---
+
 ## Story 3.1: View Comments on a Concept
 
 *   **As a** logged-in user,
