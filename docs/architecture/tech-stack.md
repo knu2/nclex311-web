@@ -11,6 +11,8 @@ This table represents the single source of truth for the project's technology st
 | **UI Styling** | Tailwind CSS | v4.x | Utility-first CSS framework | For rapid and custom styling of components and layouts. |
 | **UI Component Library**| MUI (Material-UI) | ~5.x | React component library | To accelerate development with a comprehensive set of pre-built, accessible components. |
 | **State Management** | React Built-in (useState/useContext) | N/A | Client-side state management | Built-in React hooks sufficient for current scope. Zustand planned for complex global state. |
+| **Markdown Rendering** | react-markdown | ~9.x | Content display with markdown support | Safe, performant rendering of markdown-formatted content (concepts, questions, rationales) with React component support. |
+| **Markdown Sanitization** | rehype-sanitize | ~6.x | XSS protection for rendered content | Sanitizes HTML output from markdown rendering to prevent XSS attacks and ensure secure user-facing content display. |
 | **Backend Language** | TypeScript | ~5.x | Type safety for API routes | Consistent language across the stack simplifies development. |
 | **Backend Framework**| Next.js API Routes | 15.5.x | Serverless backend logic | Specified in PRD. Tightly integrated with the frontend, ideal for this architecture. |
 | **API Style** | REST | N/A | Client-server communication | A well-understood, standard approach that fits naturally with Next.js API Routes. |

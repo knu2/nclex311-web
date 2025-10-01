@@ -17,9 +17,10 @@ This document establishes the coding standards and best practices for the NCLEX3
 7. [Documentation Standards](#documentation-standards)
 8. [Performance Standards](#performance-standards)
 9. [Security Standards](#security-standards)
-10. [Import and Export Standards](#import-and-export-standards)
-11. [Error Handling Standards](#error-handling-standards)
-12. [Enforcement and Tooling](#enforcement-and-tooling)
+10. [Content Rendering Standards](#content-rendering-standards)
+11. [Import and Export Standards](#import-and-export-standards)
+12. [Error Handling Standards](#error-handling-standards)
+13. [Enforcement and Tooling](#enforcement-and-tooling)
 
 ## TypeScript Standards
 
@@ -1457,6 +1458,265 @@ export async function createConcept(input: unknown) {
     })
     .single();
 }
+```
+
+## Content Rendering Standards
+
+### Markdown Content Rendering
+
+#### Overview
+
+All user-facing content (concept descriptions, question text, rationales, answer options) is stored in the database with markdown formatting. This requires secure, consistent rendering on the frontend using the react-markdown library with proper sanitization.
+
+#### Required Libraries
+
+- **react-markdown** (~9.x): Markdown-to-React component rendering
+- **rehype-sanitize** (~6.x): XSS protection for rendered HTML
+
+**Reference:** [Source: docs/architecture/tech-stack.md#Markdown Rendering]
+
+#### Implementation Requirements
+
+- **REQUIRED:** Use react-markdown for all markdown content rendering
+- **REQUIRED:** Include rehype-sanitize plugin for XSS protection
+- **REQUIRED:** Configure allowed HTML tags and attributes
+- **REQUIRED:** Handle line breaks (`\n`) and escape sequences properly
+- **REQUIRED:** Apply consistent styling to rendered markdown elements
+
+```typescript
+// ✅ Good: Secure markdown rendering with sanitization
+import ReactMarkdown from 'react-markdown';
+import rehypeSanitize from 'rehype-sanitize';
+import { Typography, Box } from '@mui/material';
+
+interface MarkdownContentProps {
+  content: string;
+  variant?: 'body1' | 'body2';
+}
+
+export const MarkdownContent: React.FC<MarkdownContentProps> = ({ 
+  content, 
+  variant = 'body1' 
+}) => {
+  return (
+    <ReactMarkdown
+      rehypePlugins={[rehypeSanitize]}
+      components={{
+        // Map markdown elements to MUI Typography
+        p: ({ children }) => (
+          <Typography variant={variant} paragraph>
+            {children}
+          </Typography>
+        ),
+        strong: ({ children }) => (
+          <Typography component="span" fontWeight="bold">
+            {children}
+          </Typography>
+        ),
+        em: ({ children }) => (
+          <Typography component="span" fontStyle="italic">
+            {children}
+          </Typography>
+        ),
+        ul: ({ children }) => (
+          <Box component="ul" sx={{ mt: 1, mb: 1, pl: 2 }}>
+            {children}
+          </Box>
+        ),
+        ol: ({ children }) => (
+          <Box component="ol" sx={{ mt: 1, mb: 1, pl: 2 }}>
+            {children}
+          </Box>
+        ),
+        li: ({ children }) => (
+          <Typography component="li" variant={variant}>
+            {children}
+          </Typography>
+        ),
+        code: ({ children }) => (
+          <Typography
+            component="code"
+            sx={{
+              px: 0.5,
+              py: 0.25,
+              backgroundColor: 'grey.100',
+              borderRadius: 1,
+              fontFamily: 'monospace',
+              fontSize: '0.875em',
+            }}
+          >
+            {children}
+          </Typography>
+        ),
+      }}
+    >
+      {content}
+    </ReactMarkdown>
+  );
+};
+
+// ❌ Bad: Direct rendering without sanitization
+export const UnsafeContent: React.FC<{ content: string }> = ({ content }) => {
+  return (
+    <Typography>
+      {content} {/* Raw text - markdown not rendered, escape sequences visible */}
+    </Typography>
+  );
+};
+
+// ❌ Bad: Using dangerouslySetInnerHTML without sanitization
+export const UnsafeHTML: React.FC<{ content: string }> = ({ content }) => {
+  return (
+    <div dangerouslySetInnerHTML={{ __html: content }} />
+    {/* XSS vulnerability - no sanitization */}
+  );
+};
+```
+
+#### Usage Guidelines
+
+**When to use MarkdownContent component:**
+
+1. **Concept content display** - Main educational content with formatting
+2. **Question text** - Quiz questions that may include medical terminology with emphasis
+3. **Answer rationales** - Explanations with bullet points, bold text, and lists
+4. **Answer option text** - Individual options that may contain formatted text
+
+```tsx
+// ✅ Good: Concept content rendering
+import { MarkdownContent } from '@/components/MarkdownContent';
+
+export default function ConceptPage({ concept }: { concept: Concept }) {
+  return (
+    <Box>
+      <Typography variant="h4" gutterBottom>
+        {concept.title}
+      </Typography>
+      
+      <MarkdownContent content={concept.content} variant="body1" />
+      
+      {concept.questions.map(question => (
+        <Box key={question.id} sx={{ mt: 4 }}>
+          <MarkdownContent content={question.text} variant="body1" />
+          
+          {question.options.map(option => (
+            <Box key={option.id}>
+              <MarkdownContent content={option.text} variant="body2" />
+            </Box>
+          ))}
+          
+          {showRationale && (
+            <MarkdownContent 
+              content={question.rationale} 
+              variant="body2" 
+            />
+          )}
+        </Box>
+      ))}
+    </Box>
+  );
+}
+```
+
+#### Sanitization Configuration
+
+The rehype-sanitize plugin uses a safe default schema that:
+
+- **Allows:** `p`, `strong`, `em`, `ul`, `ol`, `li`, `code`, `pre`, `br`, `h1`-`h6`
+- **Blocks:** `script`, `iframe`, `object`, `embed`, event handlers, `style` tags
+- **Removes:** All JavaScript URIs and dangerous attributes
+
+For custom sanitization needs, extend the default schema:
+
+```typescript
+import { defaultSchema } from 'rehype-sanitize';
+import { deepmerge } from 'deepmerge-ts';
+
+// Custom schema for medical content
+const medicalContentSchema = deepmerge(defaultSchema, {
+  attributes: {
+    // Allow data attributes for medical terminology
+    '*': ['className', 'id'],
+  },
+  tagNames: [
+    ...defaultSchema.tagNames,
+    'sup', // Superscript for medical notation
+    'sub', // Subscript for chemical formulas
+  ],
+});
+
+// Use in component
+<ReactMarkdown rehypePlugins={[[rehypeSanitize, medicalContentSchema]]}>
+  {content}
+</ReactMarkdown>
+```
+
+#### Security Considerations
+
+- **NEVER** use `dangerouslySetInnerHTML` for user-provided or database content
+- **ALWAYS** include rehype-sanitize plugin when rendering markdown
+- **VALIDATE** content at ingestion time to prevent storing malicious code
+- **TEST** rendered output for XSS vulnerabilities in E2E tests
+- **REVIEW** custom sanitization schemas with security team
+
+#### Performance Considerations
+
+- **Memoize** rendered markdown components to prevent unnecessary re-renders
+- **Lazy load** react-markdown for initial page load optimization
+- **Consider** server-side rendering for SEO-critical content
+
+```typescript
+// ✅ Good: Memoized markdown rendering
+import React, { memo } from 'react';
+
+export const MarkdownContent = memo<MarkdownContentProps>(({ content, variant }) => {
+  return (
+    <ReactMarkdown rehypePlugins={[rehypeSanitize]}>
+      {content}
+    </ReactMarkdown>
+  );
+});
+
+MarkdownContent.displayName = 'MarkdownContent';
+```
+
+#### Testing Requirements
+
+- **Unit tests:** Verify markdown rendering with various formatting patterns
+- **Integration tests:** Test component integration with MUI Typography
+- **E2E tests:** Validate rendered content appears correctly in the UI
+- **Security tests:** Confirm XSS attempts are blocked
+
+```typescript
+// Example test
+import { render, screen } from '@testing-library/react';
+import { MarkdownContent } from '@/components/MarkdownContent';
+
+describe('MarkdownContent', () => {
+  it('renders bold text correctly', () => {
+    render(<MarkdownContent content="**Cardiovascular**: chest pain" />);
+    
+    const boldText = screen.getByText('Cardiovascular', { exact: false });
+    expect(boldText).toHaveStyle({ fontWeight: 'bold' });
+  });
+  
+  it('blocks XSS attempts', () => {
+    const maliciousContent = '<script>alert("XSS")</script>Normal text';
+    render(<MarkdownContent content={maliciousContent} />);
+    
+    // Script tag should be removed, only normal text shown
+    expect(screen.queryByText(/XSS/)).not.toBeInTheDocument();
+    expect(screen.getByText('Normal text')).toBeInTheDocument();
+  });
+  
+  it('renders lists with proper formatting', () => {
+    const listContent = '- Item 1\n- Item 2\n- Item 3';
+    render(<MarkdownContent content={listContent} />);
+    
+    expect(screen.getByRole('list')).toBeInTheDocument();
+    expect(screen.getAllByRole('listitem')).toHaveLength(3);
+  });
+});
 ```
 
 ## Import and Export Standards
