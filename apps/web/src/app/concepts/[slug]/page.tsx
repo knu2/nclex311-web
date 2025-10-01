@@ -25,6 +25,7 @@ import {
 } from '@mui/icons-material';
 import { Quiz } from '@/components/Quiz';
 import { Paywall } from '@/components/Paywall';
+import { MarkdownContent } from '@/components/MarkdownContent';
 import { ConceptWithQuestions } from '@/lib/db/services';
 
 interface ConceptPageState {
@@ -294,16 +295,14 @@ export default function ConceptPage() {
         <Divider sx={{ mb: 3 }} />
 
         {/* Concept Content - Following front-end spec layout */}
-        <Typography
-          variant="body1"
+        <Box
           sx={{
             fontSize: '1.1rem',
             lineHeight: 1.7,
-            whiteSpace: 'pre-wrap',
           }}
         >
-          {concept.content}
-        </Typography>
+          <MarkdownContent content={concept.content} variant="body1" />
+        </Box>
       </Paper>
 
       {/* Quiz Section - Following user flow: User reads concept → starts quiz */}

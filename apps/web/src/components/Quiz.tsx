@@ -22,6 +22,7 @@ import {
   Quiz as QuizIcon,
 } from '@mui/icons-material';
 import { QuestionWithOptions } from '@/lib/db/services';
+import { MarkdownContent } from './MarkdownContent';
 
 interface QuizProps {
   questions: QuestionWithOptions[];
@@ -189,16 +190,15 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
 
           <Divider sx={{ mb: 3 }} />
 
-          <Typography
-            variant="body1"
+          <Box
             sx={{
               fontSize: '1.1rem',
               lineHeight: 1.6,
               mb: 2,
             }}
           >
-            {currentQuestion.text}
-          </Typography>
+            <MarkdownContent content={currentQuestion.text} variant="body1" />
+          </Box>
 
           {currentQuestion.type === 'SELECT_ALL_THAT_APPLY' && (
             <Alert severity="info" sx={{ mb: 2 }}>
@@ -230,7 +230,14 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
                         disabled={isSubmitted}
                       />
                     }
-                    label={option.text}
+                    label={
+                      <Box sx={{ width: '100%' }}>
+                        <MarkdownContent
+                          content={option.text}
+                          variant="body2"
+                        />
+                      </Box>
+                    }
                     sx={{
                       mb: 1,
                       p: 2,
@@ -271,7 +278,14 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
                     key={option.id}
                     value={option.id}
                     control={<Radio disabled={isSubmitted} />}
-                    label={option.text}
+                    label={
+                      <Box sx={{ width: '100%' }}>
+                        <MarkdownContent
+                          content={option.text}
+                          variant="body2"
+                        />
+                      </Box>
+                    }
                     sx={{
                       mb: 1,
                       p: 2,
@@ -352,9 +366,12 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
                 <Typography variant="body2" fontWeight={600} gutterBottom>
                   Rationale:
                 </Typography>
-                <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-                  {currentQuestion.rationale}
-                </Typography>
+                <Box sx={{ lineHeight: 1.6 }}>
+                  <MarkdownContent
+                    content={currentQuestion.rationale}
+                    variant="body2"
+                  />
+                </Box>
               </Paper>
             )}
           </Box>
