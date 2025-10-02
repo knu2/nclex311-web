@@ -74,7 +74,7 @@ graph TD
     *   Click navigates to that concept (replaces content area)
 
 *   **Content Area Views:** Main content area switches between:
-    1. **Concept Viewer** (default) - Single concept with quiz, rationale, connections
+    1. **Concept Viewer** (default) - Single concept with quiz, rationale, key points
     2. **All Chapters View** - Grid of all 8 chapters with progress indicators
     3. **Progress Dashboard** - Detailed progress tracking by chapter
     4. **Bookmarks View** - Grid of bookmarked concepts with notes
@@ -133,9 +133,8 @@ graph TD
     K --> L{User chooses action};
     L -- Try Again --> E;
     L -- Discussion --> M[Discussion Modal opens];
-    L -- Continue --> N[User scrolls to connection cards];
-    N --> O[User clicks Next Concept or related topic];
-    O --> B;
+    L -- Continue --> N[User returns to concept list or all chapters];
+    N --> B;
     
     B -- Premium Concept --> P[Premium paywall overlay];
     P --> Q[Show 'Upgrade' button];
@@ -342,15 +341,7 @@ graph TD
 *   **Heading:** "📚 Reference" (H4)
 *   **Content:** Citation information (author, title, publisher)
 
-**8. Connection Cards (Grid Layout)**
-*   **Three cards in row (desktop), stacked on mobile:**
-    1.  **Next Concept:** Title, concept name, number
-    2.  **Prerequisites:** Title, concept name, number  
-    3.  **Related Topic:** Title, concept name, number
-*   **Styling:** White cards, border, hover effect (lift + shadow)
-*   **Click:** Navigate to that concept
-
-**9. Action Buttons**
+**8. Action Buttons**
 *   **Grid Layout (responsive):**
     *   💬 Discussion (Primary blue button)
     *   ✅ Mark Complete (Outline button)
@@ -707,7 +698,7 @@ We will use a standard set of breakpoints to control how the layout adapts. The 
     *   **Tablet+:** The sidebar navigation is permanently visible, providing one-click access to all main sections.
 
 *   **Content:**
-    *   Content is prioritized vertically on mobile. On larger screens, related content (like "Key Points" or "Connections") might be moved into a secondary column alongside the main content.
+    *   Content is prioritized vertically on mobile. On larger screens, related content (like "Key Points") might be moved into a secondary column alongside the main content.
 
 *   **Interactions:**
     *   All interactions will be designed for touch first. Hover effects on desktop will be an enhancement, not a requirement for functionality.

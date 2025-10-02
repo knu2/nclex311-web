@@ -94,13 +94,10 @@ export interface Concept {
   content: string; // Markdown content
   conceptNumber: number;
   chapterId: string;
-  // NEW FIELDS for Epic 1.5:
-  connectionConcepts?: {
-    nextConceptId?: string; // For "Next Concept" card
-    prerequisiteConceptId?: string; // For "Prerequisites" card
-    relatedConceptId?: string; // For "Related Topic" card
-  };
-  keyPoints?: string[]; // For "Key Points" section after quiz
+  // NEW FIELD for Epic 1.5.3:
+  keyPoints: string | null; // Key learning points stored as plain text or markdown
+                            // Displayed in "Key Points" section after quiz
+                            // Imported from extracted JSON key_points field
 }
 ```
 
