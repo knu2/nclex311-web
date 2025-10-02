@@ -234,17 +234,23 @@ COMMENT ON COLUMN concepts.key_points IS 'Key learning points from extracted con
 
 ### **Immediate Actions (Before Epic 1.5 Development)**
 
-- [ ] **Database Migration:** Create and execute `004_add_key_points_column.sql`
+- [x] **Database Migration:** Create and execute `004_add_key_points_column.sql` ✅ COMPLETED 2025-10-02
   ```sql
   ALTER TABLE concepts ADD COLUMN key_points TEXT;
   ```
+  - Executed via Supabase MCP server
+  - Column validated in production database
 
-- [ ] **Import Script Update:** Modify import script in `extracted-content` branch
-  - [ ] Update `createConcept` function to import key_points separately
-  - [ ] Remove concatenation of key_points with main_concept
-  - [ ] Test import with sample JSON files
+- [x] **Import Script Update:** Modify import script in `extracted-content` branch ✅ COMPLETED 2025-10-02
+  - [x] Update `createConcept` function to import key_points separately (line 453)
+  - [x] Remove concatenation of key_points with main_concept (line 423)
+  - [x] Test import with sample JSON files
+  - Commit: `fix: store key_points in separate database field` (7f7ffd1)
 
-- [ ] **Validation:** Run import validation script to ensure key_points are populated
+- [x] **Validation:** Run import validation script to ensure key_points are populated ✅ COMPLETED 2025-10-02
+  - All 313 concepts successfully imported with key_points
+  - 12 images uploaded to Vercel Blob Storage
+  - Zero import failures
 
 ### **During Epic 1.5.3 Implementation**
 
@@ -298,15 +304,19 @@ This amendment **simplifies** the Epic 1.5 implementation by removing unsupporte
 - ✅ **Cleaner Implementation:** Simpler Concept model
 - ✅ **Better UX:** KeyPoints properly displayable after quiz
 
-**Next Actions:**
-1. Execute database migration (`004_add_key_points_column.sql`)
-2. Modify import script in `extracted-content` branch
-3. Proceed with Epic 1.5 implementation with updated specifications
+**Implementation Status:** ✅ **ALL ACTIONS COMPLETED 2025-10-02**
+
+1. ✅ Database migration executed (`004_add_key_points_column.sql`)
+2. ✅ Import script modified in `extracted-content` branch (commit 7f7ffd1)
+3. ✅ Full data re-import completed successfully (313 concepts, 12 images)
+4. ✅ Story 1.3 documentation updated with completion notes
+5. ✅ Ready to proceed with Epic 1.5 implementation
 
 ---
 
 **Amendment Complete:** 2025-10-02  
-**Effective Immediately**
+**Implementation Complete:** 2025-10-02  
+**Status:** READY FOR EPIC 1.5 DEVELOPMENT
 
 ---
 
