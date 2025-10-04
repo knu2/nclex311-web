@@ -139,6 +139,14 @@ global.Response = class Response {
   }
 };
 
+// Mock next-auth/react to avoid ESM import issues
+jest.mock('next-auth/react', () => ({
+  useSession: jest.fn(),
+  signIn: jest.fn(),
+  signOut: jest.fn(),
+  SessionProvider: ({ children }) => children,
+}));
+
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';

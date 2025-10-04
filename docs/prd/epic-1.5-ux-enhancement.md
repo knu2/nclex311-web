@@ -2,7 +2,7 @@
 
 **Goal:** Implement the approved modern UI design with sidebar navigation, inline quiz interactions, and enhanced engagement features (notes, discussion, progress tracking, bookmarks). This epic transforms the learning experience from a dashboard-centric model to a sidebar-based navigation system with persistent context and enhanced interactivity.
 
-**Timeline:** 6-8 weeks (10 stories)
+**Timeline:** 6-8 weeks (12 stories)
 
 **Dependencies:**
 - ✅ Story 1.5 (MUI theme configuration, brand colors, responsive patterns)
@@ -13,6 +13,7 @@
 - **Frontend Specification:** `docs/front-end-spec.md`
 - **UX Redesign Analysis:** `docs/ux-redesign-summary.md`
 - **Sprint Change Proposal:** `docs/sprint-change-proposal-scp-2025-001.md`
+- **Sprint Change Proposal (Approved Update):** `docs/sprint-change-proposal-scp-2025-002.md`
 
 ---
 
@@ -23,10 +24,12 @@
 | 1.5.1 | Sidebar Navigation Component | - | P0 (Critical) |
 | 1.5.2 | Main Layout Shell & Responsive Behavior | - | P0 (Critical) |
 | 1.5.3 | Concept Viewer with Markdown Rendering | Story 1.6.1 | P0 (Critical) |
+| 1.5.3.3 | Public Pages (Landing, Login, Signup) | - | P0 (Critical) |
+| 1.5.3.5 | Page Integration & Route Migration | - | P0 (Critical) |
 | 1.5.4 | Inline Quiz Interaction | Story 1.7 | P0 (Critical) |
 | 1.5.5 | Notes Modal | - | P1 (High) |
 | 1.5.6 | Discussion Modal | Stories 3.1-3.2 | P1 (High) |
-| 1.5.7 | All Chapters Grid View | - | P1 (High) |
+| 1.5.7 | Chapter Grid Component (Revised) | - | P1 (High) |
 | 1.5.8 | Progress Dashboard | - | P1 (High) |
 | 1.5.9 | Bookmarks View | - | P1 (High) |
 | 1.5.10 | Premium Sidebar Integration | - | P2 (Medium) |
