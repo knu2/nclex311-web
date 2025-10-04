@@ -21,6 +21,7 @@ export interface ConceptData {
   slug: string;
   conceptNumber: number;
   content: string;
+  keyPoints: string | null;
   chapterId: string;
   isPremium: boolean;
   questions: LegacyQuestion[];
@@ -176,6 +177,7 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
           <InlineQuiz
             questions={transformToQuizQuestions(data.questions)}
             conceptId={data.id}
+            conceptKeyPoints={data.keyPoints}
           />
         )}
       </Box>

@@ -71,6 +71,7 @@ export default async function ConceptPage({
     slug: concept.slug,
     conceptNumber: concept.conceptNumber,
     content: concept.content,
+    keyPoints: concept.keyPoints || null,
     chapterId: concept.chapterId,
     isPremium: concept.isPremium,
     questions: concept.questions || [],

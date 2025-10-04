@@ -19,6 +19,7 @@ describe('ConceptViewer', () => {
     conceptNumber: 5,
     content:
       '# Cardiac Assessment\n\nKey Points:\n- Monitor heart rate\n- Check blood pressure\n- Assess for chest pain\n\n## Overview\nThis is the main content about cardiac assessment with **bold** text and *italic* text.\n\n![Medical diagram](https://example.com/heart.jpg)',
+    keyPoints: null,
     chapterId: '123e4567-e89b-12d3-a456-426614174001',
     isPremium: false,
     chapter: {

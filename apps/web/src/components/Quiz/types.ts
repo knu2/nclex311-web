@@ -42,6 +42,7 @@ export interface QuizState {
 export interface InlineQuizProps {
   questions: Question[];
   conceptId: string;
+  conceptKeyPoints?: string | null;
   onAllQuestionsAnswered?: () => void;
 }
 

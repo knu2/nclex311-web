@@ -30,7 +30,7 @@ import type {
  * Story 1.5.4: Inline Quiz Interaction
  */
 export const InlineQuiz: React.FC<InlineQuizProps> = memo(
-  ({ questions, conceptId, onAllQuestionsAnswered }) => {
+  ({ questions, conceptId, conceptKeyPoints, onAllQuestionsAnswered }) => {
     // Initialize state from localStorage if available
     const [quizState, setQuizState] = useState<QuizState>(() => {
       if (typeof window === 'undefined') return {};
@@ -404,11 +404,11 @@ export const InlineQuiz: React.FC<InlineQuizProps> = memo(
                     {/* Rationale */}
                     {question.rationale && (
                       <Paper
+                        elevation={0}
                         sx={{
                           p: 3,
                           backgroundColor: '#f8f9fc',
-                          border: '1px solid',
-                          borderColor: 'divider',
+                          borderLeft: '4px solid #6c757d',
                           borderRadius: 1,
                           mb: 2,
                           animation: 'expandIn 0.25s ease-in-out',
@@ -429,6 +429,42 @@ export const InlineQuiz: React.FC<InlineQuizProps> = memo(
                         <Box sx={{ lineHeight: 1.6 }}>
                           <MarkdownContent
                             content={question.rationale}
+                            variant="body2"
+                          />
+                        </Box>
+                      </Paper>
+                    )}
+
+                    {/* Key Points Section */}
+                    {conceptKeyPoints && (
+                      <Paper
+                        sx={{
+                          p: 3,
+                          backgroundColor: '#fff9e6',
+                          borderLeft: '4px solid #ff6b35',
+                          borderRadius: 1,
+                          mb: 2,
+                          animation: 'expandIn 0.25s ease-in-out',
+                          '@keyframes expandIn': {
+                            from: { opacity: 0, maxHeight: 0 },
+                            to: { opacity: 1, maxHeight: 500 },
+                          },
+                        }}
+                      >
+                        <Typography
+                          variant="subtitle2"
+                          fontWeight={700}
+                          gutterBottom
+                          sx={{
+                            color: '#ff6b35',
+                            fontSize: '1.1rem',
+                          }}
+                        >
+                          🔑 Key Points
+                        </Typography>
+                        <Box sx={{ lineHeight: 1.6 }}>
+                          <MarkdownContent
+                            content={conceptKeyPoints}
                             variant="body2"
                           />
                         </Box>
