@@ -1,4 +1,38 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
+
+/**
+ * Helper function to navigate to a concept via sidebar
+ * Works for both mobile and desktop viewports
+ */
+async function navigateToFirstConcept(page: Page) {
+  // Navigate to chapters page which should show sidebar
+  await page.goto('/chapters');
+
+  // Wait for sidebar to load concepts
+  await page.waitForSelector('text=Chapter', { timeout: 10000 });
+
+  // On mobile, need to open the sidebar drawer first
+  const viewport = page.viewportSize();
+  const isMobile = viewport && viewport.width < 960;
+
+  if (isMobile) {
+    // Click hamburger menu to open sidebar drawer
+    const hamburgerMenu = page.locator('button[aria-label="open drawer"]');
+    if (await hamburgerMenu.isVisible()) {
+      await hamburgerMenu.click();
+      // Wait for drawer animation
+      await page.waitForTimeout(300);
+    }
+  }
+
+  // Click on the first available concept in the sidebar
+  const firstConcept = page
+    .locator('[role="navigation"] [role="button"]')
+    .filter({ hasText: /\d+\./ }) // Matches concept number pattern
+    .first();
+  await firstConcept.waitFor({ state: 'visible', timeout: 5000 });
+  await firstConcept.click();
+}
 
 test.describe('Markdown Content Rendering', () => {
   test.beforeEach(async ({ page }) => {
@@ -11,18 +45,8 @@ test.describe('Markdown Content Rendering', () => {
     test('displays concept content with bold text formatting', async ({
       page,
     }) => {
-      // Navigate to dashboard to find a concept
-      await page.goto('/dashboard');
-
-      // Wait for chapters to load
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      // Click on the first available concept
-      const firstConcept = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await firstConcept.waitFor({ state: 'visible', timeout: 5000 });
-      await firstConcept.click();
+      // Navigate via sidebar to find a concept
+      await navigateToFirstConcept(page);
 
       // Wait for concept content to load
       await page.waitForSelector('text=/./i', { timeout: 10000 });
@@ -42,14 +66,7 @@ test.describe('Markdown Content Rendering', () => {
     });
 
     test('displays concept content with list formatting', async ({ page }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const firstConcept = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await firstConcept.waitFor({ state: 'visible', timeout: 5000 });
-      await firstConcept.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
@@ -71,19 +88,9 @@ test.describe('Markdown Content Rendering', () => {
     test('displays concept content with italic text formatting', async ({
       page,
     }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const firstConcept = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await firstConcept.waitFor({ state: 'visible', timeout: 5000 });
-      await firstConcept.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
-
-      // Check that asterisks are not visible (converted to italic)
-      const content = await page.textContent('body');
 
       // Look for em tags (italic)
       const emElements = await page.locator('em').count();
@@ -94,21 +101,14 @@ test.describe('Markdown Content Rendering', () => {
     });
 
     test('does not display raw markdown syntax like \\n', async ({ page }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const firstConcept = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await firstConcept.waitFor({ state: 'visible', timeout: 5000 });
-      await firstConcept.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
       // Should not show raw escape sequences
-      const content = await page.textContent('body');
-      expect(content).not.toContain('\\n');
-      expect(content).not.toContain('\\t');
+      const bodyText = await page.textContent('body');
+      expect(bodyText).not.toContain('\\n');
+      expect(bodyText).not.toContain('\\t');
     });
   });
 
@@ -116,15 +116,8 @@ test.describe('Markdown Content Rendering', () => {
     test('displays quiz question text with proper formatting', async ({
       page,
     }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
       // Navigate to a concept with questions
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       // Wait for page to load
       await page
@@ -147,14 +140,7 @@ test.describe('Markdown Content Rendering', () => {
     });
 
     test('displays quiz options with proper formatting', async ({ page }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       // Check for radio or checkbox options
       await page.waitForTimeout(2000);
@@ -180,14 +166,7 @@ test.describe('Markdown Content Rendering', () => {
     test('displays rationale with formatted text after submission', async ({
       page,
     }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForTimeout(2000);
 
@@ -228,14 +207,7 @@ test.describe('Markdown Content Rendering', () => {
       // Set mobile viewport
       await page.setViewportSize({ width: 375, height: 667 });
 
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
@@ -250,14 +222,7 @@ test.describe('Markdown Content Rendering', () => {
       // Set tablet viewport
       await page.setViewportSize({ width: 768, height: 1024 });
 
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
@@ -271,14 +236,7 @@ test.describe('Markdown Content Rendering', () => {
       // Set desktop viewport
       await page.setViewportSize({ width: 1920, height: 1080 });
 
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
@@ -293,34 +251,11 @@ test.describe('Markdown Content Rendering', () => {
     test('verifies no markdown syntax characters are visible to users', async ({
       page,
     }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
-      // Get all visible text content
-      const bodyContent = await page.textContent('body');
-
-      // List of markdown syntax that should NOT be visible
-      const markdownSyntax = [
-        '**',
-        '__',
-        '*',
-        '_',
-        '\\n',
-        '\\t',
-        '```',
-        '##',
-        '###',
-      ];
-
-      // Check for each syntax (some may legitimately appear in content, so we check for patterns)
+      // Check for markdown syntax patterns that should NOT be visible
       // Most importantly, no ** should be visible around bold text
       const paragraphs = await page.locator('p').allTextContents();
 
@@ -333,14 +268,7 @@ test.describe('Markdown Content Rendering', () => {
     test('verifies lists are properly rendered as HTML lists', async ({
       page,
     }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
@@ -369,19 +297,9 @@ test.describe('Markdown Content Rendering', () => {
       // This test assumes there's no XSS vulnerability
       // If markdown content contains script tags, they should be sanitized
 
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
-
-      // Check that no script tags are present in the rendered content
-      const scriptTags = await page.locator('script:not([src])').count();
 
       // Only external scripts (with src) should be present, no inline scripts from content
       const pageScripts = await page.locator('script').all();
@@ -399,14 +317,7 @@ test.describe('Markdown Content Rendering', () => {
     test('does not render iframe tags from markdown content', async ({
       page,
     }) => {
-      await page.goto('/dashboard');
-      await page.waitForSelector('text=Chapter', { timeout: 10000 });
-
-      const conceptLink = page
-        .locator('[data-testid*="concept-"], a[href*="/concepts/"]')
-        .first();
-      await conceptLink.waitFor({ state: 'visible', timeout: 5000 });
-      await conceptLink.click();
+      await navigateToFirstConcept(page);
 
       await page.waitForSelector('text=/./i', { timeout: 10000 });
 
