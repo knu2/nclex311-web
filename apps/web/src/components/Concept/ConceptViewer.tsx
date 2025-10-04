@@ -1,19 +1,21 @@
 'use client';
 
-import React, { useState, useEffect, memo } from 'react';
-import { Box, Paper, Typography, Skeleton, Alert, Chip } from '@mui/material';
+import React, { memo } from 'react';
+import { Box, Paper, Typography, Chip } from '@mui/material';
 import {
   KeyboardArrowDown as ArrowDownIcon,
   Lightbulb as LightbulbIcon,
 } from '@mui/icons-material';
 import { MarkdownContent } from '../MarkdownContent';
+import { InlineQuiz } from '../Quiz/InlineQuiz';
+import type { Question } from '../Quiz/types';
 
 // TypeScript Interfaces
 export interface ConceptViewerProps {
-  conceptSlug: string;
+  initialConcept: ConceptData; // Pass server-fetched data directly
 }
 
-interface ConceptData {
+export interface ConceptData {
   id: string;
   title: string;
   slug: string;
@@ -21,7 +23,7 @@ interface ConceptData {
   content: string;
   chapterId: string;
   isPremium: boolean;
-  questions: Question[];
+  questions: LegacyQuestion[];
   chapter: {
     id: string;
     title: string;
@@ -30,7 +32,9 @@ interface ConceptData {
   };
 }
 
-interface Question {
+// Deprecated: Use Question from Quiz/types instead
+// Keeping for backwards compatibility during migration
+interface LegacyQuestion {
   id: string;
   text: string;
   type: string;
@@ -42,12 +46,7 @@ interface QuestionOption {
   id: string;
   text: string;
   isCorrect: boolean;
-}
-
-interface ConceptViewerState {
-  data: ConceptData | null;
-  loading: boolean;
-  error: string | null;
+  orderIndex?: number;
 }
 
 /**
@@ -59,109 +58,16 @@ interface ConceptViewerState {
  * - Lazy-loaded responsive images
  * - Key points display section
  * - Visual arrow separator between READ THIS and quiz sections
- * - Loading and error states
- * - Freemium access control support
+ * - Server-side data fetching (no client-side API calls)
+ * - Freemium access control support (handled server-side)
+ *
+ * Story 1.5.3.5 Fix: Refactored to accept server-fetched data as prop
+ * to eliminate redundant API calls and improve performance.
  */
 export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
-  ({ conceptSlug }) => {
-    const [state, setState] = useState<ConceptViewerState>({
-      data: null,
-      loading: true,
-      error: null,
-    });
-
-    useEffect(() => {
-      const fetchConceptData = async () => {
-        try {
-          setState(prev => ({ ...prev, loading: true, error: null }));
-
-          const response = await fetch(`/api/concepts/${conceptSlug}`);
-
-          if (!response.ok) {
-            const errorData = await response.json();
-
-            if (response.status === 403) {
-              setState({
-                data: null,
-                loading: false,
-                error: errorData.message || 'Premium access required',
-              });
-              return;
-            }
-
-            if (response.status === 404) {
-              setState({
-                data: null,
-                loading: false,
-                error: 'Concept not found',
-              });
-              return;
-            }
-
-            throw new Error(errorData.message || 'Failed to load concept');
-          }
-
-          const result = await response.json();
-
-          if (!result.success || !result.data) {
-            throw new Error('Invalid response format');
-          }
-
-          setState({
-            data: result.data,
-            loading: false,
-            error: null,
-          });
-        } catch (error) {
-          console.error('Failed to fetch concept:', error);
-          setState({
-            data: null,
-            loading: false,
-            error:
-              error instanceof Error
-                ? error.message
-                : 'An unexpected error occurred',
-          });
-        }
-      };
-
-      fetchConceptData();
-    }, [conceptSlug]);
-
-    // Loading state
-    if (state.loading) {
-      return (
-        <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
-          <Skeleton variant="rectangular" height={60} sx={{ mb: 2 }} />
-          <Skeleton variant="text" height={40} sx={{ mb: 1 }} />
-          <Skeleton variant="text" height={40} sx={{ mb: 1 }} />
-          <Skeleton variant="rectangular" height={300} sx={{ mb: 2 }} />
-          <Skeleton variant="rectangular" height={200} />
-        </Box>
-      );
-    }
-
-    // Error state
-    if (state.error) {
-      return (
-        <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
-          <Alert severity="error" sx={{ mb: 2 }}>
-            {state.error}
-          </Alert>
-        </Box>
-      );
-    }
-
-    // No data state
-    if (!state.data) {
-      return (
-        <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
-          <Alert severity="info">No concept data available</Alert>
-        </Box>
-      );
-    }
-
-    const { data } = state;
+  ({ initialConcept }) => {
+    // Use server-fetched data directly - no client-side fetching needed
+    const data = initialConcept;
 
     return (
       <Box sx={{ maxWidth: 800, mx: 'auto', p: { xs: 2, sm: 3 } }}>
@@ -264,10 +170,37 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
 
         {/* Visual Arrow Separator */}
         {data.questions.length > 0 && <SectionSeparator />}
+
+        {/* Inline Quiz Section */}
+        {data.questions.length > 0 && (
+          <InlineQuiz
+            questions={transformToQuizQuestions(data.questions)}
+            conceptId={data.id}
+          />
+        )}
       </Box>
     );
   }
 );
+
+/**
+ * Transform legacy question format to Quiz question format
+ */
+function transformToQuizQuestions(
+  legacyQuestions: LegacyQuestion[]
+): Question[] {
+  return legacyQuestions.map(q => ({
+    id: q.id,
+    type: q.type as Question['type'],
+    text: q.text,
+    options: q.options.map((opt, idx) => ({
+      ...opt,
+      orderIndex: opt.orderIndex ?? idx,
+    })),
+    correctAnswer: q.options.find(opt => opt.isCorrect)?.id || '',
+    rationale: q.rationale,
+  }));
+}
 
 ConceptViewer.displayName = 'ConceptViewer';
 
