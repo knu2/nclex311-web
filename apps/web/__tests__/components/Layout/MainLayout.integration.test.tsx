@@ -88,7 +88,7 @@ describe('MainLayout Integration Tests', () => {
 
       // Desktop: no hamburger menu
       expect(screen.queryByLabelText('open drawer')).not.toBeInTheDocument();
-      
+
       // Change to mobile viewport
       window.matchMedia = jest.fn().mockImplementation(query => ({
         matches: query.includes('max-width:960px'),
@@ -265,7 +265,10 @@ describe('MainLayout Integration Tests', () => {
 
       // Sidebar still visible with new chapter
       const updatedConceptList = screen.getByTestId('concept-list');
-      expect(updatedConceptList).toHaveAttribute('data-chapter-id', 'chapter-2');
+      expect(updatedConceptList).toHaveAttribute(
+        'data-chapter-id',
+        'chapter-2'
+      );
       expect(screen.getByText('Chapter 2 Content')).toBeInTheDocument();
     });
   });
@@ -286,7 +289,9 @@ describe('MainLayout Integration Tests', () => {
       );
 
       // Open user menu
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       // Click logout
@@ -323,7 +328,9 @@ describe('MainLayout Integration Tests', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       const logoutMenuItem = screen.getByText('Logout');
@@ -352,7 +359,9 @@ describe('MainLayout Integration Tests', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       const logoutMenuItem = screen.getByText('Logout');
@@ -497,7 +506,11 @@ describe('MainLayout Integration Tests', () => {
 
       // 3. Simulate navigation to new page
       rerender(
-        <MainLayout user={mockUser} chapterId="chapter-1" currentConceptSlug="concept-1">
+        <MainLayout
+          user={mockUser}
+          chapterId="chapter-1"
+          currentConceptSlug="concept-1"
+        >
           <div>Concept 1 Content</div>
         </MainLayout>
       );
@@ -511,7 +524,9 @@ describe('MainLayout Integration Tests', () => {
       expect(mockPush).toHaveBeenCalledWith('/upgrade');
 
       // 5. User opens menu
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       expect(screen.getByText('Profile')).toBeInTheDocument();
@@ -548,7 +563,9 @@ describe('MainLayout Integration Tests', () => {
 
       // But has access to menu and navigation
       expect(screen.getByText('NCLEX 311')).toBeInTheDocument();
-      expect(screen.getByLabelText(`User menu for ${premiumUser.name}`)).toBeInTheDocument();
+      expect(
+        screen.getByLabelText(`User menu for ${premiumUser.name}`)
+      ).toBeInTheDocument();
       expect(screen.getByTestId('concept-list')).toBeInTheDocument();
     });
   });

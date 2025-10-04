@@ -91,10 +91,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   const saveDrawerState = (isOpen: boolean): void => {
     if (typeof window !== 'undefined') {
       try {
-        localStorage.setItem(
-          DRAWER_STATE_KEY,
-          JSON.stringify({ isOpen })
-        );
+        localStorage.setItem(DRAWER_STATE_KEY, JSON.stringify({ isOpen }));
       } catch (error) {
         console.error('Error saving drawer state:', error);
       }
@@ -284,7 +281,14 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
                     sx={{ width: 36, height: 36 }}
                   />
                 ) : (
-                  <Avatar sx={{ width: 36, height: 36, backgroundColor: '#fff', color: '#2c5aa0' }}>
+                  <Avatar
+                    sx={{
+                      width: 36,
+                      height: 36,
+                      backgroundColor: '#fff',
+                      color: '#2c5aa0',
+                    }}
+                  >
                     <AccountCircleIcon />
                   </Avatar>
                 )}
@@ -309,7 +313,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
               >
                 {/* User Info Header */}
                 <Box sx={{ px: 2, py: 1, borderBottom: '1px solid #e1e7f0' }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#2c3e50' }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: 600, color: '#2c3e50' }}
+                  >
                     {user.name}
                   </Typography>
                   <Typography variant="caption" sx={{ color: '#6c757d' }}>

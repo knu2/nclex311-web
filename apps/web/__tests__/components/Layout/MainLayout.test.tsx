@@ -61,7 +61,7 @@ describe('MainLayout Component', () => {
       push: mockPush,
     });
     localStorage.clear();
-    
+
     // Mock matchMedia for responsive tests
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -99,13 +99,15 @@ describe('MainLayout Component', () => {
       );
 
       expect(screen.getByText('NCLEX 311')).toBeInTheDocument();
-      expect(screen.getByLabelText(`User menu for ${mockUser.name}`)).toBeInTheDocument();
+      expect(
+        screen.getByLabelText(`User menu for ${mockUser.name}`)
+      ).toBeInTheDocument();
       expect(screen.getByText('Upgrade to Premium')).toBeInTheDocument();
     });
 
     it('does not show upgrade button for premium users', () => {
       const premiumUser = { ...mockUser, is_premium: true };
-      
+
       render(
         <MainLayout user={premiumUser}>
           <div>Content</div>
@@ -140,14 +142,16 @@ describe('MainLayout Component', () => {
 
     it('renders default avatar icon when no avatar provided', () => {
       const userWithoutAvatar = { ...mockUser, avatar: undefined };
-      
+
       render(
         <MainLayout user={userWithoutAvatar}>
           <div>Content</div>
         </MainLayout>
       );
 
-      expect(screen.getByLabelText(`User menu for ${mockUser.name}`)).toBeInTheDocument();
+      expect(
+        screen.getByLabelText(`User menu for ${mockUser.name}`)
+      ).toBeInTheDocument();
     });
   });
 
@@ -293,7 +297,7 @@ describe('MainLayout Component', () => {
       );
 
       const hamburger = screen.getByLabelText('open drawer');
-      
+
       // Open drawer
       fireEvent.click(hamburger);
 
@@ -316,7 +320,10 @@ describe('MainLayout Component', () => {
       }));
 
       // Set initial state in localStorage
-      localStorage.setItem('nclex_drawer_state', JSON.stringify({ isOpen: true }));
+      localStorage.setItem(
+        'nclex_drawer_state',
+        JSON.stringify({ isOpen: true })
+      );
 
       render(
         <MainLayout chapterId="chapter-1">
@@ -408,7 +415,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       expect(screen.getByText('Profile')).toBeInTheDocument();
@@ -423,7 +432,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       expect(screen.getByText(mockUser.name)).toBeInTheDocument();
@@ -437,7 +448,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       const profileMenuItem = screen.getByText('Profile');
@@ -453,7 +466,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       const settingsMenuItem = screen.getByText('Settings');
@@ -476,7 +491,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       const logoutMenuItem = screen.getByText('Logout');
@@ -492,7 +509,7 @@ describe('MainLayout Component', () => {
 
     it('handles logout error gracefully', async () => {
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
-      
+
       global.fetch = jest.fn(() =>
         Promise.resolve({
           ok: false,
@@ -506,7 +523,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       const logoutMenuItem = screen.getByText('Logout');
@@ -526,7 +545,9 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
       fireEvent.click(userMenuButton);
 
       expect(screen.getByText('Profile')).toBeInTheDocument();
@@ -550,8 +571,12 @@ describe('MainLayout Component', () => {
       );
 
       expect(screen.getByLabelText('Go to all chapters')).toBeInTheDocument();
-      expect(screen.getByLabelText('Upgrade to premium membership')).toBeInTheDocument();
-      expect(screen.getByLabelText(`User menu for ${mockUser.name}`)).toBeInTheDocument();
+      expect(
+        screen.getByLabelText('Upgrade to premium membership')
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText(`User menu for ${mockUser.name}`)
+      ).toBeInTheDocument();
       expect(screen.getByLabelText('Main content')).toBeInTheDocument();
     });
 
@@ -562,8 +587,10 @@ describe('MainLayout Component', () => {
         </MainLayout>
       );
 
-      const userMenuButton = screen.getByLabelText(`User menu for ${mockUser.name}`);
-      
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
+
       expect(userMenuButton).toHaveAttribute('aria-haspopup', 'true');
       expect(userMenuButton).toHaveAttribute('aria-expanded', 'false');
 
