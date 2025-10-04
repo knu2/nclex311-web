@@ -41,11 +41,11 @@ graph TD
         D --> G[Bookmarks View]
         D --> H[Notes Modal]
         D --> I[Discussion Modal]
-        D -- Premium Content --> J[Upgrade to Premium]
+        D -- "Premium Content" --> J[Upgrade to Premium]
         D --> K[Profile/Settings]
     end
 
-    subgraph CMS (Admin)
+    subgraph "CMS Admin"
         L[CMS Login] --> M[CMS Dashboard]
         M --> N[Content Management]
         M --> O[Comment Moderation]
