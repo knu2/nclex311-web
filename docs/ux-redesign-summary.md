@@ -89,7 +89,7 @@ Rationale expands → Key Points shown → Action buttons appear
 5. Quiz feedback (appears on selection)
 6. Rationale (expands after answer)
 7. Key Points (expands after answer)
-8. Reference section
+8. Reference section (bibliographic citation)
 9. Connection cards (Next, Prerequisites, Related)
 10. Action buttons (Discussion, Mark Complete, Take Notes)
 
@@ -169,7 +169,82 @@ Rationale expands → Key Points shown → Action buttons appear
 - Percentage completions
 - Achievement visibility
 
-### 9. Bookmarks Grid View
+### 9. Reference Section
+
+**Purpose:** Provide bibliographic citation for concept content source
+
+**Features:**
+- Displays academic reference/citation for the concept
+- Simple text-based format
+- Includes: Author, Book title, Publisher
+- Optional: Edition, page numbers, publication year
+- Section icon: 📚 (books emoji)
+
+**Styling:**
+- Background: Light gray (#f8f9fc)
+- Heading: "📚 Reference" (H4, 1rem, 600 weight, primary blue #2c5aa0)
+- Citation text: Regular weight, 0.9rem (14px), text secondary color (#6c757d)
+- Border radius: 6px
+- Padding: 1.25rem (20px)
+- Margin: 1.5rem top/bottom
+
+**Placement:**
+- Appears after Key Points section
+- Before Connection cards (Next, Prerequisites, Related)
+- Always visible (not collapsed/expandable)
+
+**Content Format:**
+```
+📚 Reference
+
+Author, Name. Book Title
+Publisher, Publication Year
+```
+
+**Example (from mockup):**
+```
+Grossman, Valerie, G.A. Quick Reference to Triage (in italics)
+Philadelphia, Lippincott Williams and Wilkins
+```
+
+**Data Format in Database:**
+```
+Grossman, Valerie, G.A. Quick Reference to Triage
+Philadelphia, Lippincott Williams and Wilkins
+```
+(Plain text, newline-separated)
+
+**Rendered Output:**
+- Author: "Grossman, Valerie, G.A." (regular weight)
+- Title: "Quick Reference to Triage" (italic style) 
+- Publisher: "Philadelphia, Lippincott Williams and Wilkins" (secondary color)
+
+**Data Structure:**
+- Database field: `reference` (text field on concepts table)
+- API field: `reference` (string, optional)
+- Format: Plain text (no markdown required)
+- Frontend applies automatic styling for citation display
+
+**Text Rendering:**
+- Input: Plain text from database (e.g., "Grossman, Valerie, G.A. Quick Reference to Triage\nPhiladelphia, Lippincott Williams and Wilkins")
+- Output: Frontend applies citation formatting automatically:
+  - Line 1 (author + title): Author in regular weight, title in italics
+  - Line 2+ (publisher, etc.): Regular weight, secondary color
+- Pattern matching: Detect common patterns (author name, book title after period, publisher location)
+- Fallback: If pattern detection fails, render as plain text with secondary color
+
+**Implementation Options:**
+1. **Simple approach (Recommended):** Display as plain text with secondary color - matches most reference sections
+2. **Enhanced approach:** Use regex to detect and style book titles in italics (matches mockup exactly)
+3. **Future enhancement:** Support markdown if source data is updated to include it
+
+**Use Cases:**
+- Academic integrity and proper attribution
+- Copyright compliance for educational content
+- Allow students to reference original sources
+- Support deeper learning through source materials
+
+### 10. Bookmarks Grid View
 
 **Purpose:** Quick access to saved concepts with notes
 
@@ -358,6 +433,7 @@ All patterns meet **WCAG 2.1 AA** standards:
    - "READ THIS" section styling
    - Visual arrow element
    - "ANSWER THIS" quiz section
+   - Reference section
    - Connection cards
    - Action buttons
 
@@ -438,6 +514,7 @@ All patterns meet **WCAG 2.1 AA** standards:
 ```typescript
 interface Concept {
   // ... existing fields
+  reference?: string;    // Bibliographic citation/reference text
   connectionConcepts?: {
     next?: string;        // Next concept ID
     prerequisite?: string; // Prerequisite concept ID
@@ -575,9 +652,21 @@ interface UserProgress {
 - ⚠️ Discussion → New feature, no migration
 
 **Content Data:**
+- ⚠️ Concepts → Add reference field (text, optional)
 - ⚠️ Concepts → Add connection fields (optional)
 - ⚠️ Concepts → Add key points array (optional)
 - ✅ Questions → No changes needed
+
+**Database Schema Changes Required:**
+```sql
+-- Add reference column to concepts table
+ALTER TABLE concepts ADD COLUMN reference TEXT;
+```
+
+**Data Population:**
+- Reference data should be imported from original source JSON
+- Field is optional - concepts without references display no Reference section
+- Format: Free-form text (allows flexibility for citation styles)
 
 ---
 
@@ -700,6 +789,7 @@ For questions about this redesign:
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** 2025-10-01  
-**Status:** DRAFT - Pending Approval
+**Document Version:** 1.1  
+**Last Updated:** 2025-10-07  
+**Status:** UPDATED - Reference Section Specifications Added  
+**Updated By:** Sarah (Product Owner)
