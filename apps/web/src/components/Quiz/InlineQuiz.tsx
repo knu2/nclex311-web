@@ -131,12 +131,22 @@ export const InlineQuiz: React.FC<InlineQuizProps> = memo(
           }
 
           case 'MATRIX_GRID': {
-            const correctAnswers = JSON.parse(question.correctAnswer);
-            const userAnswers = userAnswer as Record<string, string>;
+            try {
+              const correctAnswers = JSON.parse(question.correctAnswer);
+              const userAnswers = userAnswer as Record<string, string>;
 
-            return Object.keys(correctAnswers).every(
-              key => correctAnswers[key] === userAnswers[key]
-            );
+              return Object.keys(correctAnswers).every(
+                key => correctAnswers[key] === userAnswers[key]
+              );
+            } catch (error) {
+              console.error(
+                'Failed to parse matrix question correctAnswer for validation:',
+                question.correctAnswer,
+                error
+              );
+              // Return false if we can't parse the correct answer
+              return false;
+            }
           }
 
           default:

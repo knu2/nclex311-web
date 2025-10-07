@@ -29,9 +29,20 @@ export const MatrixQuestion: React.FC<QuestionComponentProps> = memo(
     const showFeedback = answerState.showRationale;
 
     // Parse correct answer from JSON string
-    const correctAnswers: Record<string, string> = question.correctAnswer
-      ? JSON.parse(question.correctAnswer)
-      : {};
+    let correctAnswers: Record<string, string> = {};
+    if (question.correctAnswer) {
+      try {
+        correctAnswers = JSON.parse(question.correctAnswer);
+      } catch (error) {
+        console.error(
+          'Failed to parse matrix question correctAnswer:',
+          question.correctAnswer,
+          error
+        );
+        // Fallback to empty object if parsing fails
+        correctAnswers = {};
+      }
+    }
 
     const rows = question.matrixRows || [];
     const columns = question.matrixColumns || [];
