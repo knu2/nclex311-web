@@ -97,6 +97,7 @@ export const NotesModal: React.FC<NotesModalProps> = memo(
       if (isOpen) {
         fetchNote();
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen, conceptSlug]);
 
     // Auto-save when debounced content changes
@@ -109,6 +110,7 @@ export const NotesModal: React.FC<NotesModalProps> = memo(
       ) {
         saveNote(debouncedContent, true);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedContent]);
 
     /**
@@ -296,6 +298,7 @@ export const NotesModal: React.FC<NotesModalProps> = memo(
           handleClose();
         }
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [state.showDeleteConfirm]
     );
 

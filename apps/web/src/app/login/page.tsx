@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { LoginForm } from '@/components/LoginForm';
@@ -9,11 +9,10 @@ import { Typography, Link as MuiLink, Box } from '@mui/material';
 import Link from 'next/link';
 
 /**
- * Login page component that wraps the LoginForm with AuthLayout.
- * Redirects authenticated users to /chapters.
- * Supports callbackUrl query parameter for post-login redirects.
+ * Login page content component that uses searchParams.
+ * Separated to allow Suspense boundary wrapping.
  */
-export default function LoginPage() {
+function LoginPageContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -75,5 +74,26 @@ export default function LoginPage() {
         </Typography>
       </Box>
     </AuthLayout>
+  );
+}
+
+/**
+ * Login page component that wraps the LoginForm with AuthLayout.
+ * Redirects authenticated users to /chapters.
+ * Supports callbackUrl query parameter for post-login redirects.
+ */
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <AuthLayout title="Sign In to NCLEX 311">
+          <Box sx={{ textAlign: 'center', py: 4 }}>
+            <Typography>Loading...</Typography>
+          </Box>
+        </AuthLayout>
+      }
+    >
+      <LoginPageContent />
+    </Suspense>
   );
 }
