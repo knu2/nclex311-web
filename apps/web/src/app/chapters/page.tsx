@@ -4,6 +4,11 @@ import { redirect } from 'next/navigation';
 import { Box, Typography, Container } from '@mui/material';
 
 /**
+ * Force dynamic rendering for this page since it uses authentication
+ */
+export const dynamic = 'force-dynamic';
+
+/**
  * Chapters Page
  * Landing page for authenticated users showing all NCLEX 311 chapters
  * Story: 1.5.3.5 - Page Integration & Route Migration

@@ -5,6 +5,11 @@ import { ContentService } from '@/lib/db/services';
 import { redirect, notFound } from 'next/navigation';
 
 /**
+ * Force dynamic rendering for this page since it uses authentication
+ */
+export const dynamic = 'force-dynamic';
+
+/**
  * Concept Page
  * Server component that fetches concept data and wraps with MainLayout
  * Story: 1.5.3.5 - Page Integration & Route Migration
