@@ -38,6 +38,7 @@ export const concepts = pgTable('concepts', {
   slug: varchar('slug', { length: 255 }).notNull().unique(),
   content: text('content').notNull(),
   keyPoints: text('key_points'),
+  reference: text('reference'),
   conceptNumber: integer('concept_number').notNull(),
 });
 
