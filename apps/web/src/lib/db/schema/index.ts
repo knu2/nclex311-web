@@ -9,6 +9,9 @@ export * from './users';
 // Export all content-related schemas and types
 export * from './content';
 
+// Export all notes-related schemas and types
+export * from './notes';
+
 // Re-export commonly used Drizzle types
 export type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
 
@@ -26,6 +29,7 @@ import {
   optionsRelations,
   imagesRelations,
 } from './content';
+import { notes } from './notes';
 
 /**
  * Complete database schema including all tables and relations
@@ -39,6 +43,7 @@ export const schema = {
   questions,
   options,
   images,
+  notes,
 
   // Relations
   chaptersRelations,
@@ -56,4 +61,5 @@ export const tableNames = {
   questions: 'questions',
   options: 'options',
   images: 'images',
+  notes: 'notes',
 } as const;

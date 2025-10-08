@@ -1,13 +1,15 @@
 'use client';
 
-import React, { memo } from 'react';
-import { Box, Paper, Typography, Chip } from '@mui/material';
+import React, { memo, useState } from 'react';
+import { Box, Paper, Typography, Chip, Button } from '@mui/material';
 import {
   KeyboardArrowDown as ArrowDownIcon,
   Lightbulb as LightbulbIcon,
+  Notes as NotesIcon,
 } from '@mui/icons-material';
 import { MarkdownContent } from '../MarkdownContent';
 import { InlineQuiz } from '../Quiz/InlineQuiz';
+import { NotesModal } from '../Notes/NotesModal';
 import type { Question } from '../Quiz/types';
 
 // TypeScript Interfaces
@@ -71,6 +73,9 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
     // Use server-fetched data directly - no client-side fetching needed
     const data = initialConcept;
 
+    // Notes modal state
+    const [isNotesOpen, setIsNotesOpen] = useState(false);
+
     return (
       <Box sx={{ maxWidth: 800, mx: 'auto', p: { xs: 2, sm: 3 } }}>
         {/* READ THIS Section */}
@@ -85,23 +90,49 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
           }}
         >
           {/* Section Header */}
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-            <Typography
-              variant="h6"
-              component="h2"
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              mb: 2,
+              flexWrap: 'wrap',
+              gap: 2,
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography
+                variant="h6"
+                component="h2"
+                sx={{
+                  color: '#ff6b35',
+                  fontWeight: 700,
+                  fontSize: '1.1rem',
+                }}
+              >
+                📖 READ THIS
+              </Typography>
+              <Chip
+                label={`Concept ${data.conceptNumber}`}
+                size="small"
+                sx={{ ml: 2 }}
+              />
+            </Box>
+            <Button
+              variant="outlined"
+              startIcon={<NotesIcon />}
+              onClick={() => setIsNotesOpen(true)}
               sx={{
-                color: '#ff6b35',
-                fontWeight: 700,
-                fontSize: '1.1rem',
+                borderColor: '#2c5aa0',
+                color: '#2c5aa0',
+                '&:hover': {
+                  borderColor: '#234a85',
+                  bgcolor: 'rgba(44, 90, 160, 0.04)',
+                },
               }}
             >
-              📖 READ THIS
-            </Typography>
-            <Chip
-              label={`Concept ${data.conceptNumber}`}
-              size="small"
-              sx={{ ml: 2 }}
-            />
+              Notes
+            </Button>
           </Box>
 
           {/* Concept Title */}
@@ -182,6 +213,14 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
             conceptReference={data.reference}
           />
         )}
+
+        {/* Notes Modal */}
+        <NotesModal
+          conceptSlug={data.slug}
+          conceptTitle={data.title}
+          isOpen={isNotesOpen}
+          onClose={() => setIsNotesOpen(false)}
+        />
       </Box>
     );
   }

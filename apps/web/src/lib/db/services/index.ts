@@ -12,6 +12,9 @@ export * from './UserService';
 // Export content service
 export * from './ContentService';
 
+// Export notes service
+export * from './NotesService';
+
 // Re-export connection utilities for services that need direct access
 export {
   getConnection,

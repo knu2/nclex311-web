@@ -8,6 +8,12 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MainLayout } from '@/components/Layout/MainLayout';
 import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+
+// Mock next-auth/react
+jest.mock('next-auth/react', () => ({
+  signOut: jest.fn(),
+}));
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
@@ -50,6 +56,7 @@ jest.mock('@mui/material', () => {
 
 describe('MainLayout Integration Tests', () => {
   const mockPush = jest.fn();
+  const mockSignOut = signOut as jest.Mock;
   const mockUser = {
     id: '1',
     name: 'John Doe',
@@ -274,13 +281,8 @@ describe('MainLayout Integration Tests', () => {
   });
 
   describe('Complete Logout Flow', () => {
-    it('completes full logout flow with API call and redirect', async () => {
-      global.fetch = jest.fn(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ success: true }),
-        })
-      ) as jest.Mock;
+    it('completes full logout flow with signOut and redirect', async () => {
+      mockSignOut.mockResolvedValue(undefined);
 
       render(
         <MainLayout user={mockUser}>
@@ -298,60 +300,19 @@ describe('MainLayout Integration Tests', () => {
       const logoutMenuItem = screen.getByText('Logout');
       fireEvent.click(logoutMenuItem);
 
-      // Verify logout API called
+      // Verify signOut called with correct parameters
       await waitFor(() => {
-        expect(global.fetch).toHaveBeenCalledWith('/api/auth/logout', {
-          method: 'POST',
+        expect(mockSignOut).toHaveBeenCalledWith({
+          callbackUrl: '/login',
+          redirect: true,
         });
-      });
-
-      // Verify redirect to login
-      await waitFor(() => {
-        expect(mockPush).toHaveBeenCalledWith('/login');
       });
     });
 
     it('handles logout failure gracefully', async () => {
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
-
-      global.fetch = jest.fn(() =>
-        Promise.resolve({
-          ok: false,
-          status: 500,
-          json: () => Promise.resolve({ error: 'Server error' }),
-        })
-      ) as jest.Mock;
-
-      render(
-        <MainLayout user={mockUser}>
-          <div>Content</div>
-        </MainLayout>
-      );
-
-      const userMenuButton = screen.getByLabelText(
-        `User menu for ${mockUser.name}`
-      );
-      fireEvent.click(userMenuButton);
-
-      const logoutMenuItem = screen.getByText('Logout');
-      fireEvent.click(logoutMenuItem);
-
-      await waitFor(() => {
-        expect(consoleErrorSpy).toHaveBeenCalledWith('Logout failed');
-      });
-
-      // Should not redirect on failure
-      expect(mockPush).not.toHaveBeenCalledWith('/login');
-
-      consoleErrorSpy.mockRestore();
-    });
-
-    it('handles network error during logout', async () => {
-      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
-
-      global.fetch = jest.fn(() =>
-        Promise.reject(new Error('Network error'))
-      ) as jest.Mock;
+      const testError = new Error('Sign out failed');
+      mockSignOut.mockRejectedValue(testError);
 
       render(
         <MainLayout user={mockUser}>
@@ -370,7 +331,36 @@ describe('MainLayout Integration Tests', () => {
       await waitFor(() => {
         expect(consoleErrorSpy).toHaveBeenCalledWith(
           'Error during logout:',
-          expect.any(Error)
+          testError
+        );
+      });
+
+      consoleErrorSpy.mockRestore();
+    });
+
+    it('handles network error during logout', async () => {
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+      const networkError = new Error('Network error');
+      mockSignOut.mockRejectedValue(networkError);
+
+      render(
+        <MainLayout user={mockUser}>
+          <div>Content</div>
+        </MainLayout>
+      );
+
+      const userMenuButton = screen.getByLabelText(
+        `User menu for ${mockUser.name}`
+      );
+      fireEvent.click(userMenuButton);
+
+      const logoutMenuItem = screen.getByText('Logout');
+      fireEvent.click(logoutMenuItem);
+
+      await waitFor(() => {
+        expect(consoleErrorSpy).toHaveBeenCalledWith(
+          'Error during logout:',
+          networkError
         );
       });
 
@@ -534,18 +524,16 @@ describe('MainLayout Integration Tests', () => {
       expect(screen.getByText('Logout')).toBeInTheDocument();
 
       // 6. User logs out
-      global.fetch = jest.fn(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ success: true }),
-        })
-      ) as jest.Mock;
+      mockSignOut.mockResolvedValue(undefined);
 
       const logoutMenuItem = screen.getByText('Logout');
       fireEvent.click(logoutMenuItem);
 
       await waitFor(() => {
-        expect(mockPush).toHaveBeenCalledWith('/login');
+        expect(mockSignOut).toHaveBeenCalledWith({
+          callbackUrl: '/login',
+          redirect: true,
+        });
       });
     });
 

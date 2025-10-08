@@ -8,6 +8,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 import {
   AppBar,
   Toolbar,
@@ -125,15 +126,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   const handleLogout = async (): Promise<void> => {
     handleUserMenuClose();
     try {
-      const response = await fetch('/api/auth/logout', {
-        method: 'POST',
+      await signOut({
+        callbackUrl: '/login',
+        redirect: true,
       });
-
-      if (response.ok) {
-        router.push('/login');
-      } else {
-        console.error('Logout failed');
-      }
     } catch (error) {
       console.error('Error during logout:', error);
     }

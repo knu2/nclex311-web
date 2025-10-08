@@ -8,6 +8,12 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MainLayout } from '@/components/Layout/MainLayout';
 import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+
+// Mock next-auth/react
+jest.mock('next-auth/react', () => ({
+  signOut: jest.fn(),
+}));
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
@@ -47,6 +53,7 @@ jest.mock('@mui/material', () => {
 
 describe('MainLayout Component', () => {
   const mockPush = jest.fn();
+  const mockSignOut = signOut as jest.Mock;
   const mockUser = {
     id: '1',
     name: 'John Doe',
@@ -477,13 +484,8 @@ describe('MainLayout Component', () => {
       expect(mockPush).toHaveBeenCalledWith('/settings');
     });
 
-    it('calls logout API and redirects on logout click', async () => {
-      global.fetch = jest.fn(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({}),
-        })
-      ) as jest.Mock;
+    it('calls signOut and redirects on logout click', async () => {
+      mockSignOut.mockResolvedValue(undefined);
 
       render(
         <MainLayout user={mockUser}>
@@ -500,22 +502,17 @@ describe('MainLayout Component', () => {
       fireEvent.click(logoutMenuItem);
 
       await waitFor(() => {
-        expect(global.fetch).toHaveBeenCalledWith('/api/auth/logout', {
-          method: 'POST',
+        expect(mockSignOut).toHaveBeenCalledWith({
+          callbackUrl: '/login',
+          redirect: true,
         });
-        expect(mockPush).toHaveBeenCalledWith('/login');
       });
     });
 
     it('handles logout error gracefully', async () => {
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
-
-      global.fetch = jest.fn(() =>
-        Promise.resolve({
-          ok: false,
-          json: () => Promise.resolve({}),
-        })
-      ) as jest.Mock;
+      const testError = new Error('Sign out failed');
+      mockSignOut.mockRejectedValue(testError);
 
       render(
         <MainLayout user={mockUser}>
@@ -532,7 +529,10 @@ describe('MainLayout Component', () => {
       fireEvent.click(logoutMenuItem);
 
       await waitFor(() => {
-        expect(consoleErrorSpy).toHaveBeenCalledWith('Logout failed');
+        expect(consoleErrorSpy).toHaveBeenCalledWith(
+          'Error during logout:',
+          testError
+        );
       });
 
       consoleErrorSpy.mockRestore();
