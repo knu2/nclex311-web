@@ -43,6 +43,7 @@ export interface InlineQuizProps {
   questions: Question[];
   conceptId: string;
   conceptKeyPoints?: string | null;
+  conceptReference?: string | null;
   onAllQuestionsAnswered?: () => void;
 }
 

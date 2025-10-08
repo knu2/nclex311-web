@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { Psychology as BrainIcon } from '@mui/icons-material';
 import { MarkdownContent } from '../MarkdownContent';
+import { ReferenceSection } from '../Concept/ReferenceSection';
 import { MultipleChoice } from './MultipleChoice';
 import { SelectAllThatApply } from './SelectAllThatApply';
 import { FillInBlank } from './FillInBlank';
@@ -30,7 +31,13 @@ import type {
  * Story 1.5.4: Inline Quiz Interaction
  */
 export const InlineQuiz: React.FC<InlineQuizProps> = memo(
-  ({ questions, conceptId, conceptKeyPoints, onAllQuestionsAnswered }) => {
+  ({
+    questions,
+    conceptId,
+    conceptKeyPoints,
+    conceptReference,
+    onAllQuestionsAnswered,
+  }) => {
     // Initialize state from localStorage if available
     const [quizState, setQuizState] = useState<QuizState>(() => {
       if (typeof window === 'undefined') return {};
@@ -480,6 +487,9 @@ export const InlineQuiz: React.FC<InlineQuizProps> = memo(
                         </Box>
                       </Paper>
                     )}
+
+                    {/* Reference Section */}
+                    <ReferenceSection reference={conceptReference} />
 
                     {/* Try Again Button */}
                     <Button

@@ -22,6 +22,7 @@ export interface ConceptData {
   conceptNumber: number;
   content: string;
   keyPoints: string | null;
+  reference: string | null;
   chapterId: string;
   isPremium: boolean;
   questions: LegacyQuestion[];
@@ -178,6 +179,7 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
             questions={transformToQuizQuestions(data.questions)}
             conceptId={data.id}
             conceptKeyPoints={data.keyPoints}
+            conceptReference={data.reference}
           />
         )}
       </Box>
