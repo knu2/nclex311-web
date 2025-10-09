@@ -17,7 +17,13 @@ const PROTECTED_ROUTES = ['/chapters', '/concepts', '/dashboard'];
  * The getCurrentSession() function depends on bcrypt which cannot run in Edge runtime.
  */
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
+
+  // Skip middleware for RSC (React Server Component) prefetch requests
+  // These are internal Next.js requests that shouldn't trigger redirects
+  if (searchParams.has('_rsc')) {
+    return NextResponse.next();
+  }
 
   // Get current session token (Edge runtime compatible)
   const token = await getToken({
