@@ -19,12 +19,21 @@ const PROTECTED_ROUTES = ['/chapters', '/concepts', '/dashboard'];
 export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
-  // Skip middleware for RSC (React Server Component) prefetch requests
-  // These are internal Next.js requests that shouldn't trigger redirects
-  // Check both query param and RSC header
+  // Skip middleware for RSC (React Server Component) prefetch/fetch requests
+  // These are internal Next.js requests that shouldn't trigger auth redirects
   const isRSCRequest =
-    searchParams.has('_rsc') || request.headers.get('rsc') === '1';
-  if (isRSCRequest) {
+    searchParams.has('_rsc') ||
+    request.headers.get('rsc') === '1' ||
+    request.headers.get('next-router-prefetch') === '1';
+
+  // Skip middleware if this is an RSC prefetch or navigation from auth pages
+  const nextUrl = request.headers.get('next-url');
+  const isFromAuthPage = nextUrl === '/login' || nextUrl === '/signup';
+  const isProtectedPath = PROTECTED_ROUTES.some(route =>
+    pathname.startsWith(route)
+  );
+
+  if (isRSCRequest || (isFromAuthPage && isProtectedPath)) {
     return NextResponse.next();
   }
 
