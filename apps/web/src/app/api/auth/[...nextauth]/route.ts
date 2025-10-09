@@ -10,6 +10,7 @@ import { UserService } from '@/lib/db/services';
 export const {
   handlers: { GET, POST },
 } = NextAuth({
+  trustHost: true, // Trust the host for local production builds
   providers: [
     Credentials({
       name: 'credentials',
