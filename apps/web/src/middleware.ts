@@ -21,7 +21,10 @@ export async function middleware(request: NextRequest) {
 
   // Skip middleware for RSC (React Server Component) prefetch requests
   // These are internal Next.js requests that shouldn't trigger redirects
-  if (searchParams.has('_rsc')) {
+  // Check both query param and RSC header
+  const isRSCRequest =
+    searchParams.has('_rsc') || request.headers.get('rsc') === '1';
+  if (isRSCRequest) {
     return NextResponse.next();
   }
 
