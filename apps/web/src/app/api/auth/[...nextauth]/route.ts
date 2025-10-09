@@ -58,12 +58,28 @@ export const {
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    async jwt({ token, user }) {
+      // Persist user data to token on sign in
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+      }
+      return token;
+    },
     async session({ session, token }) {
-      if (token && session.user && token.sub) {
-        // Add user id to session from token
-        (session.user as { id?: string }).id = token.sub;
+      // Add user id and email to session from token
+      if (token && session.user) {
+        (session.user as { id?: string }).id = token.id as string;
+        session.user.email = token.email as string;
       }
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith('/')) return `${baseUrl}${url}`;
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
   },
   debug: process.env.NODE_ENV === 'development',
