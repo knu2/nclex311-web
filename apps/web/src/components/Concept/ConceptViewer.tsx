@@ -6,10 +6,12 @@ import {
   KeyboardArrowDown as ArrowDownIcon,
   Lightbulb as LightbulbIcon,
   Notes as NotesIcon,
+  Forum as ForumIcon,
 } from '@mui/icons-material';
 import { MarkdownContent } from '../MarkdownContent';
 import { InlineQuiz } from '../Quiz/InlineQuiz';
 import { NotesModal } from '../Notes/NotesModal';
+import { CommentModal } from '../Discussion';
 import type { Question } from '../Quiz/types';
 
 // TypeScript Interfaces
@@ -73,8 +75,9 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
     // Use server-fetched data directly - no client-side fetching needed
     const data = initialConcept;
 
-    // Notes modal state
+    // Modal states
     const [isNotesOpen, setIsNotesOpen] = useState(false);
+    const [isDiscussionOpen, setIsDiscussionOpen] = useState(false);
 
     return (
       <Box sx={{ maxWidth: 800, mx: 'auto', p: { xs: 2, sm: 3 } }}>
@@ -118,21 +121,38 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
                 sx={{ ml: 2 }}
               />
             </Box>
-            <Button
-              variant="outlined"
-              startIcon={<NotesIcon />}
-              onClick={() => setIsNotesOpen(true)}
-              sx={{
-                borderColor: '#2c5aa0',
-                color: '#2c5aa0',
-                '&:hover': {
-                  borderColor: '#234a85',
-                  bgcolor: 'rgba(44, 90, 160, 0.04)',
-                },
-              }}
-            >
-              Notes
-            </Button>
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              <Button
+                variant="outlined"
+                startIcon={<NotesIcon />}
+                onClick={() => setIsNotesOpen(true)}
+                sx={{
+                  borderColor: '#2c5aa0',
+                  color: '#2c5aa0',
+                  '&:hover': {
+                    borderColor: '#234a85',
+                    bgcolor: 'rgba(44, 90, 160, 0.04)',
+                  },
+                }}
+              >
+                Notes
+              </Button>
+              <Button
+                variant="outlined"
+                startIcon={<ForumIcon />}
+                onClick={() => setIsDiscussionOpen(true)}
+                sx={{
+                  borderColor: '#2c5aa0',
+                  color: '#2c5aa0',
+                  '&:hover': {
+                    borderColor: '#234a85',
+                    bgcolor: 'rgba(44, 90, 160, 0.04)',
+                  },
+                }}
+              >
+                Discussion
+              </Button>
+            </Box>
           </Box>
 
           {/* Concept Title */}
@@ -220,6 +240,14 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
           conceptTitle={data.title}
           isOpen={isNotesOpen}
           onClose={() => setIsNotesOpen(false)}
+        />
+
+        {/* Discussion Modal */}
+        <CommentModal
+          conceptSlug={data.slug}
+          conceptTitle={data.title}
+          isOpen={isDiscussionOpen}
+          onClose={() => setIsDiscussionOpen(false)}
         />
       </Box>
     );
