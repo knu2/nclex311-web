@@ -9,6 +9,12 @@ const supabase = createClient(
 
 const PAGE_SIZE = 20;
 
+// Type for Supabase user relation
+type CommentUser = {
+  id: string;
+  email: string;
+};
+
 /**
  * GET /api/concepts/[slug]/comments
  * Fetch comments for a concept with pagination
@@ -83,10 +89,13 @@ export async function GET(
       comments?.map(comment => {
         const commentLikes =
           likes?.filter(l => l.comment_id === comment.id) || [];
+        // Supabase returns joined relations as arrays, take first element
+        const usersArray = comment.users as unknown as CommentUser[];
+        const userData = Array.isArray(usersArray) ? usersArray[0] : usersArray;
         return {
           id: comment.id,
           user_id: comment.user_id,
-          user_name: comment.users.email.split('@')[0],
+          user_name: userData?.email?.split('@')[0] || 'Unknown',
           content: comment.content,
           like_count: commentLikes.length,
           is_liked_by_user: commentLikes.some(l => l.user_id === currentUserId),
@@ -199,11 +208,14 @@ export async function POST(
       );
     }
 
+    // Supabase returns joined relations as arrays, take first element
+    const usersArray = comment.users as unknown as CommentUser[];
+    const userData = Array.isArray(usersArray) ? usersArray[0] : usersArray;
     return NextResponse.json(
       {
         id: comment.id,
         user_id: comment.user_id,
-        user_name: comment.users.email.split('@')[0],
+        user_name: userData?.email?.split('@')[0] || 'Unknown',
         content: comment.content,
         like_count: 0,
         is_liked_by_user: false,
