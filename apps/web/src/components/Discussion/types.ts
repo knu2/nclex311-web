@@ -1,6 +1,7 @@
 /**
  * TypeScript Type Definitions for Discussion Modal Components
  * Story 1.5.6 - Discussion Modal (Simplified)
+ * Updated in Story 1.5.6.1 to use Drizzle ORM types
  *
  * This is a simplified commenting system:
  * - No instructor roles (all users are students)
@@ -9,8 +10,14 @@
  * - Basic commenting with likes
  */
 
+import type {
+  Comment as DbComment,
+  CommentLike as DbCommentLike,
+} from '@/lib/db/schema';
+
 /**
  * Comment data structure returned from API
+ * Extends the Drizzle ORM Comment type with additional computed fields
  */
 export interface Comment {
   id: string;
@@ -21,6 +28,11 @@ export interface Comment {
   is_liked_by_user: boolean;
   created_at: string;
 }
+
+/**
+ * Re-export Drizzle ORM database types for use in components if needed
+ */
+export type { DbComment, DbCommentLike };
 
 /**
  * Props for the main CommentModal component

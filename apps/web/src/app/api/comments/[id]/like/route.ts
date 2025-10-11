@@ -1,21 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 import { getCurrentSession } from '@/lib/auth-utils';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { CommentService } from '@/lib/db/services/CommentService';
+import { ServiceError } from '@/lib/db/services/BaseService';
 
 /**
  * POST /api/comments/[id]/like
  * Like a comment
- * Story 1.5.6 - AC 5, 7: Like comment API
+ * Story 1.5.6.1 - Refactored to use Drizzle ORM and CommentService
  */
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
+  const commentService = new CommentService();
+
   try {
     const { id: commentId } = await params;
 
@@ -31,64 +29,25 @@ export async function POST(
       );
     }
 
-    // Check if comment exists
-    const { data: comment, error: commentError } = await supabase
-      .from('comments')
-      .select('id')
-      .eq('id', commentId)
-      .single();
-
-    if (commentError || !comment) {
-      return NextResponse.json({ error: 'Comment not found' }, { status: 404 });
-    }
-
-    // Check if already liked
-    const { data: existingLike } = await supabase
-      .from('comment_likes')
-      .select('id')
-      .eq('comment_id', commentId)
-      .eq('user_id', currentUserId)
-      .single();
-
-    if (existingLike) {
-      // Already liked, return current count
-      const { count } = await supabase
-        .from('comment_likes')
-        .select('*', { count: 'exact', head: true })
-        .eq('comment_id', commentId);
-
-      return NextResponse.json({
-        success: true,
-        like_count: count || 0,
-      });
-    }
-
-    // Create like
-    const { error: likeError } = await supabase.from('comment_likes').insert({
-      comment_id: commentId,
-      user_id: currentUserId,
-    });
-
-    if (likeError) {
-      console.error('Error creating like:', likeError);
-      return NextResponse.json(
-        { error: 'Failed to like comment' },
-        { status: 500 }
-      );
-    }
-
-    // Get updated like count
-    const { count } = await supabase
-      .from('comment_likes')
-      .select('*', { count: 'exact', head: true })
-      .eq('comment_id', commentId);
+    // Like comment using CommentService
+    // Service handles comment existence check and duplicate like handling (ON CONFLICT DO NOTHING)
+    const likeCount = await commentService.likeComment(
+      commentId,
+      currentUserId
+    );
 
     return NextResponse.json({
       success: true,
-      like_count: count || 0,
+      like_count: likeCount,
     });
   } catch (error) {
     console.error('Unexpected error:', error);
+    if (error instanceof ServiceError) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode }
+      );
+    }
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -99,12 +58,14 @@ export async function POST(
 /**
  * DELETE /api/comments/[id]/like
  * Unlike a comment
- * Story 1.5.6 - AC 5, 7: Unlike comment API
+ * Story 1.5.6.1 - Refactored to use Drizzle ORM and CommentService
  */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
+  const commentService = new CommentService();
+
   try {
     const { id: commentId } = await params;
 
@@ -120,33 +81,25 @@ export async function DELETE(
       );
     }
 
-    // Delete like
-    const { error: deleteError } = await supabase
-      .from('comment_likes')
-      .delete()
-      .eq('comment_id', commentId)
-      .eq('user_id', currentUserId);
-
-    if (deleteError) {
-      console.error('Error deleting like:', deleteError);
-      return NextResponse.json(
-        { error: 'Failed to unlike comment' },
-        { status: 500 }
-      );
-    }
-
-    // Get updated like count
-    const { count } = await supabase
-      .from('comment_likes')
-      .select('*', { count: 'exact', head: true })
-      .eq('comment_id', commentId);
+    // Unlike comment using CommentService
+    // Service handles comment existence check
+    const likeCount = await commentService.unlikeComment(
+      commentId,
+      currentUserId
+    );
 
     return NextResponse.json({
       success: true,
-      like_count: count || 0,
+      like_count: likeCount,
     });
   } catch (error) {
     console.error('Unexpected error:', error);
+    if (error instanceof ServiceError) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode }
+      );
+    }
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
