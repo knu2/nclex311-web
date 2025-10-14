@@ -225,6 +225,26 @@ export interface Database {
           metadata?: Record<string, unknown> | null;
         };
       };
+      completed_concepts: {
+        Row: {
+          id: string;
+          user_id: string;
+          concept_id: string;
+          completed_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          concept_id: string;
+          completed_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          concept_id?: string;
+          completed_at?: string;
+        };
+      };
     };
   };
 }

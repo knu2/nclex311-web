@@ -19,6 +19,14 @@ const PROTECTED_ROUTES = ['/chapters', '/concepts', '/dashboard'];
 export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
+  // Return 404 for static assets under /concepts/ to prevent treating them as concept slugs
+  if (
+    pathname.startsWith('/concepts/') &&
+    /\.(png|jpg|jpeg|gif|svg|webp|ico|pdf|zip)$/i.test(pathname)
+  ) {
+    return new NextResponse(null, { status: 404 });
+  }
+
   // Skip middleware for RSC (React Server Component) prefetch/fetch requests
   // These are internal Next.js requests that shouldn't trigger auth redirects
   const isRSCRequest =

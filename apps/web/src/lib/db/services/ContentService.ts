@@ -54,6 +54,48 @@ export class ContentService extends BaseService {
   private static readonly FREE_CHAPTERS_LIMIT = 4;
 
   /**
+   * Get a single chapter by ID with its concepts
+   */
+  async getChapterWithConcepts(
+    chapterId: string
+  ): Promise<ChapterWithConcepts | null> {
+    return this.executeOperation(async () => {
+      const chapterData = await this.db
+        .select()
+        .from(chapters)
+        .where(eq(chapters.id, chapterId))
+        .limit(1);
+
+      if (!chapterData[0]) {
+        return null;
+      }
+
+      const chapter = chapterData[0];
+
+      const conceptsData = await this.db
+        .select({
+          id: concepts.id,
+          title: concepts.title,
+          slug: concepts.slug,
+          conceptNumber: concepts.conceptNumber,
+        })
+        .from(concepts)
+        .where(eq(concepts.chapterId, chapter.id))
+        .orderBy(asc(concepts.conceptNumber));
+
+      const conceptPreviews: ConceptPreview[] = conceptsData.map(concept => ({
+        ...concept,
+        isPremium: chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT,
+      }));
+
+      return {
+        ...chapter,
+        concepts: conceptPreviews,
+      };
+    }, 'getChapterWithConcepts');
+  }
+
+  /**
    * Get all chapters with their concepts, including premium indicators
    */
   async getAllChaptersWithConcepts(): Promise<ChapterWithConcepts[]> {

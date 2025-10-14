@@ -22,6 +22,17 @@ export default async function ConceptPage({
   // Await params in Next.js 15
   const { slug } = await params;
 
+  // Validate slug
+  if (!slug || typeof slug !== 'string') {
+    notFound();
+  }
+
+  // Return 404 for image/asset files immediately
+  // This prevents the database query when browsers request missing images
+  if (/\.(png|jpg|jpeg|gif|svg|webp|ico|pdf|zip|css|js)$/i.test(slug)) {
+    notFound();
+  }
+
   // Require authentication - redirect to login if not authenticated
   const session = await getCurrentSession();
 

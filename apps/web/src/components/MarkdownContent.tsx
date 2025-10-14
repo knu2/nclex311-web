@@ -94,20 +94,53 @@ export const MarkdownContent = memo<MarkdownContentProps>(
               {children}
             </Typography>
           ),
-          img: ({ src, alt }) => (
-            <Box
-              component="img"
-              src={src}
-              alt={alt || ''}
-              sx={{
-                maxWidth: '100%',
-                height: 'auto',
-                display: 'block',
-                my: 2,
-                borderRadius: 1,
-              }}
-            />
-          ),
+          img: ({ src, alt }) => {
+            // Transform relative image paths to absolute URLs
+            // TODO: Update database content to use full Vercel Blob URLs instead of relative paths
+            // For now, this prevents 404 errors and broken images
+            let imageSrc = typeof src === 'string' ? src : '';
+
+            // If the src is a relative path (doesn't start with http:// or https://)
+            // and doesn't start with /, it's likely a relative image reference
+            if (
+              imageSrc &&
+              !imageSrc.startsWith('http') &&
+              !imageSrc.startsWith('/')
+            ) {
+              // Check if there's an environment variable for image base URL
+              const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
+              if (imageBaseUrl) {
+                imageSrc = `${imageBaseUrl}/${imageSrc}`;
+              } else {
+                // No base URL configured - image will 404
+                console.warn(
+                  `[MarkdownContent] Relative image path detected but no NEXT_PUBLIC_IMAGE_BASE_URL configured: ${src}`
+                );
+              }
+            }
+
+            return (
+              <Box
+                component="img"
+                src={imageSrc}
+                alt={alt || ''}
+                sx={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  my: 2,
+                  borderRadius: 1,
+                }}
+                onError={e => {
+                  // Hide broken images gracefully
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  console.warn(
+                    `[MarkdownContent] Failed to load image: ${imageSrc}`
+                  );
+                }}
+              />
+            );
+          },
         }}
       >
         {processedContent}

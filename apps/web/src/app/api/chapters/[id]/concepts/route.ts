@@ -2,13 +2,15 @@
  * API Route: GET /api/chapters/{id}/concepts
  * Returns chapter with its concepts including completion status
  * Story: 1.5.1 - Sidebar Navigation Component
+ * Updated: Story 1.5.8 - Progress Dashboard (added completion tracking)
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { ContentService } from '@/lib/db/services';
-// import { auth } from '@/lib/auth'; // TODO: Use for completion tracking in Story 2.4
+import { ContentService, ProgressService } from '@/lib/db/services';
+import { getCurrentSession } from '@/lib/auth-utils';
 
 const contentService = new ContentService();
+const progressService = new ProgressService();
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -37,15 +39,11 @@ export async function GET(
     }
 
     // Get current user session (if any)
-    // const session = await auth();
-    // const user = session?.user ?? null;
-    // TODO: Use user session for completion tracking in Story 2.4
+    const session = await getCurrentSession();
+    const userId = session?.user ? (session.user as { id?: string }).id : null;
 
-    // Fetch chapter with concepts from ContentService
-    // For now, we'll use the getAllChaptersWithConcepts and filter
-    // TODO: In future, add getChapterById method to ContentService
-    const allChapters = await contentService.getAllChaptersWithConcepts();
-    const chapter = allChapters.find(ch => ch.id === chapterId);
+    // Fetch chapter with concepts from ContentService (optimized single query)
+    const chapter = await contentService.getChapterWithConcepts(chapterId);
 
     if (!chapter) {
       return NextResponse.json(
@@ -57,14 +55,29 @@ export async function GET(
       );
     }
 
-    // Transform concepts to match frontend interface
-    // Note: isCompleted will be false for now until we implement completion tracking
+    // Fetch completion status for the user (if logged in)
+    // Only fetch completion for concepts in this chapter (optimized)
+    let completedConceptIds = new Set<string>();
+    if (userId && chapter.concepts.length > 0) {
+      try {
+        const conceptIds = chapter.concepts.map(c => c.id);
+        completedConceptIds = await progressService.getCompletedConceptIds(
+          userId,
+          conceptIds
+        );
+      } catch (error) {
+        console.error('Error fetching progress:', error);
+        // Continue without completion data
+      }
+    }
+
+    // Transform concepts to match frontend interface with completion status
     const concepts = chapter.concepts.map(concept => ({
       id: concept.id,
       title: concept.title,
       slug: concept.slug,
       conceptNumber: concept.conceptNumber,
-      isCompleted: false, // TODO: Implement completion tracking in Story 2.4
+      isCompleted: completedConceptIds.has(concept.id),
       isPremium: concept.isPremium,
     }));
 
