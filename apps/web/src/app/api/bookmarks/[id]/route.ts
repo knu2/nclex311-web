@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/database';
 import { getCurrentSession } from '@/lib/auth-utils';
+import { BookmarksService } from '@/lib/db/services/BookmarksService';
+import { ServiceError } from '@/lib/db/services/BaseService';
 
 /**
  * DELETE /api/bookmarks/[id]
@@ -38,47 +39,24 @@ export async function DELETE(
       );
     }
 
-    // Verify bookmark exists and belongs to user
-    const { data: bookmark, error: fetchError } = await supabase
-      .from('bookmarks')
-      .select('id, user_id')
-      .eq('id', bookmarkId)
-      .maybeSingle();
-
-    if (fetchError || !bookmark) {
-      return NextResponse.json(
-        { success: false, error: 'Bookmark not found' },
-        { status: 404 }
-      );
-    }
-
-    // Check ownership
-    if (bookmark.user_id !== userId) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized to delete this bookmark' },
-        { status: 403 }
-      );
-    }
-
-    // Delete bookmark
-    const { error: deleteError } = await supabase
-      .from('bookmarks')
-      .delete()
-      .eq('id', bookmarkId);
-
-    if (deleteError) {
-      console.error('Error deleting bookmark:', deleteError);
-      return NextResponse.json(
-        { success: false, error: 'Failed to delete bookmark' },
-        { status: 500 }
-      );
-    }
+    // Delete bookmark using BookmarksService (includes ownership verification)
+    const bookmarksService = new BookmarksService();
+    await bookmarksService.removeBookmark(bookmarkId, userId);
 
     return NextResponse.json({
       success: true,
     });
   } catch (error) {
     console.error('Bookmark deletion error:', error);
+
+    // Handle ServiceError with appropriate status codes
+    if (error instanceof ServiceError) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: error.statusCode }
+      );
+    }
+
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }

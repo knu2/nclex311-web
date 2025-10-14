@@ -245,29 +245,6 @@ export interface Database {
           completed_at?: string;
         };
       };
-      bookmarks: {
-        Row: {
-          id: string;
-          user_id: string;
-          concept_id: string;
-          bookmarked_at: string;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          user_id: string;
-          concept_id: string;
-          bookmarked_at?: string;
-          created_at?: string;
-        };
-        Update: {
-          id?: string;
-          user_id?: string;
-          concept_id?: string;
-          bookmarked_at?: string;
-          created_at?: string;
-        };
-      };
       notes: {
         Row: {
           id: string;

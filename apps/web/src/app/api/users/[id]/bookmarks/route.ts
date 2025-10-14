@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/database';
 import { getCurrentSession } from '@/lib/auth-utils';
+import { BookmarksService } from '@/lib/db/services/BookmarksService';
+import { ServiceError } from '@/lib/db/services/BaseService';
 
 /**
  * Bookmark response interface
@@ -53,106 +54,42 @@ export async function GET(
       );
     }
 
-    // Fetch bookmarks with joined data
-    // Note: Supabase doesn't support direct LEFT JOIN syntax in the query builder,
-    // so we'll use the relational query approach
-    const { data: bookmarks, error: bookmarksError } = await supabase
-      .from('bookmarks')
-      .select(
-        `
-        id,
-        user_id,
-        concept_id,
-        bookmarked_at,
-        concepts!inner (
-          id,
-          title,
-          slug,
-          chapter_id,
-          chapters!inner (
-            chapter_number,
-            title
-          )
-        )
-      `
-      )
-      .eq('user_id', currentUserId)
-      .order('bookmarked_at', { ascending: false });
-
-    if (bookmarksError) {
-      console.error('Error fetching bookmarks:', bookmarksError);
-      return NextResponse.json(
-        { error: 'Failed to fetch bookmarks' },
-        { status: 500 }
-      );
-    }
-
-    // Fetch notes separately for these concepts
-    const conceptIds = bookmarks?.map(b => b.concept_id) || [];
-    let notesMap: Record<string, string> = {};
-
-    if (conceptIds.length > 0) {
-      const { data: notes } = await supabase
-        .from('notes')
-        .select('concept_id, content')
-        .eq('user_id', currentUserId)
-        .in('concept_id', conceptIds);
-
-      if (notes) {
-        notesMap = notes.reduce(
-          (
-            acc: Record<string, string>,
-            note: { concept_id: string; content: string }
-          ) => {
-            // Get first 100 characters for preview
-            acc[note.concept_id] = note.content.substring(0, 100);
-            return acc;
-          },
-          {}
-        );
-      }
-    }
+    // Fetch bookmarks with joined data using BookmarksService
+    const bookmarksService = new BookmarksService();
+    const bookmarksData =
+      await bookmarksService.getUserBookmarks(currentUserId);
 
     // Transform the data into the expected response format
-    type BookmarkWithRelations = {
-      id: string;
-      user_id: string;
-      concept_id: string;
-      bookmarked_at: string;
-      concepts: {
-        id: string;
-        title: string;
-        slug: string;
-        chapters: {
-          chapter_number: number;
-          title: string;
-        };
-      };
-    };
-
-    const formattedBookmarks: BookmarkResponse[] =
-      bookmarks?.map((bookmark: BookmarkWithRelations) => {
-        const concept = bookmark.concepts;
-        const chapter = concept.chapters;
-
-        return {
-          id: bookmark.id,
-          user_id: bookmark.user_id,
-          concept_id: bookmark.concept_id,
-          concept_title: concept.title,
-          concept_slug: concept.slug,
-          chapter_number: chapter.chapter_number,
-          chapter_title: chapter.title,
-          note_preview: notesMap[bookmark.concept_id] || '',
-          bookmarked_at: bookmark.bookmarked_at,
-        };
-      }) || [];
+    const formattedBookmarks: BookmarkResponse[] = bookmarksData.map(
+      bookmark => ({
+        id: bookmark.id,
+        user_id: bookmark.user_id,
+        concept_id: bookmark.concept_id,
+        concept_title: bookmark.concept_title,
+        concept_slug: bookmark.concept_slug,
+        chapter_number: bookmark.chapter_number,
+        chapter_title: bookmark.chapter_title,
+        note_preview: bookmark.note_preview
+          ? bookmark.note_preview.substring(0, 100)
+          : '',
+        bookmarked_at: bookmark.bookmarked_at.toISOString(),
+      })
+    );
 
     return NextResponse.json({
       bookmarks: formattedBookmarks,
     });
   } catch (error) {
     console.error('Bookmarks fetch error:', error);
+
+    // Handle ServiceError with appropriate status codes
+    if (error instanceof ServiceError) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode }
+      );
+    }
+
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

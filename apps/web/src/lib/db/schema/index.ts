@@ -15,6 +15,9 @@ export * from './notes';
 // Export all comments-related schemas and types
 export * from './comments';
 
+// Export all bookmarks-related schemas and types
+export * from './bookmarks';
+
 // Re-export commonly used Drizzle types
 export type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
 
@@ -39,6 +42,7 @@ import {
   commentsRelations,
   commentLikesRelations,
 } from './comments';
+import { bookmarks, bookmarksRelations } from './bookmarks';
 
 /**
  * Complete database schema including all tables and relations
@@ -55,6 +59,7 @@ export const schema = {
   notes,
   comments,
   commentLikes,
+  bookmarks,
 
   // Relations
   chaptersRelations,
@@ -64,6 +69,7 @@ export const schema = {
   imagesRelations,
   commentsRelations,
   commentLikesRelations,
+  bookmarksRelations,
 };
 
 // Export table names for reference
@@ -77,4 +83,5 @@ export const tableNames = {
   notes: 'notes',
   comments: 'comments',
   commentLikes: 'comment_likes',
+  bookmarks: 'bookmarks',
 } as const;

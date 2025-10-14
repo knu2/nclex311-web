@@ -21,6 +21,9 @@ export * from './CommentService';
 // Export progress service
 export * from './ProgressService';
 
+// Export bookmarks service
+export * from './BookmarksService';
+
 // Re-export connection utilities for services that need direct access
 export {
   getConnection,
