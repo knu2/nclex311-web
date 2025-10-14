@@ -2,6 +2,8 @@
 
 **Goal:** Implement the approved modern UI design with sidebar navigation, inline quiz interactions, and enhanced engagement features (notes, discussion, progress tracking, bookmarks). This epic transforms the learning experience from a dashboard-centric model to a sidebar-based navigation system with persistent context and enhanced interactivity.
 
+**Scope Note:** Stories 1.5.8 and 1.5.9 include full-stack implementation (backend + frontend) for completion tracking and bookmarking. These features, originally scoped in Epic 2 (Stories 2.2 and 2.4), are MVP requirements (FR7, FR8) and properly belong in Epic 1.5.
+
 **Timeline:** 6-8 weeks (12 stories)
 
 **Dependencies:**
@@ -275,11 +277,18 @@
 
 ---
 
-## Story 1.5.8: Progress Dashboard
+## Story 1.5.8: Progress Dashboard & Completion Tracking
 
 **As a** logged-in user,  
-**I want** to view my detailed progress across all chapters,  
+**I want** to mark concepts as complete and view my detailed progress across all chapters,  
 **so that** I can track my study achievements and stay motivated.
+
+**Scope:** This story includes full-stack implementation:
+- **Backend:** Database table, API endpoints for marking complete/incomplete, progress API
+- **Frontend:** "Mark as Complete" button on concept pages, Progress Dashboard view
+- **Integration:** Completion indicators in sidebar navigation
+
+**Note:** Incorporates Story 2.4 from Epic 2 (completion tracking backend). This is an MVP feature (FR8) available to all users.
 
 ### Acceptance Criteria:
 1. A dedicated route `/dashboard/progress` displays chapter-by-chapter progress.
@@ -298,20 +307,45 @@
 6. Progress updates in real-time as users complete concepts.
 7. Uses MUI components (Accordion, LinearProgress, List, Typography).
 8. Meets accessibility standards.
+9. **Backend - Mark as Complete:**
+   - "Mark as Complete" button on each concept page
+   - API endpoints: POST/DELETE `/api/concepts/{id}/complete`
+   - Database table for storing completion records
+   - Available to all logged-in users (free and premium)
+10. **Backend - Progress API:**
+    - API endpoint: GET `/api/users/{id}/progress`
+    - Returns completion data for all chapters and concepts
+    - Calculates completion percentages
+11. **Integration - Sidebar Indicators:**
+    - Completed concepts show checkmark icon in sidebar
+    - Chapter header shows completion count
 
 ### Technical Notes:
 - Page: `src/app/dashboard/progress/page.tsx`
 - Component: `src/components/Dashboard/ProgressDashboard.tsx`
-- Uses Story 1.6 backend API: `GET /api/chapters` + completion data
-- API endpoint: `GET /api/users/{id}/progress` (new endpoint)
+- **Database:** New `completed_concepts` table
+- **API Endpoints:** 
+  - POST `/api/concepts/{id}/complete`
+  - DELETE `/api/concepts/{id}/complete`
+  - GET `/api/users/{id}/progress`
+- **Integration Points:**
+  - Concept Viewer: Add "Mark as Complete" button
+  - Sidebar: Add completion indicators
 
 ---
 
-## Story 1.5.9: Bookmarks View
+## Story 1.5.9: Bookmarks View & Bookmarking System
 
 **As a** logged-in user,  
-**I want** to view all my bookmarked concepts with my notes,  
+**I want** to bookmark concepts and view all my bookmarked concepts with my notes,  
 **so that** I can quickly review important topics.
+
+**Scope:** This story includes full-stack implementation:
+- **Backend:** Database table, API endpoints for creating/removing bookmarks
+- **Frontend:** Bookmark button on concept pages, Bookmarks View dashboard
+- **Integration:** Bookmark indicators in sidebar (optional)
+
+**Note:** Incorporates Story 2.2 from Epic 2 (bookmarking backend). This is an MVP feature (FR7) available to all users.
 
 ### Acceptance Criteria:
 1. A dedicated route `/dashboard/bookmarks` displays all bookmarked concepts.
@@ -328,12 +362,31 @@
 6. Bookmarks are sorted by most recently bookmarked.
 7. Uses MUI components (Grid, Card, Button, Typography).
 8. Meets accessibility standards.
+9. **Backend - Bookmarking:**
+   - Bookmark button on each concept page
+   - API endpoints: POST `/api/bookmarks`, DELETE `/api/bookmarks/{id}`
+   - Database table for storing bookmarks
+   - Available to all logged-in users (free and premium)
+10. **Backend - Bookmarks List API:**
+    - API endpoint: GET `/api/users/{id}/bookmarks`
+    - Returns bookmarks with concept details and note previews
+    - Sorted by most recent
+11. **Integration - Notes:**
+    - Bookmarks integrate with notes from Story 1.5.5
+    - "Edit Note" button opens Notes Modal
 
 ### Technical Notes:
 - Page: `src/app/dashboard/bookmarks/page.tsx`
 - Component: `src/components/Dashboard/BookmarksView.tsx`
-- Uses Story 2.2 backend API: `GET /api/users/{id}/bookmarks`
-- Integrates with Notes Modal from Story 1.5.5
+- **Database:** New `bookmarks` table
+- **API Endpoints:**
+  - POST `/api/bookmarks`
+  - DELETE `/api/bookmarks/{id}`
+  - GET `/api/users/{id}/bookmarks`
+- **Integration Points:**
+  - Concept Viewer: Add bookmark button
+  - Notes Modal: Integrate with bookmarks
+  - Sidebar: Optional bookmark indicators
 
 ---
 
@@ -421,15 +474,27 @@
 ### Story 1.5 (MUI Theme)
 - `src/lib/theme.ts` - Brand colors, typography, responsive breakpoints
 
-### Story 2.2 (Bookmarking Backend)
-- `POST /api/bookmarks` - Create bookmark
-- `DELETE /api/bookmarks/{id}` - Remove bookmark
-- `GET /api/users/{id}/bookmarks` - Retrieve user's bookmarks
+### Story 1.5.8 (Progress Dashboard & Completion Tracking)
+**Provides:**
+- Database table: `completed_concepts`
+- API: POST `/api/concepts/{id}/complete` - Mark concept complete
+- API: DELETE `/api/concepts/{id}/complete` - Unmark concept
+- API: GET `/api/users/{id}/progress` - Retrieve progress data
+- UI: "Mark as Complete" button on concept pages
+- UI: Progress Dashboard view
+- Integration: Completion indicators in sidebar
 
-### Story 2.4 (Completion Tracking Backend)
-- `POST /api/completed` - Mark concept as complete
-- `DELETE /api/completed/{id}` - Unmark concept
-- `GET /api/users/{id}/progress` - Retrieve user's progress
+### Story 1.5.9 (Bookmarks View & Bookmarking System)
+**Provides:**
+- Database table: `bookmarks`
+- API: POST `/api/bookmarks` - Create bookmark
+- API: DELETE `/api/bookmarks/{id}` - Remove bookmark
+- API: GET `/api/users/{id}/bookmarks` - Retrieve bookmarks with notes
+- UI: Bookmark button on concept pages
+- UI: Bookmarks View dashboard
+- Integration: Works with Notes Modal from Story 1.5.5
+
+**Note:** Stories 1.5.8 and 1.5.9 incorporate backend functionality originally planned for Epic 2 (Stories 2.2 and 2.4). These are MVP features (FR7, FR8) available to all users.
 
 ---
 

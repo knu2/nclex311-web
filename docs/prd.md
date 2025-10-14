@@ -130,11 +130,13 @@ The testing strategy will focus on a combination of unit tests for individual co
 
 2.  **Epic 1.5: UX Enhancement - Modern Learning Interface**
     *   **Goal:** Implement the approved modern UI design with sidebar navigation, inline quiz interactions, and enhanced engagement features (notes, discussion, progress tracking, bookmarks).
-    *   **Note:** Incorporates requirements from original Stories 1.6.1 (markdown rendering), 1.7 (interactive quizzing), and absorbs Epic 3 Stories 3.1-3.2 (commenting).
+    *   **Scope:** 12 stories including full-stack implementation of bookmarking and completion tracking (originally Epic 2 Stories 2.2 and 2.4).
+    *   **Note:** Incorporates requirements from Stories 1.6.1 (markdown rendering), 1.7 (interactive quizzing), Epic 3 Stories 3.1-3.2 (commenting), and Epic 2 Stories 2.2 and 2.4 (bookmarking and completion tracking - MVP features per FR7 and FR8).
 
-3.  **Epic 2: Premium Subscription & Personalization**
-    *   **Goal:** Implement the payment gateway for premium subscriptions.
-    *   **Note:** Story 2.3 (Basic Dashboard) removed; functionality provided by Epic 1.5. Stories 2.2 (Bookmarking) and 2.4 (Mark Complete) enhanced by Epic 1.5 views.
+3.  **Epic 2: Premium Subscription**
+    *   **Goal:** Implement the Maya Business payment gateway for premium subscriptions.
+    *   **Scope:** 1 story - Premium Subscription Workflow (Story 2.1)
+    *   **Note:** Stories 2.2 (Bookmarking) and 2.4 (Completion Tracking) moved to Epic 1.5 as they are MVP features (FR7, FR8) for all users. Story 2.3 (Dashboard) removed; functionality provided by Epic 1.5.8 and 1.5.9.
 
 4.  **Epic 3: Community Engagement**
     *   **Goal:** Content moderation for community discussions.
