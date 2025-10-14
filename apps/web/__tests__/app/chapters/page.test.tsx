@@ -32,6 +32,14 @@ jest.mock('@/components/Layout/MainLayout', () => ({
   ),
 }));
 
+jest.mock('@/components/Chapters/ChapterGrid', () => ({
+  ChapterGrid: ({ isPremiumUser }: { isPremiumUser?: boolean }) => (
+    <div data-testid="chapter-grid" data-is-premium-user={isPremiumUser}>
+      Chapter Grid Component
+    </div>
+  ),
+}));
+
 describe('ChaptersPage', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -48,7 +56,7 @@ describe('ChaptersPage', () => {
     expect(redirect).toHaveBeenCalledWith('/login');
   });
 
-  it('renders MainLayout with placeholder content for authenticated user', async () => {
+  it('renders MainLayout with ChapterGrid for authenticated user', async () => {
     const mockSession = {
       user: {
         id: 'user-123',
@@ -67,9 +75,10 @@ describe('ChaptersPage', () => {
       'data-user-email',
       'test@example.com'
     );
+    expect(screen.getByTestId('chapter-grid')).toBeInTheDocument();
   });
 
-  it('displays placeholder text indicating chapter grid is coming soon', async () => {
+  it('displays chapter grid with all chapters', async () => {
     const mockSession = {
       user: {
         id: 'user-123',
@@ -84,32 +93,11 @@ describe('ChaptersPage', () => {
     render(result);
 
     expect(screen.getByText(/All NCLEX 311 Chapters/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/Chapter Grid View Coming Soon/i)
-    ).toBeInTheDocument();
-    expect(screen.getByText(/Story 1.5.7/i)).toBeInTheDocument();
+    expect(screen.getByTestId('chapter-grid')).toBeInTheDocument();
+    expect(screen.getByText('Chapter Grid Component')).toBeInTheDocument();
   });
 
-  it('displays welcome message for authenticated user', async () => {
-    const mockSession = {
-      user: {
-        id: 'user-123',
-        name: 'Test User',
-        email: 'test@example.com',
-      },
-    };
-
-    (getCurrentSession as jest.Mock).mockResolvedValue(mockSession);
-
-    const result = await ChaptersPage();
-    render(result);
-
-    expect(
-      screen.getByText(/Welcome to your NCLEX-RN preparation journey!/i)
-    ).toBeInTheDocument();
-  });
-
-  it('shows sidebar navigation tip', async () => {
+  it('displays subtitle for authenticated user', async () => {
     const mockSession = {
       user: {
         id: 'user-123',
@@ -125,9 +113,27 @@ describe('ChaptersPage', () => {
 
     expect(
       screen.getByText(
-        /Use the sidebar navigation to browse concepts by chapter/i
+        /Select a chapter to begin your NCLEX-RN preparation journey/i
       )
     ).toBeInTheDocument();
+  });
+
+  it('passes premium status to ChapterGrid component', async () => {
+    const mockSession = {
+      user: {
+        id: 'user-123',
+        name: 'Test User',
+        email: 'test@example.com',
+      },
+    };
+
+    (getCurrentSession as jest.Mock).mockResolvedValue(mockSession);
+
+    const result = await ChaptersPage();
+    render(result);
+
+    const chapterGrid = screen.getByTestId('chapter-grid');
+    expect(chapterGrid).toHaveAttribute('data-is-premium-user', 'false');
   });
 
   it('uses email as name when name is not provided', async () => {

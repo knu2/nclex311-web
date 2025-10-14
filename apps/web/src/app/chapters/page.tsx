@@ -2,6 +2,7 @@ import { MainLayout } from '@/components/Layout/MainLayout';
 import { getCurrentSession } from '@/lib/auth-utils';
 import { redirect } from 'next/navigation';
 import { Box, Typography, Container } from '@mui/material';
+import { ChapterGrid } from '@/components/Chapters/ChapterGrid';
 
 /**
  * Force dynamic rendering for this page since it uses authentication
@@ -11,7 +12,7 @@ export const dynamic = 'force-dynamic';
 /**
  * Chapters Page
  * Landing page for authenticated users showing all NCLEX 311 chapters
- * Story: 1.5.3.5 - Page Integration & Route Migration
+ * Story: 1.5.7 - Chapter Grid Component
  */
 export default async function ChaptersPage() {
   // Require authentication - redirect to login if not authenticated
@@ -32,11 +33,10 @@ export default async function ChaptersPage() {
 
   return (
     <MainLayout user={user}>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box
           sx={{
-            py: 6,
-            textAlign: 'center',
+            py: 4,
           }}
         >
           <Typography
@@ -50,7 +50,7 @@ export default async function ChaptersPage() {
               },
               fontWeight: 600,
               color: '#2c3e50',
-              mb: 2,
+              mb: 1,
             }}
           >
             All NCLEX 311 Chapters
@@ -65,39 +65,11 @@ export default async function ChaptersPage() {
               mb: 4,
             }}
           >
-            Welcome to your NCLEX-RN preparation journey!
+            Select a chapter to begin your NCLEX-RN preparation journey
           </Typography>
 
-          <Box
-            sx={{
-              p: 4,
-              backgroundColor: '#f8f9fa',
-              borderRadius: 2,
-              border: '1px solid #e1e7f0',
-            }}
-          >
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: '1.5rem',
-                fontWeight: 500,
-                color: '#495057',
-                mb: 2,
-              }}
-            >
-              Chapter Grid View Coming Soon
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              The chapter grid interface will be available in{' '}
-              <strong>Story 1.5.7</strong>
-            </Typography>
-          </Box>
-
-          <Box sx={{ mt: 4 }}>
-            <Typography variant="body2" color="text.secondary">
-              💡 Use the sidebar navigation to browse concepts by chapter
-            </Typography>
-          </Box>
+          {/* Chapter Grid Component */}
+          <ChapterGrid isPremiumUser={user.is_premium} />
         </Box>
       </Container>
     </MainLayout>
