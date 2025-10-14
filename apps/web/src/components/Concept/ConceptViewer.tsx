@@ -18,6 +18,8 @@ import {
   Forum as ForumIcon,
   CheckCircle as CheckCircleIcon,
   RadioButtonUnchecked as UncheckedIcon,
+  Bookmark as BookmarkIcon,
+  BookmarkBorder as BookmarkBorderIcon,
 } from '@mui/icons-material';
 import { useSession } from 'next-auth/react';
 import { MarkdownContent } from '../MarkdownContent';
@@ -92,6 +94,12 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
     const [isNotesOpen, setIsNotesOpen] = useState(false);
     const [isDiscussionOpen, setIsDiscussionOpen] = useState(false);
 
+    // Bookmark states
+    const [isBookmarked, setIsBookmarked] = useState(false);
+    const [bookmarkId, setBookmarkId] = useState<string | null>(null);
+    const [isLoadingBookmark, setIsLoadingBookmark] = useState(true);
+    const [isTogglingBookmark, setIsTogglingBookmark] = useState(false);
+
     // Completion tracking states
     const [isCompleted, setIsCompleted] = useState(false);
     const [isLoadingCompletion, setIsLoadingCompletion] = useState(true);
@@ -126,6 +134,39 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
 
       fetchCompletionStatus();
     }, [data.slug, session]);
+
+    // Fetch initial bookmark status
+    useEffect(() => {
+      const fetchBookmarkStatus = async () => {
+        if (!session?.user?.id) {
+          setIsLoadingBookmark(false);
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `/api/users/${session.user.id}/bookmarks`
+          );
+          if (response.ok) {
+            const {
+              bookmarks,
+            }: { bookmarks: Array<{ id: string; concept_id: string }> } =
+              await response.json();
+            const bookmark = bookmarks.find(b => b.concept_id === data.id);
+            if (bookmark) {
+              setIsBookmarked(true);
+              setBookmarkId(bookmark.id);
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching bookmark status:', error);
+        } finally {
+          setIsLoadingBookmark(false);
+        }
+      };
+
+      fetchBookmarkStatus();
+    }, [data.id, session]);
 
     // Handle mark as complete toggle
     const handleToggleCompletion = async () => {
@@ -171,6 +212,68 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
         setSnackbarOpen(true);
       } finally {
         setIsTogglingCompletion(false);
+      }
+    };
+
+    // Handle bookmark toggle
+    const handleToggleBookmark = async () => {
+      if (!session?.user?.id) {
+        setSnackbarMessage('Please log in to bookmark concepts');
+        setSnackbarSeverity('error');
+        setSnackbarOpen(true);
+        return;
+      }
+
+      setIsTogglingBookmark(true);
+
+      try {
+        if (isBookmarked && bookmarkId) {
+          // Remove bookmark
+          const response = await fetch(`/api/bookmarks/${bookmarkId}`, {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            setIsBookmarked(false);
+            setBookmarkId(null);
+            setSnackbarMessage('Bookmark removed');
+            setSnackbarSeverity('success');
+            setSnackbarOpen(true);
+          } else {
+            const errorData = await response.json();
+            setSnackbarMessage(errorData.error || 'Failed to remove bookmark');
+            setSnackbarSeverity('error');
+            setSnackbarOpen(true);
+          }
+        } else {
+          // Add bookmark
+          const response = await fetch('/api/bookmarks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ concept_id: data.id }),
+          });
+
+          if (response.ok) {
+            const { bookmark } = await response.json();
+            setIsBookmarked(true);
+            setBookmarkId(bookmark.id);
+            setSnackbarMessage('Concept bookmarked! 🔖');
+            setSnackbarSeverity('success');
+            setSnackbarOpen(true);
+          } else {
+            const errorData = await response.json();
+            setSnackbarMessage(errorData.error || 'Failed to add bookmark');
+            setSnackbarSeverity('error');
+            setSnackbarOpen(true);
+          }
+        }
+      } catch (error) {
+        console.error('Error toggling bookmark:', error);
+        setSnackbarMessage('An error occurred. Please try again.');
+        setSnackbarSeverity('error');
+        setSnackbarOpen(true);
+      } finally {
+        setIsTogglingBookmark(false);
       }
     };
 
@@ -247,6 +350,37 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
                 }}
               >
                 {isCompleted ? 'Completed' : 'Mark Complete'}
+              </Button>
+              <Button
+                variant={isBookmarked ? 'contained' : 'outlined'}
+                startIcon={
+                  isLoadingBookmark || isTogglingBookmark ? (
+                    <CircularProgress size={16} />
+                  ) : isBookmarked ? (
+                    <BookmarkIcon />
+                  ) : (
+                    <BookmarkBorderIcon />
+                  )
+                }
+                onClick={handleToggleBookmark}
+                disabled={isLoadingBookmark || isTogglingBookmark}
+                sx={{
+                  borderColor: isBookmarked ? '#ff6b35' : '#2c5aa0',
+                  color: isBookmarked ? 'white' : '#2c5aa0',
+                  bgcolor: isBookmarked ? '#ff6b35' : 'transparent',
+                  '&:hover': {
+                    borderColor: isBookmarked ? '#e65e2f' : '#234a85',
+                    bgcolor: isBookmarked
+                      ? '#e65e2f'
+                      : 'rgba(44, 90, 160, 0.04)',
+                  },
+                  '&.Mui-disabled': {
+                    borderColor: '#ccc',
+                    color: '#999',
+                  },
+                }}
+              >
+                {isBookmarked ? 'Bookmarked' : 'Bookmark'}
               </Button>
               <Button
                 variant="outlined"

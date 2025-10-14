@@ -60,8 +60,8 @@ export const {
   callbacks: {
     async jwt({ token, user }) {
       // Persist user data to token on sign in
+      // Note: token.sub is automatically set by NextAuth from user.id
       if (user) {
-        token.id = user.id;
         token.email = user.email;
       }
       return token;
@@ -69,7 +69,8 @@ export const {
     async session({ session, token }) {
       // Add user id and email to session from token
       if (token && session.user) {
-        (session.user as { id?: string }).id = token.id as string;
+        // Use token.sub (subject) which is automatically set by NextAuth from user.id
+        (session.user as { id?: string }).id = token.sub as string;
         session.user.email = token.email as string;
       }
       return session;
