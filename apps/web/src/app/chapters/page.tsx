@@ -19,7 +19,8 @@ export default async function ChaptersPage() {
   const session = await getCurrentSession();
 
   if (!session || !session.user) {
-    redirect('/login');
+    // Preserve the current URL as callbackUrl for post-login redirect
+    redirect('/login?callbackUrl=/chapters');
   }
 
   // Transform session user to match MainLayout's expected interface

@@ -37,7 +37,8 @@ export default async function ConceptPage({
   const session = await getCurrentSession();
 
   if (!session?.user) {
-    redirect('/login');
+    // Preserve the current URL as callbackUrl for post-login redirect
+    redirect(`/login?callbackUrl=${encodeURIComponent(`/concepts/${slug}`)}`);
   }
 
   // Fetch concept data server-side

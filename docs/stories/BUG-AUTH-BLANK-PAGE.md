@@ -206,20 +206,68 @@ _This section will be filled in by the Dev agent during investigation and fix im
 
 ### Investigation Findings
 
-TBD
+**Date:** 2025-10-15
+**Agent:** BMad Dev
+
+Investigated the authentication redirect flow and identified the root cause:
+
+1. **Server Component Redirects**: Both `/chapters/page.tsx` and `/concepts/[slug]/page.tsx` were redirecting unauthenticated users to `/login` WITHOUT preserving the callbackUrl
+2. **Middleware Behavior**: The middleware was correctly adding callbackUrl for unauthenticated users, but IGNORING the callbackUrl when redirecting authenticated users from `/login` back to the app
+3. **Login Page Rendering**: The login page was returning `null` for authenticated users while the redirect was processing, causing a blank page
 
 ### Root Cause Analysis
 
-TBD
+**Primary Issue:** Middleware redirect logic for authenticated users
+- When an authenticated user accessed `/login?callbackUrl=/concepts/foo`, the middleware redirected to `/chapters` instead of `/concepts/foo`
+- This caused the login page's `useEffect` redirect to conflict with the middleware redirect
+- The blank page appeared because the login page returned `null` while redirects were being processed
+
+**Secondary Issue:** Server component redirects without callbackUrl
+- Protected pages were redirecting to `/login` without preserving the original URL
+- This meant if middleware wasn't triggered, users would lose their intended destination
+
+**Tertiary Issue:** Login page rendering during redirect
+- The login page returned `null` for authenticated users, showing a blank page while the redirect processed
+- No loading indicator was shown to the user during the redirect
 
 ### Solution Implemented
 
-TBD
+**Fix 1: Middleware - Respect callbackUrl (PRIMARY FIX)**
+- Modified `apps/web/src/middleware.ts` line 64-68
+- Changed authenticated user redirect logic to check for `callbackUrl` parameter
+- If callbackUrl exists, redirect there; otherwise default to `/chapters`
+- This ensures authenticated users are sent to their intended destination
+
+**Fix 2: Server Components - Preserve callbackUrl (DEFENSE IN DEPTH)**
+- Modified `apps/web/src/app/concepts/[slug]/page.tsx` line 39-41
+- Modified `apps/web/src/app/chapters/page.tsx` line 21-23
+- Changed `redirect('/login')` to `redirect('/login?callbackUrl=...')`
+- Ensures callbackUrl is preserved even if middleware doesn't run
+
+**Fix 3: Login Page - Show loading state (UX IMPROVEMENT)**
+- Modified `apps/web/src/app/login/page.tsx` line 39-47
+- Changed `return null` to return a loading message in AuthLayout
+- Prevents blank page by showing "Redirecting..." message
+- Improves user experience during the redirect process
 
 ### Files Modified
 
-TBD
+1. **apps/web/src/middleware.ts**
+   - Lines 63-68: Added callbackUrl respect logic for authenticated users
+   - Ensures middleware redirects authenticated users to their intended destination
+
+2. **apps/web/src/app/concepts/[slug]/page.tsx**
+   - Lines 39-41: Added callbackUrl to login redirect
+   - Preserves concept slug in redirect URL
+
+3. **apps/web/src/app/chapters/page.tsx**
+   - Lines 21-23: Added callbackUrl to login redirect
+   - Preserves chapters route in redirect URL
+
+4. **apps/web/src/app/login/page.tsx**
+   - Lines 39-47: Changed null return to loading state
+   - Shows "Redirecting..." message instead of blank page
 
 ### Test Results
 
-TBD
+TBD - Awaiting manual testing verification

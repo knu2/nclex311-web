@@ -60,9 +60,12 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith(route)
   );
 
-  // Authenticated user tries to access auth pages → redirect to /chapters
+  // Authenticated user tries to access auth pages → redirect to callbackUrl or /chapters
   if (isAuthenticated && isAuthRoute) {
-    return NextResponse.redirect(new URL('/chapters', request.url));
+    const callbackUrl = searchParams.get('callbackUrl');
+    // If there's a callbackUrl, redirect there; otherwise default to /chapters
+    const redirectUrl = callbackUrl || '/chapters';
+    return NextResponse.redirect(new URL(redirectUrl, request.url));
   }
 
   // Unauthenticated user tries to access protected route → redirect to /login

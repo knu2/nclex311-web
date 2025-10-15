@@ -36,9 +36,15 @@ function LoginPageContent() {
     );
   }
 
-  // Don't render login form if already authenticated
+  // Show loading while redirecting authenticated users
   if (status === 'authenticated') {
-    return null;
+    return (
+      <AuthLayout title="Sign In to NCLEX 311">
+        <Box sx={{ textAlign: 'center', py: 4 }}>
+          <Typography>Redirecting...</Typography>
+        </Box>
+      </AuthLayout>
+    );
   }
 
   const handleLoginSuccess = () => {
