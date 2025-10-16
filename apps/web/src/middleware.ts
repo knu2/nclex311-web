@@ -60,9 +60,15 @@ export async function middleware(request: NextRequest) {
   }
 
   // Get current session token (Edge runtime compatible)
+  // NextAuth v5 uses a different cookie name format
   const token = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
+    // Explicitly specify the cookie name for NextAuth v5
+    cookieName:
+      process.env.NODE_ENV === 'production'
+        ? '__Secure-authjs.session-token'
+        : 'authjs.session-token',
   });
   const isAuthenticated = !!token;
 
