@@ -32,16 +32,30 @@ export async function middleware(request: NextRequest) {
   const isRSCRequest =
     searchParams.has('_rsc') ||
     request.headers.get('rsc') === '1' ||
-    request.headers.get('next-router-prefetch') === '1';
+    request.headers.get('next-router-prefetch') === '1' ||
+    request.headers.get('next-router-state-tree') !== null ||
+    request.headers.get('x-nextjs-data') !== null;
 
   // Skip middleware if this is an RSC prefetch or navigation from auth pages
   const nextUrl = request.headers.get('next-url');
-  const isFromAuthPage = nextUrl === '/login' || nextUrl === '/signup';
+  const referer = request.headers.get('referer');
+  const isFromAuthPage =
+    nextUrl === '/login' ||
+    nextUrl === '/signup' ||
+    referer?.includes('/login') ||
+    referer?.includes('/signup');
   const isProtectedPath = PROTECTED_ROUTES.some(route =>
     pathname.startsWith(route)
   );
 
-  if (isRSCRequest || (isFromAuthPage && isProtectedPath)) {
+  // Skip auth check for RSC requests - they inherit the parent page's auth state
+  if (isRSCRequest) {
+    return NextResponse.next();
+  }
+
+  // Skip auth check for navigations from auth pages to protected pages
+  // This prevents redirect loops after successful login
+  if (isFromAuthPage && isProtectedPath) {
     return NextResponse.next();
   }
 
