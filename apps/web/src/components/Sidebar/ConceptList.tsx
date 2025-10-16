@@ -8,6 +8,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import {
   Drawer,
   List,
@@ -65,22 +66,13 @@ const MOBILE_BREAKPOINT = 960;
 /**
  * Sidebar Footer Component
  * Contains quick-access navigation buttons
+ * Uses Next.js Link for proper authentication flow
  */
 interface SidebarFooterProps {
-  onNavigate?: (path: string) => void;
+  onClose?: () => void;
 }
 
-const SidebarFooter: React.FC<SidebarFooterProps> = ({ onNavigate }) => {
-  const router = useRouter();
-
-  const handleNavigation = (path: string): void => {
-    if (onNavigate) {
-      onNavigate(path);
-    } else {
-      router.push(path);
-    }
-  };
-
+const SidebarFooter: React.FC<SidebarFooterProps> = ({ onClose }) => {
   return (
     <Box
       sx={{
@@ -91,10 +83,12 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ onNavigate }) => {
     >
       <Stack spacing={1}>
         <Button
+          component={Link}
+          href="/chapters"
           variant="outlined"
           fullWidth
           startIcon={<MenuBookIcon />}
-          onClick={() => handleNavigation('/chapters')}
+          onClick={onClose}
           sx={{
             justifyContent: 'flex-start',
             textTransform: 'none',
@@ -111,10 +105,12 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ onNavigate }) => {
           📚 All Chapters
         </Button>
         <Button
+          component={Link}
+          href="/dashboard/progress"
           variant="outlined"
           fullWidth
           startIcon={<BarChartIcon />}
-          onClick={() => handleNavigation('/dashboard/progress')}
+          onClick={onClose}
           sx={{
             justifyContent: 'flex-start',
             textTransform: 'none',
@@ -131,10 +127,12 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ onNavigate }) => {
           📊 Progress
         </Button>
         <Button
+          component={Link}
+          href="/dashboard/bookmarks"
           variant="outlined"
           fullWidth
           startIcon={<BookmarkIcon />}
-          onClick={() => handleNavigation('/dashboard/bookmarks')}
+          onClick={onClose}
           sx={{
             justifyContent: 'flex-start',
             textTransform: 'none',
@@ -345,9 +343,8 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
       return pathname.includes(conceptSlug);
     };
 
-    // Handle footer navigation (close drawer on mobile)
-    const handleFooterNavigate = (path: string): void => {
-      router.push(path);
+    // Close drawer on mobile after footer navigation
+    const handleFooterClose = (): void => {
       if (isMobile && onClose) {
         onClose();
       }
@@ -386,7 +383,7 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
                 Select a chapter to view concepts
               </Typography>
             </Box>
-            <SidebarFooter onNavigate={handleFooterNavigate} />
+            <SidebarFooter onClose={handleFooterClose} />
           </>
         )}
 
@@ -512,7 +509,7 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
             </List>
 
             {/* Sidebar Footer */}
-            <SidebarFooter onNavigate={handleFooterNavigate} />
+            <SidebarFooter onClose={handleFooterClose} />
           </>
         )}
       </Box>
