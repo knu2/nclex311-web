@@ -8,7 +8,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import Link from 'next/link';
 import {
   Drawer,
   List,
@@ -66,13 +65,26 @@ const MOBILE_BREAKPOINT = 960;
 /**
  * Sidebar Footer Component
  * Contains quick-access navigation buttons
- * Uses Next.js Link for proper authentication flow
+ * Uses router.push() for client-side navigation to avoid auth redirect issues
+ * Fixes: Similar to BUG-AUTH-BLANK-PAGE - prevents unnecessary /login redirects
  */
 interface SidebarFooterProps {
   onClose?: () => void;
 }
 
 const SidebarFooter: React.FC<SidebarFooterProps> = ({ onClose }) => {
+  const router = useRouter();
+
+  const handleNavigation = (path: string) => {
+    // Close mobile drawer if applicable
+    if (onClose) {
+      onClose();
+    }
+    // Use router.push for client-side navigation
+    // This avoids the Link prefetch/RSC issues that can trigger auth redirects
+    router.push(path);
+  };
+
   return (
     <Box
       sx={{
@@ -83,12 +95,10 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ onClose }) => {
     >
       <Stack spacing={1}>
         <Button
-          component={Link}
-          href="/chapters"
           variant="outlined"
           fullWidth
           startIcon={<MenuBookIcon />}
-          onClick={onClose}
+          onClick={() => handleNavigation('/chapters')}
           sx={{
             justifyContent: 'flex-start',
             textTransform: 'none',
@@ -105,12 +115,10 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ onClose }) => {
           📚 All Chapters
         </Button>
         <Button
-          component={Link}
-          href="/dashboard/progress"
           variant="outlined"
           fullWidth
           startIcon={<BarChartIcon />}
-          onClick={onClose}
+          onClick={() => handleNavigation('/dashboard/progress')}
           sx={{
             justifyContent: 'flex-start',
             textTransform: 'none',
@@ -127,12 +135,10 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ onClose }) => {
           📊 Progress
         </Button>
         <Button
-          component={Link}
-          href="/dashboard/bookmarks"
           variant="outlined"
           fullWidth
           startIcon={<BookmarkIcon />}
-          onClick={onClose}
+          onClick={() => handleNavigation('/dashboard/bookmarks')}
           sx={{
             justifyContent: 'flex-start',
             textTransform: 'none',

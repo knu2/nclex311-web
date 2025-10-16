@@ -417,13 +417,13 @@ describe('ConceptList Component', () => {
 
         await waitFor(() => {
           expect(
-            screen.getByRole('link', { name: /all chapters/i })
+            screen.getByRole('button', { name: /all chapters/i })
           ).toBeInTheDocument();
           expect(
-            screen.getByRole('link', { name: /progress/i })
+            screen.getByRole('button', { name: /progress/i })
           ).toBeInTheDocument();
           expect(
-            screen.getByRole('link', { name: /bookmarks/i })
+            screen.getByRole('button', { name: /bookmarks/i })
           ).toBeInTheDocument();
         });
       });
@@ -432,13 +432,13 @@ describe('ConceptList Component', () => {
         render(<ConceptList chapterId="chapter-1" />);
 
         await waitFor(() => {
-          const allChaptersButton = screen.getByRole('link', {
+          const allChaptersButton = screen.getByRole('button', {
             name: /all chapters/i,
           });
-          const progressButton = screen.getByRole('link', {
+          const progressButton = screen.getByRole('button', {
             name: /progress/i,
           });
-          const bookmarksButton = screen.getByRole('link', {
+          const bookmarksButton = screen.getByRole('button', {
             name: /bookmarks/i,
           });
 
@@ -455,52 +455,64 @@ describe('ConceptList Component', () => {
           screen.getByText('Select a chapter to view concepts')
         ).toBeInTheDocument();
         expect(
-          screen.getByRole('link', { name: /all chapters/i })
+          screen.getByRole('button', { name: /all chapters/i })
         ).toBeInTheDocument();
         expect(
-          screen.getByRole('link', { name: /progress/i })
+          screen.getByRole('button', { name: /progress/i })
         ).toBeInTheDocument();
         expect(
-          screen.getByRole('link', { name: /bookmarks/i })
+          screen.getByRole('button', { name: /bookmarks/i })
         ).toBeInTheDocument();
       });
     });
 
     describe('Footer Navigation', () => {
-      it('navigates to /chapters when All Chapters button clicked', async () => {
+      it('calls router.push with /chapters when All Chapters button clicked', async () => {
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+
         render(<ConceptList chapterId="chapter-1" />);
 
         await waitFor(() => {
-          const allChaptersButton = screen.getByRole('link', {
+          const allChaptersButton = screen.getByRole('button', {
             name: /all chapters/i,
           });
-          expect(allChaptersButton).toHaveAttribute('href', '/chapters');
+          fireEvent.click(allChaptersButton);
         });
+
+        expect(mockPush).toHaveBeenCalledWith('/chapters');
       });
 
-      it('navigates to /dashboard/progress when Progress button clicked', async () => {
+      it('calls router.push with /dashboard/progress when Progress button clicked', async () => {
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+
         render(<ConceptList chapterId="chapter-1" />);
 
         await waitFor(() => {
-          const progressButton = screen.getByRole('link', {
+          const progressButton = screen.getByRole('button', {
             name: /progress/i,
           });
-          expect(progressButton).toHaveAttribute('href', '/dashboard/progress');
+          fireEvent.click(progressButton);
         });
+
+        expect(mockPush).toHaveBeenCalledWith('/dashboard/progress');
       });
 
-      it('navigates to /dashboard/bookmarks when Bookmarks button clicked', async () => {
+      it('calls router.push with /dashboard/bookmarks when Bookmarks button clicked', async () => {
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+
         render(<ConceptList chapterId="chapter-1" />);
 
         await waitFor(() => {
-          const bookmarksButton = screen.getByRole('link', {
+          const bookmarksButton = screen.getByRole('button', {
             name: /bookmarks/i,
           });
-          expect(bookmarksButton).toHaveAttribute(
-            'href',
-            '/dashboard/bookmarks'
-          );
+          fireEvent.click(bookmarksButton);
         });
+
+        expect(mockPush).toHaveBeenCalledWith('/dashboard/bookmarks');
       });
     });
 
@@ -508,6 +520,8 @@ describe('ConceptList Component', () => {
       it('calls onClose when footer button clicked on mobile', async () => {
         mockUseMediaQuery.mockReturnValue(true); // Mobile
         const mockOnClose = jest.fn();
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
         render(
           <ConceptList
@@ -518,7 +532,7 @@ describe('ConceptList Component', () => {
         );
 
         await waitFor(() => {
-          const allChaptersButton = screen.getByRole('link', {
+          const allChaptersButton = screen.getByRole('button', {
             name: /all chapters/i,
           });
           fireEvent.click(allChaptersButton);
@@ -530,6 +544,8 @@ describe('ConceptList Component', () => {
       it('calls onClose when Progress button clicked on mobile', async () => {
         mockUseMediaQuery.mockReturnValue(true); // Mobile
         const mockOnClose = jest.fn();
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
         render(
           <ConceptList
@@ -540,7 +556,7 @@ describe('ConceptList Component', () => {
         );
 
         await waitFor(() => {
-          const progressButton = screen.getByRole('link', {
+          const progressButton = screen.getByRole('button', {
             name: /progress/i,
           });
           fireEvent.click(progressButton);
@@ -552,6 +568,8 @@ describe('ConceptList Component', () => {
       it('calls onClose when Bookmarks button clicked on mobile', async () => {
         mockUseMediaQuery.mockReturnValue(true); // Mobile
         const mockOnClose = jest.fn();
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
         render(
           <ConceptList
@@ -562,7 +580,7 @@ describe('ConceptList Component', () => {
         );
 
         await waitFor(() => {
-          const bookmarksButton = screen.getByRole('link', {
+          const bookmarksButton = screen.getByRole('button', {
             name: /bookmarks/i,
           });
           fireEvent.click(bookmarksButton);
@@ -574,6 +592,8 @@ describe('ConceptList Component', () => {
       it('does not call onClose on desktop footer navigation', async () => {
         mockUseMediaQuery.mockReturnValue(false); // Desktop
         const mockOnClose = jest.fn();
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
         render(
           <ConceptList
@@ -584,7 +604,7 @@ describe('ConceptList Component', () => {
         );
 
         await waitFor(() => {
-          const allChaptersButton = screen.getByRole('link', {
+          const allChaptersButton = screen.getByRole('button', {
             name: /all chapters/i,
           });
           fireEvent.click(allChaptersButton);
@@ -600,13 +620,13 @@ describe('ConceptList Component', () => {
 
         await waitFor(() => {
           expect(
-            screen.getByRole('link', { name: /go to all chapters/i })
+            screen.getByRole('button', { name: /go to all chapters/i })
           ).toBeInTheDocument();
           expect(
-            screen.getByRole('link', { name: /go to progress dashboard/i })
+            screen.getByRole('button', { name: /go to progress dashboard/i })
           ).toBeInTheDocument();
           expect(
-            screen.getByRole('link', { name: /go to bookmarks/i })
+            screen.getByRole('button', { name: /go to bookmarks/i })
           ).toBeInTheDocument();
         });
       });
@@ -615,13 +635,13 @@ describe('ConceptList Component', () => {
         render(<ConceptList chapterId="chapter-1" />);
 
         await waitFor(() => {
-          const allChaptersButton = screen.getByRole('link', {
+          const allChaptersButton = screen.getByRole('button', {
             name: /all chapters/i,
           });
-          const progressButton = screen.getByRole('link', {
+          const progressButton = screen.getByRole('button', {
             name: /progress/i,
           });
-          const bookmarksButton = screen.getByRole('link', {
+          const bookmarksButton = screen.getByRole('button', {
             name: /bookmarks/i,
           });
 
@@ -643,30 +663,41 @@ describe('ConceptList Component', () => {
       });
 
       it('footer buttons work in no-chapter-context mode', () => {
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+
         render(<ConceptList />);
 
-        const allChaptersButton = screen.getByRole('link', {
+        const allChaptersButton = screen.getByRole('button', {
           name: /all chapters/i,
         });
-        const progressButton = screen.getByRole('link', {
+        const progressButton = screen.getByRole('button', {
           name: /progress/i,
         });
-        const bookmarksButton = screen.getByRole('link', {
+        const bookmarksButton = screen.getByRole('button', {
           name: /bookmarks/i,
         });
 
-        expect(allChaptersButton).toHaveAttribute('href', '/chapters');
-        expect(progressButton).toHaveAttribute('href', '/dashboard/progress');
-        expect(bookmarksButton).toHaveAttribute('href', '/dashboard/bookmarks');
+        // Click each button and verify router.push was called
+        fireEvent.click(allChaptersButton);
+        expect(mockPush).toHaveBeenCalledWith('/chapters');
+
+        fireEvent.click(progressButton);
+        expect(mockPush).toHaveBeenCalledWith('/dashboard/progress');
+
+        fireEvent.click(bookmarksButton);
+        expect(mockPush).toHaveBeenCalledWith('/dashboard/bookmarks');
       });
 
       it('calls onClose on mobile in footer-only mode', () => {
         mockUseMediaQuery.mockReturnValue(true); // Mobile
         const mockOnClose = jest.fn();
+        const mockPush = jest.fn();
+        (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
         render(<ConceptList isOpen={true} onClose={mockOnClose} />);
 
-        const allChaptersButton = screen.getByRole('link', {
+        const allChaptersButton = screen.getByRole('button', {
           name: /all chapters/i,
         });
         fireEvent.click(allChaptersButton);
