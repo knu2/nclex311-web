@@ -17,6 +17,9 @@ This document establishes the coding standards and best practices for the NCLEX3
 7. [Documentation Standards](#documentation-standards)
 8. [Performance Standards](#performance-standards)
 9. [Security Standards](#security-standards)
+   - [Environment Security](#environment-security)
+   - [Input Validation](#input-validation)
+   - [Authentication and Middleware](#authentication-and-middleware) ⭐ NEW
 10. [Content Rendering Standards](#content-rendering-standards)
 11. [Import and Export Standards](#import-and-export-standards)
 12. [Error Handling Standards](#error-handling-standards)
@@ -1459,6 +1462,198 @@ export async function createConcept(input: unknown) {
     .single();
 }
 ```
+
+### Authentication and Middleware
+
+#### NextAuth v5 (Auth.js) Configuration
+
+**Project Version:** NextAuth v5.0.0-beta.29 (Auth.js)
+
+- **REQUIRED:** Explicitly specify cookie name when using `getToken()` in middleware
+- **REQUIRED:** Use correct cookie name format for NextAuth v5
+- **REQUIRED:** Handle both development and production cookie prefixes
+- **REQUIRED:** Understand NextAuth v5 breaking changes from v4
+
+**Critical:** NextAuth v5 changed cookie naming from `next-auth.session-token` to `authjs.session-token`. Middleware using `getToken()` must specify the cookie name explicitly to avoid infinite redirect loops.
+
+```typescript
+// ✅ Good: Correct NextAuth v5 middleware configuration
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
+
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Get current session token with explicit cookie name for NextAuth v5
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+    // NextAuth v5 (Auth.js) uses different cookie names than v4
+    cookieName: process.env.NODE_ENV === 'production' 
+      ? '__Secure-authjs.session-token'  // Production: secure cookie
+      : 'authjs.session-token',          // Development: regular cookie
+  });
+  const isAuthenticated = !!token;
+
+  // Protected route logic
+  if (!isAuthenticated && pathname.startsWith('/dashboard')) {
+    const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('callbackUrl', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  return NextResponse.next();
+}
+```
+
+```typescript
+// ❌ Bad: Missing cookie name - will not find session in NextAuth v5
+import { getToken } from 'next-auth/jwt';
+
+export async function middleware(request: NextRequest) {
+  // This will fail in NextAuth v5 - looks for wrong cookie name
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+    // Missing cookieName - defaults to old v4 name 'next-auth.session-token'
+  });
+  // token will always be null, causing redirect loops!
+}
+```
+
+#### RSC Request Detection
+
+- **REQUIRED:** Skip authentication checks for React Server Component (RSC) requests
+- **REQUIRED:** Check multiple Next.js internal headers
+- **REQUIRED:** Prevent redirect loops from auth pages to protected pages
+
+RSC requests are internal Next.js navigation requests that should inherit authentication state from their parent page. Middleware must properly detect these to avoid unnecessary redirects.
+
+```typescript
+// ✅ Good: Comprehensive RSC request detection
+export async function middleware(request: NextRequest) {
+  const { pathname, searchParams } = request.nextUrl;
+
+  // Detect RSC requests - these should skip auth checks
+  const isRSCRequest =
+    searchParams.has('_rsc') ||                              // RSC data request
+    request.headers.get('rsc') === '1' ||                    // RSC indicator
+    request.headers.get('next-router-prefetch') === '1' ||   // Prefetch request
+    request.headers.get('next-router-state-tree') !== null || // Navigation state
+    request.headers.get('x-nextjs-data') !== null;           // Next.js data request
+
+  // Skip auth check for RSC requests - they inherit parent page auth
+  if (isRSCRequest) {
+    return NextResponse.next();
+  }
+
+  // Prevent redirect loops after login
+  const referer = request.headers.get('referer');
+  const isFromAuthPage = referer?.includes('/login') || referer?.includes('/signup');
+  const isProtectedPath = pathname.startsWith('/dashboard') || pathname.startsWith('/chapters');
+  
+  if (isFromAuthPage && isProtectedPath) {
+    return NextResponse.next();
+  }
+
+  // Continue with normal auth checks...
+}
+```
+
+#### Client-Side Navigation Patterns
+
+- **REQUIRED:** Use `router.push()` for authenticated navigation to avoid prefetch issues
+- **AVOID:** Using `<Link>` components for navigation within authenticated pages when RSC prefetch causes redirect loops
+- **REQUIRED:** Handle mobile drawer close before navigation
+
+```typescript
+// ✅ Good: Client-side navigation with router.push()
+import { useRouter } from 'next/navigation';
+
+const SidebarFooter: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
+  const router = useRouter();
+
+  const handleNavigation = (path: string) => {
+    if (onClose) {
+      onClose(); // Close mobile drawer first
+    }
+    router.push(path); // Client-side navigation avoids middleware prefetch issues
+  };
+
+  return (
+    <Button onClick={() => handleNavigation('/dashboard/progress')}>
+      📊 Progress
+    </Button>
+  );
+};
+```
+
+```typescript
+// ❌ Bad: Using Link can trigger unnecessary middleware checks
+import Link from 'next/link';
+
+const SidebarFooter = () => {
+  return (
+    <Button component={Link} href="/dashboard/progress">
+      📊 Progress
+    </Button>
+  );
+  // Next.js will prefetch this route, potentially triggering middleware
+  // auth checks before user clicks, causing "Redirecting..." screens
+};
+```
+
+#### Common Authentication Issues
+
+**Issue 1: Infinite Redirect Loops**
+- **Cause:** Middleware can't find session cookie (wrong cookie name in NextAuth v5)
+- **Symptom:** Page cycles between "Loading..." and "Redirecting..." indefinitely
+- **Fix:** Specify `cookieName` parameter in `getToken()` call
+
+**Issue 2: "Redirecting..." on Authenticated Navigation**
+- **Cause:** Middleware intercepts RSC prefetch requests and treats them as unauthenticated
+- **Symptom:** Clicking navigation buttons shows "Redirecting..." screen even when logged in
+- **Fix:** Properly detect RSC requests and skip auth checks for them
+
+**Issue 3: Session Found in Components but Not Middleware**
+- **Cause:** `useSession()` uses different session detection than `getToken()`
+- **Symptom:** Login page detects authentication but middleware doesn't
+- **Fix:** Ensure middleware uses correct NextAuth v5 cookie name
+
+#### Testing Authentication Flows
+
+- **REQUIRED:** Test authenticated navigation doesn't show "Redirecting..." screens
+- **REQUIRED:** Test unauthenticated users are properly redirected to login
+- **REQUIRED:** Test post-login redirect returns to intended destination (callbackUrl)
+- **REQUIRED:** Test session persistence across client-side navigations
+
+```typescript
+// ✅ Good: Testing authentication navigation
+describe('Authenticated Navigation', () => {
+  it('navigates directly without redirect screens when authenticated', async () => {
+    const mockPush = jest.fn();
+    (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+    (useSession as jest.Mock).mockReturnValue({
+      data: { user: { email: 'test@example.com' } },
+      status: 'authenticated'
+    });
+
+    render(<SidebarFooter />);
+    
+    const progressButton = screen.getByRole('button', { name: /progress/i });
+    fireEvent.click(progressButton);
+
+    // Should call router.push, not redirect to login
+    expect(mockPush).toHaveBeenCalledWith('/dashboard/progress');
+  });
+});
+```
+
+**Reference Issues:**
+- Story 1.5.1.1: Sidebar footer navigation redirect loop
+- BUG-AUTH-BLANK-PAGE: Authentication blank page after redirect
+- NextAuth v5 Migration: Cookie naming changes from v4 to v5
 
 ## Content Rendering Standards
 
