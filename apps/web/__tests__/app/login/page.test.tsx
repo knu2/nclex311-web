@@ -118,14 +118,16 @@ describe('LoginPage', () => {
     expect(signupLink).toHaveAttribute('href', '/signup');
   });
 
-  it('does not render login form when authenticated', () => {
+  it('shows redirecting state when authenticated', () => {
     (useSession as jest.Mock).mockReturnValue({
       data: { user: { email: 'test@example.com' } },
       status: 'authenticated',
     });
 
-    const { container } = render(<LoginPage />);
+    render(<LoginPage />);
 
-    expect(container.firstChild).toBeNull();
+    // Should show "Redirecting..." message instead of login form
+    expect(screen.getByText(/Redirecting.../i)).toBeInTheDocument();
+    expect(screen.queryByTestId('login-form')).not.toBeInTheDocument();
   });
 });

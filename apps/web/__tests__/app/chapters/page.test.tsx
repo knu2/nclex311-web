@@ -45,7 +45,7 @@ describe('ChaptersPage', () => {
     jest.clearAllMocks();
   });
 
-  it('redirects to /login when user is not authenticated', async () => {
+  it('redirects to /login with callbackUrl when user is not authenticated', async () => {
     (getCurrentSession as jest.Mock).mockResolvedValue(null);
     (redirect as jest.Mock).mockImplementation(() => {
       throw new Error('NEXT_REDIRECT');
@@ -53,7 +53,7 @@ describe('ChaptersPage', () => {
 
     await expect(ChaptersPage()).rejects.toThrow('NEXT_REDIRECT');
 
-    expect(redirect).toHaveBeenCalledWith('/login');
+    expect(redirect).toHaveBeenCalledWith('/login?callbackUrl=/chapters');
   });
 
   it('renders MainLayout with ChapterGrid for authenticated user', async () => {
