@@ -17,10 +17,12 @@ This table represents the single source of truth for the project's technology st
 | **Backend Framework**| Next.js API Routes | 15.5.x | Serverless backend logic | Specified in PRD. Tightly integrated with the frontend, ideal for this architecture. |
 | **API Style** | REST | N/A | Client-server communication | A well-understood, standard approach that fits naturally with Next.js API Routes. |
 | **Database** | PostgreSQL (via Supabase) | 16.x | Primary data storage | Supabase provides managed PostgreSQL with additional features like realtime subscriptions. |
-| **Database Client** | Supabase JS Client | 2.57.x | Database connectivity | Official Supabase client with built-in connection pooling and realtime capabilities. |
+| **ORM Layer** | Drizzle ORM | 0.44.5 | Type-safe database operations | Schema-driven ORM providing enhanced type safety, connection pooling, and maintainable service layer abstraction. Integrated in Story 1.4.1. |
+| **Database Client** | Supabase JS Client | 2.57.x | Realtime & Auth features | Official Supabase client for realtime subscriptions and authentication. Core CRUD operations use Drizzle ORM service layer. |
+| **Schema Management** | Drizzle Kit | 0.31.5 | Database schema & migrations | Schema generation, migration management, and database introspection for Drizzle ORM. |
 | **Cache** | Vercel Data Cache | N/A | Caching data-fetching responses | Integrated into Vercel's infrastructure to reduce database load and improve performance. |
 | **File Storage** | Vercel Blob | latest | Storing user-generated files (if needed) | A simple and scalable solution for file storage, fully integrated with the Vercel ecosystem. |
-| **Authentication** | Auth.js (NextAuth) | ~5.x | User authentication and session management | The de-facto standard for Next.js. Planned for implementation. |
+| **Authentication** | Auth.js (NextAuth) | 5.0.0-beta.29 | User authentication and session management | The de-facto standard for Next.js. Implemented with credentials provider and JWT session strategy. |
 | **Frontend Testing** | Jest + React Testing Library | 30.x + 16.x | Unit & Component testing | Industry standard for testing React applications, focusing on user-facing behavior. |
 | **Backend Testing** | Jest + Supertest | 30.x + 7.x | API route integration testing | Jest for the test runner and Supertest for making HTTP requests to the API endpoints. |
 | **E2E Testing** | Playwright | 1.55.x | End-to-end user workflow testing | Modern, powerful tool for reliable E2E testing across all major browsers. |
