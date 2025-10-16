@@ -409,4 +409,310 @@ describe('ConceptList Component', () => {
       });
     });
   });
+
+  describe('Sidebar Footer Tests', () => {
+    describe('Footer Rendering', () => {
+      it('renders all 3 navigation buttons with correct labels', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          expect(
+            screen.getByRole('link', { name: /all chapters/i })
+          ).toBeInTheDocument();
+          expect(
+            screen.getByRole('link', { name: /progress/i })
+          ).toBeInTheDocument();
+          expect(
+            screen.getByRole('link', { name: /bookmarks/i })
+          ).toBeInTheDocument();
+        });
+      });
+
+      it('renders footer buttons with correct icons', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          const allChaptersButton = screen.getByRole('link', {
+            name: /all chapters/i,
+          });
+          const progressButton = screen.getByRole('link', {
+            name: /progress/i,
+          });
+          const bookmarksButton = screen.getByRole('link', {
+            name: /bookmarks/i,
+          });
+
+          expect(allChaptersButton).toHaveTextContent('📚');
+          expect(progressButton).toHaveTextContent('📊');
+          expect(bookmarksButton).toHaveTextContent('🔖');
+        });
+      });
+
+      it('renders footer-only view when no chapterId provided', () => {
+        render(<ConceptList />);
+
+        expect(
+          screen.getByText('Select a chapter to view concepts')
+        ).toBeInTheDocument();
+        expect(
+          screen.getByRole('link', { name: /all chapters/i })
+        ).toBeInTheDocument();
+        expect(
+          screen.getByRole('link', { name: /progress/i })
+        ).toBeInTheDocument();
+        expect(
+          screen.getByRole('link', { name: /bookmarks/i })
+        ).toBeInTheDocument();
+      });
+    });
+
+    describe('Footer Navigation', () => {
+      it('navigates to /chapters when All Chapters button clicked', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          const allChaptersButton = screen.getByRole('link', {
+            name: /all chapters/i,
+          });
+          expect(allChaptersButton).toHaveAttribute('href', '/chapters');
+        });
+      });
+
+      it('navigates to /dashboard/progress when Progress button clicked', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          const progressButton = screen.getByRole('link', {
+            name: /progress/i,
+          });
+          expect(progressButton).toHaveAttribute('href', '/dashboard/progress');
+        });
+      });
+
+      it('navigates to /dashboard/bookmarks when Bookmarks button clicked', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          const bookmarksButton = screen.getByRole('link', {
+            name: /bookmarks/i,
+          });
+          expect(bookmarksButton).toHaveAttribute(
+            'href',
+            '/dashboard/bookmarks'
+          );
+        });
+      });
+    });
+
+    describe('Footer Mobile Behavior', () => {
+      it('calls onClose when footer button clicked on mobile', async () => {
+        mockUseMediaQuery.mockReturnValue(true); // Mobile
+        const mockOnClose = jest.fn();
+
+        render(
+          <ConceptList
+            chapterId="chapter-1"
+            isOpen={true}
+            onClose={mockOnClose}
+          />
+        );
+
+        await waitFor(() => {
+          const allChaptersButton = screen.getByRole('link', {
+            name: /all chapters/i,
+          });
+          fireEvent.click(allChaptersButton);
+        });
+
+        expect(mockOnClose).toHaveBeenCalled();
+      });
+
+      it('calls onClose when Progress button clicked on mobile', async () => {
+        mockUseMediaQuery.mockReturnValue(true); // Mobile
+        const mockOnClose = jest.fn();
+
+        render(
+          <ConceptList
+            chapterId="chapter-1"
+            isOpen={true}
+            onClose={mockOnClose}
+          />
+        );
+
+        await waitFor(() => {
+          const progressButton = screen.getByRole('link', {
+            name: /progress/i,
+          });
+          fireEvent.click(progressButton);
+        });
+
+        expect(mockOnClose).toHaveBeenCalled();
+      });
+
+      it('calls onClose when Bookmarks button clicked on mobile', async () => {
+        mockUseMediaQuery.mockReturnValue(true); // Mobile
+        const mockOnClose = jest.fn();
+
+        render(
+          <ConceptList
+            chapterId="chapter-1"
+            isOpen={true}
+            onClose={mockOnClose}
+          />
+        );
+
+        await waitFor(() => {
+          const bookmarksButton = screen.getByRole('link', {
+            name: /bookmarks/i,
+          });
+          fireEvent.click(bookmarksButton);
+        });
+
+        expect(mockOnClose).toHaveBeenCalled();
+      });
+
+      it('does not call onClose on desktop footer navigation', async () => {
+        mockUseMediaQuery.mockReturnValue(false); // Desktop
+        const mockOnClose = jest.fn();
+
+        render(
+          <ConceptList
+            chapterId="chapter-1"
+            isOpen={true}
+            onClose={mockOnClose}
+          />
+        );
+
+        await waitFor(() => {
+          const allChaptersButton = screen.getByRole('link', {
+            name: /all chapters/i,
+          });
+          fireEvent.click(allChaptersButton);
+        });
+
+        expect(mockOnClose).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('Footer Accessibility', () => {
+      it('has proper ARIA labels on all footer buttons', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          expect(
+            screen.getByRole('link', { name: /go to all chapters/i })
+          ).toBeInTheDocument();
+          expect(
+            screen.getByRole('link', { name: /go to progress dashboard/i })
+          ).toBeInTheDocument();
+          expect(
+            screen.getByRole('link', { name: /go to bookmarks/i })
+          ).toBeInTheDocument();
+        });
+      });
+
+      it('footer buttons are keyboard accessible', async () => {
+        render(<ConceptList chapterId="chapter-1" />);
+
+        await waitFor(() => {
+          const allChaptersButton = screen.getByRole('link', {
+            name: /all chapters/i,
+          });
+          const progressButton = screen.getByRole('link', {
+            name: /progress/i,
+          });
+          const bookmarksButton = screen.getByRole('link', {
+            name: /bookmarks/i,
+          });
+
+          // All buttons should be focusable (tabIndex not -1)
+          expect(allChaptersButton).not.toHaveAttribute('tabindex', '-1');
+          expect(progressButton).not.toHaveAttribute('tabindex', '-1');
+          expect(bookmarksButton).not.toHaveAttribute('tabindex', '-1');
+        });
+      });
+    });
+
+    describe('Footer with No Chapter Context', () => {
+      it('displays footer-only view with message when no chapterId', () => {
+        render(<ConceptList />);
+
+        expect(
+          screen.getByText('Select a chapter to view concepts')
+        ).toBeInTheDocument();
+      });
+
+      it('footer buttons work in no-chapter-context mode', () => {
+        render(<ConceptList />);
+
+        const allChaptersButton = screen.getByRole('link', {
+          name: /all chapters/i,
+        });
+        const progressButton = screen.getByRole('link', {
+          name: /progress/i,
+        });
+        const bookmarksButton = screen.getByRole('link', {
+          name: /bookmarks/i,
+        });
+
+        expect(allChaptersButton).toHaveAttribute('href', '/chapters');
+        expect(progressButton).toHaveAttribute('href', '/dashboard/progress');
+        expect(bookmarksButton).toHaveAttribute('href', '/dashboard/bookmarks');
+      });
+
+      it('calls onClose on mobile in footer-only mode', () => {
+        mockUseMediaQuery.mockReturnValue(true); // Mobile
+        const mockOnClose = jest.fn();
+
+        render(<ConceptList isOpen={true} onClose={mockOnClose} />);
+
+        const allChaptersButton = screen.getByRole('link', {
+          name: /all chapters/i,
+        });
+        fireEvent.click(allChaptersButton);
+
+        expect(mockOnClose).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('Viewport Breakpoint Tests', () => {
+    it('behaves as desktop at 1920px viewport', () => {
+      mockUseMediaQuery.mockReturnValue(false); // Above 960px
+
+      const { container } = render(<ConceptList chapterId="chapter-1" />);
+
+      const drawer = container.querySelector('.MuiDrawer-root');
+      expect(drawer).toHaveClass('MuiDrawer-docked');
+    });
+
+    it('behaves as desktop at 1024px viewport', () => {
+      mockUseMediaQuery.mockReturnValue(false); // Above 960px
+
+      const { container } = render(<ConceptList chapterId="chapter-1" />);
+
+      const drawer = container.querySelector('.MuiDrawer-root');
+      expect(drawer).toHaveClass('MuiDrawer-docked');
+    });
+
+    it('behaves as desktop at 960px viewport (breakpoint)', () => {
+      mockUseMediaQuery.mockReturnValue(false); // At breakpoint
+
+      const { container } = render(<ConceptList chapterId="chapter-1" />);
+
+      const drawer = container.querySelector('.MuiDrawer-root');
+      expect(drawer).toHaveClass('MuiDrawer-docked');
+    });
+
+    it('behaves as mobile at 768px viewport', () => {
+      mockUseMediaQuery.mockReturnValue(true); // Below 960px
+
+      const { container } = render(
+        <ConceptList chapterId="chapter-1" isOpen={true} />
+      );
+
+      const drawer = container.querySelector('.MuiDrawer-root');
+      expect(drawer).toHaveClass('MuiDrawer-modal');
+    });
+  });
 });
