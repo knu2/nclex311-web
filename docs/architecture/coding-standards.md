@@ -833,59 +833,31 @@ export async function getConcept(slug: string): Promise<Concept | null> {
 }
 ```
 
-#### Query Optimization
+#### Service Layer Pattern
 
-- **REQUIRED:** Use select() to specify needed columns
-- **REQUIRED:** Proper indexing for frequently queried columns
-- **REQUIRED:** Limit results with pagination for large datasets
+- **REQUIRED:** Use service classes from `@/lib/db/services` for all database operations
+- **REQUIRED:** Extend `BaseService` for common CRUD operations
+- **REQUIRED:** Handle errors through `ServiceError` class
+- **AVOID:** Direct database queries in API routes or components
 
 ```typescript
-// ✅ Good: Optimized queries
-export async function getConceptsWithQuestions(chapterId: string) {
-  const { data, error } = await supabase
-    .from('concepts')
-    .select(`
-      id,
-      title,
-      slug,
-      questions (
-        id,
-        text,
-        type
-      )
-    `)
-    .eq('chapter_id', chapterId)
-    .order('concept_number');
+// ✅ Good: Using service layer
+import { UserService } from '@/lib/db/services';
 
-  if (error) throw error;
-  return data;
-}
+const userService = new UserService();
+const user = await userService.findByEmail('user@example.com');
 
-// ✅ Good: Paginated results
-export async function getConceptsPaginated(
-  page: number = 1,
-  limit: number = 20
-) {
-  const offset = (page - 1) * limit;
-  
-  const { data, error, count } = await supabase
-    .from('concepts')
-    .select('*', { count: 'exact' })
-    .range(offset, offset + limit - 1);
-
-  if (error) throw error;
-  
-  return {
-    data,
-    pagination: {
-      page,
-      limit,
-      total: count || 0,
-      pages: Math.ceil((count || 0) / limit)
-    }
-  };
-}
+// ❌ Bad: Direct database access
+import { db } from '@/lib/db/connection';
+const user = await db.select().from(users).where(eq(users.email, 'user@example.com'));
 ```
+
+#### Query Best Practices
+
+- Use `eq()`, `and()`, `or()` from `drizzle-orm` for where clauses
+- Use `BaseService.findWithPagination()` for paginated results
+- Reference actual schema: `apps/web/src/lib/db/schema/`
+- See Story 1.4.1 for complete Drizzle migration patterns
 
 ## Git Workflow
 
@@ -1321,11 +1293,12 @@ export async function createConcept(input: unknown) {
 **Project Version:** NextAuth v5.0.0-beta.29 (Auth.js)
 
 - **REQUIRED:** Explicitly specify cookie name when using `getToken()` in middleware
+- **REQUIRED:** Configure cookie name in NextAuth configuration (auth-utils.ts)
 - **REQUIRED:** Use correct cookie name format for NextAuth v5
 - **REQUIRED:** Handle both development and production cookie prefixes
 - **REQUIRED:** Understand NextAuth v5 breaking changes from v4
 
-**Critical:** NextAuth v5 changed cookie naming from `next-auth.session-token` to `authjs.session-token`. Middleware using `getToken()` must specify the cookie name explicitly to avoid infinite redirect loops.
+**Critical:** NextAuth v5 changed cookie naming from `next-auth.session-token` to `authjs.session-token`. Both the middleware AND the NextAuth configuration must specify the cookie name explicitly to avoid infinite redirect loops. Missing either configuration will cause `getCurrentSession()` or `getToken()` to fail.
 
 ```typescript
 // ✅ Good: Correct NextAuth v5 middleware configuration
@@ -1371,6 +1344,55 @@ export async function middleware(request: NextRequest) {
   });
   // token will always be null, causing redirect loops!
 }
+```
+
+```typescript
+// ✅ Good: NextAuth configuration with cookie name (auth-utils.ts)
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
+const { auth } = NextAuth({
+  providers: [Credentials({ /* ... */ })],
+  session: {
+    strategy: 'jwt',
+  },
+  // CRITICAL: Configure cookie name for NextAuth v5
+  cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV === 'production'
+        ? '__Secure-authjs.session-token'
+        : 'authjs.session-token',
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
+  },
+  callbacks: {
+    async session({ session, token }) {
+      if (token && session.user && token.sub) {
+        (session.user as { id?: string }).id = token.sub;
+      }
+      return session;
+    },
+  },
+});
+
+export async function getCurrentSession() {
+  return await auth(); // Will now find the session cookie
+}
+```
+
+```typescript
+// ❌ Bad: Missing cookies configuration in NextAuth setup
+const { auth } = NextAuth({
+  providers: [Credentials({ /* ... */ })],
+  session: { strategy: 'jwt' },
+  // Missing cookies config - auth() will look for wrong cookie name
+  // getCurrentSession() will return null even when user is logged in!
+});
 ```
 
 #### RSC Request Detection
@@ -1460,7 +1482,7 @@ const SidebarFooter = () => {
 **Issue 1: Infinite Redirect Loops**
 - **Cause:** Middleware can't find session cookie (wrong cookie name in NextAuth v5)
 - **Symptom:** Page cycles between "Loading..." and "Redirecting..." indefinitely
-- **Fix:** Specify `cookieName` parameter in `getToken()` call
+- **Fix:** Specify `cookieName` parameter in `getToken()` call in middleware
 
 **Issue 2: "Redirecting..." on Authenticated Navigation**
 - **Cause:** Middleware intercepts RSC prefetch requests and treats them as unauthenticated
@@ -1471,6 +1493,13 @@ const SidebarFooter = () => {
 - **Cause:** `useSession()` uses different session detection than `getToken()`
 - **Symptom:** Login page detects authentication but middleware doesn't
 - **Fix:** Ensure middleware uses correct NextAuth v5 cookie name
+
+**Issue 4: Server Pages Redirect to Login Despite Valid Session (CRITICAL)**
+- **Cause:** NextAuth configuration in auth-utils.ts missing `cookies` configuration
+- **Symptom:** Middleware allows navigation, but server page's `getCurrentSession()` returns null, causing redirect back to login → infinite loop
+- **Fix:** Add `cookies` configuration block to NextAuth setup with correct cookie names
+- **Diagnosis:** If middleware works but server-side session checks fail, this is the issue
+- **Reference:** Story 1.5.1.1 (sidebar navigation) - this was the critical missing piece
 
 #### Testing Authentication Flows
 
