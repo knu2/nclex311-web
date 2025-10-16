@@ -10,6 +10,7 @@
 import React from 'react';
 import { redirect } from 'next/navigation';
 import { getCurrentSession } from '@/lib/auth-utils';
+import { MainLayout } from '@/components/Layout/MainLayout';
 import { ProgressDashboard } from '@/components/Dashboard/ProgressDashboard';
 import { ProgressService } from '@/lib/db/services';
 import type { UserProgress } from '@/types/progress';
@@ -50,59 +51,72 @@ export default async function ProgressDashboardPage() {
   // Fetch progress data
   const progressData = await fetchUserProgress(userId);
 
+  // Transform session user to match MainLayout's expected interface
+  const user = {
+    id: userId,
+    name: session.user.name || session.user.email || 'User',
+    email: session.user.email || '',
+    avatar: (session.user as { image?: string }).image,
+    is_premium: false, // TODO: Get from database in future story
+  };
+
   // Handle error state
   if (!progressData) {
     return (
-      <Container maxWidth="md" sx={{ py: 8 }}>
-        <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h4" gutterBottom color="error">
-            Unable to Load Progress
-          </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-            We encountered an error while loading your progress data. Please try
-            again later.
-          </Typography>
-          <Button
-            variant="contained"
-            component={Link}
-            href="/dashboard"
-            startIcon={<ArrowBackIcon />}
-            sx={{
-              bgcolor: '#2c5aa0',
-              '&:hover': {
-                bgcolor: '#234a87',
-              },
-            }}
-          >
-            Back to Dashboard
-          </Button>
-        </Box>
-      </Container>
+      <MainLayout user={user}>
+        <Container maxWidth="md" sx={{ py: 8 }}>
+          <Box sx={{ textAlign: 'center' }}>
+            <Typography variant="h4" gutterBottom color="error">
+              Unable to Load Progress
+            </Typography>
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              We encountered an error while loading your progress data. Please
+              try again later.
+            </Typography>
+            <Button
+              variant="contained"
+              component={Link}
+              href="/chapters"
+              startIcon={<ArrowBackIcon />}
+              sx={{
+                bgcolor: '#2c5aa0',
+                '&:hover': {
+                  bgcolor: '#234a87',
+                },
+              }}
+            >
+              Back to Chapters
+            </Button>
+          </Box>
+        </Container>
+      </MainLayout>
     );
   }
 
   return (
-    <Box>
-      {/* Back Navigation */}
-      <Container maxWidth="lg" sx={{ pt: 2, pb: 1 }}>
-        <Button
-          component={Link}
-          href="/chapters"
-          startIcon={<ArrowBackIcon />}
-          sx={{
-            color: '#2c5aa0',
-            '&:hover': {
-              bgcolor: 'rgba(44, 90, 160, 0.04)',
-            },
-          }}
-        >
-          Back to Chapters
-        </Button>
-      </Container>
+    <MainLayout user={user}>
+      <Box>
+        {/* Back Navigation */}
+        <Container maxWidth="lg" sx={{ pt: 2, pb: 1 }}>
+          <Button
+            component={Link}
+            href="/chapters"
+            startIcon={<ArrowBackIcon />}
+            sx={{
+              color: '#2c5aa0',
+              '&:hover': {
+                bgcolor: 'rgba(44, 90, 160, 0.04)',
+              },
+            }}
+          >
+            Back to Chapters
+          </Button>
+        </Container>
 
-      {/* Progress Dashboard Component */}
-      <ProgressDashboard progress={progressData} />
-    </Box>
+        {/* Progress Dashboard Component */}
+        <ProgressDashboard progress={progressData} />
+      </Box>
+    </MainLayout>
   );
 }
 

@@ -180,3 +180,28 @@ Before marking a story complete, verify:
 
 **Total Effort Estimate:** 6-8 weeks  
 **Priority Sequence:** P0 → P1 → P2
+
+---
+
+## Course Correction - Implementation Gaps Identified
+
+**Date:** 2025-10-16  
+**Identified By:** Sally (UX Expert)  
+
+### Issues Found
+1. **Story 1.5.1:** ConceptList component created but not integrated into main layout
+2. **Story 1.5.3:** Action buttons placed at top instead of bottom/sidebar
+
+### Scope Clarification
+- **Story 1.5.10:** Marked obsolete - top navigation "Upgrade to Premium" button is sufficient, no sidebar premium upsell needed
+
+### Corrective Stories Created
+- **Story 1.5.1.1:** Sidebar Layout Integration (P0)
+- **Story 1.5.3.1:** Concept Page Button Reorganization (P0)
+
+### Status Updates
+- Story 1.5.1: Done → Needs Integration
+- Story 1.5.3: Ready for Review → Needs Corrections
+- Story 1.5.10: Draft → Obsolete
+
+See `docs/SPRINT-CHANGE-PROPOSAL-UI-UX-CORRECTIONS.md` for full analysis.

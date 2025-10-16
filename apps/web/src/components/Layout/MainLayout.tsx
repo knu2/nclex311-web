@@ -338,15 +338,13 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
       </AppBar>
 
       {/* Sidebar with ConceptList */}
-      {chapterId && (
-        <ConceptList
-          chapterId={chapterId}
-          currentConceptSlug={currentConceptSlug}
-          isMobile={isMobile}
-          isOpen={drawerState.isOpen}
-          onClose={closeDrawer}
-        />
-      )}
+      <ConceptList
+        chapterId={chapterId}
+        currentConceptSlug={currentConceptSlug}
+        isMobile={isMobile}
+        isOpen={drawerState.isOpen}
+        onClose={closeDrawer}
+      />
 
       {/* Main Content Area */}
       <Box

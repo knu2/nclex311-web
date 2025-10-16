@@ -19,13 +19,18 @@ import {
   Box,
   useMediaQuery,
   LinearProgress,
+  Button,
+  Stack,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LockIcon from '@mui/icons-material/Lock';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 // TypeScript Interfaces
 export interface ConceptListProps {
-  chapterId: string;
+  chapterId?: string;
   currentConceptSlug?: string;
   onConceptClick?: (slug: string) => void;
   isMobile?: boolean;
@@ -56,6 +61,99 @@ interface ChapterHeaderProps {
 
 const DRAWER_WIDTH = 280;
 const MOBILE_BREAKPOINT = 960;
+
+/**
+ * Sidebar Footer Component
+ * Contains quick-access navigation buttons
+ */
+interface SidebarFooterProps {
+  onNavigate?: (path: string) => void;
+}
+
+const SidebarFooter: React.FC<SidebarFooterProps> = ({ onNavigate }) => {
+  const router = useRouter();
+
+  const handleNavigation = (path: string): void => {
+    if (onNavigate) {
+      onNavigate(path);
+    } else {
+      router.push(path);
+    }
+  };
+
+  return (
+    <Box
+      sx={{
+        p: 2,
+        borderTop: '1px solid #e1e7f0',
+        backgroundColor: '#fff',
+      }}
+    >
+      <Stack spacing={1}>
+        <Button
+          variant="outlined"
+          fullWidth
+          startIcon={<MenuBookIcon />}
+          onClick={() => handleNavigation('/chapters')}
+          sx={{
+            justifyContent: 'flex-start',
+            textTransform: 'none',
+            color: '#2c3e50',
+            borderColor: '#e1e7f0',
+            fontWeight: 500,
+            '&:hover': {
+              backgroundColor: '#f5f7fa',
+              borderColor: '#2c5aa0',
+            },
+          }}
+          aria-label="Go to all chapters"
+        >
+          📚 All Chapters
+        </Button>
+        <Button
+          variant="outlined"
+          fullWidth
+          startIcon={<BarChartIcon />}
+          onClick={() => handleNavigation('/dashboard/progress')}
+          sx={{
+            justifyContent: 'flex-start',
+            textTransform: 'none',
+            color: '#2c3e50',
+            borderColor: '#e1e7f0',
+            fontWeight: 500,
+            '&:hover': {
+              backgroundColor: '#f5f7fa',
+              borderColor: '#2c5aa0',
+            },
+          }}
+          aria-label="Go to progress dashboard"
+        >
+          📊 Progress
+        </Button>
+        <Button
+          variant="outlined"
+          fullWidth
+          startIcon={<BookmarkIcon />}
+          onClick={() => handleNavigation('/dashboard/bookmarks')}
+          sx={{
+            justifyContent: 'flex-start',
+            textTransform: 'none',
+            color: '#2c3e50',
+            borderColor: '#e1e7f0',
+            fontWeight: 500,
+            '&:hover': {
+              backgroundColor: '#f5f7fa',
+              borderColor: '#2c5aa0',
+            },
+          }}
+          aria-label="Go to bookmarks"
+        >
+          🔖 Bookmarks
+        </Button>
+      </Stack>
+    </Box>
+  );
+};
 
 /**
  * Chapter Header Component
@@ -247,6 +345,14 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
       return pathname.includes(conceptSlug);
     };
 
+    // Handle footer navigation (close drawer on mobile)
+    const handleFooterNavigate = (path: string): void => {
+      router.push(path);
+      if (isMobile && onClose) {
+        onClose();
+      }
+    };
+
     // Drawer content
     const drawerContent = (
       <Box
@@ -260,8 +366,32 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
         role="navigation"
         aria-label="Concept navigation"
       >
+        {/* No Chapter ID - Show Footer Only */}
+        {!chapterId && (
+          <>
+            <Box
+              sx={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: 3,
+              }}
+            >
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ textAlign: 'center' }}
+              >
+                Select a chapter to view concepts
+              </Typography>
+            </Box>
+            <SidebarFooter onNavigate={handleFooterNavigate} />
+          </>
+        )}
+
         {/* Loading State */}
-        {loading && (
+        {chapterId && loading && (
           <Box sx={{ p: 2 }}>
             <Typography variant="body2" color="text.secondary">
               Loading...
@@ -270,7 +400,7 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
         )}
 
         {/* Error State */}
-        {error && (
+        {chapterId && error && (
           <Box sx={{ p: 2 }}>
             <Typography variant="body2" color="error">
               {error}
@@ -279,7 +409,7 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
         )}
 
         {/* Content */}
-        {chapterData && !loading && !error && (
+        {chapterId && chapterData && !loading && !error && (
           <>
             {/* Chapter Header */}
             <ChapterHeader
@@ -380,6 +510,9 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
                 );
               })}
             </List>
+
+            {/* Sidebar Footer */}
+            <SidebarFooter onNavigate={handleFooterNavigate} />
           </>
         )}
       </Box>

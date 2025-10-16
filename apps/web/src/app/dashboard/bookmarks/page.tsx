@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { Box, Container } from '@mui/material';
 import { getCurrentSession } from '@/lib/auth-utils';
+import { MainLayout } from '@/components/Layout/MainLayout';
 import BookmarksView from '@/components/Dashboard/BookmarksView';
 
 /**
@@ -24,17 +25,28 @@ export default async function BookmarksPage() {
     redirect('/login?callbackUrl=/dashboard/bookmarks');
   }
 
+  // Transform session user to match MainLayout's expected interface
+  const user = {
+    id: userId,
+    name: session.user.name || session.user.email || 'User',
+    email: session.user.email || '',
+    avatar: (session.user as { image?: string }).image,
+    is_premium: false, // TODO: Get from database in future story
+  };
+
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          minHeight: '80vh',
-          py: { xs: 3, sm: 4 },
-        }}
-      >
-        <BookmarksView userId={userId} />
-      </Box>
-    </Container>
+    <MainLayout user={user}>
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            minHeight: '80vh',
+            py: { xs: 3, sm: 4 },
+          }}
+        >
+          <BookmarksView userId={userId} />
+        </Box>
+      </Container>
+    </MainLayout>
   );
 }
 
