@@ -620,8 +620,9 @@ describe('Content Import Integration', () => {
 
 ### Schema Design
 
-**Database:** PostgreSQL 16.x via Supabase
-**Client:** Supabase JS Client v2.57.x
+**Database:** PostgreSQL 16.x via Supabase (managed hosting)
+**ORM:** Drizzle ORM v0.44.5 (primary database access layer)
+**Driver:** postgres (pg) v8.x
 **Migration Strategy:** Hybrid manual/automated with validation scripts
 
 #### Migration Management System
@@ -764,220 +765,70 @@ CREATE TABLE questions (
 
 ### Database Client Usage
 
-#### Database Client Usage
+#### Drizzle ORM Schema Definitions
 
-- **REQUIRED:** Use typed Supabase client with Database interface
-- **REQUIRED:** Proper error handling for all database operations
-- **REQUIRED:** Connection validation and retry logic
-- **REQUIRED:** Centralized database client in `src/lib/database.ts`
-- **REQUIRED:** Explicit table schema definitions for type safety
+- **REQUIRED:** Use Drizzle ORM schema definitions in `src/lib/db/schema/`
+- **REQUIRED:** Proper error handling through service layer
+- **REQUIRED:** Connection management via `src/lib/db/connection.ts`
+- **REQUIRED:** Type inference from schema using `$inferSelect` and `$inferInsert`
+- **REQUIRED:** Service layer abstraction for all database operations
 
 ```typescript
-// ✅ Good: Typed database client with full schema
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+// ✅ Good: Drizzle schema definition with type inference
+import { pgTable, uuid, varchar, timestamp, integer, text, pgEnum } from 'drizzle-orm/pg-core';
 
-export interface Database {
-  public: {
-    Tables: {
-      chapters: {
-        Row: {
-          id: string;
-          title: string;
-          slug: string;
-          description: string | null;
-          order_index: number;
-          created_at: string;
-          updated_at: string;
-          metadata: Record<string, unknown> | null;
-        };
-        Insert: {
-          id?: string;
-          title: string;
-          slug: string;
-          description?: string | null;
-          order_index: number;
-          metadata?: Record<string, unknown> | null;
-        };
-        Update: {
-          title?: string;
-          slug?: string;
-          description?: string | null;
-          order_index?: number;
-          metadata?: Record<string, unknown> | null;
-        };
-      };
-      concepts: {
-        Row: {
-          id: string;
-          chapter_id: string;
-          title: string;
-          slug: string;
-          description: string | null;
-          order_index: number;
-          created_at: string;
-          updated_at: string;
-          metadata: Record<string, unknown> | null;
-        };
-        Insert: {
-          id?: string;
-          chapter_id: string;
-          title: string;
-          slug: string;
-          description?: string | null;
-          order_index: number;
-          metadata?: Record<string, unknown> | null;
-        };
-        Update: {
-          chapter_id?: string;
-          title?: string;
-          slug?: string;
-          description?: string | null;
-          order_index?: number;
-          metadata?: Record<string, unknown> | null;
-        };
-      };
-      questions: {
-        Row: {
-          id: string;
-          concept_id: string;
-          question_text: string;
-          question_type: string;
-          correct_answer: string | null;
-          explanation: string | null;
-          difficulty_level: string | null;
-          order_index: number;
-          created_at: string;
-          updated_at: string;
-          metadata: Record<string, unknown> | null;
-        };
-        Insert: {
-          id?: string;
-          concept_id: string;
-          question_text: string;
-          question_type: string;
-          correct_answer?: string | null;
-          explanation?: string | null;
-          difficulty_level?: string | null;
-          order_index: number;
-          metadata?: Record<string, unknown> | null;
-        };
-        Update: {
-          concept_id?: string;
-          question_text?: string;
-          question_type?: string;
-          correct_answer?: string | null;
-          explanation?: string | null;
-          difficulty_level?: string | null;
-          order_index?: number;
-          metadata?: Record<string, unknown> | null;
-        };
-      };
-      options: {
-        Row: {
-          id: string;
-          question_id: string;
-          text: string;
-          is_correct: boolean;
-          order_index: number;
-          created_at: string;
-          updated_at: string;
-          metadata: Record<string, unknown> | null;
-        };
-        Insert: {
-          id?: string;
-          question_id: string;
-          text: string;
-          is_correct: boolean;
-          order_index: number;
-          metadata?: Record<string, unknown> | null;
-        };
-        Update: {
-          question_id?: string;
-          text?: string;
-          is_correct?: boolean;
-          order_index?: number;
-          metadata?: Record<string, unknown> | null;
-        };
-      };
-      images: {
-        Row: {
-          id: string;
-          filename: string;
-          blob_url: string;
-          alt_text: string;
-          width: number;
-          height: number;
-          file_size: number;
-          extraction_confidence: string;
-          medical_content: string;
-          concept_id: string | null;
-          question_id: string | null;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          filename: string;
-          blob_url: string;
-          alt_text: string;
-          width: number;
-          height: number;
-          file_size: number;
-          extraction_confidence: string;
-          medical_content: string;
-          concept_id?: string | null;
-          question_id?: string | null;
-        };
-        Update: {
-          filename?: string;
-          blob_url?: string;
-          alt_text?: string;
-          width?: number;
-          height?: number;
-          file_size?: number;
-          extraction_confidence?: string;
-          medical_content?: string;
-          concept_id?: string | null;
-          question_id?: string | null;
-        };
-      };
-    };
-  };
-}
+// Define enum types
+export const subscriptionEnum = pgEnum('subscription_tier', ['FREE', 'PREMIUM']);
 
-// Centralized client creation with environment validation
-function createSupabaseClient(): SupabaseClient<Database> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Define Users table schema
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  passwordHash: varchar('password_hash', { length: 255 }).notNull(),
+  subscription: subscriptionEnum('subscription').default('FREE').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
 
-  if (!supabaseUrl || !supabaseKey) {
-    throw new Error('Missing Supabase environment variables');
-  }
+// Define Concepts table schema
+export const concepts = pgTable('concepts', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  chapterId: uuid('chapter_id').notNull().references(() => chapters.id, { onDelete: 'cascade' }),
+  title: varchar('title', { length: 255 }).notNull(),
+  slug: varchar('slug', { length: 255 }).notNull().unique(),
+  description: text('description'),
+  orderIndex: integer('order_index').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
 
-  return createClient<Database>(supabaseUrl, supabaseKey);
-}
+// Infer types from schema - Drizzle provides automatic type inference
+export type User = typeof users.$inferSelect;    // For reading
+export type NewUser = typeof users.$inferInsert; // For inserting
+export type UserUpdate = Partial<Omit<User, 'id' | 'createdAt'>>; // For updating
 
-export const supabase = createSupabaseClient();
+export type Concept = typeof concepts.$inferSelect;
+export type NewConcept = typeof concepts.$inferInsert;
 
-// ✅ Good: Proper error handling
+// Connection management
+import { getConnection } from '@/lib/db/connection';
+export const db = getConnection();
+
+// ✅ Good: Query using Drizzle ORM with proper error handling
+import { eq } from 'drizzle-orm';
+
 export async function getConcept(slug: string): Promise<Concept | null> {
   try {
-    const { data, error } = await supabase
-      .from('concepts')
-      .select('*')
-      .eq('slug', slug)
-      .single();
+    const results = await db
+      .select()
+      .from(concepts)
+      .where(eq(concepts.slug, slug))
+      .limit(1);
 
-    if (error) {
-      if (error.code === 'PGRST116') {
-        return null; // Not found
-      }
-      throw new Error(`Database error: ${error.message}`);
-    }
-
-    return data;
-  } catch (err) {
-    console.error('Failed to fetch concept:', err);
-    throw err;
+    return results[0] || null;
+  } catch (error) {
+    console.error('Failed to fetch concept:', error);
+    throw new Error(`Database error: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 ```
