@@ -242,11 +242,12 @@ export const InlineQuiz: React.FC<InlineQuizProps> = memo(
     }
 
     return (
-      <Box sx={{ maxWidth: 800, mx: 'auto', p: { xs: 2, sm: 3 } }}>
+      <Box sx={{ maxWidth: 900, mx: 'auto', p: { xs: 2, sm: 3 } }}>
+        {/* ANSWER THIS Section - Story 1.5.12: Increased max-width to 900px */}
         <Paper
           elevation={2}
           sx={{
-            p: { xs: 2, sm: 3 },
+            p: { xs: 2, sm: 2.5, md: 3 },
             background: 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)',
             borderLeft: '4px solid #2c5aa0',
             borderRadius: 2,

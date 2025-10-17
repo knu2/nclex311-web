@@ -80,18 +80,23 @@ export function ChapterGrid({ isPremiumUser = false }: ChapterGridProps) {
   if (loading) {
     return (
       <Box sx={{ width: '100%', py: 4 }}>
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '1.5rem',
+          }}
+        >
           {[1, 2, 3, 4, 5, 6, 7, 8].map(index => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-              <Skeleton
-                variant="rectangular"
-                height={200}
-                sx={{ borderRadius: 1 }}
-                aria-label="Loading chapter card"
-              />
-            </Grid>
+            <Skeleton
+              key={index}
+              variant="rectangular"
+              height={200}
+              sx={{ borderRadius: 1 }}
+              aria-label="Loading chapter card"
+            />
           ))}
-        </Grid>
+        </Box>
       </Box>
     );
   }
@@ -135,27 +140,26 @@ export function ChapterGrid({ isPremiumUser = false }: ChapterGridProps) {
 
   return (
     <Box sx={{ width: '100%', py: 4 }}>
-      {/* Chapter Grid */}
-      <Grid
-        container
-        spacing={3}
+      {/* Chapter Grid - Story 1.5.12: Updated to 350px min-width with 1.5rem gap */}
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: '1.5rem',
+        }}
         role="list"
         aria-label="Chapter grid with 8 chapters"
       >
         {chapters.map(chapter => (
-          <Grid
-            size={{ xs: 12, sm: 6, md: 4 }}
-            key={chapter.id}
-            role="listitem"
-          >
+          <Box key={chapter.id} role="listitem">
             <ChapterCard
               chapter={chapter}
               isPremiumUser={isPremiumUser}
               onUpgradeClick={handleUpgradeClick}
             />
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
 
       {/* Upgrade Dialog */}
       <Dialog

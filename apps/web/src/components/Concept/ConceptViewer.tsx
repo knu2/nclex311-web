@@ -212,12 +212,12 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
     };
 
     return (
-      <Box sx={{ maxWidth: 800, mx: 'auto', p: { xs: 2, sm: 3 } }}>
-        {/* READ THIS Section */}
+      <Box sx={{ maxWidth: 900, mx: 'auto', p: { xs: 2, sm: 3 } }}>
+        {/* READ THIS Section - Story 1.5.12: Increased max-width to 900px */}
         <Paper
           elevation={2}
           sx={{
-            p: { xs: 2, sm: 3 },
+            p: { xs: 2, sm: 2.5, md: 3 },
             mb: 3,
             background: 'linear-gradient(135deg, #fff8f3 0%, #fef7f0 100%)',
             borderLeft: '4px solid #ff6b35',

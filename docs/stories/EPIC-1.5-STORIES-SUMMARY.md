@@ -205,3 +205,45 @@ Before marking a story complete, verify:
 - Story 1.5.10: Draft → Obsolete
 
 See `docs/SPRINT-CHANGE-PROPOSAL-UI-UX-CORRECTIONS.md` for full analysis.
+
+---
+
+## Course Correction #2 - UX Polish (2025-10-17)
+
+**Date:** 2025-10-17  
+**Identified By:** Sally (UX Expert)  
+**Trigger:** Post-deployment UX audit comparing deployed app to approved mockup
+
+### Issues Found
+1. **Chapter card widths too narrow** (248px vs 350px optimal)
+2. **Concept content width constrained** (800px vs 900px optimal)
+3. **Ray Gapuz Review System logo missing** from sidebar
+4. **Empty sidebar on /chapters page** (wasted space, no contextual value)
+5. **Misleading Edit button on bookmarks** (creates interaction confusion)
+
+**Root Cause:** Implementation details deviated from approved mockup during Epic 1.5 development. Specifications were correct; execution missed some visual polish details.
+
+### Corrective Stories Created
+
+- **Story 1.5.12:** Critical UX Polish - Card Widths & Brand Identity (P0)
+  - Status: ✅ Approved
+  - Effort: 2.5 hours
+  - Scope: Fix chapter/concept card widths + add company logo to sidebar
+  
+- **Story 1.5.13:** UX Enhancement - Sidebar & Bookmark Polish (P1)
+  - Status: ✅ Approved
+  - Effort: 2.5-3.5 hours
+  - Scope: Populate /chapters sidebar with progress stats + remove Edit button from bookmarks
+
+### Status Updates
+
+- **Epic 1.5:** Complete → **In Correction**
+- **Total additional effort:** 5-6 hours development + 2 hours QA
+- **Timeline impact:** +1-2 sprint cycles
+- **Next steps:** Assign to James (Dev) → Implement P0 first → QA validation → Deploy → P1 second
+
+### Reference Documents
+
+- UX audit report: `docs/UX-IMPROVEMENT-RECOMMENDATIONS.md`
+- Sprint change proposal: `docs/SPRINT-CHANGE-PROPOSAL-UX-POLISH-2025-10-17.md`
+- Approved mockup: `scratchpad/sample_chapter_demo_v23.html`

@@ -369,6 +369,48 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
         role="navigation"
         aria-label="Concept navigation"
       >
+        {/* Logo Header Section - Story 1.5.12: Ray Gapuz Review System branding */}
+        <Box
+          sx={{
+            p: 2,
+            borderBottom: '1px solid #e1e7f0',
+            backgroundColor: '#fff',
+            textAlign: 'center',
+          }}
+        >
+          <Box
+            component="img"
+            src="/images/logo_ragrs.svg"
+            alt="Ray Gapuz Review System Logo"
+            sx={{
+              height: '60px',
+              mx: 'auto',
+              mb: 2,
+              display: 'block',
+            }}
+          />
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: '1.3rem',
+              fontWeight: 600,
+              color: '#2c5aa0',
+              mb: 0.5,
+            }}
+          >
+            NCLEX 311
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: '0.85rem',
+              color: '#6c757d',
+            }}
+          >
+            Functional Nursing Concepts
+          </Typography>
+        </Box>
+
         {/* No Chapter ID - Show Footer Only */}
         {!chapterId && (
           <>
