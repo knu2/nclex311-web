@@ -27,6 +27,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { ProgressStatistics } from './ProgressStatistics';
 
 // TypeScript Interfaces
 export interface ConceptListProps {
@@ -36,6 +37,7 @@ export interface ConceptListProps {
   isMobile?: boolean;
   isOpen?: boolean;
   onClose?: () => void;
+  userId?: string;
 }
 
 export interface Chapter {
@@ -250,6 +252,7 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
     isMobile: isMobileProp,
     isOpen = false,
     onClose,
+    userId,
   }) => {
     const router = useRouter();
     const pathname = usePathname();
@@ -411,26 +414,34 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
           </Typography>
         </Box>
 
-        {/* No Chapter ID - Show Footer Only */}
+        {/* No Chapter ID - Show Progress Statistics or Empty Message */}
         {!chapterId && (
           <>
-            <Box
-              sx={{
-                flex: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                p: 3,
-              }}
-            >
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ textAlign: 'center' }}
+            {/* Show Progress Statistics when userId is available (on /chapters page) */}
+            {userId ? (
+              <>
+                <ProgressStatistics userId={userId} />
+                <Box sx={{ flex: 1 }} />
+              </>
+            ) : (
+              <Box
+                sx={{
+                  flex: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  p: 3,
+                }}
               >
-                Select a chapter to view concepts
-              </Typography>
-            </Box>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ textAlign: 'center' }}
+                >
+                  Select a chapter to view concepts
+                </Typography>
+              </Box>
+            )}
             <SidebarFooter onClose={handleFooterClose} />
           </>
         )}

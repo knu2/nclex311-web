@@ -19,7 +19,6 @@ import {
 } from '@mui/material';
 import {
   Visibility as VisibilityIcon,
-  Edit as EditIcon,
   Delete as DeleteIcon,
   Star as StarIcon,
 } from '@mui/icons-material';
@@ -31,7 +30,6 @@ import type { Bookmark } from './BookmarksView';
 export interface BookmarkCardProps {
   bookmark: Bookmark;
   onView: (slug: string) => void;
-  onEditNote: (conceptSlug: string, conceptTitle: string) => void;
   onRemove: (bookmarkId: string) => void;
 }
 
@@ -40,18 +38,18 @@ export interface BookmarkCardProps {
  *
  * Displays a single bookmark card with concept information and action buttons
  * Story 1.5.9: Bookmarks View
+ * Story 1.5.13: UX Enhancement - Removed Edit button for clarity
  *
  * Features:
  * - Concept title and chapter badge
  * - Note preview (first 100 characters with ellipsis)
- * - Quick action buttons (View, Edit Note, Remove)
+ * - Quick action buttons (View, Remove)
  * - Confirmation dialog for removal
  * - Accessible with ARIA labels
  */
 export default function BookmarkCard({
   bookmark,
   onView,
-  onEditNote,
   onRemove,
 }: BookmarkCardProps) {
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
@@ -59,11 +57,6 @@ export default function BookmarkCard({
   // Handle view button click
   const handleViewClick = () => {
     onView(bookmark.concept_slug);
-  };
-
-  // Handle edit note button click
-  const handleEditNoteClick = () => {
-    onEditNote(bookmark.concept_slug, bookmark.concept_title);
   };
 
   // Handle remove button click - open confirmation
@@ -216,7 +209,7 @@ export default function BookmarkCard({
         {/* Card Actions */}
         <CardActions
           sx={{
-            justifyContent: 'space-between',
+            justifyContent: 'flex-start',
             p: 2,
             borderTop: '1px solid #e1e7f0',
             gap: 1,
@@ -234,21 +227,6 @@ export default function BookmarkCard({
               }}
             >
               <VisibilityIcon />
-            </IconButton>
-          </Tooltip>
-
-          <Tooltip title="Edit note" arrow>
-            <IconButton
-              aria-label="edit note"
-              onClick={handleEditNoteClick}
-              sx={{
-                color: '#2c5aa0',
-                '&:hover': {
-                  bgcolor: 'rgba(44, 90, 160, 0.08)',
-                },
-              }}
-            >
-              <EditIcon />
             </IconButton>
           </Tooltip>
 

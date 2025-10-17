@@ -13,7 +13,6 @@ import {
 import { BookmarkBorder as BookmarkBorderIcon } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 import BookmarkCard from './BookmarkCard';
-import { NotesModal } from '../Notes/NotesModal';
 
 /**
  * Bookmark data interface
@@ -42,13 +41,14 @@ export interface BookmarksViewProps {
  *
  * Displays a responsive grid of bookmarked concepts
  * Story 1.5.9: Bookmarks View
+ * Story 1.5.13: UX Enhancement - Removed Edit Note integration for clarity
  *
  * Features:
  * - Responsive MUI Grid (3 columns desktop, 2 tablet, 1 mobile)
  * - Empty state for no bookmarks
  * - Loading and error states
- * - Integration with Notes Modal
  * - Remove bookmark with confirmation
+ * - Users can edit notes by navigating to concept page directly
  */
 export default function BookmarksView({ userId }: BookmarksViewProps) {
   const router = useRouter();
@@ -57,11 +57,6 @@ export default function BookmarksView({ userId }: BookmarksViewProps) {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Notes modal state
-  const [notesModalOpen, setNotesModalOpen] = useState(false);
-  const [selectedConceptSlug, setSelectedConceptSlug] = useState('');
-  const [selectedConceptTitle, setSelectedConceptTitle] = useState('');
 
   // Snackbar state
   const [snackbar, setSnackbar] = useState<{
@@ -98,13 +93,6 @@ export default function BookmarksView({ userId }: BookmarksViewProps) {
   // Handle view concept
   const handleView = (slug: string) => {
     router.push(`/concepts/${slug}`);
-  };
-
-  // Handle edit note
-  const handleEditNote = (conceptSlug: string, conceptTitle: string) => {
-    setSelectedConceptSlug(conceptSlug);
-    setSelectedConceptTitle(conceptTitle);
-    setNotesModalOpen(true);
   };
 
   // Handle remove bookmark
@@ -261,20 +249,11 @@ export default function BookmarksView({ userId }: BookmarksViewProps) {
             <BookmarkCard
               bookmark={bookmark}
               onView={handleView}
-              onEditNote={handleEditNote}
               onRemove={handleRemove}
             />
           </Grid>
         ))}
       </Grid>
-
-      {/* Notes Modal */}
-      <NotesModal
-        conceptSlug={selectedConceptSlug}
-        conceptTitle={selectedConceptTitle}
-        isOpen={notesModalOpen}
-        onClose={() => setNotesModalOpen(false)}
-      />
 
       {/* Snackbar for notifications */}
       <Snackbar

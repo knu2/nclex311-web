@@ -344,6 +344,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         isMobile={isMobile}
         isOpen={drawerState.isOpen}
         onClose={closeDrawer}
+        userId={user?.id}
       />
 
       {/* Main Content Area */}
