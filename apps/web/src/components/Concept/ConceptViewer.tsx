@@ -1,29 +1,15 @@
 'use client';
 
 import React, { memo, useState, useEffect } from 'react';
-import {
-  Box,
-  Paper,
-  Typography,
-  Chip,
-  Button,
-  CircularProgress,
-  Snackbar,
-  Alert,
-} from '@mui/material';
+import { Box, Paper, Typography, Chip, Snackbar, Alert } from '@mui/material';
 import {
   KeyboardArrowDown as ArrowDownIcon,
   Lightbulb as LightbulbIcon,
-  Notes as NotesIcon,
-  Forum as ForumIcon,
-  CheckCircle as CheckCircleIcon,
-  RadioButtonUnchecked as UncheckedIcon,
-  Bookmark as BookmarkIcon,
-  BookmarkBorder as BookmarkBorderIcon,
 } from '@mui/icons-material';
 import { useSession } from 'next-auth/react';
 import { MarkdownContent } from '../MarkdownContent';
 import { InlineQuiz } from '../Quiz/InlineQuiz';
+import { ConceptActions } from './ConceptActions';
 import { NotesModal } from '../Notes/NotesModal';
 import { CommentModal } from '../Discussion';
 import type { Question } from '../Quiz/types';
@@ -102,8 +88,6 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
 
     // Completion tracking states
     const [isCompleted, setIsCompleted] = useState(false);
-    const [isLoadingCompletion, setIsLoadingCompletion] = useState(true);
-    const [isTogglingCompletion, setIsTogglingCompletion] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
     const [snackbarSeverity, setSnackbarSeverity] = useState<
@@ -114,7 +98,6 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
     useEffect(() => {
       const fetchCompletionStatus = async () => {
         if (!session?.user) {
-          setIsLoadingCompletion(false);
           return;
         }
 
@@ -127,8 +110,6 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
           }
         } catch (error) {
           console.error('Error fetching completion status:', error);
-        } finally {
-          setIsLoadingCompletion(false);
         }
       };
 
@@ -167,53 +148,6 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
 
       fetchBookmarkStatus();
     }, [data.id, session]);
-
-    // Handle mark as complete toggle
-    const handleToggleCompletion = async () => {
-      if (!session?.user) {
-        setSnackbarMessage('Please log in to track your progress');
-        setSnackbarSeverity('error');
-        setSnackbarOpen(true);
-        return;
-      }
-
-      setIsTogglingCompletion(true);
-
-      try {
-        const method = isCompleted ? 'DELETE' : 'POST';
-        const response = await fetch(`/api/concepts/${data.slug}/complete`, {
-          method,
-        });
-
-        if (response.ok) {
-          setIsCompleted(!isCompleted);
-          setSnackbarMessage(
-            isCompleted
-              ? 'Concept unmarked as complete'
-              : 'Concept marked as complete! 🎉'
-          );
-          setSnackbarSeverity('success');
-          setSnackbarOpen(true);
-
-          // Dispatch custom event to notify sidebar of completion change
-          window.dispatchEvent(new Event('conceptCompletionChanged'));
-        } else {
-          const errorData = await response.json();
-          setSnackbarMessage(
-            errorData.message || 'Failed to update completion'
-          );
-          setSnackbarSeverity('error');
-          setSnackbarOpen(true);
-        }
-      } catch (error) {
-        console.error('Error toggling completion:', error);
-        setSnackbarMessage('An error occurred. Please try again.');
-        setSnackbarSeverity('error');
-        setSnackbarOpen(true);
-      } finally {
-        setIsTogglingCompletion(false);
-      }
-    };
 
     // Handle bookmark toggle
     const handleToggleBookmark = async () => {
@@ -288,8 +222,47 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
             background: 'linear-gradient(135deg, #fff8f3 0%, #fef7f0 100%)',
             borderLeft: '4px solid #ff6b35',
             borderRadius: 2,
+            position: 'relative',
           }}
         >
+          {/* Star Bookmark Icon - Absolute positioned top-right */}
+          <Box
+            onClick={handleToggleBookmark}
+            sx={{
+              position: 'absolute',
+              top: 16,
+              right: 16,
+              cursor:
+                isLoadingBookmark || isTogglingBookmark
+                  ? 'not-allowed'
+                  : 'pointer',
+              fontSize: '32px',
+              opacity: isLoadingBookmark || isTogglingBookmark ? 0.5 : 1,
+              transition: 'all 300ms ease-in-out',
+              minWidth: '44px',
+              minHeight: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              '&:hover': {
+                transform: 'scale(1.1)',
+                backgroundColor: 'rgba(255, 107, 53, 0.1)',
+              },
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+            aria-pressed={isBookmarked}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleToggleBookmark();
+              }
+            }}
+          >
+            {isBookmarked ? '⭐' : '☆'}
+          </Box>
           {/* Section Header */}
           <Box
             sx={{
@@ -318,100 +291,6 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
                 size="small"
                 sx={{ ml: 2 }}
               />
-            </Box>
-            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-              <Button
-                variant={isCompleted ? 'contained' : 'outlined'}
-                startIcon={
-                  isLoadingCompletion || isTogglingCompletion ? (
-                    <CircularProgress size={16} />
-                  ) : isCompleted ? (
-                    <CheckCircleIcon />
-                  ) : (
-                    <UncheckedIcon />
-                  )
-                }
-                onClick={handleToggleCompletion}
-                disabled={isLoadingCompletion || isTogglingCompletion}
-                sx={{
-                  borderColor: isCompleted ? '#00b894' : '#2c5aa0',
-                  color: isCompleted ? 'white' : '#2c5aa0',
-                  bgcolor: isCompleted ? '#00b894' : 'transparent',
-                  '&:hover': {
-                    borderColor: isCompleted ? '#00a080' : '#234a85',
-                    bgcolor: isCompleted
-                      ? '#00a080'
-                      : 'rgba(44, 90, 160, 0.04)',
-                  },
-                  '&.Mui-disabled': {
-                    borderColor: '#ccc',
-                    color: '#999',
-                  },
-                }}
-              >
-                {isCompleted ? 'Completed' : 'Mark Complete'}
-              </Button>
-              <Button
-                variant={isBookmarked ? 'contained' : 'outlined'}
-                startIcon={
-                  isLoadingBookmark || isTogglingBookmark ? (
-                    <CircularProgress size={16} />
-                  ) : isBookmarked ? (
-                    <BookmarkIcon />
-                  ) : (
-                    <BookmarkBorderIcon />
-                  )
-                }
-                onClick={handleToggleBookmark}
-                disabled={isLoadingBookmark || isTogglingBookmark}
-                sx={{
-                  borderColor: isBookmarked ? '#ff6b35' : '#2c5aa0',
-                  color: isBookmarked ? 'white' : '#2c5aa0',
-                  bgcolor: isBookmarked ? '#ff6b35' : 'transparent',
-                  '&:hover': {
-                    borderColor: isBookmarked ? '#e65e2f' : '#234a85',
-                    bgcolor: isBookmarked
-                      ? '#e65e2f'
-                      : 'rgba(44, 90, 160, 0.04)',
-                  },
-                  '&.Mui-disabled': {
-                    borderColor: '#ccc',
-                    color: '#999',
-                  },
-                }}
-              >
-                {isBookmarked ? 'Bookmarked' : 'Bookmark'}
-              </Button>
-              <Button
-                variant="outlined"
-                startIcon={<NotesIcon />}
-                onClick={() => setIsNotesOpen(true)}
-                sx={{
-                  borderColor: '#2c5aa0',
-                  color: '#2c5aa0',
-                  '&:hover': {
-                    borderColor: '#234a85',
-                    bgcolor: 'rgba(44, 90, 160, 0.04)',
-                  },
-                }}
-              >
-                Notes
-              </Button>
-              <Button
-                variant="outlined"
-                startIcon={<ForumIcon />}
-                onClick={() => setIsDiscussionOpen(true)}
-                sx={{
-                  borderColor: '#2c5aa0',
-                  color: '#2c5aa0',
-                  '&:hover': {
-                    borderColor: '#234a85',
-                    bgcolor: 'rgba(44, 90, 160, 0.04)',
-                  },
-                }}
-              >
-                Discussion
-              </Button>
             </Box>
           </Box>
 
@@ -493,6 +372,15 @@ export const ConceptViewer: React.FC<ConceptViewerProps> = memo(
             conceptReference={data.reference}
           />
         )}
+
+        {/* Bottom Action Buttons */}
+        <ConceptActions
+          conceptSlug={data.slug}
+          isCompleted={isCompleted}
+          onMarkCompleteChange={newStatus => setIsCompleted(newStatus)}
+          onDiscussionClick={() => setIsDiscussionOpen(true)}
+          onNotesClick={() => setIsNotesOpen(true)}
+        />
 
         {/* Notes Modal */}
         <NotesModal
