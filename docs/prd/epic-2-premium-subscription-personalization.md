@@ -1,8 +1,10 @@
 # Epic 2: Premium Subscription
 
-**Goal:** This epic will implement the secure payment workflow for premium subscriptions, our core business objective. This enables users to upgrade from free tier (4 chapters) to premium tier (all 8 chapters) via one-time payment through Xendit payment gateway.
+**Goal:** This epic will implement the secure payment workflow for premium subscriptions, our core business objective. This enables users to upgrade from free tier (4 chapters) to premium tier (all 8 chapters) through Xendit payment gateway with flexible subscription options.
 
-**Note:** Subscription model (annual/quarterly/monthly) and pricing to be determined by business before implementation.
+**Subscription Model:** Two subscription tiers available:
+- **Monthly Plan (Default):** ₱200/month with auto-renewal
+- **Annual Plan:** ₱1,920/year (20% discount, ₱160/month equivalent) - one-time payment
 
 **Payment Gateway Change:**
 - 🔄 **Payment Gateway Updated:** Changed from Maya Business to **Xendit** payment gateway
@@ -28,30 +30,40 @@
 ## Story 2.1: Premium Subscription Workflow
 
 *   **As a** free user,
-*   **I want** to upgrade my account to premium by completing a one-time subscription payment via Xendit,
-*   **so that** I can gain access to all 323 concepts (chapters 5-8).
+*   **I want** to choose between monthly or annual premium subscription plans and complete payment via Xendit,
+*   **so that** I can gain access to all 323 concepts (chapters 5-8) with the billing option that suits me best.
 
 **Acceptance Criteria:**
 
 **User Experience:**
 1.  A clear "Upgrade to Premium" call-to-action is present for free users when they encounter premium content
-2.  Clicking "Upgrade" directs the user to a secure payment page integrated with Xendit payment gateway
-3.  Payment page supports multiple payment methods:
+2.  Clicking "Upgrade" presents a plan selection interface showing:
+    - **Monthly Plan:** ₱200/month (auto-renewing, marked as default/recommended)
+    - **Annual Plan:** ₱1,920/year (20% savings, one-time payment)
+3.  After plan selection, user is directed to a secure payment page integrated with Xendit payment gateway
+4.  Payment page supports multiple payment methods:
     - Credit/Debit cards (Visa, Mastercard, JCB, Amex)
     - GCash e-wallet
     - Maya (PayMaya) e-wallet
-4.  After a successful payment, the user's account status is immediately updated to "premium"
-5.  A premium user can instantly access all content, including chapters 5-8
-6.  If a payment fails, the user is clearly notified with actionable error message, and their account remains on the free tier
-7.  Premium users see a "Premium" badge or indicator in the UI (header, profile)
-8.  The subscription is valid for the purchased duration (to be determined: annual/quarterly/monthly)
-9.  Email confirmation is sent after successful payment with:
-    - Order details (amount paid, payment method)
+5.  After a successful payment, the user's account status is immediately updated to "premium"
+6.  A premium user can instantly access all content, including chapters 5-8
+7.  If a payment fails, the user is clearly notified with actionable error message, and their account remains on the free tier
+8.  Premium users see a "Premium" badge or indicator in the UI (header, profile)
+9.  The subscription is valid for the purchased duration:
+    - Monthly: 30 days from payment, auto-renews
+    - Annual: 365 days from payment, one-time
+10. Email confirmation is sent after successful payment with:
+    - Order details (plan type, amount paid, payment method)
     - Subscription start and expiration dates
+    - Renewal information (monthly) or expiration notice (annual)
     - Access to premium content
+11. Monthly subscribers receive renewal reminder emails 3 days before auto-renewal
+12. Monthly subscribers can cancel auto-renewal from account settings (access continues until current period ends)
 
 **Technical Requirements:**
-10. Payment amount: ₱[TBD] (subscription model and pricing to be determined by business: annual/quarterly/monthly)
+10. Payment amounts:
+    - Monthly: ₱200 (20000 centavos)
+    - Annual: ₱1,920 (192000 centavos)
 11. Invoice expiration: 24 hours from creation
 12. Webhook signature verification implemented for security
 13. Idempotency check prevents duplicate payment processing
@@ -59,13 +71,16 @@
 15. Webhook processing completes within 5 seconds
 16. Zero stored card data (PCI-DSS compliant)
 17. Database includes subscription tracking:
-    - `subscription_status`: 'free', 'premium', 'expired'
+    - `subscription_status`: 'free', 'premium', 'expired', 'cancelled'
+    - `subscription_plan`: 'monthly_premium', 'annual_premium'
     - `subscription_expires_at`: timestamp
     - `subscription_started_at`: timestamp
+    - `auto_renew`: boolean (true for monthly, false for annual)
 18. Order records maintained with:
-    - Order ID, user ID, amount, status
+    - Order ID, user ID, amount, status, plan type
     - Xendit invoice ID and URL
     - Payment method, paid amount, paid timestamp
+    - Recurring flag for monthly subscriptions
 
 **Technical Notes:**
 - **Payment Gateway:** Xendit REST API (https://api.xendit.co)
@@ -78,7 +93,10 @@
   5. Webhook handler verifies signature, checks idempotency
   6. System updates order status and activates premium subscription
   7. User redirected back to platform with confirmation
-- **Subscription Duration:** System supports flexible subscription periods (annual/quarterly/monthly) - duration set via configuration
+- **Subscription Plans:**
+  - Monthly: Recurring subscription with auto-renewal, 30-day validity
+  - Annual: One-time payment, 365-day validity, no auto-renewal
+  - Default: Monthly plan recommended in UI
 - **Security:**
   - HTTPS enforced on all endpoints
   - Webhook signature verification (HMAC-SHA256)
@@ -154,11 +172,17 @@ See `docs/architecture/xendit-payment-integration.md` for complete technical des
 3. Maya (PayMaya) e-wallet - 2.5-3% fee (second most popular)
 
 **Business Operations:**
-- **Subscription Model:** [TBD] - Annual, Quarterly, or Monthly (to be determined by business)
-- **Pricing:** ₱[TBD] (pricing to be determined by business based on subscription model)
+- **Subscription Model:** Dual-tier pricing
+  - Monthly: ₱200/month (auto-renewing)
+  - Annual: ₱1,920/year (20% discount, one-time payment)
+- **Default Plan:** Monthly (recommended in UI)
+- **Revenue Model:** 
+  - Monthly: Recurring revenue, higher LTV with retention
+  - Annual: Immediate cash flow, lower transaction fees
 - **Settlement:** T+3 to T+5 business days to bank account
 - **Transaction Fees:** Average 2.5-3% (varies by payment method and transaction amount)
 - **Compliance:** BSP-compliant (Xendit is registered EMI), PCI-DSS SAQ-A, Philippine Data Privacy Act
+- **Cancellation Policy:** Monthly subscribers can cancel anytime; access continues until end of current billing period
 
 **Integration Points:**
 - **Story 1.5.10 (Premium Sidebar Integration):** Provides upgrade prompts and premium indicators
@@ -212,7 +236,8 @@ No separate dashboard story needed.
 | 2025-09-01 | 1.0 | Initial Epic 2 definition | John (PM) |
 | 2025-10-01 | 2.0 | Removed Story 2.3, noted Stories 2.2 & 2.4 enhanced by Epic 1.5 | SCP-2025-001 |
 | 2025-10-14 | 3.0 | Moved Stories 2.2 & 2.4 to Epic 1.5; Epic 2 now contains only Story 2.1 | Sarah (PO) - SCP-2025-003 |
-| 2025-10-20 | 4.0 | Updated payment gateway from Maya Business to Xendit; enhanced technical requirements and acceptance criteria based on architecture design | John (PM) |
+|| 2025-10-20 | 4.0 | Updated payment gateway from Maya Business to Xendit; enhanced technical requirements and acceptance criteria based on architecture design | John (PM) |
+|| 2025-10-22 | 5.0 | Added dual subscription model: Monthly (₱200, auto-renew) and Annual (₱1,920, 20% discount); updated AC to include plan selection UI and auto-renewal management | Sarah (PO) |
 
 ---
 

@@ -24,6 +24,10 @@ export * from './ProgressService';
 // Export bookmarks service
 export * from './BookmarksService';
 
+// Export payment services
+export * from './OrderService';
+export * from './WebhookLogService';
+
 // Re-export connection utilities for services that need direct access
 export {
   getConnection,

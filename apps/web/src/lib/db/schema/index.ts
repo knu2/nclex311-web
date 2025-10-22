@@ -18,6 +18,9 @@ export * from './comments';
 // Export all bookmarks-related schemas and types
 export * from './bookmarks';
 
+// Export all payments-related schemas and types
+export * from './payments';
+
 // Re-export commonly used Drizzle types
 export type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
 
@@ -43,6 +46,7 @@ import {
   commentLikesRelations,
 } from './comments';
 import { bookmarks, bookmarksRelations } from './bookmarks';
+import { orders, webhookLogs } from './payments';
 
 /**
  * Complete database schema including all tables and relations
@@ -60,6 +64,8 @@ export const schema = {
   comments,
   commentLikes,
   bookmarks,
+  orders,
+  webhookLogs,
 
   // Relations
   chaptersRelations,
@@ -84,4 +90,6 @@ export const tableNames = {
   comments: 'comments',
   commentLikes: 'comment_likes',
   bookmarks: 'bookmarks',
+  orders: 'orders',
+  webhookLogs: 'webhook_logs',
 } as const;
