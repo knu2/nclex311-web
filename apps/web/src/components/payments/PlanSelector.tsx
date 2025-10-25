@@ -10,7 +10,6 @@ import {
   RadioGroup,
   FormControlLabel,
   Chip,
-  Grid,
 } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
 import type { PlanType } from '@/lib/db/schema/payments';
@@ -110,12 +109,18 @@ export const PlanSelector: React.FC<PlanSelectorProps> = ({
         value={selected}
         onChange={e => handlePlanSelect(e.target.value as PlanType)}
       >
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
+            gap: 3,
+          }}
+        >
           {PLANS.map(plan => {
             const isSelected = selected === plan.id;
 
             return (
-              <Grid item xs={12} md={6} key={plan.id} component="div">
+              <Box key={plan.id}>
                 <Card
                   sx={{
                     height: '100%',
@@ -245,10 +250,10 @@ export const PlanSelector: React.FC<PlanSelectorProps> = ({
                     </Box>
                   </CardContent>
                 </Card>
-              </Grid>
+              </Box>
             );
           })}
-        </Grid>
+        </Box>
       </RadioGroup>
 
       {/* Plan Comparison Note */}

@@ -104,7 +104,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const amount = PLAN_PRICING[planType];
 
     // 7. Create order record in database (status: pending)
-    const order = await orderService.create({
+    const order = await orderService.createOrder({
       orderId,
       userId,
       amount,

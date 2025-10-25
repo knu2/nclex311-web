@@ -1,7 +1,7 @@
 import { MainLayout } from '@/components/Layout/MainLayout';
 import { ConceptViewer } from '@/components/Concept/ConceptViewer';
 import { getCurrentSession } from '@/lib/auth-utils';
-import { ContentService } from '@/lib/db/services';
+import { ContentService, UserService } from '@/lib/db/services';
 import { redirect, notFound } from 'next/navigation';
 
 /**
@@ -41,11 +41,20 @@ export default async function ConceptPage({
     redirect(`/login?callbackUrl=${encodeURIComponent(`/concepts/${slug}`)}`);
   }
 
-  // Extract subscription status from session
-  const userSubscriptionStatus = (
-    session.user as { subscriptionStatus?: string }
-  )?.subscriptionStatus;
-  const isPremiumUser = userSubscriptionStatus === 'premium';
+  // Fetch user from database for proper access control
+  const userId = (session.user as { id?: string }).id;
+  if (!userId) {
+    redirect('/login');
+  }
+
+  const userService = new UserService();
+  const dbUser = await userService.findUserById(userId);
+
+  if (!dbUser) {
+    redirect('/login');
+  }
+
+  const isPremiumUser = dbUser.subscriptionStatus === 'premium';
 
   // Fetch concept data server-side
   const contentService = new ContentService();
@@ -53,14 +62,7 @@ export default async function ConceptPage({
 
   try {
     // Get user for access control
-    const result = await contentService.getConceptBySlug(slug, {
-      id: (session.user as { id?: string }).id || '',
-      email: session.user.email || '',
-      passwordHash: '', // Not used for access control
-      subscription: isPremiumUser ? 'PREMIUM' : 'FREE',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
+    const result = await contentService.getConceptBySlug(slug, dbUser);
 
     if (!result.hasAccess) {
       // TODO: Redirect to paywall or show premium message
@@ -80,12 +82,12 @@ export default async function ConceptPage({
 
   // Transform session user to match MainLayout's expected interface
   const user = {
-    id: (session.user as { id?: string }).id || '',
-    name: session.user.name || session.user.email || 'User',
-    email: session.user.email || '',
+    id: dbUser.id,
+    name: session.user.name || dbUser.email,
+    email: dbUser.email,
     avatar: (session.user as { image?: string }).image,
     is_premium: isPremiumUser,
-    subscriptionStatus: userSubscriptionStatus || 'free',
+    subscriptionStatus: dbUser.subscriptionStatus,
   };
 
   // Transform concept data to match ConceptViewer's expected interface

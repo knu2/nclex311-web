@@ -101,7 +101,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     // 7. Log webhook for idempotency
-    await webhookLogService.create({
+    await webhookLogService.createLog({
       webhookId,
       eventType,
       payload,
@@ -206,9 +206,12 @@ async function handlePaidInvoice(
   // 3. Activate premium subscription
   const autoRenew = order.planType === 'monthly_premium';
 
+  // Validate and cast planType to SubscriptionPlanType
+  const planType = order.planType as 'monthly_premium' | 'annual_premium';
+
   await userService.activatePremiumSubscription(
     order.userId,
-    order.planType,
+    planType,
     expiresAt,
     autoRenew
   );
@@ -239,7 +242,7 @@ async function handlePaidInvoice(
       await emailService.sendPremiumConfirmationEmail({
         userEmail: user.email,
         userName: undefined, // Optional: Add name field to user schema later
-        planType: order.planType,
+        planType: planType, // Use the validated planType variable
         amount: order.amount,
         paymentMethod: payload.payment_method,
         orderId: order.orderId,

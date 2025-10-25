@@ -23,7 +23,7 @@ export class WebhookLogService extends BaseService {
    * @example
    * ```typescript
    * const service = new WebhookLogService();
-   * const log = await service.create({
+   * const log = await service.createLog({
    *   webhookId: 'webhook_123',
    *   eventType: 'invoice.paid',
    *   payload: { ...webhookData },
@@ -31,7 +31,7 @@ export class WebhookLogService extends BaseService {
    * });
    * ```
    */
-  async create(logData: NewWebhookLog): Promise<WebhookLog> {
+  async createLog(logData: NewWebhookLog): Promise<WebhookLog> {
     return this.executeOperation(async () => {
       const [log] = await this.db
         .insert(webhookLogs)
@@ -82,7 +82,7 @@ export class WebhookLogService extends BaseService {
    * @param id - Webhook log UUID
    * @returns Webhook log or null if not found
    */
-  async findById(id: string): Promise<WebhookLog | null> {
+  async findLogById(id: string): Promise<WebhookLog | null> {
     return this.executeOperation(async () => {
       const [log] = await this.db
         .select()

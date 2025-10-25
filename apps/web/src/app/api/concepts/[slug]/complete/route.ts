@@ -39,20 +39,9 @@ export async function GET(
     // Get concept slug from params
     const { slug } = await context.params;
 
-    // Get user subscription status for access control
-    const userSubscriptionStatus = (
-      session.user as { subscriptionStatus?: string }
-    )?.subscriptionStatus;
-    const userForAccess =
-      userSubscriptionStatus === 'premium'
-        ? { subscription: 'PREMIUM' as const }
-        : null;
-
-    // Look up concept by slug using ContentService with user context
-    const conceptResult = await contentService.getConceptBySlug(
-      slug,
-      userForAccess
-    );
+    // Look up concept by slug without user context (public access)
+    // Note: Access control is handled at page level, this endpoint only checks completion
+    const conceptResult = await contentService.getConceptBySlug(slug);
     // Handle FreemiumAccessResult - check both hasAccess and data
     if (!conceptResult.hasAccess || !conceptResult.data) {
       return NextResponse.json(
@@ -121,20 +110,9 @@ export async function POST(
     // Get concept slug from params
     const { slug } = await context.params;
 
-    // Get user subscription status for access control
-    const userSubscriptionStatus = (
-      session.user as { subscriptionStatus?: string }
-    )?.subscriptionStatus;
-    const userForAccess =
-      userSubscriptionStatus === 'premium'
-        ? { subscription: 'PREMIUM' as const }
-        : null;
-
-    // Look up concept by slug using ContentService with user context
-    const conceptResult = await contentService.getConceptBySlug(
-      slug,
-      userForAccess
-    );
+    // Look up concept by slug without user context (public access)
+    // Note: Access control is handled at page level, this endpoint only marks completion
+    const conceptResult = await contentService.getConceptBySlug(slug);
     // Handle FreemiumAccessResult - check both hasAccess and data
     if (!conceptResult.hasAccess || !conceptResult.data) {
       return NextResponse.json(
@@ -203,20 +181,9 @@ export async function DELETE(
     // Get concept slug from params
     const { slug } = await context.params;
 
-    // Get user subscription status for access control
-    const userSubscriptionStatus = (
-      session.user as { subscriptionStatus?: string }
-    )?.subscriptionStatus;
-    const userForAccess =
-      userSubscriptionStatus === 'premium'
-        ? { subscription: 'PREMIUM' as const }
-        : null;
-
-    // Look up concept by slug using ContentService with user context
-    const conceptResult = await contentService.getConceptBySlug(
-      slug,
-      userForAccess
-    );
+    // Look up concept by slug without user context (public access)
+    // Note: Access control is handled at page level, this endpoint only marks deletion
+    const conceptResult = await contentService.getConceptBySlug(slug);
     // Handle FreemiumAccessResult - check both hasAccess and data
     if (!conceptResult.hasAccess || !conceptResult.data) {
       return NextResponse.json(

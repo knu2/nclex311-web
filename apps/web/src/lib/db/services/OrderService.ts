@@ -25,7 +25,7 @@ export class OrderService extends BaseService {
    * @example
    * ```typescript
    * const orderService = new OrderService();
-   * const order = await orderService.create({
+   * const order = await orderService.createOrder({
    *   orderId: 'order_123',
    *   userId: 'user_abc',
    *   amount: 20000,
@@ -35,7 +35,7 @@ export class OrderService extends BaseService {
    * });
    * ```
    */
-  async create(orderData: NewOrder): Promise<Order> {
+  async createOrder(orderData: NewOrder): Promise<Order> {
     return this.executeOperation(async () => {
       const [order] = await this.db
         .insert(orders)
@@ -60,7 +60,7 @@ export class OrderService extends BaseService {
    * @param id - Order UUID
    * @returns Order or null if not found
    */
-  async findById(id: string): Promise<Order | null> {
+  async findOrderById(id: string): Promise<Order | null> {
     return this.executeOperation(async () => {
       const [order] = await this.db
         .select()
@@ -190,7 +190,7 @@ export class OrderService extends BaseService {
    * @param updates - Fields to update
    * @returns Updated order
    */
-  async updateById(id: string, updates: OrderUpdate): Promise<Order> {
+  async updateOrderById(id: string, updates: OrderUpdate): Promise<Order> {
     return this.executeOperation(async () => {
       const [updatedOrder] = await this.db
         .update(orders)

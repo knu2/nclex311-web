@@ -184,11 +184,14 @@ export function validateWebhookPayload(payload: unknown): boolean {
     return false;
   }
 
+  // Type guard for payload as record
+  const payloadObj = payload as Record<string, unknown>;
+
   // Required fields for Xendit invoice webhook
   const requiredFields = ['id', 'external_id', 'status'];
 
   for (const field of requiredFields) {
-    if (!(field in payload) || !payload[field]) {
+    if (!(field in payloadObj) || !payloadObj[field]) {
       console.error(`Missing required field: ${field}`);
       return false;
     }
@@ -196,8 +199,9 @@ export function validateWebhookPayload(payload: unknown): boolean {
 
   // Validate status is one of expected values
   const validStatuses = ['PENDING', 'PAID', 'EXPIRED', 'FAILED'];
-  if (!validStatuses.includes(payload.status)) {
-    console.error(`Invalid status: ${payload.status}`);
+  const status = payloadObj.status;
+  if (typeof status !== 'string' || !validStatuses.includes(status)) {
+    console.error(`Invalid status: ${status}`);
     return false;
   }
 

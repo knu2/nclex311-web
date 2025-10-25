@@ -232,17 +232,25 @@ class Logger {
    * Log error message
    */
   error(message: string, error?: Error | unknown, data?: LogContext): void {
-    const errorData =
-      error instanceof Error
-        ? {
-            error: {
-              message: error.message,
-              stack: error.stack,
-              ...('code' in error &&
-                error.code && { code: String(error.code) }),
-            },
-          }
-        : { error: { message: String(error) } };
+    let errorData: {
+      error: { message: string; stack?: string; code?: string };
+    };
+
+    if (error instanceof Error) {
+      errorData = {
+        error: {
+          message: error.message,
+          stack: error.stack,
+        },
+      };
+
+      // Add code if it exists
+      if ('code' in error && error.code) {
+        errorData.error.code = String(error.code);
+      }
+    } else {
+      errorData = { error: { message: String(error) } };
+    }
 
     this.log('error', message, {
       ...errorData,

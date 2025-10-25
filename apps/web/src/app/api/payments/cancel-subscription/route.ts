@@ -122,22 +122,27 @@ export async function POST(): Promise<NextResponse> {
     logger.error('Cancel subscription error', error);
 
     // Handle specific service errors
-    if (error?.code === 'INVALID_SUBSCRIPTION_TYPE') {
-      return NextResponse.json(
-        {
-          error: 'Invalid Subscription',
-          message: error.message,
-          details: error.details,
-        } satisfies ErrorResponse,
-        { status: 400 }
-      );
+    if (error && typeof error === 'object' && 'code' in error) {
+      if (error.code === 'INVALID_SUBSCRIPTION_TYPE') {
+        return NextResponse.json(
+          {
+            error: 'Invalid Subscription',
+            message:
+              'message' in error
+                ? String(error.message)
+                : 'Invalid subscription type',
+            details: 'details' in error ? error.details : undefined,
+          } satisfies ErrorResponse,
+          { status: 400 }
+        );
+      }
     }
 
     return NextResponse.json(
       {
         error: 'Internal Server Error',
         message: 'Failed to cancel subscription',
-        details: error?.message,
+        details: error instanceof Error ? error.message : undefined,
       } satisfies ErrorResponse,
       { status: 500 }
     );
