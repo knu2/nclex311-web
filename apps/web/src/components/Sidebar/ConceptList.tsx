@@ -245,364 +245,360 @@ const ChapterHeader: React.FC<ChapterHeaderProps> = ({
  * Main sidebar component for chapter navigation
  * Optimized with React.memo to prevent unnecessary re-renders
  */
-export const ConceptList: React.FC<ConceptListProps> = React.memo(
-  ({
-    chapterId,
-    currentConceptSlug,
-    onConceptClick,
-    isMobile: isMobileProp,
-    isOpen = false,
-    onClose,
-    userId,
-    subscriptionStatus,
-  }) => {
-    const router = useRouter();
-    const pathname = usePathname();
+export const ConceptList: React.FC<ConceptListProps> = ({
+  chapterId,
+  currentConceptSlug,
+  onConceptClick,
+  isMobile: isMobileProp,
+  isOpen = false,
+  onClose,
+  userId,
+  subscriptionStatus,
+}) => {
+  const isPremiumUser = subscriptionStatus === 'premium';
+  const router = useRouter();
+  const pathname = usePathname();
 
-    // Responsive behavior
-    const isMobileBreakpoint = useMediaQuery(
-      `(max-width:${MOBILE_BREAKPOINT}px)`
-    );
-    const isMobile = isMobileProp ?? isMobileBreakpoint;
+  // Responsive behavior
+  const isMobileBreakpoint = useMediaQuery(
+    `(max-width:${MOBILE_BREAKPOINT}px)`
+  );
+  const isMobile = isMobileProp ?? isMobileBreakpoint;
 
-    // State
-    const [chapterData, setChapterData] = useState<Chapter | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+  // State
+  const [chapterData, setChapterData] = useState<Chapter | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-    // Calculate completed concepts
-    const completedCount =
-      chapterData?.concepts.filter(c => c.isCompleted).length ?? 0;
+  // Calculate completed concepts
+  const completedCount =
+    chapterData?.concepts.filter(c => c.isCompleted).length ?? 0;
 
-    // Fetch chapter data - wrapped in useCallback to prevent unnecessary recreations
-    const fetchChapterData = React.useCallback(async (): Promise<void> => {
-      try {
-        setLoading(true);
-        setError(null);
+  // Fetch chapter data - wrapped in useCallback to prevent unnecessary recreations
+  const fetchChapterData = React.useCallback(async (): Promise<void> => {
+    try {
+      setLoading(true);
+      setError(null);
 
-        const response = await fetch(`/api/chapters/${chapterId}/concepts`, {
-          cache: 'no-store', // Always fetch fresh data
-        });
+      const response = await fetch(`/api/chapters/${chapterId}/concepts`, {
+        cache: 'no-store', // Always fetch fresh data
+      });
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch chapter data');
-        }
-
-        const data = await response.json();
-
-        if (!data.success) {
-          throw new Error(data.error || 'Failed to load chapter');
-        }
-
-        setChapterData(data.data);
-      } catch (err) {
-        console.error('Error fetching chapter data:', err);
-        setError(err instanceof Error ? err.message : 'Unknown error');
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error('Failed to fetch chapter data');
       }
-    }, [chapterId]);
 
-    // Initial fetch
-    useEffect(() => {
-      if (chapterId) {
-        fetchChapterData();
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to load chapter');
       }
-    }, [chapterId, fetchChapterData]);
 
-    // Listen for completion events to refresh sidebar
-    useEffect(() => {
-      const handleConceptComplete = () => {
-        // Refetch chapter data when a concept is marked complete
-        fetchChapterData();
-      };
+      setChapterData(data.data);
+    } catch (err) {
+      console.error('Error fetching chapter data:', err);
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  }, [chapterId]);
 
-      // Listen for custom event
-      window.addEventListener(
+  // Initial fetch
+  useEffect(() => {
+    if (chapterId) {
+      fetchChapterData();
+    }
+  }, [chapterId, fetchChapterData]);
+
+  // Listen for completion events to refresh sidebar
+  useEffect(() => {
+    const handleConceptComplete = () => {
+      // Refetch chapter data when a concept is marked complete
+      fetchChapterData();
+    };
+
+    // Listen for custom event
+    window.addEventListener('conceptCompletionChanged', handleConceptComplete);
+
+    return () => {
+      window.removeEventListener(
         'conceptCompletionChanged',
         handleConceptComplete
       );
-
-      return () => {
-        window.removeEventListener(
-          'conceptCompletionChanged',
-          handleConceptComplete
-        );
-      };
-    }, [fetchChapterData]);
-
-    // Handle concept click
-    const handleConceptClick = (concept: Concept): void => {
-      if (onConceptClick) {
-        onConceptClick(concept.slug);
-      } else {
-        router.push(`/concepts/${concept.slug}`);
-      }
-
-      // Close drawer on mobile after navigation
-      if (isMobile && onClose) {
-        onClose();
-      }
     };
+  }, [fetchChapterData]);
 
-    // Determine if concept is active
-    const isConceptActive = (conceptSlug: string): boolean => {
-      if (currentConceptSlug) {
-        return conceptSlug === currentConceptSlug;
-      }
-      // Fallback to pathname matching
-      return pathname.includes(conceptSlug);
-    };
+  // Handle concept click
+  const handleConceptClick = (concept: Concept): void => {
+    if (onConceptClick) {
+      onConceptClick(concept.slug);
+    } else {
+      router.push(`/concepts/${concept.slug}`);
+    }
 
-    // Close drawer on mobile after footer navigation
-    const handleFooterClose = (): void => {
-      if (isMobile && onClose) {
-        onClose();
-      }
-    };
+    // Close drawer on mobile after navigation
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
 
-    // Drawer content
-    const drawerContent = (
+  // Determine if concept is active
+  const isConceptActive = (conceptSlug: string): boolean => {
+    if (currentConceptSlug) {
+      return conceptSlug === currentConceptSlug;
+    }
+    // Fallback to pathname matching
+    return pathname.includes(conceptSlug);
+  };
+
+  // Close drawer on mobile after footer navigation
+  const handleFooterClose = (): void => {
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
+
+  // Drawer content
+  const drawerContent = (
+    <Box
+      sx={{
+        width: DRAWER_WIDTH,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#fff',
+      }}
+      role="navigation"
+      aria-label="Concept navigation"
+    >
+      {/* Logo Header Section - Story 1.5.12: Ray Gapuz Review System branding */}
       <Box
         sx={{
-          width: DRAWER_WIDTH,
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
+          p: 2,
+          borderBottom: '1px solid #e1e7f0',
           backgroundColor: '#fff',
+          textAlign: 'center',
         }}
-        role="navigation"
-        aria-label="Concept navigation"
       >
-        {/* Logo Header Section - Story 1.5.12: Ray Gapuz Review System branding */}
         <Box
+          component="img"
+          src="/images/logo_ragrs.svg"
+          alt="Ray Gapuz Review System Logo"
           sx={{
-            p: 2,
-            borderBottom: '1px solid #e1e7f0',
-            backgroundColor: '#fff',
-            textAlign: 'center',
+            height: '60px',
+            mx: 'auto',
+            mb: 2,
+            display: 'block',
+          }}
+        />
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: '1.3rem',
+            fontWeight: 600,
+            color: '#2c5aa0',
+            mb: 0.5,
           }}
         >
-          <Box
-            component="img"
-            src="/images/logo_ragrs.svg"
-            alt="Ray Gapuz Review System Logo"
-            sx={{
-              height: '60px',
-              mx: 'auto',
-              mb: 2,
-              display: 'block',
-            }}
-          />
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: '1.3rem',
-              fontWeight: 600,
-              color: '#2c5aa0',
-              mb: 0.5,
-            }}
-          >
-            NCLEX 311
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{
-              fontSize: '0.85rem',
-              color: '#6c757d',
-            }}
-          >
-            Functional Nursing Concepts
-          </Typography>
-        </Box>
+          NCLEX 311
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: '0.85rem',
+            color: '#6c757d',
+          }}
+        >
+          Functional Nursing Concepts
+        </Typography>
+      </Box>
 
-        {/* No Chapter ID - Show Progress Statistics or Empty Message */}
-        {!chapterId && (
-          <>
-            {/* Show Progress Statistics when userId is available (on /chapters page) */}
-            {userId ? (
-              <>
-                <ProgressStatistics
-                  userId={userId}
-                  subscriptionStatus={subscriptionStatus}
-                />
-                <Box sx={{ flex: 1 }} />
-              </>
-            ) : (
-              <Box
-                sx={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  p: 3,
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ textAlign: 'center' }}
-                >
-                  Select a chapter to view concepts
-                </Typography>
-              </Box>
-            )}
-            <SidebarFooter onClose={handleFooterClose} />
-          </>
-        )}
-
-        {/* Loading State */}
-        {chapterId && loading && (
-          <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="text.secondary">
-              Loading...
-            </Typography>
-          </Box>
-        )}
-
-        {/* Error State */}
-        {chapterId && error && (
-          <Box sx={{ p: 2 }}>
-            <Typography variant="body2" color="error">
-              {error}
-            </Typography>
-          </Box>
-        )}
-
-        {/* Content */}
-        {chapterId && chapterData && !loading && !error && (
-          <>
-            {/* Chapter Header */}
-            <ChapterHeader
-              chapter={chapterData}
-              completedCount={completedCount}
-            />
-
-            {/* Concept List */}
-            <List
+      {/* No Chapter ID - Show Progress Statistics or Empty Message */}
+      {!chapterId && (
+        <>
+          {/* Show Progress Statistics when userId is available (on /chapters page) */}
+          {userId ? (
+            <>
+              <ProgressStatistics
+                userId={userId}
+                subscriptionStatus={subscriptionStatus}
+              />
+              <Box sx={{ flex: 1 }} />
+            </>
+          ) : (
+            <Box
               sx={{
                 flex: 1,
-                overflowY: 'auto',
-                p: 2,
-                pt: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: 3,
               }}
             >
-              {chapterData.concepts.map(concept => {
-                const isActive = isConceptActive(concept.slug);
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ textAlign: 'center' }}
+              >
+                Select a chapter to view concepts
+              </Typography>
+            </Box>
+          )}
+          <SidebarFooter onClose={handleFooterClose} />
+        </>
+      )}
 
-                return (
-                  <ListItem key={concept.id} disablePadding sx={{ mb: 0.5 }}>
-                    <ListItemButton
-                      onClick={() => handleConceptClick(concept)}
-                      selected={isActive}
-                      sx={{
-                        borderRadius: '6px',
-                        pl: isActive ? '0.5rem' : '0.75rem',
-                        pr: '0.75rem',
-                        py: '0.75rem',
-                        borderLeft: isActive ? '4px solid #2c5aa0' : 'none',
-                        backgroundColor: isActive ? '#e8f0fe' : '#fff',
-                        transition: 'all 150ms ease-out',
-                        '&:hover': {
-                          backgroundColor: 'rgba(232, 240, 254, 0.5)',
-                        },
-                        '&.Mui-focusVisible': {
-                          outline: '2px solid #2c5aa0',
-                          outlineOffset: '2px',
-                        },
-                      }}
-                      aria-label={`${concept.title}${concept.isCompleted ? ', completed' : ''}${concept.isPremium ? ', premium content' : ''}`}
-                      aria-current={isActive ? 'page' : undefined}
-                    >
-                      {/* Completion Icon */}
-                      {concept.isCompleted && (
-                        <ListItemIcon
+      {/* Loading State */}
+      {chapterId && loading && (
+        <Box sx={{ p: 2 }}>
+          <Typography variant="body2" color="text.secondary">
+            Loading...
+          </Typography>
+        </Box>
+      )}
+
+      {/* Error State */}
+      {chapterId && error && (
+        <Box sx={{ p: 2 }}>
+          <Typography variant="body2" color="error">
+            {error}
+          </Typography>
+        </Box>
+      )}
+
+      {/* Content */}
+      {chapterId && chapterData && !loading && !error && (
+        <>
+          {/* Chapter Header */}
+          <ChapterHeader
+            chapter={chapterData}
+            completedCount={completedCount}
+          />
+
+          {/* Concept List */}
+          <List
+            sx={{
+              flex: 1,
+              overflowY: 'auto',
+              p: 2,
+              pt: 1,
+            }}
+          >
+            {chapterData.concepts.map(concept => {
+              const isActive = isConceptActive(concept.slug);
+
+              return (
+                <ListItem key={concept.id} disablePadding sx={{ mb: 0.5 }}>
+                  <ListItemButton
+                    onClick={() => handleConceptClick(concept)}
+                    selected={isActive}
+                    sx={{
+                      borderRadius: '6px',
+                      pl: isActive ? '0.5rem' : '0.75rem',
+                      pr: '0.75rem',
+                      py: '0.75rem',
+                      borderLeft: isActive ? '4px solid #2c5aa0' : 'none',
+                      backgroundColor: isActive ? '#e8f0fe' : '#fff',
+                      transition: 'all 150ms ease-out',
+                      '&:hover': {
+                        backgroundColor: 'rgba(232, 240, 254, 0.5)',
+                      },
+                      '&.Mui-focusVisible': {
+                        outline: '2px solid #2c5aa0',
+                        outlineOffset: '2px',
+                      },
+                    }}
+                    aria-label={`${concept.title}${concept.isCompleted ? ', completed' : ''}${concept.isPremium ? ', premium content' : ''}`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {/* Completion Icon */}
+                    {concept.isCompleted && (
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 'auto',
+                          mr: 1,
+                        }}
+                      >
+                        <CheckCircleIcon
                           sx={{
-                            minWidth: 'auto',
-                            mr: 1,
+                            fontSize: '18px',
+                            color: '#00b894',
+                          }}
+                          aria-label="Completed"
+                        />
+                      </ListItemIcon>
+                    )}
+
+                    {/* Concept Text */}
+                    <ListItemText
+                      primary={
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            fontSize: '16px',
+                            fontWeight: isActive ? 600 : 400,
+                            color: '#2c3e50',
                           }}
                         >
-                          <CheckCircleIcon
-                            sx={{
-                              fontSize: '18px',
-                              color: '#00b894',
-                            }}
-                            aria-label="Completed"
-                          />
-                        </ListItemIcon>
-                      )}
+                          {concept.conceptNumber}. {concept.title}
+                        </Typography>
+                      }
+                    />
 
-                      {/* Concept Text */}
-                      <ListItemText
-                        primary={
-                          <Typography
-                            variant="body1"
-                            sx={{
-                              fontSize: '16px',
-                              fontWeight: isActive ? 600 : 400,
-                              color: '#2c3e50',
-                            }}
-                          >
-                            {concept.conceptNumber}. {concept.title}
-                          </Typography>
-                        }
-                      />
-
-                      {/* Premium Lock Icon */}
-                      {concept.isPremium && (
-                        <ListItemIcon
+                    {/* Premium Lock Icon - Only show for free users */}
+                    {concept.isPremium && !isPremiumUser && (
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 'auto',
+                          ml: 1,
+                        }}
+                      >
+                        <LockIcon
                           sx={{
-                            minWidth: 'auto',
-                            ml: 1,
+                            fontSize: '18px',
+                            color: '#6c757d',
+                            opacity: 0.7,
                           }}
-                        >
-                          <LockIcon
-                            sx={{
-                              fontSize: '18px',
-                              color: '#6c757d',
-                              opacity: 0.7,
-                            }}
-                            aria-label="Premium content"
-                          />
-                        </ListItemIcon>
-                      )}
-                    </ListItemButton>
-                  </ListItem>
-                );
-              })}
-            </List>
+                          aria-label="Premium content"
+                        />
+                      </ListItemIcon>
+                    )}
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
+          </List>
 
-            {/* Sidebar Footer */}
-            <SidebarFooter onClose={handleFooterClose} />
-          </>
-        )}
-      </Box>
-    );
+          {/* Sidebar Footer */}
+          <SidebarFooter onClose={handleFooterClose} />
+        </>
+      )}
+    </Box>
+  );
 
-    return (
-      <Drawer
-        variant={isMobile ? 'temporary' : 'permanent'}
-        open={isMobile ? isOpen : true}
-        onClose={isMobile ? onClose : undefined}
-        ModalProps={{
-          keepMounted: true, // Better mobile performance
-        }}
-        sx={{
+  return (
+    <Drawer
+      variant={isMobile ? 'temporary' : 'permanent'}
+      open={isMobile ? isOpen : true}
+      onClose={isMobile ? onClose : undefined}
+      ModalProps={{
+        keepMounted: true, // Better mobile performance
+      }}
+      sx={{
+        width: DRAWER_WIDTH,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
           width: DRAWER_WIDTH,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: DRAWER_WIDTH,
-            boxSizing: 'border-box',
-            border: 'none',
-            boxShadow: isMobile ? 3 : 'none',
-          },
-        }}
-      >
-        {drawerContent}
-      </Drawer>
-    );
-  }
-);
+          boxSizing: 'border-box',
+          border: 'none',
+          boxShadow: isMobile ? 3 : 'none',
+        },
+      }}
+    >
+      {drawerContent}
+    </Drawer>
+  );
+};
 
 ConceptList.displayName = 'ConceptList';
 
