@@ -167,7 +167,7 @@ export class ContentService extends BaseService {
       // Check freemium access
       const isPremium =
         chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT;
-      const hasAccess = !isPremium || user?.subscription === 'PREMIUM';
+      const hasAccess = !isPremium || user?.subscriptionStatus === 'premium';
 
       // If no access, return restricted result
       if (!hasAccess) {
@@ -245,7 +245,7 @@ export class ContentService extends BaseService {
       // Check freemium access
       const isPremium =
         chapter.chapterNumber > ContentService.FREE_CHAPTERS_LIMIT;
-      const hasAccess = !isPremium || user?.subscription === 'PREMIUM';
+      const hasAccess = !isPremium || user?.subscriptionStatus === 'premium';
 
       // If no access, return restricted result
       if (!hasAccess) {
