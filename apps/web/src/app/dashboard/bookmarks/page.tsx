@@ -5,6 +5,11 @@ import { MainLayout } from '@/components/Layout/MainLayout';
 import BookmarksView from '@/components/Dashboard/BookmarksView';
 
 /**
+ * Force dynamic rendering for this page since it uses authentication
+ */
+export const dynamic = 'force-dynamic';
+
+/**
  * Bookmarks Dashboard Page
  * Route: /dashboard/bookmarks
  *
@@ -26,12 +31,17 @@ export default async function BookmarksPage() {
   }
 
   // Transform session user to match MainLayout's expected interface
+  const userSubscriptionStatus = (
+    session.user as { subscriptionStatus?: string }
+  )?.subscriptionStatus;
+
   const user = {
     id: userId,
     name: session.user.name || session.user.email || 'User',
     email: session.user.email || '',
     avatar: (session.user as { image?: string }).image,
-    is_premium: false, // TODO: Get from database in future story
+    is_premium: userSubscriptionStatus === 'premium',
+    subscriptionStatus: userSubscriptionStatus || 'free',
   };
 
   return (
