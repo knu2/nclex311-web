@@ -38,6 +38,7 @@ export interface ConceptListProps {
   isOpen?: boolean;
   onClose?: () => void;
   userId?: string;
+  subscriptionStatus?: string;
 }
 
 export interface Chapter {
@@ -253,6 +254,7 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
     isOpen = false,
     onClose,
     userId,
+    subscriptionStatus,
   }) => {
     const router = useRouter();
     const pathname = usePathname();
@@ -420,7 +422,10 @@ export const ConceptList: React.FC<ConceptListProps> = React.memo(
             {/* Show Progress Statistics when userId is available (on /chapters page) */}
             {userId ? (
               <>
-                <ProgressStatistics userId={userId} />
+                <ProgressStatistics
+                  userId={userId}
+                  subscriptionStatus={subscriptionStatus}
+                />
                 <Box sx={{ flex: 1 }} />
               </>
             ) : (

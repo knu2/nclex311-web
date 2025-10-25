@@ -13,6 +13,9 @@ import {
 } from '@/lib/db/services';
 import { PLAN_DURATION, type Order } from '@/lib/db/schema/payments';
 import { getEmailService } from '@/lib/email';
+import { getLogger } from '@/lib/logger';
+
+const logger = getLogger();
 
 interface XenditWebhookPayload {
   id: string;
@@ -73,16 +76,24 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
     }
 
-    console.log(
-      `[Webhook] Received: ${webhookId} for order ${orderId} - status: ${payload.status}`
-    );
+    // Log webhook received with structured data
+    const eventType = getEventTypeFromStatus(payload.status);
+    logger.webhookReceived({
+      webhookId,
+      orderId,
+      status: payload.status,
+      eventType,
+    });
 
     // 6. Check idempotency
     const webhookLogService = getWebhookLogService();
     const alreadyProcessed = await webhookLogService.isProcessed(webhookId);
 
     if (alreadyProcessed) {
-      console.log(`[Webhook] Already processed: ${webhookId}`);
+      logger.info('Webhook already processed (idempotency check)', {
+        webhookId,
+        orderId,
+      });
       return NextResponse.json(
         { message: 'Webhook already processed' },
         { status: 200 }
@@ -90,7 +101,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     // 7. Log webhook for idempotency
-    const eventType = getEventTypeFromStatus(payload.status);
     await webhookLogService.create({
       webhookId,
       eventType,
@@ -111,6 +121,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     // 9. Process webhook based on status
     const status = payload.status;
+    const startTime = Date.now();
 
     try {
       if (status === 'PAID') {
@@ -124,20 +135,42 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       // 10. Mark webhook as processed
       await webhookLogService.markAsProcessed(webhookId);
 
-      console.log(`[Webhook] Processed successfully: ${webhookId}`);
+      // Log successful processing with duration
+      const duration = Date.now() - startTime;
+      logger.webhookProcessed({
+        webhookId,
+        orderId,
+        status,
+        duration,
+      });
 
       return NextResponse.json(
         { message: 'Webhook processed' },
         { status: 200 }
       );
     } catch (error: unknown) {
-      console.error('[Webhook] Processing error:', error);
+      // Log webhook processing error
+      const errorObj = error as {
+        code?: string;
+        message?: string;
+        stack?: string;
+      };
+      logger.webhookError({
+        webhookId,
+        orderId,
+        error: {
+          code: errorObj.code,
+          message: errorObj.message || 'Processing failed',
+          stack: errorObj.stack,
+        },
+      });
 
       // Return 500 to trigger Xendit retry
       return NextResponse.json({ error: 'Processing failed' }, { status: 500 });
     }
   } catch (error: unknown) {
-    console.error('[Webhook] Unexpected error:', error);
+    // Log unexpected webhook error
+    logger.error('Webhook unexpected error', error);
 
     // Return 500 to trigger Xendit retry
     return NextResponse.json(
@@ -165,8 +198,6 @@ async function handlePaidInvoice(
     paymentMethod: payload.payment_method,
   });
 
-  console.log(`[Webhook] Order paid: ${order.orderId} - ${order.planType}`);
-
   // 2. Calculate subscription expiration
   const now = new Date();
   const duration = PLAN_DURATION[order.planType as keyof typeof PLAN_DURATION];
@@ -182,9 +213,23 @@ async function handlePaidInvoice(
     autoRenew
   );
 
-  console.log(
-    `[Webhook] Premium activated for user ${order.userId} until ${expiresAt.toISOString()}`
-  );
+  // Log subscription activation with structured data
+  logger.subscriptionActivated({
+    userId: order.userId,
+    planType: order.planType,
+    expiresAt,
+    autoRenew,
+  });
+
+  // Log payment completion
+  logger.paymentCompleted({
+    userId: order.userId,
+    orderId: order.orderId,
+    planType: order.planType,
+    amount: order.amount,
+    paymentMethod: payload.payment_method,
+    xenditInvoiceId: order.xenditInvoiceId || '',
+  });
 
   // 4. Send confirmation email
   try {
@@ -202,11 +247,14 @@ async function handlePaidInvoice(
         subscriptionExpiresAt: expiresAt,
         autoRenew,
       });
-      console.log(`[Webhook] Confirmation email sent to ${user.email}`);
+      logger.info('Confirmation email sent', {
+        email: user.email,
+        orderId: order.orderId,
+      });
     }
   } catch (emailError) {
     // Log error but don't fail the webhook - email is non-critical
-    console.error('[Webhook] Failed to send confirmation email:', emailError);
+    logger.warn('Failed to send confirmation email', { error: emailError });
   }
 }
 
@@ -220,7 +268,10 @@ async function handleExpiredInvoice(order: Order): Promise<void> {
     status: 'expired',
   });
 
-  console.log(`[Webhook] Order expired: ${order.orderId}`);
+  logger.info('Order expired', {
+    orderId: order.orderId,
+    planType: order.planType,
+  });
 }
 
 /**
@@ -237,9 +288,15 @@ async function handleFailedInvoice(
     failureCode: payload.failure_code || 'PAYMENT_FAILED',
   });
 
-  console.log(
-    `[Webhook] Order failed: ${order.orderId} - ${payload.failure_code || 'unknown'}`
-  );
+  logger.paymentFailed({
+    userId: order.userId,
+    orderId: order.orderId,
+    planType: order.planType,
+    error: {
+      code: payload.failure_code || 'PAYMENT_FAILED',
+      message: 'Payment failed via webhook',
+    },
+  });
 }
 
 // Method not allowed for GET

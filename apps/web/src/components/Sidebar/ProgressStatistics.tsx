@@ -24,6 +24,7 @@ export interface UserProgressData {
  */
 export interface ProgressStatisticsProps {
   userId: string;
+  subscriptionStatus?: string; // 'free' | 'premium' | 'expired' | 'cancelled'
 }
 
 /**
@@ -32,7 +33,9 @@ export interface ProgressStatisticsProps {
  */
 export const ProgressStatistics: React.FC<ProgressStatisticsProps> = ({
   userId,
+  subscriptionStatus = 'free',
 }) => {
+  const isPremium = subscriptionStatus === 'premium';
   const [progressData, setProgressData] = useState<UserProgressData | null>(
     null
   );
@@ -210,7 +213,7 @@ export const ProgressStatistics: React.FC<ProgressStatisticsProps> = ({
           </Typography>
         </Box>
 
-        {/* Premium Concepts Locked */}
+        {/* Premium Concepts - Show as Unlocked for premium users, Locked for free users */}
         <Box>
           <Typography
             variant="body2"
@@ -222,20 +225,23 @@ export const ProgressStatistics: React.FC<ProgressStatisticsProps> = ({
               letterSpacing: '0.05em',
             }}
           >
-            Premium Locked
+            {isPremium ? 'Premium Unlocked' : 'Premium Locked'}
           </Typography>
           <Typography
             sx={{
               fontSize: '1.5rem',
               fontWeight: 700,
-              color: '#ff6b35',
+              color: isPremium ? '#00b894' : '#ff6b35',
               display: 'flex',
               alignItems: 'center',
               gap: 1,
             }}
           >
-            <span>🔒</span>
-            {progressData.premiumConceptsTotal}
+            <span>{isPremium ? '🔓' : '🔒'}</span>
+            {isPremium
+              ? progressData.freeConceptsTotal +
+                progressData.premiumConceptsTotal
+              : progressData.premiumConceptsTotal}
             <Typography
               component="span"
               sx={{
@@ -245,7 +251,7 @@ export const ProgressStatistics: React.FC<ProgressStatisticsProps> = ({
                 ml: 0.5,
               }}
             >
-              Concepts
+              {isPremium ? 'Total' : 'Concepts'}
             </Typography>
           </Typography>
         </Box>

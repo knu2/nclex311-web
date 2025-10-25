@@ -34,6 +34,7 @@ export default async function ChaptersPage() {
     email: session.user.email || '',
     avatar: (session.user as { image?: string }).image,
     is_premium: userSubscriptionStatus === 'premium',
+    subscriptionStatus: userSubscriptionStatus || 'free',
   };
 
   return (

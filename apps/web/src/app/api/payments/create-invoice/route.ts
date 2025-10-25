@@ -3,7 +3,10 @@ import { getCurrentSession } from '@/lib/auth-utils';
 import { getOrderService } from '@/lib/db/services';
 import { getXenditClient } from '@/lib/xendit';
 import { PLAN_PRICING, type PlanType } from '@/lib/db/schema/payments';
+import { getLogger } from '@/lib/logger';
 import { randomUUID } from 'crypto';
+
+const logger = getLogger();
 
 /**
  * POST /api/payments/create-invoice
@@ -111,9 +114,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       isRecurring: planType === 'monthly_premium',
     });
 
-    console.log(
-      `[Payment] Created order ${orderId} for user ${userId} - ${planType} (₱${amount / 100})`
-    );
+    // Log payment initiation with structured data
+    logger.paymentInitiated({
+      userId,
+      orderId,
+      planType,
+      amount,
+    });
 
     // 8. Create Xendit invoice
     let xenditInvoice;
@@ -125,19 +132,29 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         userEmail
       );
     } catch (error: unknown) {
-      console.error('[Payment] Xendit invoice creation failed:', error);
+      // Log payment failure with structured data
+      const errorObj = error as { code?: string; message?: string };
+      logger.paymentFailed({
+        userId,
+        orderId,
+        planType,
+        error: {
+          code: errorObj.code || 'XENDIT_ERROR',
+          message: errorObj.message || 'Failed to create invoice',
+        },
+      });
 
       // Update order status to failed
       await orderService.update(orderId, {
         status: 'failed',
-        failureCode: error?.code || 'XENDIT_ERROR',
+        failureCode: errorObj.code || 'XENDIT_ERROR',
       });
 
       return NextResponse.json(
         {
           error: 'Payment Gateway Error',
           message: 'Failed to create payment invoice. Please try again.',
-          details: error?.message,
+          details: errorObj.message,
         } satisfies ErrorResponse,
         { status: 500 }
       );
@@ -150,7 +167,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       expiresAt: new Date(xenditInvoice.expiry_date),
     });
 
-    console.log(`[Payment] Xendit invoice created: ${xenditInvoice.id}`);
+    // Log invoice creation with structured data
+    logger.invoiceCreated({
+      orderId,
+      xenditInvoiceId: xenditInvoice.id,
+      planType,
+      amount,
+      expiresAt: xenditInvoice.expiry_date,
+    });
 
     // 10. Return checkout URL to frontend
     const response: CreateInvoiceResponse = {
@@ -164,13 +188,15 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     return NextResponse.json(response, { status: 201 });
   } catch (error: unknown) {
-    console.error('[Payment] Create invoice error:', error);
+    // Log unexpected errors
+    logger.error('Create invoice error', error);
 
+    const errorObj = error as { message?: string };
     return NextResponse.json(
       {
         error: 'Internal Server Error',
         message: 'An unexpected error occurred',
-        details: error?.message,
+        details: errorObj.message,
       } satisfies ErrorResponse,
       { status: 500 }
     );

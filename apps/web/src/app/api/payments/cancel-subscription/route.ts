@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getCurrentSession } from '@/lib/auth-utils';
 import { UserService } from '@/lib/db/services';
+import { getLogger } from '@/lib/logger';
+
+const logger = getLogger();
 
 /**
  * POST /api/payments/cancel-subscription
@@ -98,7 +101,12 @@ export async function POST(): Promise<NextResponse> {
     // 5. Cancel auto-renewal
     await userService.cancelAutoRenewal(userId);
 
-    console.log(`[Subscription] Cancelled auto-renewal for user ${userId}`);
+    // Log cancellation with structured data
+    logger.subscriptionCancelled({
+      userId,
+      planType: subscription.plan,
+      expiresAt: subscription.expiresAt || new Date(),
+    });
 
     // 6. Return confirmation
     const response: CancelResponse = {
@@ -110,7 +118,8 @@ export async function POST(): Promise<NextResponse> {
 
     return NextResponse.json(response, { status: 200 });
   } catch (error: unknown) {
-    console.error('[Subscription] Cancel subscription error:', error);
+    // Log error with structured data
+    logger.error('Cancel subscription error', error);
 
     // Handle specific service errors
     if (error?.code === 'INVALID_SUBSCRIPTION_TYPE') {

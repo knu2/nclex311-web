@@ -41,6 +41,12 @@ export default async function ConceptPage({
     redirect(`/login?callbackUrl=${encodeURIComponent(`/concepts/${slug}`)}`);
   }
 
+  // Extract subscription status from session
+  const userSubscriptionStatus = (
+    session.user as { subscriptionStatus?: string }
+  )?.subscriptionStatus;
+  const isPremiumUser = userSubscriptionStatus === 'premium';
+
   // Fetch concept data server-side
   const contentService = new ContentService();
   let concept;
@@ -51,7 +57,7 @@ export default async function ConceptPage({
       id: (session.user as { id?: string }).id || '',
       email: session.user.email || '',
       passwordHash: '', // Not used for access control
-      subscription: 'FREE', // TODO: Get from database in future story
+      subscription: isPremiumUser ? 'PREMIUM' : 'FREE',
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -78,7 +84,8 @@ export default async function ConceptPage({
     name: session.user.name || session.user.email || 'User',
     email: session.user.email || '',
     avatar: (session.user as { image?: string }).image,
-    is_premium: false, // TODO: Get from database in future story
+    is_premium: isPremiumUser,
+    subscriptionStatus: userSubscriptionStatus || 'free',
   };
 
   // Transform concept data to match ConceptViewer's expected interface

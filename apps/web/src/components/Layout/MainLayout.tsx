@@ -35,6 +35,7 @@ export interface MainLayoutProps {
     email: string;
     avatar?: string;
     is_premium: boolean;
+    subscriptionStatus?: string;
   };
   chapterId?: string;
   currentConceptSlug?: string;
@@ -345,6 +346,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         isOpen={drawerState.isOpen}
         onClose={closeDrawer}
         userId={user?.id}
+        subscriptionStatus={user?.subscriptionStatus}
       />
 
       {/* Main Content Area */}

@@ -5,6 +5,19 @@ import bcrypt from 'bcrypt';
 import { supabase } from '@/lib/database';
 
 /**
+ * Extended session user type including subscription data
+ */
+interface ExtendedSessionUser {
+  id?: string;
+  email?: string | null;
+  name?: string | null;
+  subscriptionStatus?: string;
+  subscriptionExpiresAt?: string | null;
+  autoRenew?: boolean;
+  subscriptionPlan?: string | null;
+}
+
+/**
  * NextAuth v5 auth instance for server-side session management
  */
 const { auth } = NextAuth({
@@ -73,9 +86,38 @@ const { auth } = NextAuth({
   },
   callbacks: {
     async session({ session, token }) {
-      if (token && session.user && token.sub) {
-        // Add user id to session from token
-        (session.user as { id?: string }).id = token.sub;
+      if (token?.sub) {
+        try {
+          // Fetch fresh user data including subscription from database
+          const client =
+            supabase as unknown as import('@supabase/supabase-js').SupabaseClient;
+          const { data: userData } = await client
+            .from('users')
+            .select(
+              'subscription_status, subscription_expires_at, auto_renew, subscription_plan'
+            )
+            .eq('id', token.sub)
+            .maybeSingle();
+
+          if (userData && session.user) {
+            // Add user id and subscription data to session
+            (session.user as ExtendedSessionUser).id = token.sub;
+            (session.user as ExtendedSessionUser).subscriptionStatus =
+              userData.subscription_status || 'free';
+            (session.user as ExtendedSessionUser).subscriptionExpiresAt =
+              userData.subscription_expires_at || null;
+            (session.user as ExtendedSessionUser).autoRenew =
+              userData.auto_renew || false;
+            (session.user as ExtendedSessionUser).subscriptionPlan =
+              userData.subscription_plan || null;
+          }
+        } catch (error) {
+          console.error('Error fetching user subscription data:', error);
+          // Fallback: still include user ID even if subscription fetch fails
+          if (session.user) {
+            (session.user as ExtendedSessionUser).id = token.sub;
+          }
+        }
       }
       return session;
     },
