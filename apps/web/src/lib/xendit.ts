@@ -172,20 +172,26 @@ export class XenditClient {
       const successRedirectUrl = `${baseUrl}/payment/success?orderId=${orderId}`;
       const failureRedirectUrl = `${baseUrl}/payment/failed?orderId=${orderId}`;
 
-      const requestBody: CreateInvoiceRequest = {
-        externalId: orderId,
-        amount,
-        payerEmail: userEmail,
+      // Xendit Invoice API expects amount in whole currency units (PHP), not centavos
+      // Our database stores amounts in centavos (20000 = ₱200.00)
+      // Xendit expects: 200.00 for ₱200
+      const amountInPHP = amount / 100;
+
+      // Xendit API requires snake_case field names
+      const requestBody = {
+        external_id: orderId,
+        amount: amountInPHP,
+        payer_email: userEmail,
         description: planDescriptions[planType],
-        invoiceDuration,
-        successRedirectUrl,
-        failureRedirectUrl,
+        invoice_duration: invoiceDuration,
+        success_redirect_url: successRedirectUrl,
+        failure_redirect_url: failureRedirectUrl,
         currency: 'PHP',
         items: [
           {
             name: planDescriptions[planType],
             quantity: 1,
-            price: amount,
+            price: amountInPHP,
           },
         ],
       };

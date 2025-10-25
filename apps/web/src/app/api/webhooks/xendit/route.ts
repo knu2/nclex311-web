@@ -12,6 +12,7 @@ import {
   UserService,
 } from '@/lib/db/services';
 import { PLAN_DURATION, type Order } from '@/lib/db/schema/payments';
+import { getEmailService } from '@/lib/email';
 
 interface XenditWebhookPayload {
   id: string;
@@ -185,8 +186,28 @@ async function handlePaidInvoice(
     `[Webhook] Premium activated for user ${order.userId} until ${expiresAt.toISOString()}`
   );
 
-  // TODO: Send confirmation email (Task 8)
-  // await sendPremiumConfirmationEmail(order.userId, order.planType, expiresAt);
+  // 4. Send confirmation email
+  try {
+    const user = await userService.findUserById(order.userId);
+    if (user?.email) {
+      const emailService = getEmailService();
+      await emailService.sendPremiumConfirmationEmail({
+        userEmail: user.email,
+        userName: undefined, // Optional: Add name field to user schema later
+        planType: order.planType,
+        amount: order.amount,
+        paymentMethod: payload.payment_method,
+        orderId: order.orderId,
+        subscriptionStartDate: now,
+        subscriptionExpiresAt: expiresAt,
+        autoRenew,
+      });
+      console.log(`[Webhook] Confirmation email sent to ${user.email}`);
+    }
+  } catch (emailError) {
+    // Log error but don't fail the webhook - email is non-critical
+    console.error('[Webhook] Failed to send confirmation email:', emailError);
+  }
 }
 
 /**

@@ -24,12 +24,16 @@ export default async function ChaptersPage() {
   }
 
   // Transform session user to match MainLayout's expected interface
+  const userSubscriptionStatus = (
+    session.user as { subscriptionStatus?: string }
+  )?.subscriptionStatus;
+
   const user = {
     id: (session.user as { id?: string }).id || '',
     name: session.user.name || session.user.email || 'User',
     email: session.user.email || '',
     avatar: (session.user as { image?: string }).image,
-    is_premium: false, // TODO: Get from database in future story
+    is_premium: userSubscriptionStatus === 'premium',
   };
 
   return (

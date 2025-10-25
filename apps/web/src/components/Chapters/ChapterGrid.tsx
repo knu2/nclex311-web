@@ -181,9 +181,8 @@ export function ChapterGrid({ isPremiumUser = false }: ChapterGridProps) {
           </Button>
           <Button
             onClick={() => {
-              // TODO: Navigate to upgrade/pricing page when available
-              console.log('Navigate to upgrade page');
               handleCloseUpgradeDialog();
+              window.location.href = '/upgrade';
             }}
             variant="contained"
             color="primary"

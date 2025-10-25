@@ -94,6 +94,7 @@ cp .env.example .env.local
 - Create a new project at [supabase.com](https://supabase.com)
 - Copy your project URL and anon key to `.env.local`
 - Migrations will be managed via Supabase Dashboard
+- **Apply Premium Subscription Migration**: Run migration script `apps/web/migrations/008_add_payment_tables.sql` via Supabase SQL Editor
 
 **For Local PostgreSQL:**
 ```bash
@@ -111,7 +112,36 @@ curl http://localhost:3000/api/health
 # Should return: {"status":"ok","timestamp":"...","database":"connected"}
 ```
 
-#### 6. Start Development Server
+#### 6. Payment Gateway Setup (Optional - Required for Premium Subscriptions)
+
+To test the premium subscription workflow, configure Xendit sandbox credentials:
+
+**Xendit Sandbox Setup:**
+1. Create a free Xendit account at [dashboard.xendit.co](https://dashboard.xendit.co/register)
+2. Navigate to **Settings → Developers → API Keys**
+3. Copy your **Test Secret Key** (starts with `xnd_development_`)
+4. Navigate to **Settings → Developers → Callbacks**
+5. Generate a **Webhook Verification Token**
+6. Add to `.env.local`:
+   ```bash
+   XENDIT_SECRET_KEY=xnd_development_YOUR_KEY_HERE
+   XENDIT_WEBHOOK_TOKEN=YOUR_WEBHOOK_TOKEN_HERE
+   ```
+
+**Email Service Setup (SendGrid):**
+1. Create a SendGrid account at [sendgrid.com](https://sendgrid.com)
+2. Generate an API key with **Mail Send** permissions
+3. Verify a sender email address
+4. Add to `.env.local`:
+   ```bash
+   SENDGRID_API_KEY=SG.YOUR_API_KEY_HERE
+   EMAIL_FROM=noreply@yourdomain.com
+   EMAIL_FROM_NAME=NCLEX311
+   ```
+
+**Note:** Payment features will be disabled if Xendit credentials are not configured. Email confirmations will fail gracefully without breaking the payment flow.
+
+#### 7. Start Development Server
 ```bash
 # Start the development server
 npm run dev
@@ -120,11 +150,19 @@ npm run dev
 # http://localhost:3000
 ```
 
-#### 7. Verify Setup
+#### 8. Verify Setup
 - Navigate to [http://localhost:3000](http://localhost:3000)
 - Check browser console for any errors
 - Verify database connection via health endpoint
 - Run initial test suite: `npm run test`
+
+**Test Premium Subscription Flow (if Xendit configured):**
+1. Create a test user account
+2. Navigate to premium content (Chapters 5-8)
+3. Click "Upgrade to Premium"
+4. Select a plan (Monthly or Annual)
+5. Use Xendit test card: `4000000000000002` (Success)
+6. Complete checkout and verify subscription activation
 
 ### Testing Framework Setup
 
@@ -249,6 +287,34 @@ npm run test -- --testNamePattern="specific test name"
 3. Check that variables are properly prefixed:
    - Client-side: `NEXT_PUBLIC_*`
    - Server-side: No prefix required
+
+#### Payment Gateway Issues
+
+**Problem**: Xendit invoice creation fails or webhooks not received
+
+**Solutions**:
+1. **Invalid API Key**:
+   ```bash
+   # Verify your Xendit secret key starts with correct prefix
+   # Development: xnd_development_
+   # Production: xnd_production_
+   echo $XENDIT_SECRET_KEY
+   ```
+
+2. **Webhook Not Received** (local development):
+   - Use ngrok to expose localhost:
+     ```bash
+     ngrok http 3000
+     # Copy the HTTPS URL and configure in Xendit Dashboard
+     # Settings → Developers → Callbacks → Webhook URL
+     # Set to: https://YOUR-NGROK-URL.ngrok.io/api/webhooks/xendit
+     ```
+
+3. **Payment Confirmation Email Not Sent**:
+   - Verify SendGrid API key is valid
+   - Check that `EMAIL_FROM` is a verified sender in SendGrid
+   - Check application logs for email service errors
+   - Note: Email failures won't break the payment flow
 
 ## Available Commands
 

@@ -44,6 +44,7 @@
     "@types/pg": "^8.15.5",
     "@vercel/blob": "^2.0.0",
     "@vercel/postgres": "^0.10.0",
+    "axios": "^1.12.2",
     "bcrypt": "^6.0.0",
     "commander": "^14.0.1",
     "dotenv": "^17.2.2",
