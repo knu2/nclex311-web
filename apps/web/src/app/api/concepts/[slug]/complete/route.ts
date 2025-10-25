@@ -39,9 +39,22 @@ export async function GET(
     // Get concept slug from params
     const { slug } = await context.params;
 
-    // Look up concept by slug using ContentService
-    const conceptResult = await contentService.getConceptBySlug(slug);
-    if (!conceptResult.data) {
+    // Get user subscription status for access control
+    const userSubscriptionStatus = (
+      session.user as { subscriptionStatus?: string }
+    )?.subscriptionStatus;
+    const userForAccess =
+      userSubscriptionStatus === 'premium'
+        ? { subscription: 'PREMIUM' as const }
+        : null;
+
+    // Look up concept by slug using ContentService with user context
+    const conceptResult = await contentService.getConceptBySlug(
+      slug,
+      userForAccess
+    );
+    // Handle FreemiumAccessResult - check both hasAccess and data
+    if (!conceptResult.hasAccess || !conceptResult.data) {
       return NextResponse.json(
         { error: 'Not Found', message: 'Concept not found' },
         { status: 404 }
@@ -108,9 +121,22 @@ export async function POST(
     // Get concept slug from params
     const { slug } = await context.params;
 
-    // Look up concept by slug using ContentService
-    const conceptResult = await contentService.getConceptBySlug(slug);
-    if (!conceptResult.data) {
+    // Get user subscription status for access control
+    const userSubscriptionStatus = (
+      session.user as { subscriptionStatus?: string }
+    )?.subscriptionStatus;
+    const userForAccess =
+      userSubscriptionStatus === 'premium'
+        ? { subscription: 'PREMIUM' as const }
+        : null;
+
+    // Look up concept by slug using ContentService with user context
+    const conceptResult = await contentService.getConceptBySlug(
+      slug,
+      userForAccess
+    );
+    // Handle FreemiumAccessResult - check both hasAccess and data
+    if (!conceptResult.hasAccess || !conceptResult.data) {
       return NextResponse.json(
         { error: 'Not Found', message: 'Concept not found' },
         { status: 404 }
@@ -177,9 +203,22 @@ export async function DELETE(
     // Get concept slug from params
     const { slug } = await context.params;
 
-    // Look up concept by slug using ContentService
-    const conceptResult = await contentService.getConceptBySlug(slug);
-    if (!conceptResult.data) {
+    // Get user subscription status for access control
+    const userSubscriptionStatus = (
+      session.user as { subscriptionStatus?: string }
+    )?.subscriptionStatus;
+    const userForAccess =
+      userSubscriptionStatus === 'premium'
+        ? { subscription: 'PREMIUM' as const }
+        : null;
+
+    // Look up concept by slug using ContentService with user context
+    const conceptResult = await contentService.getConceptBySlug(
+      slug,
+      userForAccess
+    );
+    // Handle FreemiumAccessResult - check both hasAccess and data
+    if (!conceptResult.hasAccess || !conceptResult.data) {
       return NextResponse.json(
         { error: 'Not Found', message: 'Concept not found' },
         { status: 404 }
