@@ -15,7 +15,7 @@ import { getOrderService } from '@/lib/db/services';
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { orderId: string } }
+  context: { params: Promise<{ orderId: string }> }
 ): Promise<NextResponse> {
   try {
     // 1. Verify authentication
@@ -32,7 +32,7 @@ export async function GET(
     }
 
     // 2. Get order ID from params
-    const { orderId } = params;
+    const { orderId } = await context.params;
 
     if (!orderId) {
       return NextResponse.json(
